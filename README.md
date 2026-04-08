@@ -23,7 +23,7 @@ To prevent teams from becoming overwhelmed by attempting to implement 100+ contr
 *   **IG 3:** Specialized, high-end controls for well-resourced organizations.
 
 ## Getting Started
-To move from total chaos to absolute clarity, begin by filtering the `AI_Readiness_Tracker` to show only the controls with a **"1-High" aggregate risk level** within **Implementation Group 1**. This single step focuses your energy where it will have the largest impact.
+To move from chaos to clarity, download the AC-104-V1.csv tracker from /data and begin by filtering to show only the controls with a **"1-High" aggregate risk level** within **Implementation Group 1**. This single step focuses your energy where it will have the largest impact. Proceed from there!
 
 ## Repository Structure
 This repository contains the following structure to support your implementation:
