@@ -10,7 +10,7 @@ The rules of cyber security have completely changed. Threats are now supercharge
 This repository houses an **AI Defense-in-Depth Implementation Guide**, a brand new, highly actionable maturity model designed specifically to counter these fast-moving threats and help you defend at machine speed.
 
 ## The Defense-in-Depth Framework
-Rather than relying on unfiltered aggregate tasks, this model is structured in multiple ways, assessing risk across four core pillars to help you prioritize what to protect first:
+Rather than relying on unfiltered aggregate tasks, or vague high-level recommendations, this model is structured in multiple ways, beginning with assessing risk across four core pillars to help you prioritize what to protect first:
 1. **Data Sensitivity:** How sensitive is the data involved?
 2. **Network Exposure:** Is the system connected to the internet?
 3. **Recovery Time Objective (RTO):** How fast must the system be brought back online if it goes down?
