@@ -1,0 +1,1071 @@
+Recommendation ID,Recommendation Category,Implementation Group,"Aggregate Risk Level (Network Exposure, Data Level, RTO, Audience)",Recommendation Description,"Policy Defined - From No Policy, to Informal Policy to Fully Approved Policy","Control Implemented - From not implemented, to somewhat implemented, to fully implemented","Control Automated - From not automated, to partially automated, to fully automated","Control Reported - From not reported on, to partially reported on, to fully reported on",Assigned To,Validation Date,Notes/Evidence,CIS v8 Safeguards,NIST CSF Subcategories,Details
+AI-VND-02,Layer 0: Governance & System Controls,IG 1,1-High,"Enforce AI vendor minimum security terms, explicitly mandating ""no training on customer data,"" strict tenancy, and guaranteed log access.",0,0,0,0,,,,"15.1, 15.2",GV.SC,"Detailed Description:
+Enforce standardized, non-negotiable minimum security terms in all contracts with AI vendors and SaaS providers introducing AI features. This must explicitly mandate ""zero data retention for model training,"" strict data tenancy isolation, guaranteed log exports, and data residency compliance.
+
+Why AI Compounds Risk:
+Many AI vendors—especially consumer-focused ones pivoting to B2B—default to using customer prompts and data to train their future public models. Without explicit contractual ""opt-outs"" and tenancy guarantees, sensitive enterprise data entered into an AI tool could be memorized by the provider's model and inadvertently leaked to competitors or the public via future user queries.
+
+Examples:
+1. Require vendors to sign a Data Processing Agreement (DPA) explicitly stating that customer data (prompts, RAG context, file uploads, outputs) will absolutely not be used to train, fine-tune, or improve foundational models.
+2. Mandate that multi-tenant AI SaaS platforms provide logical separation and encrypted isolation of tenant workspaces, with Bring Your Own Key (BYOK) support where applicable.
+3. Ensure the vendor supports automated export of AI interaction logs and audit trails to the enterprise SIEM via API for continuous monitoring."
+AI-GOV-01,Layer 0: Governance & System Controls,IG 1,2-Medium,Establish and enforce a Generative AI Acceptable Use Policy,0,0,0,0,,,,"15.1, 17.1","GV.PO, GV.OV","Detailed Description:
+This recommendation involves creating and enforcing a formal set of rules that define how employees can ethically and securely use generative AI tools. It establishes clear boundaries regarding permitted and prohibited use cases, data handling requirements, and the roles and responsibilities of staff to ensure AI adoption aligns with organizational values and legal obligations.
+
+Why AI Compounds Risk:
+AI exacerbates risk because tools often lack transparency in how they process data, frequently use employee inputs to train public models, and can generate inaccurate or biased content (hallucinations) that leads to legal, reputational, or security breaches if not properly governed.
+
+Examples:
+1. Maintain a curated list of vetted and authorized AI tools that have been reviewed by security and legal teams for compliance and data encryption standards.
+2. Explicitly prohibit the input of sensitive information—such as personally identifiable information (PII), intellectual property, or trade secrets—into public or non-corporate-managed AI systems.
+3. Implement a mandatory human-in-the-loop (HITL) review process where employees must fact-check and verify all AI-generated outputs for accuracy and bias before they are used in business decisions or external communications."
+AI-GOV-02,Layer 0: Governance & System Controls,IG 1,2-Medium,Implement rigorous Data Classification Mapping and System Agnostic Coverage Policies,0,0,0,0,,,,"15.1, 17.1","GV.PO, GV.OV","Detailed Description:
+This recommendation involves creating a comprehensive framework that identifies, categorizes, and labels data based on its sensitivity (mapping) and applies security controls consistently across all platforms, whether on-premises, in the cloud, or within third-party applications (system-agnostic).
+
+Why AI Compounds Risk:
+AI exacerbates data risks by requiring massive datasets that are often moved from their original secure contexts, making them harder to track, and by potentially leaking sensitive training data through model outputs or being targeted by new privacy attacks like model inversion.
+
+Examples:
+1. Use automated Data Security Posture Management (DSPM) tools to continuously scan and label unstructured data across hybrid environments like team messaging apps, cloud storage platforms, and enterprise data warehouses without relying on manual user input.
+2. Integrate data labels with automated enforcement actions, such as revoking overly permissive access or blocking the ingestion of ""Restricted"" files into generative AI corporate copilots.
+3. Establish a unified policy engine that applies consistent security tags and encryption requirements to data regardless of its format (structured vs. unstructured) or where it resides, ensuring compliance with standards like GDPR or HIPAA."
+AI-GOV-03,Layer 0: Governance & System Controls,IG 1,2-Medium,"Establish an Approved AI Service Catalog and enforce it via web proxies/CASB, explicitly limiting employee access to only vetted and sanctioned AI tools.",0,0,0,0,,,,"15.1, 17.1","GV.PO, GV.OV","Detailed Description:
+This recommendation involves creating a centralized, vetted list of approved AI services and using technical controls like Cloud Access Security Brokers (CASB) or web proxies to block access to unmanaged ""Shadow AI"" while allowing only sanctioned tools.
+
+Why AI Compounds Risk:
+AI exacerbates risk because the rapid proliferation of easy-to-use GenAI tools leads to widespread ""Shadow AI"" usage, where employees may inadvertently upload sensitive proprietary data or personally identifiable information into public models that use the data for training.
+
+Examples:
+1. Configure a CASB to automatically discover all AI applications in use, assign risk scores to them, and enforce real-time block policies on high-risk or unsanctioned AI websites.
+2. Implement a service catalog within an ITSM platform where employees can view and request access to pre-vetted AI tools that meet company security and compliance standards.
+3. Use a Secure Web Gateway to apply granular controls, such as allowing ""view only"" access to certain AI sites while blocking the ability to ""upload"" or ""post"" content to prevent data exfiltration."
+AI-GOV-04,Layer 0: Governance & System Controls,IG 2,1-High,"Implement Continuous Session Risk Monitoring (e.g., 'impossible travel') to detect and automatically revoke session tokens hijacked by AI-automated scripts.",0,0,0,0,,,,"9.1, 9.2",PR.IR,"Detailed Description:
+Continuous session risk monitoring is a security strategy that tracks active user sessions in real time to detect anomalies, such as impossible travel, which occurs when a single account is accessed from two geographically distant locations faster than physical travel allows. By integrating automated response mechanisms, the system can instantly revoke session tokens or cookies when suspicious behavior is identified, effectively terminating unauthorized access before data exfiltration or lateral movement occurs.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by enabling attackers to use automated scripts and botnets that can hijack sessions at scale and high velocity, often bypassing traditional multi-factor authentication (MFA) by replaying stolen tokens. AI-driven tools can also mimic legitimate user behavior or device fingerprints more convincingly, making it harder for static security rules to distinguish between a human user and a malicious automated process.
+
+Examples:
+1. Deploy an identity protection solution, such as an enterprise identity provider or cloud application security broker, to establish a baseline of normal user activity and automatically trigger alerts or block access when impossible travel is detected.
+2. Implement a Security Orchestration, Automation, and Response (SOAR) playbook that integrates with your Identity and Access Management (IAM) system to automatically invalidate session tokens and force re-authentication if a high-risk anomaly is flagged.
+3. Use behavioral analytics and machine learning tools to monitor for unusual session patterns, such as unexpected changes in IP addresses, user agents, or concurrent sessions from multiple countries, and apply risk-based conditional access policies."
+AI-GOV-08,Layer 0: Governance & System Controls,IG 2,1-High,Establish OAuth Application Governance to restrict third-party 'AI Productivity' apps from accessing sensitive mailbox or cloud storage data.,0,0,0,0,,,,"9.1, 9.2",PR.IR,"Detailed Description:
+Implement a centralized management framework to monitor and control third-party applications that use OAuth tokens to access corporate data environments like enterprise productivity suites.
+
+Why AI Compounds Risk:
+Mitigate risks associated with overprivileged permissions by identifying apps with excessive access to sensitive mailboxes and cloud storage that do not align with their stated functional purpose
+
+Examples:
+1. Address the unique threat of AI productivity tools which operate autonomously to consume, summarize, and move vast amounts of data across integrated SaaS platforms without constant human oversight
+2. Prevent structural data exposure caused by persistent AI integrations that can quietly exfiltrate thousands of records daily through legitimate but unmonitored API connections
+3. Enable the App Governance feature within the enterprise endpoint protection platform for Cloud Apps to gain deep visibility into OAuth-enabled app behaviors and automated response capabilities
+4. Establish custom governance policies that automatically revoke access for stale applications or those showing anomalous data transfer patterns and unauthorized permission changes
+5. Restrict self-service user consent to ensure only qualified administrators can authorize new AI integrations after a thorough security review of the requested scopes and publisher reputation"
+AI-NHI-01,Layer 0: Governance & System Controls,IG 2,1-High,"Establish Non-Human Identity (NHI) Inventory and Governance (service accounts, API keys, tokens, agent identities)",0,0,0,0,,,,"5.1, 5.2, 6.8","ID.AM, PR.AA, PR.AC","Detailed Description:
+Implement a comprehensive centralized inventory and lifecycle governance program for all non-human identities (NHIs). This includes service accounts, API keys, OAuth tokens, machine identities, and autonomous AI agent identities. The program must track ownership, enforce least privilege (RBAC), and mandate regular rotation and auditing of these credentials.
+
+Why AI Compounds Risk:
+AI systems, particularly autonomous agents and large language model (LLM) pipelines, heavily rely on non-human identities to interact with databases, APIs, and cloud services at machine speed. As organizations deploy more AI integrations, the rapid proliferation of unmanaged API keys, hidden service accounts, and overly permissive OAuth tokens creates a massive, invisible attack surface. If an adversary compromises an AI prompt or an agent's workspace, they can immediately harvest these NHIs to pivot laterally, exfiltrate data, or escalate privileges without ever triggering human-centric MFA or behavioral alerts.
+
+Examples:
+1. Deploy an NHI management platform or Cloud Infrastructure Entitlement Management (CIEM) tool to continuously auto-discover and map all service accounts, API keys, and OAuth tokens.
+2. Enforce strict lifecycle policies for AI-associated identities, prioritizing the use of short-lived/ephemeral tokens and mandatory automated credential rotation rather than static API keys.
+3. Implement behavioral monitoring specifically for non-human accounts to detect anomalies, such as an AI agent service account suddenly calling an administrative API or moving large volumes of data outside its baseline."
+AI-GOV-09,Layer 0: Governance & System Controls,IG 2,2-Medium,Establish a Deepfake/Voice Clone Executive Protection Protocol,0,0,0,0,,,,"15.1, 17.1","GV.PO, GV.OV","Detailed Description:
+This protocol is a formal set of security procedures designed to verify the authenticity of communications from high-ranking officials to prevent fraud, such as unauthorized wire transfers or data breaches, stemming from AI-generated impersonations.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by allowing attackers to create hyper-realistic voice clones and deepfake videos from just seconds of public audio or video, making it nearly impossible for humans to distinguish between genuine and synthetic requests under pressure.
+
+Examples:
+1. Implement mandatory out-of-band verification, such as requiring a secondary confirmation through a pre-approved, trusted channel like a direct call to a known number or a secure internal messaging app before executing high-stakes requests.
+2. Establish a secret ""safe word"" or ""code of the day"" program where executives must provide a specific, non-public phrase to authenticate their identity during urgent or unusual verbal interactions.
+3. Enforce strict separation of duties and multi-person authorization for all financial transactions, ensuring that no single request, even if it appears to come from the CEO, can be processed without multiple layers of human approval."
+AI-GOV-10,Layer 0: Governance & System Controls,IG 2,2-Medium,Require AI Vendor Risk Assessments for all new software purchases,0,0,0,0,,,,"15.1, 17.1","GV.PO, GV.OV","Detailed Description:
+This recommendation mandates that any new software procurement must undergo a specialized risk assessment to evaluate the artificial intelligence components, focusing on model-specific risks like training data provenance, algorithmic bias, and output reliability that standard security reviews might overlook.
+
+Why AI Compounds Risk:
+AI exacerbates risk because systems are dynamic and can experience model drift or change behavior over time, process massive amounts of sensitive data that may be repurposed for training, and often lack transparency in how they reach specific decisions or handle data isolation.
+
+Examples:
+1. Tier vendors based on AI criticality so that high-risk tools, such as those handling customer PII, receive deeper technical scrutiny than low-risk internal summarization tools.
+2. Require vendors to provide model cards or system cards that document the model's capabilities, limitations, and intended use cases to ensure alignment with corporate ethical and security standards.
+3. Update the Third-Party Risk Management (TPRM) program to include specific questionnaire items regarding whether company data will be used to train the vendor's global models and if there are options for users to opt out of AI features."
+AI-GOV-11,Layer 0: Governance & System Controls,IG 2,2-Medium,Develop an AI-specific Incident Response Playbook,0,0,0,0,,,,"15.1, 17.1","GV.PO, GV.OV","Detailed Description:
+An AI-specific Incident Response Playbook is a structured guide that establishes step-by-step procedures for detecting, containing, and resolving security events unique to AI systems. Unlike traditional playbooks, it focuses on specialized threats such as prompt injection, model theft, and data poisoning, providing clear protocols for kill switch authority, evidence preservation, and regulatory notification workflows.
+
+Why AI Compounds Risk:
+AI exacerbates risk because it compresses attack timelines from hours to minutes, operates at a scale that exceeds human defensive capabilities, and introduces a new attack surface including autonomous agents and complex API connections that traditional security tools are not built to monitor.
+
+Examples:
+1. Implement specialized detection by configuring AI Gateway alerts and SIEM correlation rules to monitor for specific threat patterns like jailbreaking and goal hijacking.
+2. Define clear containment protocols such as 15-minute windows for activating kill switches or switching to human-in-the-loop mode during active data exfiltration events.
+3. Integrate regulatory compliance templates into the playbook to ensure automated reporting for mandates like the EU AI Act or GDPR within required windows."
+AI-GOV-16,Layer 0: Governance & System Controls,IG 2,2-Medium,"Establish AI-specific change management and evaluation gates requiring regression testing, approvals, and rollback plans for updates to models, prompts, agent tools, or RAG datasets.",0,0,0,0,,,,"2.1, 16.6, 16.7","PR.IP, GV.SC","Detailed Description:
+Establish specialized AI change management workflows and evaluation gates for updates to any component of an AI system. This means that modifications to model versions, prompt templates, agent tools/plugins, or the Retrieval-Augmented Generation (RAG) corpus must go through formal change control, requiring automated regression tests (checking for jailbreaks, data leakage, and tool abuse), explicit approvals, and tested rollback plans before reaching production.
+
+Why AI Compounds Risk:
+Unlike traditional software where behavior is strictly governed by static code, AI systems are non-deterministic. Their behavior can drastically change simply by altering a system prompt, adding a new document to the RAG knowledge base, or pointing the application to an updated LLM version. Standard CI/CD change management often misses these non-code updates. Without AI-specific evaluation gates, a seemingly harmless prompt tweak or data upload can silently introduce massive vulnerabilities, such as bypassing safety filters or exposing restricted data to autonomous agents.
+
+Examples:
+1. Integrate AI-specific regression testing tools (e.g., prompt vulnerability scanners, LLM evaluation frameworks) into the CI/CD pipeline to automatically test for jailbreak regressions and prompt injection susceptibility before any prompt template change is deployed.
+2. Require formal Change Advisory Board (CAB) or security team approval for the introduction of new agentic tools/plugins, treating them with the same rigor as deploying a new firewall rule or external API integration.
+3. Establish a version control and rollback strategy for RAG knowledge bases, ensuring that if a newly ingested document causes an AI chatbot to leak sensitive information or hallucinate, the system can instantly revert to the previous verified state."
+AI-GOV-12,Layer 0: Governance & System Controls,IG 3,2-Medium,Deploy targeted deepfake and synthetic media detection tooling for high-risk workflows (rather than an org-wide mandate),0,0,0,0,,,,"14.1, 17.1","PR.AT, RS.MA","Detailed Description:
+Implement deepfake and synthetic media detection tooling for targeted, high-risk workflows (e.g., executive communications, high-value financial transfers, and high-privilege helpdesk requests). *Maturity Note:* This is designed as a targeted, localized control rather than an organization-wide mandate; a mature organization focuses this tooling specifically where synthetic media poses the highest fraud or reputational risk.
+
+Why AI Compounds Risk:
+Generative AI allows threat actors to clone voices (audio deepfakes) with just a few seconds of sample audio, and generate highly convincing synthetic video of key personnel. This technology is actively used to bypass helpdesk voice verification, authorize fraudulent wire transfers (Business Email Compromise via voice/video), and fabricate executive statements for extortion or market manipulation. Because humans can no longer reliably distinguish high-quality deepfakes from reality, specialized technical detection is required for critical validation checkpoints.
+
+Examples:
+1. Deploy specialized deepfake and liveness detection software for the IT helpdesk to use when verifying identity for high-privilege account resets or MFA bypass requests.
+2. Integrate third-party deepfake analysis APIs into the financial approval workflow to automatically scan voicemail, recorded requests, or teleconferencing streams for synthetic artifacts before processing high-value wire transfers.
+3. Establish an incident response playbook that includes access to a specialized digital forensics service or a commercial deepfake-detection platform, enabling PR and Legal teams to rapidly verify the authenticity of suspicious media during a brand crisis."
+AI-GOV-13,Layer 0: Governance & System Controls,IG 3,2-Medium,Conduct Continuous Red Teaming against AI defenses,0,0,0,0,,,,"15.1, 17.1","GV.PO, GV.OV","Detailed Description:
+Continuous red teaming against AI involves an ongoing, automated process of simulating real-world adversarial attacks to identify vulnerabilities in AI models, applications, and their surrounding infrastructure. Unlike traditional time-bound assessments, this approach provides real-time validation of security controls and adapts to the evolving tactics of attackers, such as prompt injection, data poisoning, and model evasion.
+
+Why AI Compounds Risk:
+AI exacerbates security risks because its non-deterministic nature creates an infinite landscape of natural language attack vectors that static defenses cannot anticipate. The rapid evolution of AI models and their integration into agentic systems with execution authority—such as making database queries or tool calls—means that a single successful manipulation can lead to immediate operational or financial harm.
+
+Examples:
+1. Integrate automated red teaming platforms into the CI/CD pipeline to trigger adversarial simulations every time a model is updated or a new software version is deployed, catching regressions before they reach production.
+2. Deploy specialized autonomous agents that continuously probe internal AI chatbots and virtual assistants for sensitive data leakage by attempting multi-turn ""crescendo"" attacks and credential extraction.
+3. Establish a dedicated internal ""Purple Team"" that uses industry-standard threat frameworks to map automated testing results against known adversary behaviors, ensuring that human-led creative testing complements automated scanners to identify complex logic flaws."
+AI-GOV-14,Layer 0: Governance & System Controls,IG 3,3-Low,"Implement Cryptographic Provenance (e.g., C2PA standards) for all official university executive media to establish verifiable digital trust.",0,0,0,0,,,,"14.1, 17.1","PR.AT, RS.MA","Detailed Description:
+This recommendation involves attaching a tamper-evident, cryptographically signed digital record called a C2PA Manifest to media files like photos and videos. This manifest acts as a digital nutrition label that records the content's origin, the tools used for creation, and any subsequent edits, allowing anyone to verify the asset's history and authenticity.
+
+Why AI Compounds Risk:
+AI exacerbates the risk of misinformation because generative AI can create hyper-realistic deepfakes and synthetic media that are visually indistinguishable from authentic content. This erosion of trust makes it difficult for audiences to discern reality from manipulation, leading to potential harm, fraud, and the degradation of public discourse.
+
+Examples:
+1. Integration with creative workflows by using C2PA-enabled professional creative software or AI media generation services to automatically embed provenance data into assets during the production and export process.
+2. Deployment of hardware-based trust by equipping executive communication teams with C2PA-compliant cameras and smartphones that sign and hash media at the point of capture.
+3. Implementation of secure verification portals or browser extensions that allow stakeholders and the public to inspect the Content Credentials of official university media to confirm it has not been tampered with."
+AI-GOV-15,Layer 0: Governance & System Controls,IG 3,3-Low,Deploy AI-Driven Behavioral Analytics (UEBA) for baseline anomaly detection,0,0,0,0,,,,"13.2, 13.5","DE.AS, DE.CM","Detailed Description:
+Deployment of AI-Driven Behavioral Analytics (UEBA) involves using machine learning algorithms to establish a baseline of normal activity for users, devices, and applications within a network. By continuously monitoring and comparing real-time actions against these established profiles, the system identifies subtle deviations—such as unusual login times, atypical data access, or spikes in file transfers—that may indicate insider threats, compromised accounts, or lateral movement.
+
+Why AI Compounds Risk:
+AI exacerbates cybersecurity risk because it allows attackers to automate and scale threats, such as generating highly personalized phishing emails, creating realistic deepfakes for social engineering, and developing malware that evolves to evade traditional signature-based detection.
+
+Examples:
+1. Integrate UEBA with existing Security Information and Event Management (SIEM) infrastructure to correlate behavior data with system logs and prioritize high-risk alerts.
+2. Configure risk-based conditional access that automatically triggers multi-factor authentication (MFA) or restricts system access when a user's behavior deviates significantly from their established baseline.
+3. Implement automated monitoring for privileged accounts to detect unauthorized privilege escalation or sensitive data access by administrators and power users."
+AI-DET-01,Layer 0: Governance & System Controls (Detection & Response),IG 2,1-High,"Implement AI-specific detections and SOAR playbooks (prompt injection, agent/tool abuse, data exfil via AI, connector compromise)",0,0,0,0,,,,"13.1, 13.2","DE.AE, RS.MI","Detailed Description:
+Develop and deploy specialized detection rules within your SIEM/XDR and automated playbooks within your SOAR platform that are specifically tuned for AI-related threat vectors. This includes continuous monitoring and automated response mechanisms for LLM prompt injections, autonomous agent/tool abuse, data exfiltration through AI APIs, and the compromise of third-party AI connectors.
+
+Minimum Telemetry Sources for AI Detections:
+- LLM application gateway logs (or CASB/Proxy logs for external SaaS models)
+- OAuth app governance and consent logs
+- Identity Provider (IdP) risk and anomaly events
+- EDR and DLP telemetry
+- DNS and Secure Web Gateway (SWG) logs
+
+Containment Primitives (SOAR Playbook Actions):
+To operationalize the response, playbooks should be built around reusable containment primitives:
+- Revoke compromised tokens
+- Disable rogue or vulnerable OAuth applications
+- Block destination categories or malicious domains
+- Quarantine phishing or malicious mailbox messages
+- Disable specific non-human/agent identities
+- Rotate exposed secrets
+- Isolate affected endpoints
+
+Why AI Compounds Risk:
+Traditional detection rules are designed for standard malware, lateral movement, or SQL injections; they fail to recognize the unique signatures of AI-centric attacks, such as semantic manipulation (prompt injection) or an autonomous agent chaining together authorized API calls in an unauthorized manner. Without AI-specific detections and machine-speed SOAR playbooks, an attacker can hijack an LLM or AI agent to extract sensitive data or pivot into internal networks long before a human analyst identifies the anomalous pattern.
+
+Examples:
+1. Ingest AI application gateway logs into the SIEM and write correlation rules to detect high-volume, repetitive, or anomalous prompt structures indicative of a prompt injection or jailbreak attempt.
+2. Create a SOAR playbook that automatically isolates an AI agent or revokes its API keys if it begins exhibiting ""tool-use drift"" (e.g., calling a database query tool it rarely uses or attempting an excessive number of unapproved external web connections).
+3. Monitor network egress for sudden spikes in data transfer to known public AI endpoints (e.g., OpenAI, Anthropic APIs) and trigger an automated SOAR response to block the connection and alert the security team of potential AI-driven data exfiltration."
+AI-USR-01,Layer 0: User Facing Controls,IG 1,1-High,Enable Automated 'First Contact' Safety Tips to warn users when interacting with new or anomalous external senders often used by AI phishing bots.,0,0,0,0,,,,"9.1, 9.2",PR.IR,"Detailed Description:
+First-contact safety tips are automated visual alerts that appear in an email client when a user receives a message from a sender they do not regularly communicate with or who appears anomalous. These tips serve as a ""speed bump,"" prompting users to verify the identity of the sender and the legitimacy of the content before clicking links or downloading attachments.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by enabling attackers to generate highly personalized, grammatically perfect, and contextually relevant phishing emails at scale. These AI-generated messages can mimic a specific professional tone or reference real-world business transactions, making it significantly harder for traditional filters and human observation to detect spoofing or social engineering.
+
+Examples:
+1. Enable impersonation protection and mailbox intelligence within the enterprise email security platform to automatically flag external senders with display names similar to internal executives.
+2. Configure mail flow rules in the email admin center to prepend a warning banner to any email originating from a domain that has not previously exchanged mail with the organization.
+3. Deploy a third-party email security gateway that uses machine learning to analyze communication patterns and inject real-time ""untrusted sender"" warnings into the body of suspicious external messages."
+AI-USR-02,Layer 0: User Facing Controls,IG 1,1-High,Enforce Targeted Impersonation Protection for High-Value Targets (VIPs) to detect subtle visual or character-based spoofing of key personnel names.,0,0,0,0,,,,"9.1, 9.2",PR.IR,"Detailed Description:
+Targeted Impersonation Protection for High-Value Targets (VIPs) is a specialized security layer designed to protect executives and key personnel from sophisticated phishing attacks. It uses advanced detection algorithms to identify subtle visual or character-based spoofing, such as ""lookalike"" domains or ""homoglyphs"" where characters from different alphabets are used to mimic legitimate names and email addresses.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by enabling attackers to automate the creation of highly convincing, personalized, and error-free impersonation attempts at scale. Generative AI can mimic the specific writing style, tone, and professional vocabulary of a VIP, making it nearly impossible for traditional filters or human observation to detect the fraud based on language alone.
+
+Examples:
+1. Configure ""Executive Protection"" policies in email security gateways (like a secure email gateway or an enterprise endpoint protection platform) by inputting the specific display names of VIPs and setting the system to flag any external emails that use those names or slight variations of them.
+2. Implement advanced domain monitoring services that use behavioral AI to scan for the registration of lookalike domains (e.g., using a ""0"" instead of an ""o"") and automatically block or quarantine communications from these unauthorized sources.
+3. Deploy mailbox intelligence and anti-phishing safety tips that provide real-time visual warnings to employees when an email address includes unexpected characters or appears similar to a known internal contact but originates from an external sender."
+AI-USR-03,Layer 0: User Facing Controls,IG 1,2-Medium,"Advanced AI Phishing Simulations: Update Security Awareness Training to include simulations specifically mimicking high-quality, multilingual LLM-generated phishing models.",0,0,0,0,,,,"14.1, 14.2",PR.AT,"Detailed Description:
+This recommendation involves updating security awareness programs to use AI-generated phishing simulations that mimic the high-quality, multilingual, and personalized attacks created by large language models (LLMs).
+
+Why AI Compounds Risk:
+AI exacerbates phishing risks by enabling attackers to automate the creation of highly convincing, error-free messages at scale, bypassing traditional red flags like poor grammar while tailoring content to specific roles, industries, and languages.
+
+Examples:
+1. Deploy role-specific spear-phishing simulations that use AI to gather employee context, such as job titles and common tools, to generate realistic internal or vendor-related lures.
+2. Integrate multilingual simulations into global training programs to test employees in their native languages using AI-cloned voices or translated text that maintains natural tone and nuance.
+3. Use AI-driven platforms to provide automated remediation training, where employees who fail a simulation are immediately assigned personalized learning modules based on the specific type of attack they encountered."
+AI-USR-04,Layer 0: User Facing Controls,IG 1,3-Low,"Implement Executive Challenge-Response Protocols (e.g., pre-established safe words) for urgent voice/video requests.",0,0,0,0,,,,"14.1, 17.1","PR.AT, RS.MA","Detailed Description:
+Executive challenge-response protocols are manual authentication methods where an individual verifies the identity of a caller or video participant by issuing a specific challenge that requires a pre-agreed, secret response, such as a safe word or a unique piece of personal information known only to the involved parties.
+
+Why AI Compounds Risk:
+AI significantly exacerbates impersonation risks through deepfake technology, which allows attackers to convincingly clone an executive's voice or likeness in real-time, making traditional visual and auditory cues unreliable for verifying identity during urgent or sensitive requests.
+
+Examples:
+1. Establish a rotating system of weekly or daily ""code phrases"" shared through secure, out-of-band channels that executives must use to authorize high-value financial transactions or sensitive data transfers.
+2. Implement ""liveness challenges"" during video calls where employees ask the executive to perform unpredictable physical actions, such as turning their head fully to the side or waving a hand in front of their face, to disrupt AI-generated overlays.
+3. Create a formal ""Human Firewall"" policy that mandates an out-of-band callback to a pre-validated secondary phone number whenever an executive makes an unusual or high-pressure request via voice or video."
+AI-USR-05,Layer 0: User Facing Controls,IG 1,3-Low,"Conduct Deepfake-Specific Awareness Training focusing on 'liveness' checks (e.g., asking callers to turn their head) and audio/visual artifact detection.",0,0,0,0,,,,"14.1, 17.1","PR.AT, RS.MA","Detailed Description:
+This training educates employees to identify synthetic media by looking for technical inconsistencies known as artifacts, such as mismatched lip movements, unusual lighting, or monotone voices. It also emphasizes active verification through liveness checks, which require the suspected caller to perform real-time physical actions like turning their head to break the AI's rendering of their digital likeness.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by enabling the mass production of hyper-realistic, low-cost voice and video clones that exploit human trust and psychological pressure, making it difficult for employees to distinguish between genuine and fabricated requests during routine business operations.
+
+Examples:
+1. Integrate deepfake scenarios, such as fake voicemails or video calls from leadership, into existing quarterly security awareness training and phishing simulations to build repeatable verification habits.
+2. Prioritize role-specific training for high-risk departments like Finance and HR, teaching them to pause and verify sensitive requests through a secondary, trusted communication channel before taking action.
+3. Conduct tabletop exercises with legal, PR, and IT teams to rehearse a documented deepfake response plan, ensuring all stakeholders know their specific roles and communication protocols during an active impersonation attempt."
+AI-USR-06,Layer 0: User Facing Controls,IG 1,3-Low,Train staff on Reverse-Turing Tests to detect AI bots in chat/email,0,0,0,0,,,,"14.1, 14.2",PR.AT,"Detailed Description:
+Training staff on Reverse-Turing Tests involves teaching employees how to intentionally mimic machine-like behavior or use specific interrogation techniques to provoke a non-human response from a chat or email participant. The goal is to identify whether the correspondent is a human or an automated AI bot by observing if the entity can handle complex, emotional, or highly contextual nuances that typically trip up artificial intelligence.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by enabling the creation of highly sophisticated, evasive bots that can convincingly mimic human conversation, syntax, and tone at an industrial scale. Generative AI lowers the barrier for attackers to launch personalized phishing or social engineering attacks that are increasingly difficult for traditional security filters or untrained humans to detect.
+
+Examples:
+1. Conduct role-play simulations where employees must interact with known AI bots and attempt to ""break"" the bot's logic using non-sequiturs, complex emotional queries, or requests for meta-communication about the conversation itself.
+2. Educate staff to look for ""machine-like"" consistency or lack of situational awareness, such as an entity providing perfect, immediate responses to complex data requests while failing to understand simple, culturally specific jokes or idiomatic expressions.
+3. Implement ""Human Verification"" drills in standard communication workflows, where staff are trained to occasionally insert specific ""logic traps"" or context-heavy questions into suspicious email threads to see if the recipient responds with the rigid, pattern-based logic characteristic of an LLM."
+AI-USR-07,Layer 0: User Facing Controls,IG 1,3-Low,Deploy an Automated Incident Reporting Button to instantly quarantine suspected AI phishing,0,0,0,0,,,,6.1,PR.AA,"Detailed Description:
+This recommendation involves deploying a one-click reporting tool within email clients that allows employees to instantly flag suspicious messages, triggering an automated workflow to quarantine the email and prevent further interaction. By integrating with Security Orchestration, Automation, and Response (SOAR) platforms, the system can automatically extract indicators of compromise (IOCs), analyze URLs and attachments in sandboxes, and retract the malicious email from all other company inboxes within minutes.
+
+Why AI Compounds Risk:
+AI exacerbates phishing risks by enabling attackers to create highly personalized, linguistically perfect, and contextually aware messages at scale, effectively eliminating traditional red flags like poor grammar. Furthermore, generative AI allows for multi-channel deception—including voice cloning and deepfake video—making it significantly harder for even trained employees to distinguish fraudulent communications from legitimate executive or colleague requests.
+
+Examples:
+1. Enable the built-in email reporting button and configure it to route submissions to a dedicated security mailbox monitored by an automated triage pipeline.
+2. Deploy a third-party solution like a phishing alert button across standard email clients to provide users with a consistent interface for reporting and immediate removal of the threat from their local inbox.
+3. Integrate the reporting button with a SOAR platform to automate response actions, such as blocking sender domains and auto-retracting confirmed phishing emails from the entire organization's email environment."
+AI-USR-08,Layer 0: User Facing Controls,IG 1,3-Low,Mandate Phishing-Resistant MFA (FIDO2/WebAuthn) to neutralize credential harvesting,0,0,0,0,,,,"6.3, 6.4, 6.5","PR.AA, PR.IR","Detailed Description:
+Phishing-resistant MFA (FIDO2/WebAuthn) uses public-key cryptography to ensure that authentication is tied to a specific, legitimate domain, making it immune to credential harvesting and man-in-the-middle attacks. Unlike traditional MFA that relies on shared secrets like OTPs or push notifications, the private key never leaves the user's device, and the protocol verifies the origin of the login request to prevent interception.
+
+Why AI Compounds Risk:
+AI exacerbates these risks by allowing attackers to create highly convincing, personalized phishing content and fake login pages at scale, which can easily trick users into providing traditional MFA codes or approving malicious push requests.
+
+Examples:
+1. Deploy hardware security keys to employees to provide the highest level of assurance through physical, device-bound authentication.
+2. Enable platform-based biometrics, such as OS-native facial or fingerprint recognition, to allow users to authenticate securely using their device's built-in hardware.
+3. Implement Conditional Access policies in identity providers like an enterprise identity provider to strictly require phishing-resistant authentication strengths for accessing sensitive corporate resources and administrative roles."
+AI-USR-09,Layer 0: User Facing Controls,IG 2,2-Medium,Implement Out-of-Band/Verbal Verification for high-risk financial/data actions,0,0,0,0,,,,"6.3, 6.4, 6.5","PR.AA, PR.IR","Detailed Description:
+Out-of-band verification is a security process that requires two separate and independent communication channels to validate a user's identity or a specific high-risk request. By moving the verification away from the primary channel (like an email or web portal) to a secondary one (like a known phone number or a dedicated app), organizations ensure that an attacker must compromise two unconnected systems simultaneously to succeed.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by enabling sophisticated social engineering through high-quality deepfake audio and video that can impersonate executives or colleagues with near-perfect accuracy. Generative AI also allows attackers to create hyper-personalized, convincing phishing emails at scale, increasing the likelihood that employees will trust fraudulent instructions if they rely on a single communication channel.
+
+Examples:
+1. Require a secondary verbal confirmation via a known, pre-verified phone number for any wire transfer or change to vendor payment details initiated via email.
+2. Implement automated push notifications through a secure mobile authentication app that requires biometric approval (like facial or fingerprint recognition) for any high-risk data access or administrative account changes.
+3. Establish a dual-approval mandate where one employee initiates a sensitive financial action in the primary system and a second authorized employee must verify and approve it through a separate, out-of-band communication method."
+AI-USR-10,Layer 0: User Facing Controls,IG 2,3-Low,Replace annual training with Contextual Security Nudges at the point of click,0,0,0,0,,,,"14.1, 14.2",PR.AT,"Detailed Description:
+Explanation: This recommendation replaces static, once-a-year security presentations with automated, real-time interventions delivered at the exact moment a user performs a risky action. By utilizing nudge theory, these subtle visual cues or prompts interrupt ""autopilot"" behavior (System 1 thinking) and encourage deliberate, safer decision-making (System 2 thinking) without blocking the user's workflow or requiring them to recall distant training.
+
+Why AI Compounds Risk:
+AI Risk Exacerbation: Generative AI increases the frequency and sophistication of cyber threats by automating the creation of highly personalized, convincing phishing messages and deepfakes at scale. Because these AI-driven attacks are harder for humans to detect through traditional means, the real-time, contextual guidance provided by nudges is necessary to intercept social engineering attempts that bypass standard security filters.
+
+Examples:
+1. Deploy just-in-time phishing banners that appear within an email client when a user clicks a link from an external sender with a mismatched domain or urgent language.
+2. Integrate password-strength meters and visual indicators that provide immediate color-coded feedback as an employee creates or updates credentials for corporate SaaS applications.
+3. Use interstitial warning pages or countdown timers that trigger when an employee attempts to navigate to a suspicious URL or download a file containing sensitive personally identifiable information (PII)."
+AI-USR-11,Layer 0: User Facing Controls,IG 2,3-Low,Develop/deploy an in-house tool to send One-Time Codes (OTCs) to pre-determined personal cellphones or personal emails to out-of-band verify high-risk requests.,0,0,0,0,,,,6.1,PR.AA,"Detailed Description:
+This recommendation involves creating an internal system to verify high-risk actions—such as large financial transfers or sensitive data access—by sending a unique, short-lived code to a user's pre-registered personal device or email. This creates an out-of-band (OOB) authentication layer, meaning the verification occurs over a completely separate communication channel from the one used to initiate the request, effectively preventing unauthorized access even if primary credentials are stolen.
+
+Why AI Compounds Risk:
+AI exacerbates these risks by enabling attackers to conduct sophisticated social engineering and deepfake attacks at scale. Generative AI can mimic a target's voice or writing style to bypass traditional identity checks, making it easier for fraudsters to pose as executives or authorized personnel when submitting high-risk requests.
+
+Examples:
+1. High-Value Financial Transfers: Implement a mandatory OTC check for any wire transfer exceeding a specific threshold, where the employee must enter a code sent to their personal mobile device before the transaction is queued for final approval.
+2. Privileged Access Management: Require OOB verification for IT administrators attempting to access critical infrastructure or modify global security settings, ensuring that a compromised workstation alone cannot be used to take over the network.
+3. Sensitive Data Exports: Integrate the OTC tool with Data Loss Prevention (DLP) systems to trigger a verification code whenever a user attempts to download or email large volumes of proprietary or regulated data to an external destination."
+AI-DLK-03,Layer 2: Data Link,IG 3,3-Low,Implement Zero-Trust segmentation to prevent lateral movement,0,0,0,0,,,,"12.1, 13.4","PR.NW, DE.CM","Detailed Description:
+Zero-Trust segmentation, or microsegmentation, divides a network into small, isolated zones to stop threats from spreading laterally by requiring strict identity verification and authorization for every access request, regardless of whether the user is inside or outside the network perimeter.
+
+Why AI Compounds Risk:
+AI exacerbates lateral movement risk by enabling attackers to automate discovery, operate in parallel, and compress attack timelines from months to minutes, allowing them to exploit vulnerabilities and move through a network faster than traditional security teams can react.
+
+Examples:
+1. Use software-defined networking (SDN) or next-generation firewalls (NGFW) to create granular micro-perimeters around specific application workloads, ensuring that a breach in one zone does not grant access to others.
+2. Implement identity-based access control and multi-factor authentication (MFA) to verify the authenticity of every digital interaction based on user identity and device posture rather than static network location.
+3. Deploy AI-powered segmentation platforms to automatically discover application behaviors and generate precise, real-time security policies that adapt as cloud and hybrid environments grow."
+AI-DLK-04,Layer 2: Data Link,IG 3,3-Low,Utilize AI Network Baseline Monitoring to detect anomalous network traffic patterns and alert on them,0,0,0,0,,,,"12.1, 13.4, 13.5","DE.CM, DE.AE","Detailed Description:
+Implement Artificial Intelligence and Machine Learning (AI/ML) based network baseline monitoring tools to establish a profile of normal network traffic behavior. These tools continuously analyze data flows, protocol usage, and communication patterns, instantly alerting on deviations that signify unauthorized or malicious activity.
+
+Why AI Compounds Risk:
+Traditional, static threshold-based network monitoring is insufficient against AI-powered threats. Adversaries use AI to dynamically alter their attack signatures, mimic legitimate user traffic, and establish ""low-and-slow"" command and control (C2) channels or data exfiltration paths. Only an AI-driven defensive baseline can detect the subtle, evolving anomalies generated by AI-automated network infiltration and evasion tactics.
+
+Examples:
+1. Deploy Network Detection and Response (NDR) solutions that use unsupervised machine learning to dynamically baseline expected behavior for critical subnets and endpoints.
+2. Configure automated alerts for zero-day anomalous behaviors, such as unexpected outbound data transfers (potential AI-driven data exfiltration) or unusual peer-to-peer communications.
+3. Integrate AI-driven network telemetry with your SIEM/SOAR to automatically isolate endpoints demonstrating severe deviations from their learned baseline."
+AI-NET-01,Layer 3: Network,IG 1,2-Medium,Mandate enterprise Secure Recursive DNS with encrypted lookups (DoH/DoT) backed by real-time “big data” threat intelligence to block malicious domains and resist DNS spoofing/hijacking,0,0,0,0,,,,9.2,PR.NW,"Detailed Description:
+Implement enterprise-grade Secure Recursive DNS services that support encrypted lookups via DNS over HTTPS (DoH) or DNS over TLS (DoT). These services must be backed by real-time, large-scale (""big data"") threat intelligence to automatically block connections to newly registered malicious domains, botnet command-and-control servers, and phishing sites, while also protecting the integrity and privacy of DNS queries.
+
+Why AI Compounds Risk:
+AI dramatically accelerates the creation of malicious infrastructure. Adversaries use AI to automatically generate thousands of highly convincing typosquatted domains and dynamically alter domain generation algorithms (DGAs) in real-time to evade traditional blocklists. By the time static, legacy threat lists update, the AI-driven attack has already shifted to new domains. Real-time, big-data backed secure DNS is essential to detect and block these ephemeral, machine-speed domain variations before users can connect.
+
+Examples:
+1. Deploy an enterprise DNS security solution that supports real-time global threat intelligence, category controls, Newly Registered Domain (NRD) / Domain Generation Algorithm (DGA) protection, and API export to the SIEM.
+2. Enforce encrypted DNS (DoH/DoT) configurations via Mobile Device Management (MDM) or Group Policy (GPO) to prevent local network hijacking and eavesdropping on DNS queries.
+3. Block outbound port 53 and unapproved DoH/DoT IP addresses at the firewall to ensure all endpoints, including unmanaged IoT devices, are forced to use the organization's secure recursive DNS infrastructure."
+AI-NET-02,Layer 3: Network,IG 1,2-Medium,Implement Strict Egress Filtering to stop C2 callbacks,0,0,0,0,,,,"4.4, 12.3",PR.NW,"Detailed Description:
+Egress filtering is a security practice that monitors and controls outbound network traffic by examining data packets at network boundaries like firewalls or routers. Implementing strict filtering involves a default-deny stance where all outbound traffic is blocked unless it matches specific, authorized business rules, such as allowing only necessary ports like 80 (HTTP), 443 (HTTPS), or 53 (DNS) to known destinations. This stops command-and-control (C2) callbacks by preventing compromised internal systems from establishing communication channels with an attacker's external infrastructure, effectively neutralizing the attacker's ability to issue commands or exfiltrate data.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by acting as a stealthy intermediary for C2 communications, a technique known as AI as a C2 Proxy. Attackers can prompt legitimate, trusted AI platforms to retrieve content from malicious URLs and return instructions within the AI's response, making malicious traffic blend in with normal HTTPS interactions with trusted services. This creates background noise that traditional network defenses often fail to detect, as the malware never contacts the attacker's infrastructure directly.
+
+Examples:
+1. Implement Application Layer Filtering using Deep Packet Inspection (DPI) to analyze the content of outbound packets, ensuring they conform to allowed protocols and detecting protocol tunneling.
+2. Configure a Default-Deny policy on all network gateways and firewall appliances, explicitly permitting only essential services and ports required for business operations.
+3. Route outbound web traffic through a Network Firewall or proxy server configured with strict domain allow lists and TLS interception to inspect encrypted traffic for suspicious data flows."
+AI-NET-03,Layer 3: Network,IG 1,2-Medium,Configure firewall and DNS filtering blocklists to automatically drop traffic to Newly Registered and Parked Domains,0,0,0,0,,,,"4.4, 12.3",PR.NW,"Detailed Description:
+Recommendation Explanation: This security measure involves configuring network defenses to automatically block connections to domains that have been recently registered (typically within the last 30 days) or are currently ""parked"" (registered but not yet hosting an active website). These domains are high-risk because they lack a historical reputation and are frequently used by threat actors to launch short-lived phishing campaigns, host malware, or act as command-and-control servers before they can be identified and blacklisted by traditional security feeds.
+
+Why AI Compounds Risk:
+AI Risk Exacerbation: Generative AI allows attackers to programmatically register and set up thousands of brand-adjacent domains at a scale and speed that overwhelms manual monitoring. AI can also instantly generate realistic, localized website content and phishing lures for these new domains, making them appear legitimate to users and traditional detectors while maintaining a clean reputation long enough to execute a breach.
+
+Examples:
+1. Point corporate DNS settings to a cloud-based DNS filtering provider that utilizes AI-driven threat intelligence to categorize and block the Newly Registered Domains (NRD) category by default.
+2. Integrate a real-time NRD database feed into the corporate firewall's security services to automatically update blocklists and drop all outbound traffic directed to domains registered within a specific timeframe, such as the last 30 days.
+3. Deploy endpoint security agents on remote devices that enforce DNS filtering policies, ensuring that traffic to parked or brand-new domains is blocked even when employees are working off-site and not protected by the office perimeter firewall."
+AI-NET-08,Layer 3: Network,IG 2,1-High,Enforce gateway-only egress for AI model providers by blocking direct API access from general subnets at the firewall and SWG.,0,0,0,0,,,,"13.1, 13.2","PR.AC, PR.PT","Detailed Description:
+Ensure that all outbound network traffic to external AI model providers (e.g., api.openai.com, anthropic.com) is strictly forced through the centralized AI Gateway. This requires configuring egress firewalls, Secure Web Gateways (SWG), and DNS policies to explicitly deny direct API access from general corporate subnets, developer endpoints, and unapproved servers.
+
+Why AI Compounds Risk:
+An AI Gateway (AI-APP-10) is only an effective chokepoint if traffic cannot bypass it. In real-world environments, developers and rogue applications frequently attempt to call external AI APIs directly using keys stored on their local laptops or in CI pipelines. If the network permits these direct outbound connections, it creates ""Shadow AI"" integrations that completely bypass the organization's prompt redaction, DLP layers, and centralized logging, leading to invisible data exfiltration and compliance violations.
+
+Examples:
+1. Configure the egress firewall or SWG to explicitly deny direct access to known AI model provider API domains/IPs from all general subnets, allowing egress only from the dedicated AI Gateway IP addresses.
+2. Utilize CASB/SWG category controls to separate browser-based AI tool usage from programmatic API usage, applying strict routing rules to the latter.
+3. Combine network restrictions with identity controls by refusing to distribute long-lived provider keys to individuals; instead, require workloads to authenticate via short-lived tokens minted by the gateway or federation."
+AI-NET-04,Layer 3: Network,IG 2,2-Medium,Upgrade to AI-Enhanced Next-Gen Firewalls (NGFW) for behavioral and realtime threat blocking,0,0,0,0,,,,"4.4, 12.3",PR.NW,"Detailed Description:
+AI-enhanced Next-Gen Firewalls (NGFW) integrate machine learning and intelligent detection engines to move beyond static, signature-based rules. They analyze real-time traffic data and build threat detection models to identify behavioral anomalies, unknown ""zero-day"" threats, and hidden malicious patterns within encrypted traffic without requiring decryption.
+
+Why AI Compounds Risk:
+AI exacerbates cybersecurity risks by increasing the velocity and scale of conventional attacks, such as phishing and vulnerability exploitation. Attackers use generative AI to create more evasive, adaptive malware and automate the probe of complex systems faster than human security teams can respond, rendering static defense perimeters ineffective.
+
+Examples:
+1. Deploy cloud-native AI firewalls to automatically discover and protect modern workloads across major cloud provider environments with inline, AI-powered threat prevention.
+2. Integrate AI-driven behavioral models alongside existing NGFWs to observe live application behavior across containers and APIs, catching exploits and lateral movements that rule-based systems miss.
+3. Implement specialized AI firewalls to protect internal generative AI applications and LLMs by monitoring and filtering prompts and responses for risks like prompt injection, data leakage, and toxic content."
+AI-NET-05,Layer 3: Network,IG 2,2-Medium,Run Continuous Attack Surface Management (ASM) scans,0,0,0,0,,,,12.1,PR.NW,"Detailed Description:
+Run Continuous Attack Surface Management (ASM) scans: This recommendation involves the constant, automated discovery and monitoring of an organization’s digital footprint to identify potential entry points for attackers. Unlike periodic assessments, ASM provides real-time visibility into all internal and external assets, including cloud services, shadow IT, and third-party integrations, allowing security teams to analyze, prioritize, and remediate vulnerabilities before they are exploited.
+
+Why AI Compounds Risk:
+AI exacerbation of risk: AI expands the attack surface by introducing new components like training data, models, and APIs that can be targeted via techniques such as prompt injection, data poisoning, and model inversion. Furthermore, AI enables ""shadow AI,"" where employees deploy unauthorized AI tools without security oversight, and allows attackers to automate the discovery of vulnerabilities at a much higher scale and speed.
+
+Examples:
+1. Automated Discovery of Shadow IT and AI: Implement a solution that continuously scans the corporate network and cloud environments to identify undocumented assets and unauthorized AI applications, bringing them under official security governance.
+2. Risk-Based Prioritization: Use ASM tools to assign risk scores to discovered vulnerabilities based on asset criticality and real-world threat intelligence, ensuring IT teams focus on the most severe exposures first.
+3. Integration with Security Workflows: Feed ASM data into Security Orchestration, Automation, and Response (SOAR) platforms to automatically trigger remediation actions, such as isolating a misconfigured cloud bucket or generating high-priority tickets for patching."
+AI-NET-06,Layer 3: Network,IG 2,2-Medium,"Implement automated threat intelligence feeds from big data sources (e.g., large-scale MDR providers or crowd-sourced intelligence) to proactively block emerging AI-driven attacker infrastructure.",0,0,0,0,,,,7.2,"ID.RA, DE.CT","Detailed Description:
+This recommendation involves integrating real-time, structured data streams from large-scale providers and community networks into a company's security stack. These feeds provide automated updates on malicious IP addresses, domains, and file hashes, allowing security tools to identify and block attacker infrastructure as soon as it is discovered. By leveraging ""big data"" sources like Managed Detection and Response (MDR) providers, organizations gain access to a broader, global view of the threat landscape that a single internal network cannot capture alone.
+
+Why AI Compounds Risk:
+AI exacerbates the risk because attackers use it to scale their operations at an unprecedented speed and complexity. AI-driven tools allow cybercriminals to automate the creation of polymorphic malware, generate highly personalized phishing content, and rapidly rotate their command-and-control infrastructure, making traditional, static defense methods ineffective.
+
+Examples:
+1. Integrate a STIX/TAXII-compliant threat intelligence platform with existing firewalls and Intrusion Prevention Systems (IPS) to automatically update blocklists based on real-time data from commercial and open-source feeds.
+2. Configure a Security Information and Event Management (SIEM) system to ingest automated feeds from industry-specific Information Sharing and Analysis Centers (ISACs) to correlate external threat data with internal logs for faster incident triage.
+3. Deploy a Security Orchestration, Automation, and Response (SOAR) playbook that uses threat intelligence to automatically quarantine endpoints or block suspicious network traffic when a high-confidence indicator of compromise is detected in the feed."
+AI-NET-07,Layer 3: Network,IG 3,2-Medium,Enable hardware-accelerated Deep Learning (DL) on Next-Generation Firewalls (NGFW) for inline threat detection,0,0,0,0,,,,"4.4, 12.3",PR.NW,"Detailed Description:
+Enable or deploy Next-Generation Firewalls (NGFWs) that utilize hardware-accelerated Deep Learning (DL) processors to analyze network traffic inline. This allows the firewall to perform real-time analysis of zero-day threats, advanced malware, and sophisticated C2 communications without introducing unacceptable latency. 
+
+*Maturity Note:* This is considered an IG 3 (""nice-to-have"") control. The cost and complexity of hardware-accelerated DL appliances can be high, and the actual security return on investment heavily depends on the organization's perimeter architecture, overall traffic volumes, and capacity for inline TLS inspection.
+
+Why AI Compounds Risk:
+Adversaries are increasingly using AI to automatically generate heavily obfuscated malware and rapidly mutate command-and-control (C2) signatures to bypass static firewall rules and traditional cloud-based sandboxes. Cloud sandboxing introduces analysis delays, sometimes allowing the initial malicious payload through. Hardware-accelerated DL at the perimeter uses localized neural networks to analyze and block these highly evasive, AI-generated threats inline in milliseconds.
+
+Examples:
+1. Deploy NGFW appliances equipped with dedicated ML/DL processors to perform real-time, inline file analysis, blocking zero-day malware before it crosses the network perimeter.
+2. Enable deep-learning-based network security modules on the firewall to detect and block sophisticated DNS tunneling or algorithmically generated domains (DGAs) inline.
+3. Utilize inline DL to analyze encrypted traffic metadata (such as packet size and timing) to identify anomalous C2 beacons without always requiring full, resource-intensive TLS decryption."
+AI-NET-08,Layer 3: Network,IG 3,2-Medium,Monitor BGP with Automated Route Hijacking Detection,0,0,0,0,,,,12.1,PR.NW,"Detailed Description:
+Monitoring BGP with automated route hijacking detection involves using specialized software to continuously observe Border Gateway Protocol announcements for unauthorized or suspicious changes. These tools detect prefix hijacks, where an attacker falsely claims ownership of IP addresses, and path hijacks, where the routing path is manipulated to intercept traffic. Automated systems provide real-time alerts, event severity assessment, and visualization tools to help network operators quickly identify and mitigate incidents that could lead to data interception, man-in-the-middle attacks, or service outages.
+
+Why AI Compounds Risk:
+AI exacerbates BGP hijacking risks by enabling attackers to automate the discovery of vulnerable or unused IP prefixes and generate sophisticated, stealthy routing advertisements that mimic legitimate network behavior. Machine learning can be used to optimize the timing and scale of hijacks to evade traditional threshold-based detection, while AI-driven tools can more efficiently analyze intercepted traffic at scale to extract sensitive information or credentials.
+
+Examples:
+1. Deploy a dedicated BGP monitoring platform to receive near real-time alerts on unexpected origin AS changes or RPKI validation failures.
+2. Implement Resource Public Key Infrastructure (RPKI) and Route Origin Validation (ROV) to cryptographically verify the legitimacy of BGP announcements and automatically drop invalid routes.
+3. Integrate BGP stream data into a corporate Security Information and Event Management (SIEM) system to correlate routing anomalies with other internal network performance data and traffic patterns."
+AI-LOG-01,Layer 4: Data,IG 1,2-Medium,"Establish policies and controls for AI prompt/chat retention, privacy masking, and strict access management for observability logs.",0,0,0,0,,,,"3.2, 8.12","PR.DS, DE.CM","Detailed Description:
+Establish formal policies and technical controls for the retention, privacy masking, and access management of AI prompt logs, chat histories, and LLM tracing data.
+
+Why AI Compounds Risk:
+Users frequently overshare highly sensitive data—such as PII, PHI, proprietary source code, and corporate strategy—with AI chatbots and development tools. If prompts and chat histories are logged in plain text without strict retention limits or Role-Based Access Control (RBAC), the logging infrastructure (e.g., observability platforms, SIEMs) inadvertently becomes a massive, highly concentrated repository of the organization's most sensitive data, creating a prime target for exfiltration.
+
+Examples:
+1. Deploy data loss prevention (DLP) or masking tools to dynamically redact PII, credentials, and sensitive terms from prompts before they are written to observability logs or telemetry platforms.
+2. Enforce aggressive data retention limits (e.g., 30 days maximum) on AI chat histories and prompt logs unless explicitly required for a specific compliance investigation.
+3. Restrict access to raw LLM traces and prompt logs strictly to authorized security and debugging personnel, requiring Just-In-Time (JIT) access for any investigations."
+AI-RAG-01,Layer 4: Data,IG 2,1-High,Implement RAG authorization enforcement and security trimming to ensure AI only synthesizes data the user is permitted to see.,0,0,0,0,,,,"3.3, 5.1","PR.AC, PR.DS","Detailed Description:
+Implement strict access control mapping and ""security trimming"" within Retrieval-Augmented Generation (RAG) pipelines so the AI can only retrieve and synthesize information that the querying user is explicitly authorized to access. 
+
+Why AI Compounds Risk:
+Generative AI acts as a powerful aggregator. If an AI application has global read access to the backend document repository (e.g., SharePoint, Google Drive, Confluence, S3) and does not trim retrieval results based on the querying user's permissions, any employee could ask the chatbot for ""next quarter's layoff list,"" ""executive salary bands,"" or ""M&A strategy""—and the RAG pipeline would dutifully fetch and summarize it.
+
+Examples:
+1. Enforce pass-through authentication (e.g., OAuth delegation) so the RAG indexing and querying mechanisms assume the identity and exact file-level permissions of the end-user.
+2. Implement access control lists (ACLs) directly within the vector database to cryptographically filter document chunks before prompt assembly.
+3. Periodically audit RAG system service accounts to ensure they do not default to excessive, tenant-wide global read permissions across the enterprise."
+AI-TRN-01,Layer 4: Transport,IG 1,2-Medium,Enforce Default-Deny Inbound Policies at the transport layer,0,0,0,0,,,,"12.2, 12.3",PR.NW,"Detailed Description:
+Default-deny at the transport layer is a security framework where all inbound network traffic is blocked by default unless it matches a specific, predefined rule that explicitly allows it. Operating on a positive security model or whitelist approach, it ensures that only approved ports, protocols, and source IP addresses can interact with the network, thereby minimizing the attack surface and preventing unauthorized access from unknown threats.
+
+Why AI Compounds Risk:
+AI exacerbates network risks because AI models and their supporting infrastructure create expansive, non-static attack surfaces that are difficult to baseline with traditional security. Threat actors can use AI to automate the discovery of open ports or misconfigured rules, and the integration of third-party AI APIs often introduces hidden data dependencies and undeclared consumers that can be exploited if inbound traffic is not strictly controlled.
+
+Examples:
+1. Configure corporate firewalls and next-generation firewalls (NGFWs) with a final cleanup rule that explicitly denies all traffic not previously matched by a specific business-allowance rule.
+2. Implement micro-segmentation within data centers or cloud environments to divide the network into isolated zones, applying default-deny policies to prevent lateral movement between sensitive AI training clusters and general user segments.
+3. Deploy container orchestration network policies in containerized environments that use an empty podSelector to deny all ingress traffic to pods by default, requiring developers to explicitly define and document every necessary communication path."
+AI-TRN-02,Layer 4: Transport,IG 2,2-Medium,Apply Intelligent Rate Limiting against high-speed port scans,0,0,0,0,,,,"12.2, 12.3",PR.NW,"Detailed Description:
+Intelligent Rate Limiting against high-speed port scans is a dynamic security strategy that goes beyond static blocking by using algorithms to throttle or deny connection attempts that exceed a specific frequency. It monitors inbound traffic for patterns of rapid probing—where an attacker systematically checks multiple ports on one or more systems to identify open services—and automatically restricts the source to prevent resource exhaustion and reconnaissance.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by enabling hackers to automate and accelerate the scanning process, reducing the window from vulnerability disclosure to exploitation to less than 48 hours or even minutes. AI-driven tools can also intelligently vary scan frequencies and sequences to mimic legitimate traffic, making traditional, static defense mechanisms less effective at distinguishing between benign network management and a malicious attack.
+
+Examples:
+1. Deploy AI-driven Network Detection and Response (NDR) solutions that use machine learning to establish a baseline of normal network behavior and automatically flag or block scanning patterns that deviate from that norm.
+2. Configure Next-Generation Firewalls (NGFW) or API Gateways to implement ""sliding window"" or ""token bucket"" algorithms that cap the number of connection requests from a single IP address or geographic region within a specific timeframe.
+3. Implement automated incident response playbooks that trigger an immediate block on source IPs or service accounts when they exceed high-confidence thresholds for failed connection attempts or sequential port probes."
+AI-TRN-03,Layer 4: Transport,IG 3,2-Medium,Use Deep Packet Inspection (DPI) to identify mis-ported traffic,0,0,0,0,,,,"12.2, 12.3",PR.NW,"Detailed Description:
+Deep Packet Inspection (DPI) analyzes both the header and the payload of data packets at the application layer to identify the specific service or application generating traffic, allowing it to detect ""mis-ported"" traffic where an application uses a non-standard port to evade traditional firewalls.
+
+Why AI Compounds Risk:
+AI exacerbates the risk of mis-ported traffic by enabling malware and unauthorized applications to dynamically change their communication patterns and signatures in real-time, making them significantly harder to detect using static, rule-based filtering.
+
+Examples:
+1. Deploy a Next-Generation Firewall (NGFW) with integrated DPI to automatically block unauthorized applications that attempt to communicate over standard web ports like 80 or 443.
+2. Integrate AI-driven DPI engines into the network perimeter to baseline normal application behavior and identify anomalies that suggest a novel or zero-day threat is attempting to bypass security via port masquerading.
+3. Implement a Zero Trust Policy Enforcement Point that uses DPI to verify the identity of the application and the user before allowing any traffic to pass, regardless of the port being utilized."
+AI-TRN-04,Layer 4: Transport,IG 3,2-Medium,Deploy Stateful Protocol Anomaly Detection (IPS),0,0,0,0,,,,"12.2, 12.3",PR.NW,"Detailed Description:
+Explanation: Stateful Protocol Anomaly Detection (IPS) is an intrusion prevention technology that combines stateful protocol analysis with anomaly detection. It uses vendor-developed universal profiles to track the state of network, transport, and application protocols, comparing observed events against accepted definitions of benign activity. This allows the system to identify deviations, such as unexpected command sequences or malformed requests, and take active measures like dropping malicious packets or terminating connections to prevent attacks.
+
+Why AI Compounds Risk:
+AI Risk Exacerbation: AI exacerbates cybersecurity risks by enabling attackers to automate the creation of sophisticated, rapidly evolving malware and polymorphic attacks that can mimic ""normal"" behavior. Because traditional anomaly detection often relies on static baselines, AI-driven attacks can subtly shift their patterns over time to stay below detection thresholds, potentially bypassing security controls that are not equipped with similarly advanced, real-time learning capabilities.
+
+Examples:
+1. Deploy a Network Intrusion Prevention System (NIPS) at the enterprise perimeter to inspect incoming application-layer traffic (e.g., HTTP, FTP, SMTP) against standardized protocol models to block non-compliant or malicious requests before they reach internal servers.
+2. Integrate stateful protocol monitoring within Industrial Control Systems (ICS) to verify that communication between sensors and actuators follows expected state charts, such as ensuring an authentication state is reached before a privileged command is executed.
+3. Configure a stateful firewall with deep packet inspection to monitor and log session states for connection-oriented protocols like TCP, automatically denying traffic that attempts to initiate a session with invalid flags or out-of-sequence packets."
+AI-AUTH-01,Layer 5: Access Session,IG 1,1-High,Require possession factor before password factor in sign-on to limit brute force password compromise.,0,0,0,0,,,,"6.3, 6.4",PR.AA,"Detailed Description:
+Enabling this feature requires users to verify their identity with a possession factor (e.g., hardware token, authenticator app) before any knowledge factor (i.e., Password, Security Question) during the sign-on process.
+
+Why AI Compounds Risk:
+AI accelerates credential stuffing and brute-force attacks by rapidly generating and testing vast volumes of passwords and security question answers. Traditional password-first flows allow these automated AI tools to validate credentials at scale before hitting MFA barriers.
+
+Examples:
+1. Configure your Identity Provider (IdP) to prompt for a FIDO2 hardware key or a push notification to a registered device as the initial authentication step.
+2. Implement passwordless authentication flows where the possession factor (device + biometric/PIN) entirely replaces the initial password prompt.
+3. Establish policies in Conditional Access to block legacy authentication protocols that do not support possession-first workflows."
+AI-ACC-01,Layer 5: Access Session,IG 1,2-Medium,Enforce Aggressive Absolute & Idle Timeouts on sensitive apps,0,0,0,0,,,,"6.1, 6.8",PR.AA,"Detailed Description:
+Recommendation Explanation: Enforcing aggressive absolute and idle timeouts involves setting strict time limits on how long a user session can remain active. Idle timeouts terminate a session after a brief period of inactivity to prevent unauthorized access to an unattended device, while absolute timeouts force a re-authentication after a fixed total duration, regardless of activity, to mitigate the risk of long-lived session hijacking.
+
+Why AI Compounds Risk:
+AI Risk Exacerbation: The rise of AI increases the risk of ""silent"" burnout and ""brain fry,"" where employees may leave sensitive sessions open while distracted by complex multitasking or ""work snacks"" during breaks. Furthermore, automated AI agents and ""vibe-coding"" can lead to rapid, high-volume data processing that, if left unchecked by session limits, could allow a compromised account to exfiltrate massive amounts of sensitive data before the breach is detected.
+
+Examples:
+1. Corporate Implementation Examples:
+2. Configure Identity Provider (IdP) policies to trigger a 15-minute idle timeout and an 8-hour absolute timeout for all users accessing internal generative AI platforms or sensitive financial databases.
+3. Implement conditional access rules that enforce ""aggressive aging"" timeouts on Security Gateways, automatically shortening session durations when system memory or connection tables reach a high-risk threshold like 80% capacity.
+4. Use mobile device management (MDM) to enforce strict screen-lock timeouts and re-authentication requirements for any corporate application that processes proprietary AI training data or sensitive intellectual property."
+AI-ACC-02,Layer 5: Access Session,IG 1,2-Medium,Implement Concurrent Login Restrictions,0,0,0,0,,,,"6.1, 6.8",PR.AA,"Detailed Description:
+Implement Concurrent Login Restrictions is a security measure that limits the number of simultaneous active sessions a single user account can maintain across different devices or locations. This control prevents ""shadow access,"" where unauthorized users masquerade as legitimate ones, and ensures that user activity can be accurately attributed to a unique individual.
+
+Why AI Compounds Risk:
+AI exacerbates this risk because AI agents and autonomous browsers often operate with full user-level privileges, inheriting the user's digital identity across multiple SaaS applications and internal tools. These agents can perform background tasks, automated workflows, and internal reconnaissance without triggering traditional session-focused alerts or interactive login signals, effectively acting as an over-privileged insider threat.
+
+Examples:
+1. Use third-party identity management tools to define maximum session counts (e.g., limiting to 1 session for VPN or Wi-Fi) and set policies to either deny new logins or terminate the oldest active session when limits are reached.
+2. Configure application-level settings to restrict concurrent logins per application or realm.
+3. Implement Identity Provider (IDP) security features like IP filtering, certificate-based authentication, and automated session invalidation tokens that overwrite and expire previous sessions upon a new login from a different device."
+AI-AUTH-02,Layer 5: Access Session,IG 1,2-Medium,Require advanced CAPTCHA on password reset requests to prevent automated abuse.,0,0,0,0,,,,6.5,PR.AA,"Detailed Description:
+Implementing an advanced CAPTCHA (Completely Automated Public Turing test to tell Computers and Humans Apart) on password reset and account recovery forms prevents malicious actors from using automated scripts to trigger mass password reset emails, brute-force reset tokens, or perform account enumeration.
+
+Why AI Compounds Risk:
+AI and machine learning models are now highly capable of solving legacy text and image-based CAPTCHAs at scale. Furthermore, AI-driven automation frameworks can be deployed to overwhelm authentication endpoints with millions of reset requests, leading to SMS/email toll fraud, denial of service (MFA fatigue), or the interception of recovery codes. Organizations must deploy AI-resistant, behavioral-based CAPTCHAs to counter these intelligent bots.
+
+Examples:
+1. Integrate enterprise-grade, behavioral CAPTCHAs (like reCAPTCHA v3 or Cloudflare Turnstile) on all password reset and account recovery portals.
+2. Combine CAPTCHA enforcement with strict rate limiting (e.g., maximum 3 reset requests per IP/account per hour).
+3. Implement Web Application Firewall (WAF) bot-management rules to detect and block headless browsers attempting to interact with the recovery endpoints."
+AI-AUTH-03,Layer 5: Access Session,IG 1,2-Medium,"Enable immediate, un-mutable out-of-band notifications for all critical account changes (e.g., password reset, MFA device addition).",0,0,0,0,,,,5.3,"PR.AA, DE.CM","Detailed Description:
+Ensure that any sensitive changes to an account's security posture (such as adding a new MFA device, changing a password, or altering recovery methods) trigger an immediate, read-only alert sent to a secure, out-of-band channel (e.g., a push notification to an existing registered device or an email to a separate, confirmed address). These notifications must be un-mutable, meaning an attacker cannot suppress or turn them off even if they gain access to the account settings.
+
+Why AI Compounds Risk:
+AI-driven bots and automated scripts can execute account takeover (ATO) sequences—such as adding a rogue MFA device or swapping out recovery emails—within milliseconds of gaining initial access. Because these attacks occur at machine speed, immediate out-of-band notifications serve as a crucial human-in-the-loop tripwire, allowing the legitimate user or security team to detect and freeze the compromised account before the attacker establishes persistence.
+
+Examples:
+1. Configure your Identity Provider (IdP) to send mandatory, un-suppressible push alerts to a user's previously enrolled authenticator app whenever a new authentication method is added.
+2. Implement automated ""one-click"" account-locking workflows within the notification (e.g., a ""This wasn't me, lock my account"" button) so users can instantly halt the attack.
+3. Remove the ability for end-users to disable security alerts for their accounts within self-service portals."
+AI-AUTH-04,Layer 5: Access Session,IG 1,2-Medium,Enable user enumeration prevention for authentication and account recovery workflows to obscure account existence.,0,0,0,0,,,,"6.2, 16.1",PR.AA,"Detailed Description:
+Enabling user enumeration prevention ensures that authentication and recovery endpoints return generic, indistinguishable error messages regardless of whether an account actually exists. If a user doesn't exist or cannot sign in, the system provides a standard authenticator verification error rather than confirming the account's status.
+
+Why AI Compounds Risk:
+AI and automated botnets dramatically increase the speed and scale of reconnaissance. Attackers can feed massive datasets of scraped emails and credentials into AI tools to systematically probe IDP endpoints. By identifying which accounts are valid (enumeration), AI can immediately pivot to launching highly targeted, personalized spear-phishing campaigns or focused credential stuffing attacks specifically against those verified users.
+
+Examples:
+1. Configure the Identity Provider (IdP) to return a generic ""Authentication failed"" message for both bad usernames and bad passwords.
+2. Standardize password reset messages (e.g., ""If that account exists, a recovery email has been sent"") rather than confirming ""User not found.""
+3. Implement response-time normalization on authentication endpoints to prevent AI bots from using timing analysis to deduce whether an account exists based on server processing time."
+AI-ACC-03,Layer 5: Access Session,IG 2,1-High,Enforce Aggressive Token Rotation: Implement automated rotation for all privileged credentials and shorten session token lifetimes to neutralize the persistence of AI-generated infostealers.,0,0,0,0,,,,"6.1, 6.8",PR.AA,"Detailed Description:
+Aggressive token rotation involves automatically replacing refresh tokens every time they are used and significantly reducing the lifespan of active session tokens. By ensuring that each credential is valid for only a single use or a very narrow time window, organizations can invalidate stolen tokens before attackers can exploit them, effectively neutralizing the persistence of malware that harvests these secrets.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by increasing the velocity and volume of non-human identity creation, which often leads to token sprawl and incomplete inventories. Furthermore, AI-generated infostealers can be developed more quickly and with more sophisticated evasion techniques, allowing them to silently scrape high-entropy tokens from AI configuration files and developer environments at scale.
+
+Examples:
+1. Configure OAuth 2.0 authorization servers to issue one-time-use refresh tokens that are immediately invalidated upon exchange for a new pair.
+2. Set short access token lifetimes, such as 15 to 30 minutes, to shrink the window of opportunity for an attacker using a captured session.
+3. Implement automated rotation for privileged non-human identities, such as service accounts and API keys, using centralized secrets management tools that track every creation and rotation event."
+AI-PAM-01,Layer 5: Access Session,IG 2,1-High,Implement Privileged Access Management (PAM) with Just-In-Time (JIT) elevation for privileged actions by humans and AI agents,0,0,0,0,,,,5.4,"PR.AC, PR.AA","Detailed Description:
+Implement a Privileged Access Management (PAM) solution that enforces Just-In-Time (JIT) access and zero standing privileges (ZSP). When a human administrator or an autonomous AI agent requires elevated permissions to perform a sensitive action, they must dynamically request temporary access that automatically expires after the specific task is completed.
+
+Why AI Compounds Risk:
+AI-driven attacks—including automated lateral movement and LLM prompt injection against agentic workflows—thrive on static, ""always-on"" administrative privileges. If an AI agent or a human admin account with persistent rights is compromised, the attacker can execute destructive actions at machine speed. JIT ensures ""Zero Standing Privileges"" (ZSP), meaning an account defaults to holding zero permissions. Even if compromised, the attacker hits an immediate wall, breaking the automated attack chain.
+
+Examples:
+1. Deploy a dedicated Privileged Access Management (PAM) solution to enforce time-bound, approval-based access for all human administrative portals and sensitive databases.
+2. Utilize enterprise Secrets Management solutions as a dependency to securely store, dynamically generate, and rotate short-lived credentials for autonomous AI agents, rather than using persistent, highly privileged service accounts.
+3. Enforce strong, phishing-resistant MFA step-up authentication at the exact moment a human user approves a JIT elevation request or manually validates an AI agent's high-risk action."
+AI-ACC-08,Layer 5: Access Session,IG 2,1-High,Enforce managed-device and continuous device posture checks as a prerequisite for accessing sensitive applications and enterprise AI tools.,0,0,0,0,,,,"1.2, 11.4","PR.AC, DE.CM","Detailed Description:
+Mandate that access to sensitive enterprise applications, AI Gateways, and corporate AI instances (e.g., enterprise LLM workspaces) is restricted exclusively to managed devices that pass continuous health and posture checks.
+
+Why AI Compounds Risk:
+AI vastly accelerates the scale and sophistication of Adversary-in-the-Middle (AiTM) phishing attacks, which are designed to steal live session tokens immediately after a user passes MFA. Often, attackers will replay these stolen session cookies from an IP address in the exact same region as the victim to evade traditional geographic conditional access rules. However, they almost always replay the token from an unmanaged, unrecognized machine (e.g., a rogue server or personal laptop). Enforcing strict device posture ensures that even if a valid session token is stolen, it is fundamentally useless outside of the organization's tightly controlled, attested hardware fleet, effectively closing the token replay and unmanaged browser gaps.
+
+Examples:
+1. Integrate Identity Provider (IdP) Conditional Access policies with Mobile Device Management (MDM) telemetry to automatically block application access from unmanaged or BYOD devices.
+2. Require a healthy EDR signal (e.g., no active malware detected, firewall enabled, OS fully patched) as a continuous prerequisite for accessing internal AI agent workspaces and high-value data repositories.
+3. Utilize enterprise browsers or Secure Web Gateways (SWG) to enforce device attestation certificates before allowing data uploads or deep interactions with sanctioned external AI models."
+AI-ACC-04,Layer 5: Access Session,IG 2,2-Medium,Automate Impossible Travel Detection and block concurrent logins from separate regions,0,0,0,0,,,,"6.1, 6.8",PR.AA,"Detailed Description:
+Impossible travel detection is a security technique that flags a user account when it is accessed from two geographically distant locations within a timeframe that is physically impossible to achieve through conventional travel. Automating this process involves using algorithms to calculate the velocity between login events and immediately blocking concurrent sessions from separate regions to prevent unauthorized access by attackers using stolen credentials.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by enabling more sophisticated credential harvesting through highly personalized and believable phishing attacks, deepfake voice or video impersonations, and automated ""mirror"" websites that trick users into providing their login data. These AI-driven methods increase the frequency and success rate of account takeovers, making real-time, automated detection and blocking a critical necessity for corporate security.
+
+Examples:
+1. Implement conditional access policies in enterprise identity providers that automatically trigger a block or require a password reset when an impossible travel risk score is generated.
+2. Integrate security signals from cloud applications into a SIEM or SOAR platform to automate the termination of all active sessions and revoke OAuth tokens across the entire corporate environment upon detection of a high-risk location anomaly.
+3. Utilize machine learning models to baseline individual user behavior, such as typical VPN usage and frequent office locations, to refine detection accuracy and reduce false positives before executing automated blocking actions."
+AI-ACC-05,Layer 5: Access Session,IG 2,2-Medium,Configure Automated Session Invalidation upon risk detection,0,0,0,0,,,,"6.1, 6.8",PR.AA,"Detailed Description:
+Configure Automated Session Invalidation upon risk detection is a security control that immediately terminates active user sessions when a system identifies high-risk events, such as suspicious IP address changes, login attempts from new devices, or potential credential compromise. This ensures that even if a session token is stolen, the window of opportunity for an attacker is closed the moment an anomaly is detected, requiring the user to re-authenticate to prove their identity.
+
+Why AI Compounds Risk:
+AI exacerbates this risk because it can be used to perform highly sophisticated session hijacking through techniques like indirect prompt injection, where a malicious prompt hidden in a document or webpage can trick an AI agent into revealing its own session token to an attacker. Additionally, AI-powered malware can more effectively scrape browser databases for active session cookies, and the speed at which AI can automate these attacks often outpaces traditional, static session timeout rules.
+
+Examples:
+1. Deploy continuous access evaluation (CAE) policies that monitor for real-time security signals, such as a change in network location or a user being disabled in the directory, to trigger immediate session revocation.
+2. Integrate an AI-driven monitoring system that analyzes user behavioral patterns, such as typical working hours and resource access habits, to automatically invalidate sessions and alert security teams when a significant deviation or risk threshold is reached.
+3. Configure server-side session management to automatically invalidate all other active sessions for a specific user account immediately upon a successful password change or a high-risk security event like a failed multi-factor authentication attempt."
+AI-ACC-06,Layer 5: Access Session,IG 2,2-Medium,"Implement Context-Aware Authentication (e.g. typing cadence, location)",0,0,0,0,,,,"6.1, 6.8",PR.AA,"Detailed Description:
+Context-aware authentication is a security method that evaluates real-time situational factors—such as user location, device health, time of access, and behavioral patterns like typing cadence—to determine the legitimacy of a login attempt. Unlike traditional static credentials, it uses a risk-based engine to dynamically grant seamless access for low-risk behavior or require additional verification (step-up authentication) when anomalies are detected.
+
+Why AI Compounds Risk:
+AI exacerbates authentication risks by enabling cybercriminals to launch sophisticated, automated attacks at scale, such as using generative AI to create realistic deepfakes for social engineering or utilizing machine learning to bypass traditional bot detection and execute high-speed credential stuffing.
+
+Examples:
+1. To implement this in a corporate environment, start by defining granular access policies that require multi-factor authentication (MFA) or block access entirely when employees attempt to reach sensitive financial systems from unrecognized geographic locations or unmanaged personal devices.
+2. Integrate a risk-analysis engine that uses machine learning to establish a behavioral baseline for each employee, such as their typical working hours and network types, so the system can automatically flag and challenge ""impossible travel"" scenarios or logins occurring at highly unusual times.
+3. Deploy continuous access evaluation (CAEP) across the identity stack to monitor active sessions in real-time; if a device's security posture changes—such as an antivirus being disabled or a switch to an unsecured public Wi-Fi—the system can immediately revoke access or trigger a re-authentication prompt."
+AI-AUTH-05,Layer 5: Access Session,IG 2,2-Medium,"Monitor external threat intelligence and dark web sources for compromised employee credentials, and enforce automated password resets for exposed accounts.",0,0,0,0,,,,"5.2, 7.1","ID.RA, DE.CM","Detailed Description:
+Implement continuous monitoring of third-party data breaches, dark web marketplaces, and public paste sites for exposed corporate email addresses and passwords. When a compromised credential belonging to an employee is detected, the system should automatically invalidate the current session, force a mandatory password reset, and require re-enrollment or reverification of MFA.
+
+Why AI Compounds Risk:
+Adversaries use AI-driven data processing tools to rapidly ingest, normalize, and cross-reference multi-terabyte credential dumps from the dark web. Instead of manually testing passwords, AI allows attackers to instantly correlate leaked personal passwords with corporate email formats and automatically orchestrate credential stuffing attacks at scale across thousands of endpoints. If an organization does not detect and reset a leaked password faster than the AI can test it, an account compromise is almost guaranteed.
+
+Examples:
+1. Integrate Identity Protection services (like Microsoft Entra ID Protection or Okta Insights) that automatically cross-reference user passwords against known breached password databases during sign-in.
+2. Subscribe to an external Threat Intelligence or Digital Risk Protection (DRP) service (e.g., Recorded Future, HaveIBeenPwned API) to alert the SOC whenever corporate domains appear in fresh credential drops.
+3. Configure conditional access policies to automatically flag a user's risk level as ""High"" upon a credential leak discovery, immediately blocking access until a secure password reset is completed via a verified MFA prompt."
+AI-ACC-07,Layer 5: Access Session,IG 3,1-High,Enable device-bound/session-bound token protections (where supported) to reduce replay of stolen session tokens,0,0,0,0,,,,"6.1, 6.8",PR.AA,"Detailed Description:
+Implement modern device-bound or session-bound token protections, where access tokens or session cookies are tightly bound to the specific trusted hardware device or endpoint that performed the initial authentication. This ensures that even if a session cookie is stolen, it cannot be easily replayed or used from a different, untrusted machine. 
+
+*Defense-in-Depth Context:* While other controls in this framework (such as AI-GOV-04, AI-ACC-04, and AI-ACC-05) focus on detect-and-respond capabilities—monitoring for session risk and actively revoking access upon anomaly detection—this control acts as a strict preventative measure. It validates the cryptographic or hardware binding before a compromised token can ever be successfully replayed.
+
+Why AI Compounds Risk:
+AI accelerates the deployment and scale of Adversary-in-the-Middle (AiTM) phishing campaigns. These automated toolkits intercept and steal session tokens immediately after a user successfully completes an MFA prompt. Once the session cookie is stolen, automated AI bots can rapidly replay it from their own infrastructure to completely bypass MFA. Device-bound tokens neutralize this threat by ensuring the stolen token is rejected outside the victim's validated physical device.
+
+Examples:
+1. Enable identity provider (IdP) features that bind session tokens to a registered endpoint's trusted hardware module or perform continuous device health attestation.
+2. Implement advanced passwordless or hardware-bound authentication flows (like FIDO2/WebAuthn) that inherently tie session continuity to the original authorized endpoint.
+3. Enforce continuous access evaluation policies that instantly revoke sessions if IP address, location, or device fingerprint anomalies are detected, acting as a compensating control when strict hardware binding is not fully supported."
+AI-END-01,Layer 6: Endpoint Presentation,IG 1,2-Medium,Harden Script Execution: Restrict script execution (PowerShell/Python/JS) to only digitally signed scripts and enforce allowlists for trusted script paths to block AI-generated droppers.,0,0,0,0,,,,7.1,PR.PS,"Detailed Description:
+Hardening script execution involves configuring the operating system to only run scripts that have been digitally signed by a trusted authority and limiting execution to specific, pre-approved file paths. This prevents unauthorized or malicious code from running even if it is successfully delivered to an endpoint.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by enabling attackers to rapidly generate unique, sophisticated malware droppers and obfuscated scripts that can bypass traditional signature-based antivirus or heuristic detections. Because AI can create endless variations of scripts, relying on reactive detection is insufficient; proactive execution control is required to block these untrusted, AI-generated payloads.
+
+Examples:
+1. Configure PowerShell execution policies to AllSigned via Group Policy Objects (GPO) to ensure only scripts signed by the corporate Certificate Authority or trusted vendors can run.
+2. Implement application control solutions to enforce an allowlist that restricts script execution to specific, read-only directories like C:\\Program Files\\ where users cannot save AI-generated files.
+3. Utilize an endpoint management tool to deploy and manage code-signing certificates to all internal developers, ensuring that custom administrative or automation scripts are signed before deployment to production environments."
+AI-END-02,Layer 6: Endpoint Presentation,IG 1,2-Medium,Automate Macro and Script Disablement for non-admin users,0,0,0,0,,,,4.1,PR.PS,"Detailed Description:
+Automating macro and script disablement for non-admin users involves using centralized management tools to enforce security policies that prevent unauthorized or malicious code from executing. This recommendation focuses on removing the decision-making process from the end user by programmatically blocking macros—particularly those from the internet—and restricting script execution to only those that are digitally signed or located in verified trusted folders.
+
+Why AI Compounds Risk:
+AI exacerbates this risk through automated prompt injection where malicious instructions are hidden within document macros to manipulate AI models. These ""Trojan horse"" documents can trick AI-powered systems into leaking sensitive data, bypassing security filters, or misclassifying malware as safe. Furthermore, AI can generate highly professional, functional code that contains subtle, hard-to-detect security flaws, leading developers to trust and execute potentially dangerous scripts.
+
+Examples:
+1. Use Group Policy Objects (GPO) in Active Directory to enable the ""Block macros from running in Office files from the Internet"" setting across all non-admin workstations.
+2. Configure the productivity suite's security settings via administrative templates to set the default macro behavior to ""Disable all macros except digitally signed macros,"" ensuring only verified code can run.
+3. Implement PowerShell Execution Policies through centralized management to restrict script execution to ""AllSigned,"" which requires all scripts to be signed by a trusted publisher before they can be executed by a user."
+AI-END-03,Layer 6: Endpoint Presentation,IG 1,3-Low,Enforce Automated Patch Management for OS and 3rd-party apps,0,0,0,0,,,,7.1,PR.PS,"Detailed Description:
+Automated patch management is the process of using software to automatically identify, download, test, and deploy updates for operating systems and third-party applications. This lifecycle includes scanning endpoints for missing patches, prioritizing them based on severity, and verifying successful installation to ensure systems remain secure and stable without requiring constant manual intervention from IT teams.
+
+Why AI Compounds Risk:
+AI exacerbates cybersecurity risks by enabling attackers to rapidly discover vulnerabilities and automate the creation of sophisticated exploits in as little as an hour after a CVE is released. This drastically shrinks the window of opportunity for defenders, making traditional monthly manual patching cycles insufficient against AI-driven threats that can target multiple systems simultaneously and bypass standard defenses.
+
+Examples:
+1. Implement a ring-based deployment strategy where patches are first automatically rolled out to a small pilot group of non-critical systems for 24-48 hours of monitoring before proceeding to the broader production environment.
+2. Define granular, policy-driven workflows that automatically approve and schedule critical security updates for high-risk third-party applications like web browsers and document readers during pre-defined maintenance windows.
+3. Integrate automated reporting and compliance dashboards that provide real-time visibility into patch status across the entire enterprise, allowing IT teams to quickly identify and remediate any failed installations or unpatched endpoints."
+AI-END-04,Layer 6: Endpoint Presentation,IG 2,2-Medium,Deploy Advanced Behavioral Telemetry: Implement high-fidelity logging (e.g. Sysmon-style) to capture process creation and network connections used by AI-assisted malware that evades signature-based AV.,0,0,0,0,,,,"10.1, 10.5","DE.CM, PR.MA","Detailed Description:
+Recommendation Explanation: This strategy involves deploying high-resolution monitoring tools like advanced system monitors to record granular system activities that standard logs often miss. By capturing detailed telemetry on process creations (including command-line arguments and file hashes) and network connections (source/destination IPs and ports), security teams can gain the deep visibility necessary to identify malicious behavior that does not match known attack signatures.
+
+Why AI Compounds Risk:
+Why AI Exacerbates Risk: AI allows malware to become polymorphic and adaptive, enabling it to dynamically rewrite its own source code, obfuscate payloads, and mimic legitimate software behavior in real-time. Because these AI-assisted threats can continuously evolve to bypass static, signature-based antivirus detections, organizations must rely on behavioral telemetry to spot the subtle, underlying anomalies in system execution and network traffic that signal an active intrusion.
+
+Examples:
+1. Standardize advanced system monitoring deployment across all Windows endpoints using Group Policy or automated scripting, utilizing a community-vetted configuration to balance high-signal visibility with manageable log volume.
+2. Integrate high-fidelity telemetry streams into a centralized Security Information and Event Management (SIEM) solution to correlate process execution data with network logs, enabling the detection of complex, multi-stage AI-driven attacks.
+3. Configure advanced behavioral analytics platforms to establish a baseline of normal user and system activity, then set automated alerts for high-risk telemetry events, such as unauthorized PowerShell execution or unusual credential access attempts in memory."
+AI-END-05,Layer 6: Endpoint Presentation,IG 2,2-Medium,Remove or highly manage local admin and installation rights,0,0,0,0,,,,"10.1, 10.5","DE.CM, PR.MA","Detailed Description:
+Removing local admin rights involves transitioning users from administrative accounts to standard user accounts to enforce the principle of least privilege. This prevents users from performing high-risk actions like installing unauthorized software, disabling security controls, or modifying critical system files, which significantly reduces the organization's attack surface.
+
+Why AI Compounds Risk:
+AI exacerbates this risk because automated attack tools and agentic AI can exploit elevated privileges to move laterally through a network, disable AI-driven endpoint protections, and execute malicious code at machine speed. If an AI agent or a compromised account has admin rights, it can weaponize the system against the organization more efficiently than a human attacker.
+
+Examples:
+1. Implement Just-In-Time access solutions that provide temporary, time-bound elevated privileges only for specific approved tasks, automatically revoking them once the task is complete.
+2. Use Group Policy Objects or Mobile Device Management tools to centrally manage and ""flush"" local administrator groups, ensuring only authorized domain accounts have elevated access.
+3. Deploy Privileged Access Management or Endpoint Privilege Management software to allow ""policy-based elevation,"" which lets standard users run specific, pre-approved applications with administrative rights without giving the user full control over the OS."
+AI-END-06,Layer 6: Endpoint Presentation,IG 2,3-Low,Deploy AI-Driven EDR/XDR for behavioral process termination,0,0,0,0,,,,"10.1, 10.5","DE.CM, PR.MA","Detailed Description:
+AI-driven Endpoint Detection and Response (EDR) and Extended Detection and Response (XDR) use machine learning and behavioral analysis to monitor system activities in real time. Unlike signature-based tools, these solutions identify suspicious process behaviors—such as unauthorized lateral movement or fileless malware execution—and automatically terminate those processes to contain threats before they can cause damage.
+
+Why AI Compounds Risk:
+AI exacerbates cybersecurity risks because attackers can use it to automate and scale sophisticated threats, such as generating polymorphic malware that evolves to evade traditional defenses or crafting highly convincing, automated phishing campaigns. This increased speed and complexity of attacks reduce the time security teams have to react manually, making automated, AI-driven response a necessity.
+
+Examples:
+1. Implement a pilot program by deploying AI-driven agents on a high-risk subset of corporate endpoints, such as executive laptops and servers housing sensitive data, to baseline normal activity before full rollout.
+2. Integrate the XDR platform with existing Identity and Access Management (IAM) and network firewalls to ensure that when a behavioral process is terminated, associated user credentials can be automatically suspended and malicious IPs blocked across the entire network.
+3. Establish automated response playbooks within the security operations center (SOC) that define specific thresholds for autonomous process termination versus those requiring human-in-the-loop intervention for mission-critical applications."
+AI-END-07,Layer 6: Endpoint Presentation,IG 2,3-Low,Utilize File Integrity Monitoring (FIM) for critical OS files,0,0,0,0,,,,4.1,PR.PS,"Detailed Description:
+File Integrity Monitoring (FIM) is a security process that validates the integrity of critical operating system and application files by comparing their current state against a known, trusted baseline. It uses cryptographic hashes to detect unauthorized creations, deletions, or modifications to file content, permissions, and attributes, triggering alerts for security teams to investigate potential tampering or corruption.
+
+Why AI Compounds Risk:
+AI exacerbates the risk to critical files by enabling more sophisticated, automated, and stealthy cyberattacks that can occur at a scale and speed traditional manual monitoring cannot match. AI-driven malware can use advanced techniques to obfuscate attacks or compromise privileged accounts, while the rapid deployment of complex AI systems themselves can create new security gaps and unintended configuration changes that increase the overall attack surface.
+
+Examples:
+1. Implement FIM by deploying a centralized security platform, such as an EDR or SIEM solution, to automatically scan and establish cryptographic baselines for all core OS directories and registry keys.
+2. Define granular monitoring policies that distinguish between expected administrative updates and anomalous changes, using automated ""who-data"" attribution to identify the specific user or process responsible for every modification.
+3. Integrate FIM alerts with an automated Incident Response or SOAR workflow to immediately quarantine compromised endpoints or roll back unauthorized changes to a secure state."
+AI-END-08,Layer 6: Endpoint Presentation,IG 3,3-Low,Deploy Data Loss Prevention (DLP) to monitor formatted file exfiltration,0,0,0,0,,,,4.1,PR.PS,"Detailed Description:
+Deploying Data Loss Prevention (DLP) to monitor formatted file exfiltration involves using security tools to identify, track, and block the unauthorized transfer of structured and unstructured files (such as PDF, DOCX, or XLSX) across endpoints, networks, and cloud environments.
+
+Why AI Compounds Risk:
+Traditional DLP uses content awareness (scanning for patterns like Social Security numbers) and context analysis (inspecting file metadata like size and format) to enforce security policies and prevent sensitive data from leaving the corporate perimeter via email, USB, or web uploads.
+
+Examples:
+1. AI exacerbates this risk because generative AI tools can easily ingest, summarize, or paraphrase sensitive formatted documents, allowing users to inadvertently or maliciously exfiltrate proprietary information through natural language prompts that bypass simple keyword-based filters.
+2. Use Endpoint DLP agents on corporate laptops to monitor and block users from copying sensitive formatted files to unauthorized USB drives or uploading them to personal cloud storage accounts.
+3. Implement Network DLP to inspect outbound email attachments and web traffic in real time, automatically encrypting or blocking files that contain regulated data like PII or intellectual property.
+4. Integrate Cloud-native DLP with SaaS platforms like enterprise productivity suites to audit file sharing permissions and prevent sensitive documents from being shared with external, unauthorized email addresses."
+AI-END-09,Layer 6: Endpoint Presentation,IG 3,3-Low,Configure Application Allow-listing to block untrusted executables,0,0,0,0,,,,"2.1, 10.7",PR.PS,"Detailed Description:
+Application allowlisting is a proactive security strategy that involves creating an index of approved software applications and files authorized to execute on a system. It operates on a ""default deny"" principle, meaning any application or process not explicitly included on the list is automatically blocked, effectively preventing the execution of malware, ransomware, and unauthorized scripts.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by enabling attackers to rapidly generate sophisticated, never-before-seen malware and automated ""living-off-the-land"" attacks that can evade traditional signature-based detection. Because AI-driven threats are dynamic and unknown, the traditional method of blocking known ""bad"" files is insufficient, making the ""allow only known good"" approach of allowlisting essential to stop these emerging threats.
+
+Examples:
+1. Use cryptographic hashing to identify trusted applications, ensuring that even if a malicious file is renamed to match a legitimate one, it will be blocked because its unique digital fingerprint does not match the allowlist.
+2. Deploy a phased rollout starting with a ""monitoring mode"" to identify all necessary business applications and dependencies (such as libraries and scripts) before transitioning to ""enforcement mode"" to prevent business disruption.
+3. Define granular access policies based on digital signatures from trusted publishers, allowing updates for standard business tools to run automatically while blocking unsigned or untrusted executables."
+AI-MSG-01,Layer 6: Messaging/Web,IG 2,1-High,"Deploy Anomalous Attachment & Rare File Type Filtering to block unusual containers (e.g., ISO, IMG) used by AI-automated malware delivery.",0,0,0,0,,,,"9.1, 9.2",PR.IR,"Detailed Description:
+Deploying anomalous attachment and rare file type filtering involves configuring email gateways and security agents to identify and block file extensions that are not typical for daily business operations, such as ISO, IMG, or VHD, which are frequently used to wrap and deliver malicious payloads while evading standard scanners.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by enabling threat actors to automate the creation of polymorphic malware that changes its code structure every few seconds, allowing it to bypass signature-based detection and use these rare container files to hide its intent until execution.
+
+Examples:
+1. Use enterprise cloud email providers or similar mail flow rules to create a block-list for specific extensions like .iso, .img, .vhd, and .cab to prevent them from reaching user inboxes.
+2. Configure advanced email security solutions that use machine learning to establish a baseline of normal sender behavior and flag any attachments that deviate from the established organizational norm.
+3. Deploy endpoint protection platforms that utilize behavioral monitoring to detect and block the mounting or execution of unusual file types in real-time, regardless of whether the file hash is known to be malicious."
+AI-MSG-02,Layer 6: Messaging/Web,IG 2,1-High,"Implement Behavioral Mailbox Intelligence to baseline user communication patterns (tone, frequency, habits) and flag AI-generated anomalies.",0,0,0,0,,,,"9.1, 9.2",PR.IR,"Detailed Description:
+Behavioral Mailbox Intelligence uses machine learning to build a baseline of a user's typical communication patterns, including who they email, the frequency of contact, and the specific tone or ""graph"" of those relationships. By establishing this normal behavior, the system can identify and flag or block anomalies—such as a first-time contact or a sudden change in writing style—that suggest an impersonation or phishing attempt, even if the email passes traditional technical authentication like SPF or DKIM.
+
+Why AI Compounds Risk:
+AI exacerbates these risks by allowing attackers to generate hyper-personalized, grammatically perfect emails that mimic a specific individual's writing style and professional jargon at scale. Because these AI-generated messages lack the traditional ""red flags"" of phishing, such as poor spelling or suspicious links, they can easily bypass legacy signature-based filters that do not account for behavioral context.
+
+Examples:
+1. Enable Mailbox Intelligence and Intelligence for Impersonation Protection within native enterprise email security anti-phishing policies to allow the system to automatically build behavioral models and take action on detected impersonation attempts.
+2. Integrate an AI-native security platform, such as a specialized API-based email security platform, which uses an API-based approach to analyze relationship patterns and identity deviations to protect against advanced business email compromise (BEC).
+3. Configure specific protection for high-value targets or VIPs by adding their names and email addresses to the protected users list in anti-phishing policies, ensuring the system applies stricter behavioral scrutiny to emails claiming to be from these individuals."
+AI-MSG-03,Layer 6: Messaging/Web,IG 2,1-High,Enforce Universal URL Unwrapping and deep link analysis for shortened or redirected URLs to reveal hidden AI-generated malicious destinations.,0,0,0,0,,,,"9.1, 9.2",PR.IR,"Detailed Description:
+Universal URL Unwrapping involves expanding shortened or redirected links to their final destination before a user interacts with them, allowing security tools to inspect the underlying URL for threats. Deep link analysis specifically examines links that bypass homepages to point directly to specific app content or internal pages, ensuring these direct paths do not lead to malicious AI-generated sites or unauthorized data extraction points.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by enabling attackers to rapidly generate high-quality, professional-looking phishing websites and unique, varied domains that can bypass traditional reputation-based filters. AI can also be used to automate the creation of sophisticated, personalized phishing emails and ""jailbreak"" legitimate AI agents into following and summarizing malicious links, making deceptive redirections much harder for both users and standard security systems to detect.
+
+Examples:
+1. Deploy email security solutions that automatically rewrite and sandbox all incoming links, using real-time ""unwrapping"" to check the final destination against threat intelligence databases before allowing the user to proceed.
+2. Integrate endpoint or browser-level protection that forces shortened URLs to be unfurled and scanned in a secure environment, blocking access if the final destination is an unregistered or suspicious domain often used in AI-driven campaigns.
+3. Implement mobile threat defense (MTD) or specialized deep-linking security providers to validate that App Links and Universal Links are correctly configured and lead to verified, authorized applications rather than malicious clones."
+AI-APP-11,Layer 7: Application,IG 1,1-High,"Establish a secrets management baseline for AI stacks, mandating centralized secrets managers and prohibiting hardcoded API keys in repos, notebooks, and prompt templates.",0,0,0,0,,,,"16.2, 16.3","PR.DS, DE.CM","Detailed Description:
+Establish a strict secrets management baseline across all AI development stacks and agent toolchains. This requires prohibiting the hardcoding of API keys, tokens, or credentials within source code repositories, Jupyter notebooks, prompt templates, or CI/CD logs. All sensitive credentials must be dynamically retrieved from a centralized enterprise secrets manager, and automated scanning must be implemented to detect and block leaked keys.
+
+Why AI Compounds Risk:
+AI development workflows are highly experimental and fast-paced. Data scientists and engineers frequently rely on Jupyter notebooks, prompt debugging tools, and local tracing environments to rapidly test external LLM APIs or agent integrations. These environments are notorious for inadvertently leaking long-lived API keys. If an adversary or automated bot scrapes a leaked LLM API key or an agent's backend token, they can instantly incur massive cloud compute costs (Denial of Wallet) or pivot directly into backend databases, entirely bypassing the organization's front-end AI security gateways and access controls.
+
+Examples:
+1. Integrate automated secret scanning tools (e.g., git-leaks, GitHub Advanced Security) into the CI/CD pipeline to detect and block commits containing hardcoded LLM API keys or autonomous agent tokens.
+2. Mandate that all AI development environments and agent frameworks retrieve credentials dynamically at runtime via a centralized enterprise Secrets Manager, explicitly forbidding hardcoded credentials in Jupyter notebooks or prompt templates.
+3. Configure automated redaction of sensitive credentials, API keys, and authorization headers within LLM observability platforms, tracing tools (like LangSmith/Phoenix), and prompt debugging logs."
+AI-AGT-01,Layer 7: Application,IG 2,1-High,"Implement Agent tool-call governance through strict allowlists, schema validation, and human-in-the-loop approvals.",0,0,0,0,,,,"16.2, 16.4","PR.AC, PR.PT","Detailed Description:
+Implement robust governance over autonomous AI agent tool-calling capabilities. This includes enforcing strict allowlists for accessible tools, real-time input/output schema validation, and explicitly defining ""Human-in-the-Loop"" (HITL) approval gates for high-risk actions.
+
+High-ROI HITL Triggers:
+To prevent silent data exfiltration or destructive actions, HITL cryptographic approvals must be triggered for:
+- External Transmission: Any agent action that sends content to an external email/domain, external Slack/Teams tenant, webhook, or public URL.
+- Export / Bulk Retrieval: Requests exceeding normal limits (e.g., retrieving >100 rows or chunks in a single session).
+- Restricted Label Access: Any retrieval/summarization that touches data explicitly labeled as Restricted, Regulated, Legal, HR, Finance, or Security.
+- Cross-Boundary Sharing: Attempting to share content across isolated departments (e.g., summarizing HR data and sending it to a non-HR channel).
+- Privilege Boundary Crossing: An agent attempting to invoke an admin-only tool, elevated API, or privileged connector (even if read-only).
+- Anomalous Tool Sequencing: A tool-call chain that hasn't been approved or seen before (e.g., ""RAG -> DB query -> File download -> Email send"").
+
+Why AI Compounds Risk:
+AI agents can autonomously invoke APIs, query databases, and execute code based on natural language instructions. If an agent is compromised via prompt injection, an attacker can hijack these tool-calling privileges to extract data, pivot internally, or execute unauthorized transactions. Unfettered tool access effectively turns an LLM into an unauthenticated Remote Code Execution (RCE) vector. 
+
+Examples:
+1. Restrict an AI agent's accessible tools to a tightly scoped allowlist (e.g., granting read-only DB access) rather than giving it broad, unfettered access to all enterprise APIs.
+2. Implement strict, server-side JSON schema validation for all tool inputs to prevent an attacker from passing malicious payloads or SQL injections via a hijacked agent.
+3. Require cryptographic ""human-in-the-loop"" MFA approvals before an agent can execute destructive actions or trigger any of the defined High-ROI events."
+AI-APP-10,Layer 7: Application,IG 2,2-Medium,"Implement a centralized AI Gateway or Control Plane to broker, govern, and monitor all enterprise interactions with external LLMs and AI services.",0,0,0,0,,,,"16.4, 16.5","PR.PT, DE.CM","Detailed Description:
+Deploy a centralized AI Gateway (or Control Plane) to broker, govern, and monitor all enterprise interactions with internal and external AI models. This gateway must centralize model access, enforce approved provider routing, aggregate telemetry/logging, perform inline DLP and prompt redaction, manage rate limiting, enforce content safety policies, and apply tenant restrictions.
+
+Why AI Compounds Risk:
+The rapid proliferation of Generative AI APIs and applications leads to massive ""Shadow AI"" adoption. If development teams and end-users connect directly to dozens of different LLMs, security enforcement becomes hopelessly fragmented across CASB, SWG, IdP, and individual application teams. A centralized AI gateway acts as a critical, unified chokepoint. It ensures that consistent security, privacy, and compliance guardrails (like prompt filtering and data redaction) are applied uniformly to all AI traffic at machine speed, regardless of the underlying model.
+
+Examples:
+1. Deploy an enterprise AI Gateway to intercept and inspect all API calls to external models, enforcing inline data redaction and prompt filtering before the payload leaves the network.
+2. Configure rate limiting, quota management, and cost-control guardrails centrally at the gateway to prevent denial-of-wallet attacks or runaway autonomous agents from overwhelming API limits.
+3. Enforce strict egress allowlisting and tenant-restriction headers via the gateway, ensuring employees and AI agents can only interact with sanctioned, enterprise-provisioned AI workspaces (rather than consumer instances)."
+AI-APP-01,Layer 7: General Usage & AppSec Defense,IG 1,2-Medium,Enforce Strict Input Sanitization frameworks against AI fuzzing,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Enforce Strict Input Sanitization: This recommendation involves implementing robust frameworks to clean, filter, and validate all data entering an AI system to ensure it is free of malicious code, unexpected characters, or hidden instructions. It acts as a primary defense by neutralizing threats like prompt injection, SQL injection, and cross-site scripting (XSS) before they reach the model or underlying infrastructure.
+
+Why AI Compounds Risk:
+AI Risk Exacerbation: Generative AI increases the complexity of input threats because attackers can use AI-powered fuzzing to automatically generate thousands of ""innocent-looking"" but structurally plausible inputs that exploit a model's probabilistic logic. These automated attacks can identify subtle triggers—such as specific formatting symbols or context-shifting phrases—at a scale and speed that manual security testing cannot match, making traditional static defenses insufficient.
+
+Examples:
+1. Implement Action-Selector Patterns: Force AI agents to output strictly typed JSON schemas with predefined action IDs rather than open-ended natural language. This treats the model's output as data rather than executable instructions, effectively freezing control flow and preventing semantic manipulation of downstream functions.
+2. Deploy AI-SPM and WAF Tools: Utilize AI-Security Posture Management (AI-SPM) tools to gain visibility into the AI supply chain and identify risks in third-party frameworks. Combine this with Web Application Firewalls (WAF) configured to detect anomalous input patterns and block known adversarial sequences before they are processed.
+3. Use Structural Spotlighting: Implement ""spotlighting"" techniques to mathematically or structurally delimit untrusted user data from privileged system instructions. If the system detects an input attempting to ""break out"" of its assigned zone to influence the operational plan, the workflow is automatically halted to prevent unauthorized actions."
+AI-APP-02,Layer 7: General Usage & AppSec Defense,IG 1,3-Low,Monitor employee devices and networks to block the use of unsanctioned or hidden 'Shadow AI' apps.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Detailed Explanation: This recommendation focuses on gaining visibility and control over the unauthorized use of artificial intelligence tools, often called Shadow AI, by monitoring corporate endpoints and network traffic. It involves identifying unapproved standalone applications, browser extensions, and hidden AI features within sanctioned software that employees use without IT oversight. By monitoring these access points, organizations can enforce security policies, prevent the input of sensitive data into external models, and mitigate risks related to data residency and compliance.
+
+Why AI Compounds Risk:
+Why AI Exacerbates Risk: Unlike traditional software, AI models are designed to ingest and process data to generate outputs, and many consumer-grade tools use these inputs for further training, potentially leading to the permanent exposure of proprietary information. The ease of access via browsers and the rapid, often silent, integration of AI features into existing SaaS platforms make it difficult for traditional IT asset management to keep pace. Furthermore, the unpredictable nature of AI outputs and the lack of audit trails for these interactions create significant blind spots for security and compliance teams.
+
+Examples:
+1. Corporate Implementation Examples:
+2. Deploy Cloud Access Security Brokers (CASB) or intercepting proxies to analyze network traffic and DNS queries for signatures of known AI platforms and APIs.
+3. Utilize Endpoint Detection and Response (EDR) or browser monitoring tools to identify locally installed AI agents and browser extensions used for unauthorized tasks like code debugging or document summarization.
+4. Implement Data Loss Prevention (DLP) rules that use regex or sensitive data identifiers to block the pasting of confidential information, such as source code or PII, into web-based AI chat interfaces."
+AI-APP-03,Layer 7: General Usage & AppSec Defense,IG 2,2-Medium,Deploy Advanced Bot Management (invisible or behavioral CAPTCHAs),0,0,0,0,,,,16.11,"PR.NW, PR.DS","Detailed Description:
+Deploying advanced bot management involves using machine learning and behavioral analysis to distinguish between legitimate human users, benign bots, and malicious automated threats. This approach utilizes invisible, frictionless challenges and telemetry (like mouse movements or typing patterns) to block sophisticated attacks such as account takeovers, scraping, and DDoS without interrupting the user experience.
+
+Why AI Compounds Risk:
+AI exacerbates bot-related risks by enabling attackers to create ""almost-human"" bots that can mimic real user behavior, solve traditional CAPTCHAs, and bypass static security rules at unprecedented speed and scale. These AI-driven bots are more adaptive, making it harder for traditional Web Application Firewalls (WAFs) to detect them using only IP reputation or basic fingerprinting.
+
+Examples:
+1. Integrate a bot management solution with an existing Web Application Firewall (WAF) to apply real-time behavioral scoring to all incoming web and mobile traffic.
+2. Implement invisible, risk-based challenges on high-value pages such as login, checkout, and account creation to stop automated fraud.
+3. Configure granular security policies that trigger different automated responses—such as blocking, rate-limiting, or serving a honey pot—based on the specific bot score and intent identified by the detection engine."
+AI-APP-04,Layer 7: General Usage & AppSec Defense,IG 2,2-Medium,"Conduct regular OSINT gathering (e.g., Google Dorking) to discover shadow authentication portals or legacy logins for the domain, and secure them behind a VPN or firewall.",0,0,0,0,,,,18.1,ID.RA,"Detailed Description:
+Recommendation Explanation: This strategy involves using Open Source Intelligence (OSINT) and advanced search engine queries, known as advanced search operator queries, to identify publicly indexed but unintended access points. By using specific operators like site:, inurl:, and intitle:, security teams can locate ""shadow"" authentication portals, forgotten legacy login pages, or misconfigured administrative interfaces that exist outside of official IT oversight. Once discovered, these entry points are secured behind a VPN or firewall to prevent unauthorized access and reduce the organization's external attack surface.
+
+Why AI Compounds Risk:
+How AI Exacerbates the Risk: The rapid, unmanaged adoption of generative AI tools (Shadow AI) creates new ""shadow"" authentication vectors, such as unauthorized API keys, embedded credentials in AI plugins, and personal accounts used for corporate tasks that bypass enterprise logging. AI-powered bots can also automate the discovery of these vulnerabilities at scale, while ""agentic"" AI workflows may autonomously create persistent, unmanaged non-human identities with access to internal systems, significantly widening the potential for data exfiltration and credential theft.
+
+Examples:
+1. Use the query site:\[suspicious link removed\] inurl:login OR inurl:admin to find and catalog all publicly accessible login pages, then verify if they are integrated into the company's Single Sign-On (SSO) or if they should be restricted to internal network access only.
+2. Conduct regular searches for exposed configuration or log files using queries like site:\[suspicious link removed\] filetype:env OR filetype:log ""password"" to identify if developers have inadvertently indexed sensitive credentials or system settings that could lead to portal compromise.
+3. Monitor for ""Shadow AI"" infrastructure by searching for unapproved third-party AI interfaces or ""index of"" directories containing AI training datasets and model configurations using queries like intitle:""index of"" ""models"" OR ""datasets"" site:\[suspicious link removed\]."
+AI-APP-05,Layer 7: General Usage & AppSec Defense,IG 2,2-Medium,Utilize a Behavioral Web Application Firewall (WAF),0,0,0,0,,,,16.11,"PR.NW, PR.DS","Detailed Description:
+Behavioral Web Application Firewalls (WAFs) use machine learning and artificial intelligence to establish a baseline of normal user behavior and application traffic patterns. Unlike traditional WAFs that rely on static, signature-based rules to block known threats, a behavioral WAF identifies anomalies—such as unusual request rates, suspicious parameter combinations, or abnormal call sequences—to detect and block zero-day exploits and polymorphic attacks that do not match documented signatures.
+
+Why AI Compounds Risk:
+AI exacerbates cybersecurity risks by enabling attackers to automate sophisticated phishing campaigns, create rapidly evolving malware that evades traditional defenses, and launch high-volume, AI-driven DDoS attacks. Furthermore, AI-specific threats like prompt injection and model poisoning exploit the inherent logic of AI algorithms, which traditional security tools are often unable to detect.
+
+Examples:
+1. Deploy an AI-powered WAF to protect AI inference endpoints and APIs from emerging threats like prompt injection and data leakage by validating both inputs and outputs in real time.
+2. Implement behavioral DoS protection profiles that use TLS fingerprinting and JavaScript challenges to distinguish between legitimate human traffic and automated botnets during high-stress traffic events.
+3. Integrate the behavioral WAF with Security Information and Event Management (SIEM) or Extended Detection and Response (XDR) platforms to correlate application-layer telemetry with identity and endpoint data, providing a holistic view of complex attack chains."
+AI-APP-06,Layer 7: General Usage & AppSec Defense,IG 3,2-Medium,Implement API Security Gateways with strict rate limiting,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+API security gateways act as a centralized proxy that intercepts all incoming traffic to backend services to enforce security policies, while strict rate limiting controls the number of requests a client can make within a specific timeframe (e.g., 100 requests per minute) to prevent system overload and abuse.
+
+Why AI Compounds Risk:
+AI exacerbates these risks because automated agents and AI-driven attack tools can probe APIs at machine speed, uncovering business logic flaws and vulnerabilities thousands of times faster than human attackers, while generating massive bursts of traffic that can quickly exhaust expensive computational resources or cloud credits.
+
+Examples:
+1. Deploy an enterprise-grade API gateway to sit in front of all internal and external microservices, serving as the single point of entry for traffic management and security enforcement.
+2. Integrate the gateway with an identity provider to apply per-user or per-application quotas, ensuring that different subscription tiers (e.g., Free vs. Premium) or departments are restricted to appropriate usage levels.
+3. Configure specific rate-limiting algorithms, such as the Token Bucket or Sliding Window, to allow for brief legitimate traffic spikes while maintaining a consistent and safe long-term average request rate to protect backend databases and AI model endpoints."
+AI-APP-07,Layer 7: General Usage & AppSec Defense,IG 3,2-Medium,Integrate Dynamic Application Security Testing (DAST) into CI/CD,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Integrate Dynamic Application Security Testing (DAST) into CI/CD involves automating black-box security scans that test running applications from the outside-in. Unlike static analysis, DAST simulates real-world attacks (like SQL injection or XSS) on a deployed staging or ephemeral environment to identify runtime vulnerabilities, misconfigurations, and business logic flaws. By embedding these scans directly into the CI/CD pipeline, organizations can catch exploitable issues before code reaches production, creating a continuous security feedback loop.
+
+Why AI Compounds Risk:
+AI exacerbates the risk because AI coding assistants generate code at a velocity that traditional manual security reviews cannot sustain, leading to a massive increase in potential vulnerabilities. Furthermore, AI-generated code can introduce systematic risks and ""context gaps"" such as misunderstood authentication flows or prompt injection vulnerabilities that static tools often miss. Because AI allows for multiple daily deployments, traditional weekly or manual scans leave a significant window of time where unchecked, AI-generated vulnerabilities can be exploited in a live environment.
+
+Examples:
+1. Automate DAST scans as a non-blocking stage in an enterprise code repository's CI/CD pipeline that triggers immediately after code is successfully deployed to a dedicated staging environment.
+2. Use API-first DAST tools to automatically scan OpenAPI or GraphQL schemas, ensuring that modern API endpoints are covered during every build or merge request.
+3. Configure ""scan-in-scope"" tests for routine pull requests to maintain development speed, while reserving full, deep-dive DAST scans for nightly builds or pre-production deployment schedules."
+AI-APP-08,Layer 7: General Usage & AppSec Defense,IG 3,2-Medium,Monitor 3rd-party connections via Cloud Application Security Broker (CASB),0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Detailed Explanation: This recommendation involves using a Cloud Application Security Broker (CASB) as an intermediary security enforcement point between an organization's users and cloud service providers. It works by discovering all third-party cloud applications in use (including shadow IT), classifying them based on risk and data sensitivity, and enforcing security policies like data loss prevention (DLP), encryption, and access control in real-time to protect corporate data and monitor user behavior.
+
+Why AI Compounds Risk:
+Why AI Exacerbates the Risk: AI increases risk because many third-party applications now embed ""shadow AI"" features without explicit disclosure, potentially leading to unauthorized data training on sensitive corporate information. Furthermore, the rapid evolution and automated decision-making of AI tools can create new vulnerabilities, such as model drift or data exfiltration, which traditional manual vendor assessments are too slow to detect or quantify.
+
+Examples:
+1. Use a CASB's auto-discovery and API-based scanning features to identify all unsanctioned AI-enabled third-party tools being used by employees and block those that do not meet the organization's risk profile.
+2. Configure granular DLP policies within the CASB to prevent users from uploading files containing sensitive personal information or intellectual property to authorized third-party SaaS platforms.
+3. Deploy an inline CASB proxy to monitor real-time traffic for anomalous behavior, such as a sudden surge in data downloads by an employee, and automatically trigger access restrictions to mitigate potential insider threats or compromised accounts."
+AI-APP-09,Layer 7: General Usage & AppSec Defense,IG 3,3-Low,Scan your company's code repositories to automatically find and review code that was generated by AI.,0,0,0,0,,,,15.1,GV.SC,"Detailed Description:
+Recommendation Explanation: This practice involves using automated tools to identify and analyze code snippets produced by AI assistants (like AI assistants or generative AI chatbots) within a company's version control systems. The goal is to ensure that AI-generated contributions undergo rigorous security vetting, architectural alignment, and quality checks equivalent to or stricter than human-written code.
+
+Why AI Compounds Risk:
+Why AI Exacerbates Risk: AI can rapidly generate large volumes of code that often appears syntactically correct but may contain ""hallucinated"" non-existent dependencies, insecure legacy patterns, or subtle logic errors that bypass traditional scanners. Furthermore, developers may suffer from overconfidence, accepting AI suggestions without full manual review, which can lead to a 10x increase in vulnerabilities shipped to production.
+
+Examples:
+1. Integrate AI-specific code review platforms into enterprise code repository workflows to automatically flag pull requests containing AI-generated logic and provide an independent layer of security analysis before merging.
+2. Deploy semantic analysis tools such as semantic analysis or secure code review platforms to perform deep data-flow tracing on repositories, specifically looking for common AI-driven flaws like SQL injection or missing input validation in auto-generated endpoints.
+3. Establish a ""Context-Aware"" auditing process using tools that index the entire codebase to detect if AI-generated snippets introduce ""architectural drift,"" such as swapping secure internal authentication libraries for generic, insecure alternatives."
+AI-LLM-01,Layer 7: Internal LLMs & Agentics,IG 1,2-Medium,Put strict network filters around your internal AI models so hackers can't steal or copy the AI's core logic.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Strict network filtering for internal AI models involves creating a secure perimeter around the model's infrastructure to control access and prevent unauthorized extraction of its architecture, parameters, or weights. This includes using firewalls, API gateways, and air-gapped or isolated network segments to ensure that only authenticated and authorized users or systems can interact with the model, thereby protecting intellectual property from competitors or malicious actors.
+
+Why AI Compounds Risk:
+AI exacerbates this risk because models are susceptible to query-based extraction attacks where an adversary can systematically probe an API with thousands of prompts to reconstruct the model's internal logic. Furthermore, the high development costs and competitive value of proprietary models make them lucrative targets for model theft, which can be executed remotely through vulnerable network interfaces or APIs.
+
+Examples:
+1. Deploy an AI gateway to centralize security, enabling real-time anomaly detection, prompt moderation, and strict rate limiting to prevent high-volume query-based extraction attempts.
+2. Utilize robust API access controls, such as OAuth or JWT, combined with IP-based filtering to ensure that only verified corporate applications and users can reach the model endpoints.
+3. Segment the network to host internal AI models in isolated environments, using advanced network filters to block all outbound data transfers that do not match pre-defined, authorized patterns."
+AI-LLM-02,Layer 7: Internal LLMs & Agentics,IG 1,3-Low,Put speed limits on AI agents so they don't get stuck in endless loops or crash internal systems.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Putting speed limits on AI agents involves implementing rate limiting and behavioral throttling to constrain the frequency and volume of requests an agent can make within a specific timeframe. This prevents agents from entering recursive loops, where they repeatedly execute the same faulty logic, or overwhelming infrastructure with high-velocity requests that can lead to system crashes or resource exhaustion.
+
+Why AI Compounds Risk:
+AI exacerbates this risk because agents operate at machine speed, capable of executing thousands of requests per second, which far exceeds human operational rhythms and traditional security monitoring capabilities. Furthermore, sophisticated AI can exhibit behavioral drift or execute coordinated, distributed activities that stay within standard fixed limits while still achieving a malicious or catastrophic aggregate impact.
+
+Examples:
+1. Implement sliding window rate limiting to continuously track requests over rolling time periods, preventing agents from exploiting fixed window boundaries to double their throughput.
+2. Deploy behavioral throttling that applies graduated constraints (such as 25% to 75% rate reductions) based on the severity of detected anomalies, such as CPU consumption patterns inconsistent with the agent's declared function.
+3. Utilize tools like distributed in-memory data stores and event streaming platforms for real-time behavioral scoring and sub-millisecond lookups to ensure consistent enforcement across multiple entry points in a corporate network."
+AI-LLM-03,Layer 7: Internal LLMs & Agentics,IG 1,3-Low,Give AI agents only the bare minimum permissions needed to do their jobs.,0,0,0,0,,,,"6.1, 6.2",PR.AA,"Detailed Description:
+Detailed Explanation: This recommendation refers to the Principle of Least Privilege (PoLP), a security model where AI agents are granted only the absolute minimum permissions necessary to perform a specific, legitimate task. Instead of providing broad ""administrative"" or ""superuser"" access, permissions are restricted by scope, time, and function to ensure that if an agent is compromised or malfunctions, the potential damage to the system is strictly limited.
+
+Why AI Compounds Risk:
+Why AI Exacerbates the Risk: AI agents can process data, make decisions, and execute actions across multiple systems at machine speed and scale, far exceeding human capabilities. Unlike traditional software with fixed workflows, AI agents reason and adapt at runtime, meaning a single over-privileged agent with a poorly phrased prompt or a malicious injection can cause systemic, tenant-wide damage or data exfiltration before a human administrator can intervene.
+
+Examples:
+1. Corporate Implementation Examples:
+2. Granular Role-Based Access: Define specific roles for agents, such as a customer support bot having permissions only to read and comment on tickets (tickets:read, tickets:comment) while being strictly barred from accessing billing or financial databases.
+3. Just-in-Time (JIT) Access: Replace permanent, standing permissions with short-lived tokens that are issued only when a task begins and automatically expire after a few minutes or upon task completion.
+4. Human-in-the-Loop Overrides: Implement mandatory human approval checkpoints for high-risk or destructive operations, such as transferring funds above a certain threshold, modifying security settings, or deleting production data."
+AI-LLM-04,Layer 7: Internal LLMs & Agentics,IG 1,3-Low,"Keep detailed records of everything AI agents do, including the prompts they receive and actions they take.",0,0,0,0,,,,8.1,DE.CM,"Detailed Description:
+Detailed Explanation: This recommendation involves maintaining comprehensive audit trails of all AI agent activities, including the specific prompts received, the internal reasoning or decision-making steps taken, the tools invoked, and the final outputs or actions executed. These logs serve as a critical observability mechanism for monitoring performance, ensuring regulatory compliance, and facilitating rapid debugging when autonomous systems behave unexpectedly.
+
+Why AI Compounds Risk:
+Why AI Exacerbates Risk: Unlike traditional software that follows static, predictable code, AI agents are non-deterministic and can make autonomous, on-the-fly decisions in dynamic environments. This complexity creates ""invisible blind spots"" where a single user request can trigger dozens of interconnected tool calls and LLM prompts, making it nearly impossible to diagnose failures, detect bias, or identify security breaches without structured, granular records.
+
+Examples:
+1. Deploy a centralized log management platform that uses machine-readable formats (like JSON) to capture timestamps, user context, intent classification, and the full sequence of actions for every agent transaction.
+2. Establish graduated logging levels—such as Basic, Detailed, and Audit—to balance operational needs with storage costs, ensuring that high-risk activities are documented with full decision trees and reasoning pathways.
+3. Integrate real-time monitoring and alerting systems that scan agent logs for anomalies, such as attempts to access sensitive PII or unauthorized external data sharing, to trigger immediate remediation workflows."
+AI-LLM-05,Layer 7: Internal LLMs & Agentics,IG 2,2-Medium,Test any fake (synthetic) or anonymized data to make sure hackers can't reverse-engineer it to find real people's identities.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Explanation: This recommendation emphasizes that synthetic or anonymized data is not inherently anonymous and may still contain patterns that allow for re-identification. Organizations must rigorously validate these datasets using privacy metrics and adversarial testing to ensure that sensitive information from the original records cannot be reconstructed or linked back to real individuals by malicious actors.
+
+Why AI Compounds Risk:
+AI Risk: AI models, particularly Large Language Models, can inadvertently memorize specific details from their training data rather than just learning general patterns. If these models are used to generate synthetic data without proper safeguards like differential privacy, they may replicate unique or rare data points that hackers can use to ""reverse-engineer"" and identify individuals in the source dataset.
+
+Examples:
+1. Conduct Membership Inference Attacks (MIAs) and Attribute Inference Attacks (AIAs) to determine if an attacker can identify whether a specific individual was part of the original training set or deduce sensitive hidden attributes.
+2. Apply Differential Privacy (DP) techniques during the data generation process, which mathematically guarantees that the inclusion or exclusion of any single data point does not significantly change the output, effectively neutralizing re-identification risks.
+3. Use the Distance to Closest Record (DCR) metric to measure the proximity between synthetic records and the original training data; if synthetic records are too close to real ones, they should be filtered out to prevent information leakage."
+AI-LLM-06,Layer 7: Internal LLMs & Agentics,IG 2,2-Medium,"Ensure AI agents operate using the requesting user's own identity and access permissions (e.g., via OAuth/OIDC tokens) rather than relying on highly privileged, hard-coded service accounts or static API keys.",0,0,0,0,,,,"6.2, 6.8",PR.AA,"Detailed Description:
+This recommendation advocates for authenticated delegation, where AI agents use short-lived, scoped tokens (like OAuth 2.1 with PKCE) linked to the specific human user's identity to ensure they only access data and systems the user is personally authorized to use. Moving away from static API keys or highly privileged service accounts prevents ""privilege escalation"" and ensures that every autonomous action is traceable to a specific human principal through a clear delegation chain.
+
+Why AI Compounds Risk:
+AI exacerbates security risks because agents operate at machine speed and can be non-deterministic, potentially taking unpredictable actions or triggering ""unbounded automation loops"" that a static service account wouldn't catch. Without user-bound identities, an agent's activity is indistinguishable from system-level actions, creating massive accountability gaps and a larger ""blast radius"" if an agent is manipulated via prompt injection to access sensitive data beyond its intended task.
+
+Examples:
+1. Implement an OAuth 2.0 On-Behalf-Of (OBO) flow for internal tools, where a customer support an AI assistant receives a delegated token to access a CRM only with the specific permissions of the logged-in representative.
+2. Integrate the Model Context Protocol (MCP) with an OIDC-compliant authorization server to allow AI agents to dynamically discover tools and receive purpose-bound, short-lived credentials for specific administrative tasks.
+3. Require ""out-of-band"" human authentication, such as a push notification or biometrics, before an AI agent can use a delegated token to execute high-risk financial transactions or infrastructure changes."
+AI-LLM-07,Layer 7: Internal LLMs & Agentics,IG 2,3-Low,Automatically scan and clean up the text users send to AI to stop them from sharing too much sensitive information.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+This recommendation involves implementing automated tools to scan user prompts in real-time for sensitive data such as PII, financial details, or intellectual property, and then sanitizing that text through redaction, anonymization, or blocking before it reaches the AI model.
+
+Why AI Compounds Risk:
+AI exacerbates data exposure risks because models often ingest and store user inputs for future training, making sensitive information retrievable by others, and employees frequently use AI to process large volumes of data for efficiency without realizing the security trade-offs.
+
+Examples:
+1. Deploy an AI-driven Data Loss Prevention (DLP) gateway that sits between users and LLMs to automatically identify and redact sensitive patterns like Social Security numbers or API keys in flight.
+2. Use semantic prompt detection tools to recognize the context of a query and block or flag interactions that attempt to share proprietary business logic or unreleased internal documents.
+3. Implement enterprise-sanctioned AI platforms that integrate with existing cloud security tools to provide full audit logging and real-time user guidance when a policy violation is attempted."
+AI-LLM-08,Layer 7: Internal LLMs & Agentics,IG 2,3-Low,Require a human to review and approve any important or risky actions taken by AI.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Explanation: This recommendation establishes a ""human-in-the-loop"" framework where automated systems cannot execute high-stakes decisions independently, ensuring accountability, ethical alignment, and error correction.
+
+Why AI Compounds Risk:
+Risk Exacerbation: AI can process data and execute actions at a scale and speed that outpaces manual oversight, meaning a single algorithmic error or biased model can cause widespread financial or reputational damage before detection.
+
+Examples:
+1. Require a senior manager to electronically sign off on AI-generated financial transactions or wire transfers exceeding a specific monetary threshold.
+2. Mandate that HR professionals review and validate AI-shortlisted job candidates to ensure the selection process adheres to diversity and inclusion standards.
+3. Implement a manual review step for AI-generated cybersecurity firewall rules before they are deployed to production environments to prevent accidental service outages."
+AI-LLM-09,Layer 7: Internal LLMs & Agentics,IG 2,3-Low,Create strict 'allow-lists' so AI agents can only talk to approved websites or internal systems.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Explanation: This recommendation involves implementing a deny-by-default security posture where AI agents are restricted to interacting only with a pre-approved list of URLs, APIs, or internal databases. By defining these strict boundaries at the configuration or network level, organizations prevent agents from reaching unverified external sites or sensitive internal systems that are not required for their specific tasks. This ensures that even if an agent is compromised or receives a malicious command, its ability to exfiltrate data or access unauthorized resources is physically limited by the underlying infrastructure.
+
+Why AI Compounds Risk:
+Why AI Exacerbates Risk: Traditional automation follows predictable, hard-coded logic, whereas AI agents use natural language reasoning to autonomously decide which tools to use and which sites to visit. This autonomy makes them susceptible to indirect prompt injection, where an agent might read a malicious website or document containing hidden instructions that trick it into sending sensitive data to an attacker-controlled URL. Furthermore, because agents can process and move data at scale much faster than a human, an unrestricted agent could quietly leak massive amounts of proprietary information through forced URL loads or unauthorized API calls before the activity is detected.
+
+Examples:
+1. Tool-Level Scoping: Configure the agent framework to use scoped tool definitions where each tool (e.g., a web search tool or a database connector) has a hard-coded allow-list of permitted domains or tables, denying any request that falls outside those specific parameters.
+2. Network Isolation and Sandboxing: Run AI agents within isolated containers or sandboxes that have egress filtering enabled at the network level, ensuring the agent can only establish connections to known corporate endpoints or verified third-party service providers.
+3. Identity and Access Management (IAM): Register AI agents as distinct identities within the corporate IAM system, assigning them the minimum necessary permissions to access specific internal applications or websites only during required business hours or for specific approved use cases."
+AI-LLM-10,Layer 7: Internal LLMs & Agentics,IG 2,3-Low,Thoroughly test and review the code and instructions for AI agents before letting them run in the real world.,0,0,0,0,,,,"16.1, 16.2","PR.DS, GV.SC","Detailed Description:
+This recommendation emphasizes the necessity of a rigorous evaluation pipeline for AI agents, involving tracking components, applying specific metrics (like hit rate and task completion), and logging execution flows via LLM tracing to ensure agents behave consistently and fail gracefully before deployment.
+
+Why AI Compounds Risk:
+AI exacerbates risk because agents often operate with ""superuse"" privileges and autonomy, meaning a single flaw or compromised skill can lead to machine-speed data exfiltration, unauthorized system access, or chained vulnerabilities across an entire agent network without human oversight.
+
+Examples:
+1. Establish LLM tracing and observability using tools to monitor end-to-end execution traces and individual component spans during runtime.
+2. Create a ""golden dataset"" of 20-50 diverse test cases, including edge cases and adversarial inputs, to benchmark agent performance and ensure consistency across model updates.
+3. Implement a mix of 3-5 metrics, such as tool hit rates and success rates, supplemented by LLM-based evaluators to provide qualitative judgment on response helpfulness and coherence."
+AI-LLM-11,Layer 7: Internal LLMs & Agentics,IG 2,3-Low,Continuously scan and classify sensitive company data so you know exactly what information AI tools might access.,0,0,0,0,,,,"3.1, 3.12","ID.AM, PR.DS","Detailed Description:
+Explanation: This recommendation involves using automated tools to proactively identify, inventory, and label sensitive information—such as PII, financial records, and intellectual property—across all corporate storage environments. By maintaining a continuous scanning pipeline, organizations can ensure that data is categorized by sensitivity levels (e.g., Public, Internal, Confidential, Restricted) in real-time, allowing for the application of appropriate security controls and access boundaries before data is ingested or processed by AI systems.
+
+Why AI Compounds Risk:
+Why AI Exacerbates Risk: AI models, particularly Large Language Models, can inadvertently memorize and leak sensitive training data through their outputs, a phenomenon known as privacy leakage. Furthermore, AI systems often require vast amounts of data to function, which increases the likelihood of ""shadow data"" or ""dark data"" being ingested without proper oversight, potentially exposing trade secrets or regulated information to unauthorized users via simple natural language queries.
+
+Examples:
+1. Deploy automated data classification pipelines, such as a cloud provider DLP or a native data compliance solution, to scan cloud storage buckets and SharePoint sites on a recurring schedule to tag files containing sensitive information types like Social Security numbers or credit card data.
+2. Integrate sensitive data monitoring solutions that use machine learning to identify unstructured data patterns (e.g., source code or legal agreements) and automatically apply digital tags or metadata that trigger Data Loss Prevention (DLP) actions, such as blocking the data from being uploaded to external Generative AI tools.
+3. Establish a risk-based data governance framework that requires all new data assets to be classified at the point of creation, combined with periodic ""on-demand"" scans of legacy data repositories to identify and quarantine sensitive items that do not meet the security requirements for AI processing."
+AI-LLM-12,Layer 7: Internal LLMs & Agentics,IG 2,3-Low,Put strict safety checks in place when letting AI talk directly to your company databases (like translating plain text into SQL queries).,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Implementing strict safety checks involves creating a layered defense to ensure that natural language prompts converted into SQL queries do not execute malicious commands, unauthorized data access, or destructive operations like dropping tables.
+
+Why AI Compounds Risk:
+AI exacerbates this risk by lowering the barrier to entry for attackers, allowing those without SQL knowledge to generate complex, database-specific injection payloads and bypass traditional security filters that look for manual SQL syntax.
+
+Examples:
+1. Use parameterized queries or prepared statements to ensure that any data generated by the LLM is treated strictly as a value rather than executable code.
+2. Apply the principle of least privilege by connecting the AI to the database using a dedicated account with restricted, read-only access to specific views rather than raw base tables.
+3. Implement human-in-the-loop or automated validation steps where generated SQL is inspected for high-risk keywords or structural anomalies before being executed on the live database."
+AI-LLM-13,Layer 7: Internal LLMs & Agentics,IG 2,3-Low,"Ensure that when AI tools talk to each other or use plugins, they prove who they are and only share the minimum necessary data.",0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Detailed Explanation: This recommendation emphasizes two pillars of secure interoperability for AI agents and plugins: identity verification and data minimization. First, every AI component must have a verifiable identity (authentication) to ensure that only authorized agents can initiate actions or access services. Second, once authenticated, these tools must adhere to the principle of least privilege, sharing only the specific data points required to complete a task (authorization), rather than providing broad access to underlying databases or user contexts.
+
+Why AI Compounds Risk:
+Why AI Exacerbates Risk: AI agents often operate autonomously and at high velocity, performing thousands of operations per minute which makes manual human oversight impossible. Unlike traditional software, AI is probabilistic and can be manipulated via prompt injection to perform ""excessive agency,"" where it might overshare sensitive data or call unauthorized APIs if strict, deterministic security boundaries and identity-linked scopes are not enforced.
+
+Examples:
+1. Deploy an OAuth 2.0 or 2.1 framework where every AI agent is registered as a unique non-human entity with short-lived, scoped access tokens. This ensures that if an agent needs to ""write to a calendar,"" its token is restricted to that specific action and cannot be used to ""delete files"" or ""read emails.""
+2. Use an AI Gateway to centralize authentication and enforce strict schema validation. The gateway can intercept outgoing requests from an AI tool to a plugin, stripping out any PII (Personally Identifiable Information) or unnecessary metadata before the data reaches the external service.
+3. Implement Fine-Grained Authorization (FGA) within RAG (Retrieval-Augmented Generation) pipelines. When a coordinator agent asks a retrieval plugin for information, the system should check the original user's identity claims against document metadata to ensure the agent only ""sees"" and ""shares"" the specific text chunks the user is legally permitted to access."
+AI-LLM-14,Layer 7: Internal LLMs & Agentics,IG 2,3-Low,Set up alerts to notify security teams if an AI agent starts behaving unexpectedly or out-of-bounds.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+This recommendation involves implementing real-time monitoring and automated notification systems that trigger when an AI agent's actions deviate from established baselines or predefined safety boundaries. It focuses on detecting anomalies in tool usage, data access patterns, and reasoning steps to identify potential compromises, such as prompt injection or autonomous drift, before they result in significant data exfiltration or system damage.
+
+Why AI Compounds Risk:
+AI exacerbates this risk because agents possess a degree of non-deterministic autonomy and often hold high-level privileges to interact with internal APIs and sensitive databases. Unlike traditional software with coded paths, an agent's behavior changes based on runtime prompts, making malicious actions indistinguishable from normal operations to standard security tools that lack AI-aware behavioral analysis.
+
+Examples:
+1. Implement behavioral analytics to establish a baseline for normal tool invocation sequences and trigger an alert if an agent suddenly accesses a sensitive database or external API it rarely uses.
+2. Set up threshold-based alerts for technical metrics such as a sudden spike in token consumption, high frequency of agent restarts, or a ""max iterations"" breach where an agent is stuck in a logic loop.
+3. Integrate AI-aware runtime detection that reconstructs the causal chain of events, alerting security teams when a sequence of individually benign actions—like a RAG query followed by a tool call—indicates a developing ""escape chain"" attack."
+AI-LLM-15,Layer 7: Internal LLMs & Agentics,IG 2,3-Low,Protect the specialized databases that feed knowledge to your AI (Vector Stores) with encryption and strict access rules.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Detailed Explanation: This recommendation focuses on securing vector databases, which store the mathematical representations (embeddings) of sensitive corporate data used by AI models. Protection involves implementing encryption at rest (using standards like AES-256) and in transit (via TLS 1.2+) to ensure data is unreadable if intercepted. Strict access rules, such as Role-Based Access Control (RBAC) and the principle of least privilege, ensure that only authorized services and personnel can query or modify these high-value data stores.
+
+Why AI Compounds Risk:
+Why AI Exacerbates Risk: AI transforms abstract vectors back into readable data through inversion attacks, where malicious actors use surrogate models to reconstruct the original sensitive text or images. Furthermore, the reliance on Retrieval-Augmented Generation (RAG) means that if a vector store is compromised or poisoned, the AI will confidently serve manipulated or leaked information directly to end-users, bypassing traditional document-level security.
+
+Examples:
+1. Deploy vector databases within a Private Virtual Cloud (VPC) and use fine-grained RBAC to restrict access so that only the specific AI application's service account can execute queries, while engineering access is limited to anonymized development environments.
+2. Use an enterprise key management service to manage and rotate encryption keys for the vector store, ensuring that even administrators with database access cannot view the underlying embeddings without the proper cryptographic keys.
+3. Enable comprehensive audit logging and automated monitoring to track every similarity search query, setting rate limits and alerts for anomalous patterns that might indicate a systematic attempt to exfiltrate or reverse-engineer the database content."
+AI-LLM-16,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,Regularly test internal AI systems by having security teams pretend to be hackers (Red Teaming) to find weak spots.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+AI red teaming is a structured, adversarial testing process where security teams simulate real-world attacks to identify vulnerabilities in AI models, data pipelines, and APIs before they can be exploited. This proactive approach goes beyond traditional software testing by focusing on the unique ways AI can misbehave, such as through prompt injection, data poisoning, or model evasion, to ensure the system is resilient and trustworthy.
+
+Why AI Compounds Risk:
+AI exacerbates cybersecurity risks because its probabilistic and open-ended nature introduces a larger, more complex attack surface that traditional security tools often miss. Unlike static code, AI systems can be manipulated through natural language (prompt injection), their learning process can be corrupted (data poisoning), and they may inadvertently leak sensitive training data or execute unauthorized actions when integrated with enterprise tools.
+
+Examples:
+1. Implement a policy for continuous automated red teaming by using ""red team LLMs"" to generate thousands of adversarial prompts at scale to test for jailbreaks and content policy violations.
+2. Conduct manual red teaming exercises using diverse security experts to simulate sophisticated ""role-playing"" or ""encoding"" attacks that attempt to bypass safety guardrails and access restricted internal information.
+3. Perform operational risk assessments on agentic AI by testing whether autonomous agents can be tricked into executing unauthorized financial transactions or database queries through conversational manipulation."
+AI-LLM-17,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,"Force AI tools that write or run code to do so in a secure, isolated bubble (sandbox) so they can't break anything on the network.",0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Detailed Explanation: Sandboxing creates a secure, isolated runtime environment where AI-generated code can execute without direct access to the host operating system, production databases, or internal networks. This isolation ensures that even if the AI generates malicious or buggy code, the impact is contained within a temporary ""bubble,"" preventing system-wide crashes, data exfiltration, or unauthorized lateral movement across the corporate infrastructure.
+
+Why AI Compounds Risk:
+Why AI Exacerbates Risk: Unlike human-written code that goes through peer review, AI models can generate billions of lines of code instantly that may contain hallucinations, unintentional vulnerabilities, or ""jailbroken"" malicious logic. Since AI agents often require autonomy to perform tasks, allowing them to execute code directly on application servers or local machines without isolation creates a high-speed vector for spreading malware, leaking secrets, or corrupting critical data at scale.
+
+Examples:
+1. Deploy ephemeral, container-based sandboxes using tools like container orchestration platforms with sandboxed runtimes to provide microVM isolation for every AI-generated task.
+2. Integrate specialized AI execution APIs to run untrusted code in short-lived environments that automatically terminate after a task is completed.
+3. Use WebAssembly (WASM) runtimes to execute AI-generated Python or JavaScript in a lightweight, browser-based or server-side sandbox that strictly limits filesystem and network access."
+AI-LLM-18,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,Keep different users' AI chats strictly separated so one person's data doesn't accidentally leak into another person's chat.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Explanation: This recommendation ensures that every user's interaction with an AI system is isolated within a secure, private session. By treating each conversation as a distinct instance mapped to a specific authenticated identity, organizations prevent cross-contamination where one person's sensitive inputs—such as proprietary code, financial data, or personal information—might be surfaced to another user through shared chat histories, system caches, or the model’s internal memory.
+
+Why AI Compounds Risk:
+Why AI Exacerbates the Risk:
+
+Examples:
+1. Data Training Loops: Many AI models use human inputs to improve and retrain themselves, meaning sensitive data shared by one user could potentially be generated as an answer for a different user in the future.
+2. Context and Memory Features: Modern AI assistants often use persistent memory or long context windows to recall past interactions; without strict separation, these features can mistakenly retrieve and display private details from a separate user's session.
+3. LLM Scope Violations: AI agents often have the ability to call external tools or databases; poor session management can lead to the AI unintentionally retrieving and leaking internal organizational data to unauthorized employees during a prompt.
+4. Corporate Implementation Examples:
+5. Unique Session Identifiers: Implement backend logic using unique identifiers (such as UUIDs) for every chat session to ensure that data retrieval requests are strictly bound to the authenticated user's ID and cannot be accessed by other sessions.
+6. Enterprise Managed Environments: Utilize enterprise-tier AI subscriptions that offer administrative silos, ensuring that organizational data is isolated from the public model and that individual employee histories remain private within the company's tenant.
+7. Robust Backend Security Rules: Configure cloud database permissions and security rules to require mandatory authentication for every data request, preventing ""authenticated user"" vulnerabilities where any logged-in person could potentially view the entire database of stored chats."
+AI-LLM-19,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,Keep a 'nutrition label' (Bill of Materials) for your AI models and verify that no one has tampered with their code or plugins.,0,0,0,0,,,,15.1,GV.SC,"Detailed Description:
+This recommendation advises organizations to maintain an AI Bill of Materials (AIBOM), which is a machine-readable inventory of every dataset, model, and software component used in an AI system. It serves as a ""nutrition label"" to provide transparency into the system's ""ingredients,"" such as data provenance, model lineage, and third-party dependencies. This process ensures that the AI's code and plugins remain secure and uncorrupted by verifying their integrity throughout the development and deployment lifecycle.
+
+Why AI Compounds Risk:
+AI exacerbates security risks because it is not static software; it is a ""living"" system that evolves through retraining and depends on complex, often external, data pipelines. This complexity creates a larger attack surface where malicious actors can inject corrupted data (data poisoning) or manipulate model behavior through untrusted plugins and hidden dependencies, which traditional security tools may fail to detect.
+
+Examples:
+1. Use automated tools to generate and update AIBOMs within CI/CD pipelines to ensure the inventory reflects real-time changes in models and datasets.
+2. Implement standardized profiles, such as SPDX 3.0, to document model architecture, licensing, and training data sources in a consistent, interoperable format.
+3. Establish a formal governance framework that assigns clear ownership to MLOps and data science teams for monitoring ""trust ingredients,"" such as data deletion policies and human-in-the-loop oversight."
+AI-LLM-20,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,Track exactly where your AI training data comes from to ensure hackers haven't poisoned it with malicious information.,0,0,0,0,,,,15.1,GV.SC,"Detailed Description:
+Explanation: This recommendation refers to establishing data provenance, which is the ability to trace the origin, ownership, transformations, and generation of datasets used to train or fine-tune AI models. By documenting the historical record of data—including who created it, when it was created, and what changes were made—organizations can verify the authenticity and integrity of their information. This process allows developers to identify and filter out poisoned data, which is malicious or biased information intentionally injected by hackers to skew model outputs, create hidden backdoors, or degrade system performance.
+
+Why AI Compounds Risk:
+Why AI Exacerbates the Risk: AI models learn patterns and make decisions based entirely on the quality of their training data, meaning any foundational compromise is inherited and perpetuated throughout the model's operational lifetime. The complexity of AI often creates black boxes where it is difficult to see how data transformations lead to specific results, making subtle ""stealth attacks"" hard to detect through standard validation. Furthermore, the massive scale and speed of data ingestion in modern generative AI, which often involves scraping vast amounts of unverified web content, provide numerous entry points for attackers to silently plant malicious samples.
+
+Examples:
+1. Use automated tools to generate data provenance cards that summarize a dataset's creators, original sources, and license conditions to ensure all training material is reputable and legally compliant.
+2. Adopt cryptographic authentication standards, such as digital signatures, to create tamper-proof records of the history of digital content, allowing the system to verify that the data has not been altered by an unauthorized party.
+3. Establish a formal metadata management system that records column-level lineage, tracking every touchpoint and transformation a data asset undergoes from its original collection to its final use in the AI pipeline."
+AI-LLM-21,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,Install data loss prevention (DLP) tools to stop AI agents from accidentally or maliciously leaking sensitive company data.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Data Loss Prevention (DLP) tools are security solutions that identify, monitor, and protect sensitive information—such as intellectual property, PII, and financial records—from unauthorized access or transmission. In the context of AI agents, DLP involves deploying specialized software that inspects the data flowing into prompts (inputs) and the information generated by the models (outputs) to ensure that confidential company data is not leaked to external AI providers or unauthorized users.
+
+Why AI Compounds Risk:
+AI exacerbates data leakage risks because agents often operate with high levels of autonomy and can move data through multi-hop chains, including vector stores and downstream automations, which traditional security controls cannot see. Furthermore, techniques like Retrieval-Augmented Generation (RAG) can inadvertently strip away original document access controls, while prompt injection attacks can manipulate agents into revealing sensitive training data or internal documents that should remain private.
+
+Examples:
+1. Deploy an AI Gateway, such as an enterprise API Gateway, to serve as a single point of inspection for all API-based AI traffic, allowing the organization to enforce real-time content monitoring and block sensitive data from leaving the network perimeter during LLM interactions.
+2. Use browser-native security extensions, like an enterprise browser security extension or a browser security solution, to provide last-mile visibility and granular control over AI sessions, enabling the organization to block copy-paste or file upload actions within specific generative AI tools on both managed and unmanaged devices.
+3. Implement semantic-aware DLP solutions, such as semantic-aware DLP or AI-driven data security posture management (DSPM) solutions, which use machine learning to understand the context of unstructured data; this allows the system to detect sensitive information hidden in paraphrased summaries or translated text that traditional pattern-matching tools would miss."

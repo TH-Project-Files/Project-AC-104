@@ -1,0 +1,28 @@
+﻿site_name: Argus Centurion (AC-104)
+site_description: 104 Points of Visibility and Command for Enterprise AI Security
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: blue
+    - scheme: default
+      primary: indigo
+      accent: blue
+  features:
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Master Control List: controls_list.md
+  - Security Layers:
+    - Layer 0 (Governance): 'controls/AI-GOV-01.md'
+    - Layer 3 (Network): 'controls/AI-NET-01.md'
+    - Layer 4 (Data): 'controls/AI-LOG-01.md'
+    - Layer 5 (Access): 'controls/AI-ACC-01.md'
+    - Layer 6 (Messaging/Web): 'controls/AI-MSG-01.md'
+    - Layer 7 (Application): 'controls/AI-APP-10.md'
