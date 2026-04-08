@@ -1,5 +1,3 @@
-Here is a drafted README for the `Project-AC-104` GitHub repository, incorporating the framework and controls detailed in the provided materials.
-
 ***
 
 # Project-AC-104: Defending at Machine Speed
