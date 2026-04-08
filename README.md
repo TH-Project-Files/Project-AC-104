@@ -27,7 +27,7 @@ To move from total chaos to absolute clarity, begin by filtering the `AI_Readine
 
 ## Repository Structure
 This repository contains the following structure to support your implementation:
-*   `/data`: Contains the primary `AI_Readiness_Tracker_Final_Vendor_Agno_updated_v35.csv` file, cataloging all governance, endpoint, and network controls.
+*   `/data`: Contains the primary `AC-104-V1.csv` file, cataloging all governance, endpoint, and network controls.
 *   `/docs`: Core documentation files for the framework.
 *   `mkdocs.yml`: Configuration file for building and hosting the project's documentation pages.
 
