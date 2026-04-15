@@ -1,14 +1,15 @@
-﻿# AI-GOV-01: Establish and enforce a Generative AI Acceptable Use Policy
+﻿# AI-GOV-01
 
-**Project:** Argus Centurion (AC-104)  
 **Category:** Layer 0: Governance & System Controls  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `15.1, 17.1` | NIST CSF: `GV.PO, GV.OV`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 15.1, 17.1  
+**NIST CSF Subcategories:** GV.PO, GV.OV  
 
----
+## Recommendation Description
+Establish and enforce policy on the appropriate application of Large Language Models such as LLM Chatbots, Vibe Coding, and Agentic AI.
 
-## Control Details
+## Details
 Detailed Description:
 This recommendation involves creating and enforcing a formal set of rules that define how employees can ethically and securely use generative AI tools. It establishes clear boundaries regarding permitted and prohibited use cases, data handling requirements, and the roles and responsibilities of staff to ensure AI adoption aligns with organizational values and legal obligations.
 
@@ -20,5 +21,11 @@ Examples:
 2. Explicitly prohibit the input of sensitive information—such as personally identifiable information (PII), intellectual property, or trade secrets—into public or non-corporate-managed AI systems.
 3. Implement a mandatory human-in-the-loop (HITL) review process where employees must fact-check and verify all AI-generated outputs for accuracy and bias before they are used in business decisions or external communications.
 
----
-*Part of the Argus Centurion (AC-104) Open Source Security Framework.*
+## Implementation Status
+- **Policy Defined:** 0
+- **Control Implemented:** 0
+- **Control Automated:** 0
+- **Control Reported:** 0
+
+**Assigned To:**   
+**Notes/Evidence:**   

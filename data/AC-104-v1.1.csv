@@ -9,7 +9,7 @@ Examples:
 1. Require vendors to sign a Data Processing Agreement (DPA) explicitly stating that customer data (prompts, RAG context, file uploads, outputs) will absolutely not be used to train, fine-tune, or improve foundational models.
 2. Mandate that multi-tenant AI SaaS platforms provide logical separation and encrypted isolation of tenant workspaces, with Bring Your Own Key (BYOK) support where applicable.
 3. Ensure the vendor supports automated export of AI interaction logs and audit trails to the enterprise SIEM via API for continuous monitoring."
-AI-GOV-01,Layer 0: Governance & System Controls,IG 1,2-Medium,Establish and enforce a Generative AI Acceptable Use Policy,0,0,0,0,,,,"15.1, 17.1","GV.PO, GV.OV","Detailed Description:
+AI-GOV-01,Layer 0: Governance & System Controls,IG 1,2-Medium,"Establish and enforce policy on the appropriate application of Large Language Models such as LLM Chatbots, Vibe Coding, and Agentic AI.",0,0,0,0,,,,"15.1, 17.1","GV.PO, GV.OV","Detailed Description:
 This recommendation involves creating and enforcing a formal set of rules that define how employees can ethically and securely use generative AI tools. It establishes clear boundaries regarding permitted and prohibited use cases, data handling requirements, and the roles and responsibilities of staff to ensure AI adoption aligns with organizational values and legal obligations.
 
 Why AI Compounds Risk:
