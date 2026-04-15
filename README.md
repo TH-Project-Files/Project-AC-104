@@ -25,7 +25,7 @@ To move from chaos to clarity, download the AC-104-V1.csv tracker from /data and
 
 ## Repository Structure
 This repository contains the following structure to support your implementation:
-*   `/data`: Contains the primary `AC-104-V1.csv` file, cataloging all governance, identity, endpoint, application, and network controls.
+*   `/data`: Contains the primary `AC-104-version.csv` file, cataloging all governance, identity, endpoint, application, and network controls.
 *   `/docs`: Core documentation files for the framework.
 *   `mkdocs.yml`: Configuration file for building and hosting the project's documentation pages.
 
