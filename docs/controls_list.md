@@ -31,6 +31,7 @@
 | **[AI-USR-11](./controls/AI-USR-11.md)** | Layer 0: User Facing Controls | IG 2 | 3-Low | Develop/deploy an in-house tool to send One-Time Codes (OTCs) to pre-determined personal cellphones or personal emails to out-of-band verify high-risk requests. |
 | **[AI-DLK-03](./controls/AI-DLK-03.md)** | Layer 2: Data Link | IG 3 | 3-Low | Implement Zero-Trust segmentation to prevent lateral movement |
 | **[AI-DLK-04](./controls/AI-DLK-04.md)** | Layer 2: Data Link | IG 3 | 3-Low | Utilize AI Network Baseline Monitoring to detect anomalous network traffic patterns and alert on them |
+| **[AI-NET-09](./controls/AI-NET-09.md)** | Layer 2: Network & Infrastructure Controls | IG 1 | 1-High | Mandate SSL/TLS Decryption (SSL Forward Proxy / Inspection) to enable deep packet inspection, prompt scanning, and data loss prevention (DLP). |
 | **[AI-NET-01](./controls/AI-NET-01.md)** | Layer 3: Network | IG 1 | 2-Medium | Mandate enterprise Secure Recursive DNS with encrypted lookups (DoH/DoT) backed by real-time “big data” threat intelligence to block malicious domains and resist DNS spoofing/hijacking |
 | **[AI-NET-02](./controls/AI-NET-02.md)** | Layer 3: Network | IG 1 | 2-Medium | Implement Strict Egress Filtering to stop C2 callbacks |
 | **[AI-NET-03](./controls/AI-NET-03.md)** | Layer 3: Network | IG 1 | 2-Medium | Configure firewall and DNS filtering blocklists to automatically drop traffic to Newly Registered and Parked Domains |
@@ -59,6 +60,7 @@
 | **[AI-ACC-06](./controls/AI-ACC-06.md)** | Layer 5: Access Session | IG 2 | 2-Medium | Implement Context-Aware Authentication (e.g. typing cadence, location) |
 | **[AI-AUTH-05](./controls/AI-AUTH-05.md)** | Layer 5: Access Session | IG 2 | 2-Medium | Monitor external threat intelligence and dark web sources for compromised employee credentials, and enforce automated password resets for exposed accounts. |
 | **[AI-ACC-07](./controls/AI-ACC-07.md)** | Layer 5: Access Session | IG 3 | 1-High | Enable device-bound/session-bound token protections (where supported) to reduce replay of stolen session tokens |
+| **[AI-END-10](./controls/AI-END-10.md)** | Layer 5: Endpoint & Device Controls | IG 1 | 1-High | Implement Continuous Authenticated/Agent-Based Vulnerability Scanning across all endpoints and AI infrastructure. |
 | **[AI-END-01](./controls/AI-END-01.md)** | Layer 6: Endpoint Presentation | IG 1 | 2-Medium | Harden Script Execution: Restrict script execution (PowerShell/Python/JS) to only digitally signed scripts and enforce allowlists for trusted script paths to block AI-generated droppers. |
 | **[AI-END-02](./controls/AI-END-02.md)** | Layer 6: Endpoint Presentation | IG 1 | 2-Medium | Automate Macro and Script Disablement for non-admin users |
 | **[AI-END-03](./controls/AI-END-03.md)** | Layer 6: Endpoint Presentation | IG 1 | 3-Low | Enforce Automated Patch Management for OS and 3rd-party apps |
@@ -103,6 +105,4 @@
 | **[AI-LLM-19](./controls/AI-LLM-19.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Keep a 'nutrition label' (Bill of Materials) for your AI models and verify that no one has tampered with their code or plugins. |
 | **[AI-LLM-20](./controls/AI-LLM-20.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Track exactly where your AI training data comes from to ensure hackers haven't poisoned it with malicious information. |
 | **[AI-LLM-21](./controls/AI-LLM-21.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Install data loss prevention (DLP) tools to stop AI agents from accidentally or maliciously leaking sensitive company data. |
-| **[AI-NET-09](./controls/AI-NET-09.md)** | Layer 2: Network & Infrastructure Controls | IG 1 | 1-High | Mandate SSL/TLS Decryption (SSL Forward Proxy / Inspection) to enable deep packet inspection, prompt scanning, and data loss prevention (DLP). |
-| **[AI-END-10](./controls/AI-END-10.md)** | Layer 5: Endpoint & Device Controls | IG 1 | 1-High | Implement Continuous Authenticated/Agent-Based Vulnerability Scanning across all endpoints and AI infrastructure. |
 
