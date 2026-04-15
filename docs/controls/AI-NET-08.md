@@ -1,14 +1,15 @@
-﻿# AI-NET-08: Monitor BGP with Automated Route Hijacking Detection
+﻿# AI-NET-08
 
-**Project:** Argus Centurion (AC-104)  
 **Category:** Layer 3: Network  
 **Implementation Group:** IG 3  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `12.1` | NIST CSF: `PR.NW`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 12.1  
+**NIST CSF Subcategories:** PR.NW  
 
----
+## Recommendation Description
+Monitor BGP with Automated Route Hijacking Detection
 
-## Control Details
+## Details
 Detailed Description:
 Monitoring BGP with automated route hijacking detection involves using specialized software to continuously observe Border Gateway Protocol announcements for unauthorized or suspicious changes. These tools detect prefix hijacks, where an attacker falsely claims ownership of IP addresses, and path hijacks, where the routing path is manipulated to intercept traffic. Automated systems provide real-time alerts, event severity assessment, and visualization tools to help network operators quickly identify and mitigate incidents that could lead to data interception, man-in-the-middle attacks, or service outages.
 
@@ -20,5 +21,11 @@ Examples:
 2. Implement Resource Public Key Infrastructure (RPKI) and Route Origin Validation (ROV) to cryptographically verify the legitimacy of BGP announcements and automatically drop invalid routes.
 3. Integrate BGP stream data into a corporate Security Information and Event Management (SIEM) system to correlate routing anomalies with other internal network performance data and traffic patterns.
 
----
-*Part of the Argus Centurion (AC-104) Open Source Security Framework.*
+## Implementation Status
+- **Policy Defined:** 0
+- **Control Implemented:** 0
+- **Control Automated:** 0
+- **Control Reported:** 0
+
+**Assigned To:**   
+**Notes/Evidence:**   
