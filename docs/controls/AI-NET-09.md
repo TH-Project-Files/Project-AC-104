@@ -3,8 +3,8 @@
 **Category:** Layer 2: Network & Infrastructure Controls  
 **Implementation Group:** IG 1  
 **Aggregate Risk Level:** 1-High  
-**CIS v8 Safeguards:**   
-**NIST CSF Subcategories:**   
+**CIS v8 Safeguards:** 9.3, 13.3, 13.6  
+**NIST CSF Subcategories:** PR.PT-4, DE.CM-1  
 
 ## Recommendation Description
 Mandate SSL/TLS Decryption (SSL Forward Proxy / Inspection) to enable deep packet inspection, prompt scanning, and data loss prevention (DLP).

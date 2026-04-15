@@ -3,8 +3,8 @@
 **Category:** Layer 5: Endpoint & Device Controls  
 **Implementation Group:** IG 1  
 **Aggregate Risk Level:** 1-High  
-**CIS v8 Safeguards:**   
-**NIST CSF Subcategories:**   
+**CIS v8 Safeguards:** 7.1, 7.5  
+**NIST CSF Subcategories:** ID.RA-1, DE.CM-8  
 
 ## Recommendation Description
 Implement Continuous Authenticated/Agent-Based Vulnerability Scanning across all endpoints and AI infrastructure.
