@@ -3,9 +3,9 @@
 # Project-AC-104: Defending Against Machine Speed
 
 ## Overview
-The rules of cyber security have completely changed. Threats are now supercharged with AI, moving faster than human teams can track and compressing attack timelines from days or hours down to just minutes. Adversaries are leveraging hyper-realistic deepfakes, perfectly personalized phishing emails, and polymorphic malware that continuously rewrites its own code to stay invisible. 
+The rules of cyber security are changing. Threats are now supercharged with AI, moving faster than human teams can track and compressing attack timelines from days or hours down to just minutes. Adversaries are leveraging hyper-realistic deepfakes, perfectly personalized phishing emails, and agentic polymorphic malware that continuously rewrites its own code to stay invisible. 
 
-This repository houses an **AI Defense-in-Depth Implementation Guide**, a brand new, highly actionable maturity model designed specifically to counter these fast-moving threats and help you defend at machine speed.
+This repository houses an **AI Defense-in-Depth Implementation Guide**, a brand new, highly actionable maturity model designed specifically to counter these fast-moving threats and help you defend against machine speed risks.
 
 ## The Defense-in-Depth Framework
 Rather than relying on unfiltered aggregate tasks, or vague high-level recommendations, this model is structured in multiple ways, beginning with assessing risk across four core pillars to help you prioritize what to protect first:
@@ -21,7 +21,7 @@ To prevent teams from becoming overwhelmed by attempting to implement 100+ contr
 *   **IG 3:** Specialized, high-end controls for well-resourced organizations.
 
 ## Getting Started
-To move from chaos to clarity, download the AC-104-V1.csv tracker from /data and begin by filtering to show only the controls with a **"1-High" aggregate risk level** within **Implementation Group 1**. This single step focuses your energy where it will have the largest impact. Proceed from there!
+To move from chaos to clarity, download the AC-104-version.csv tracker from /data and begin by filtering to show only the controls with a **"1-High" aggregate risk level** within **Implementation Group 1**. This single step focuses your energy where it will have the largest impact. Proceed from there!
 
 ## Repository Structure
 This repository contains the following structure to support your implementation:
