@@ -1,6 +1,6 @@
 ***
 
-# Project-AC-104: Defending at Machine Speed
+# Project-AC-104: Defending Against Machine Speed
 
 ## Overview
 The rules of cyber security have completely changed. Threats are now supercharged with AI, moving faster than human teams can track and compressing attack timelines from days or hours down to just minutes. Adversaries are leveraging hyper-realistic deepfakes, perfectly personalized phishing emails, and polymorphic malware that continuously rewrites its own code to stay invisible. 
