@@ -21,7 +21,7 @@ To prevent teams from becoming overwhelmed by attempting to implement 100+ contr
 *   **IG 3:** Specialized, high-end controls for well-resourced organizations.
 
 ## Getting Started
-To move from chaos to clarity, download the AC-104-version.csv tracker from /data and begin by filtering to show only the controls with a **"1-High" aggregate risk level** within **Implementation Group 1**. This single step focuses your energy where it will have the largest impact. Proceed from there!
+To move from chaos to clarity, download the AC-104-version.csv tracker from /data and begin by filtering to show only the controls with a **"1-High" aggregate risk level** within **Implementation Group 1**. This single step focuses your energy where it will have the largest impact. Use the Control Implemented column to track your score from 1-10, and when youre ready expand to the other Implementation Groups and maturity score columns. Track your readiness averages across implementation groups and categories for executive reporting. 
 
 ## Repository Structure
 This repository contains the following structure to support your implementation:
