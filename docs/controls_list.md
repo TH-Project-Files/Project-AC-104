@@ -31,7 +31,7 @@
 | **[AI-USR-11](./controls/AI-USR-11.md)** | Layer 0: User Facing Controls | IG 2 | 3-Low | Develop/deploy an in-house tool to send One-Time Codes (OTCs) to pre-determined personal cellphones or personal emails to out-of-band verify high-risk requests. |
 | **[AI-DLK-03](./controls/AI-DLK-03.md)** | Layer 2: Data Link | IG 3 | 3-Low | Implement Zero-Trust segmentation to prevent lateral movement |
 | **[AI-DLK-04](./controls/AI-DLK-04.md)** | Layer 2: Data Link | IG 3 | 3-Low | Utilize AI Network Baseline Monitoring to detect anomalous network traffic patterns and alert on them |
-| **[AI-NET-09](./controls/AI-NET-09.md)** | Layer 2: Network & Infrastructure Controls | IG 1 | 1-High | Mandate SSL/TLS Decryption (SSL Forward Proxy / Inspection) to enable deep packet inspection, prompt scanning, and data loss prevention (DLP). |
+| **[AI-NET-09](./controls/AI-NET-09.md)** | Layer 2: Network & Infrastructure Controls | IG 3 | 1-High | Mandate SSL/TLS Decryption (SSL Forward Proxy / Inspection) to enable deep packet inspection, prompt scanning, and data loss prevention (DLP). |
 | **[AI-NET-01](./controls/AI-NET-01.md)** | Layer 3: Network | IG 1 | 2-Medium | Mandate enterprise Secure Recursive DNS with encrypted lookups (DoH/DoT) backed by real-time “big data” threat intelligence to block malicious domains and resist DNS spoofing/hijacking |
 | **[AI-NET-02](./controls/AI-NET-02.md)** | Layer 3: Network | IG 1 | 2-Medium | Implement Strict Egress Filtering to stop C2 callbacks |
 | **[AI-NET-03](./controls/AI-NET-03.md)** | Layer 3: Network | IG 1 | 2-Medium | Configure firewall and DNS filtering blocklists to automatically drop traffic to Newly Registered and Parked Domains |
@@ -105,4 +105,8 @@
 | **[AI-LLM-19](./controls/AI-LLM-19.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Keep a 'nutrition label' (Bill of Materials) for your AI models and verify that no one has tampered with their code or plugins. |
 | **[AI-LLM-20](./controls/AI-LLM-20.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Track exactly where your AI training data comes from to ensure hackers haven't poisoned it with malicious information. |
 | **[AI-LLM-21](./controls/AI-LLM-21.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Install data loss prevention (DLP) tools to stop AI agents from accidentally or maliciously leaking sensitive company data. |
+| **[AI-REC-01](./controls/AI-REC-01.md)** | Layer 0: Governance & System Controls | IG 2 | 1-High | Establish AI-specific Data Recovery procedures to restore the "behavioral fidelity" of RAG corpora, vector databases, and agent memory states. |
+| **[AI-MCP-01](./controls/AI-MCP-01.md)** | Layer 7: Application | IG 2 | 2-Medium | Implement an Enterprise Model Context Protocol (MCP) Registry to govern capability exposure, track server provenance, and detect capability drift. |
+| **[AI-AGT-02](./controls/AI-AGT-02.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 1-High | Enforce Zero-Trust segmentation and strict Role-Based Access Control (RBAC) boundaries for agent-to-agent communications. |
+| **[AI-END-11](./controls/AI-END-11.md)** | Layer 6: Endpoint Presentation | IG 2 | 2-Medium | Govern and restrict Endpoint-Hosted AI Runtimes (e.g., local LLMs) to prevent local data leakage and unauthorized API binding. |
 
