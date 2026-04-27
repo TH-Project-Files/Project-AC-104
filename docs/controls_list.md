@@ -9,6 +9,7 @@
 | **[AI-GOV-04](./controls/AI-GOV-04.md)** | Layer 0: Governance & System Controls | IG 2 | 1-High | Implement Continuous Session Risk Monitoring (e.g., 'impossible travel') to detect and automatically revoke session tokens hijacked by AI-automated scripts. |
 | **[AI-GOV-08](./controls/AI-GOV-08.md)** | Layer 0: Governance & System Controls | IG 2 | 1-High | Establish OAuth Application Governance to restrict third-party 'AI Productivity' apps from accessing sensitive mailbox or cloud storage data. |
 | **[AI-NHI-01](./controls/AI-NHI-01.md)** | Layer 0: Governance & System Controls | IG 2 | 1-High | Establish Non-Human Identity (NHI) Inventory and Governance (service accounts, API keys, tokens, agent identities) |
+| **[AI-REC-01](./controls/AI-REC-01.md)** | Layer 0: Governance & System Controls | IG 2 | 1-High | Establish AI-specific Data Recovery procedures to restore the "behavioral fidelity" of RAG corpora, vector databases, and agent memory states. |
 | **[AI-GOV-09](./controls/AI-GOV-09.md)** | Layer 0: Governance & System Controls | IG 2 | 2-Medium | Establish a Deepfake/Voice Clone Executive Protection Protocol |
 | **[AI-GOV-10](./controls/AI-GOV-10.md)** | Layer 0: Governance & System Controls | IG 2 | 2-Medium | Require AI Vendor Risk Assessments for all new software purchases |
 | **[AI-GOV-11](./controls/AI-GOV-11.md)** | Layer 0: Governance & System Controls | IG 2 | 2-Medium | Develop an AI-specific Incident Response Playbook |
@@ -40,7 +41,6 @@
 | **[AI-NET-05](./controls/AI-NET-05.md)** | Layer 3: Network | IG 2 | 2-Medium | Run Continuous Attack Surface Management (ASM) scans |
 | **[AI-NET-06](./controls/AI-NET-06.md)** | Layer 3: Network | IG 2 | 2-Medium | Implement automated threat intelligence feeds from big data sources (e.g., large-scale MDR providers or crowd-sourced intelligence) to proactively block emerging AI-driven attacker infrastructure. |
 | **[AI-NET-07](./controls/AI-NET-07.md)** | Layer 3: Network | IG 3 | 2-Medium | Enable hardware-accelerated Deep Learning (DL) on Next-Generation Firewalls (NGFW) for inline threat detection |
-| **[AI-NET-08](./controls/AI-NET-08.md)** | Layer 3: Network | IG 3 | 2-Medium | Monitor BGP with Automated Route Hijacking Detection |
 | **[AI-LOG-01](./controls/AI-LOG-01.md)** | Layer 4: Data | IG 1 | 2-Medium | Establish policies and controls for AI prompt/chat retention, privacy masking, and strict access management for observability logs. |
 | **[AI-RAG-01](./controls/AI-RAG-01.md)** | Layer 4: Data | IG 2 | 1-High | Implement RAG authorization enforcement and security trimming to ensure AI only synthesizes data the user is permitted to see. |
 | **[AI-TRN-01](./controls/AI-TRN-01.md)** | Layer 4: Transport | IG 1 | 2-Medium | Enforce Default-Deny Inbound Policies at the transport layer |
@@ -66,6 +66,7 @@
 | **[AI-END-03](./controls/AI-END-03.md)** | Layer 6: Endpoint Presentation | IG 1 | 3-Low | Enforce Automated Patch Management for OS and 3rd-party apps |
 | **[AI-END-04](./controls/AI-END-04.md)** | Layer 6: Endpoint Presentation | IG 2 | 2-Medium | Deploy Advanced Behavioral Telemetry: Implement high-fidelity logging (e.g. Sysmon-style) to capture process creation and network connections used by AI-assisted malware that evades signature-based AV. |
 | **[AI-END-05](./controls/AI-END-05.md)** | Layer 6: Endpoint Presentation | IG 2 | 2-Medium | Remove or highly manage local admin and installation rights |
+| **[AI-END-11](./controls/AI-END-11.md)** | Layer 6: Endpoint Presentation | IG 2 | 2-Medium | Govern and restrict Endpoint-Hosted AI Runtimes (e.g., local LLMs) to prevent local data leakage and unauthorized API binding. |
 | **[AI-END-06](./controls/AI-END-06.md)** | Layer 6: Endpoint Presentation | IG 2 | 3-Low | Deploy AI-Driven EDR/XDR for behavioral process termination |
 | **[AI-END-07](./controls/AI-END-07.md)** | Layer 6: Endpoint Presentation | IG 2 | 3-Low | Utilize File Integrity Monitoring (FIM) for critical OS files |
 | **[AI-END-08](./controls/AI-END-08.md)** | Layer 6: Endpoint Presentation | IG 3 | 3-Low | Deploy Data Loss Prevention (DLP) to monitor formatted file exfiltration |
@@ -76,6 +77,7 @@
 | **[AI-APP-11](./controls/AI-APP-11.md)** | Layer 7: Application | IG 1 | 1-High | Establish a secrets management baseline for AI stacks, mandating centralized secrets managers and prohibiting hardcoded API keys in repos, notebooks, and prompt templates. |
 | **[AI-AGT-01](./controls/AI-AGT-01.md)** | Layer 7: Application | IG 2 | 1-High | Implement Agent tool-call governance through strict allowlists, schema validation, and human-in-the-loop approvals. |
 | **[AI-APP-10](./controls/AI-APP-10.md)** | Layer 7: Application | IG 2 | 2-Medium | Implement a centralized AI Gateway or Control Plane to broker, govern, and monitor all enterprise interactions with external LLMs and AI services. |
+| **[AI-MCP-01](./controls/AI-MCP-01.md)** | Layer 7: Application | IG 2 | 2-Medium | Implement an Enterprise Model Context Protocol (MCP) Registry to govern capability exposure, track server provenance, and detect capability drift. |
 | **[AI-APP-01](./controls/AI-APP-01.md)** | Layer 7: General Usage & AppSec Defense | IG 1 | 2-Medium | Enforce Strict Input Sanitization frameworks against AI fuzzing |
 | **[AI-APP-02](./controls/AI-APP-02.md)** | Layer 7: General Usage & AppSec Defense | IG 1 | 3-Low | Monitor employee devices and networks to block the use of unsanctioned or hidden 'Shadow AI' apps. |
 | **[AI-APP-03](./controls/AI-APP-03.md)** | Layer 7: General Usage & AppSec Defense | IG 2 | 2-Medium | Deploy Advanced Bot Management (invisible or behavioral CAPTCHAs) |
@@ -99,14 +101,11 @@
 | **[AI-LLM-13](./controls/AI-LLM-13.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 3-Low | Ensure that when AI tools talk to each other or use plugins, they prove who they are and only share the minimum necessary data. |
 | **[AI-LLM-14](./controls/AI-LLM-14.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 3-Low | Set up alerts to notify security teams if an AI agent starts behaving unexpectedly or out-of-bounds. |
 | **[AI-LLM-15](./controls/AI-LLM-15.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 3-Low | Protect the specialized databases that feed knowledge to your AI (Vector Stores) with encryption and strict access rules. |
+| **[AI-AGT-02](./controls/AI-AGT-02.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 1-High | Enforce Zero-Trust segmentation and strict Role-Based Access Control (RBAC) boundaries for agent-to-agent communications. |
 | **[AI-LLM-16](./controls/AI-LLM-16.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Regularly test internal AI systems by having security teams pretend to be hackers (Red Teaming) to find weak spots. |
 | **[AI-LLM-17](./controls/AI-LLM-17.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Force AI tools that write or run code to do so in a secure, isolated bubble (sandbox) so they can't break anything on the network. |
 | **[AI-LLM-18](./controls/AI-LLM-18.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Keep different users' AI chats strictly separated so one person's data doesn't accidentally leak into another person's chat. |
 | **[AI-LLM-19](./controls/AI-LLM-19.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Keep a 'nutrition label' (Bill of Materials) for your AI models and verify that no one has tampered with their code or plugins. |
 | **[AI-LLM-20](./controls/AI-LLM-20.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Track exactly where your AI training data comes from to ensure hackers haven't poisoned it with malicious information. |
 | **[AI-LLM-21](./controls/AI-LLM-21.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Install data loss prevention (DLP) tools to stop AI agents from accidentally or maliciously leaking sensitive company data. |
-| **[AI-REC-01](./controls/AI-REC-01.md)** | Layer 0: Governance & System Controls | IG 2 | 1-High | Establish AI-specific Data Recovery procedures to restore the "behavioral fidelity" of RAG corpora, vector databases, and agent memory states. |
-| **[AI-MCP-01](./controls/AI-MCP-01.md)** | Layer 7: Application | IG 2 | 2-Medium | Implement an Enterprise Model Context Protocol (MCP) Registry to govern capability exposure, track server provenance, and detect capability drift. |
-| **[AI-AGT-02](./controls/AI-AGT-02.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 1-High | Enforce Zero-Trust segmentation and strict Role-Based Access Control (RBAC) boundaries for agent-to-agent communications. |
-| **[AI-END-11](./controls/AI-END-11.md)** | Layer 6: Endpoint Presentation | IG 2 | 2-Medium | Govern and restrict Endpoint-Hosted AI Runtimes (e.g., local LLMs) to prevent local data leakage and unauthorized API binding. |
 
