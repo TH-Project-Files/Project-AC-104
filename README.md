@@ -35,8 +35,7 @@ To move from chaos to clarity:
 
 1. **Download the Tracker:** Grab the `AC-104-version.csv` from the `/data` folder.
 2. **Filter for Impact:** Start by filtering for **"1-High" aggregate risk** within **Implementation Group 1**. 
-3. **Execute Audits:** Use the prompt provided in the [Securing Agentic Workflows](#-securing-agentic-workflows) section to evaluate your current code.
-4. **Measure Progress:** Use the "Control Implemented" column to track your score (1-10) and report readiness averages to stakeholders.
+3. **Measure Progress:** Use the "Control Implemented" column to track your score (1-10) and report readiness averages to stakeholders.
 
 ---
 
