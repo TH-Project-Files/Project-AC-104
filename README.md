@@ -33,7 +33,7 @@ The framework is broken down into three **Implementation Groups (IGs)** to preve
 ## Getting Started
 To move from chaos to clarity:
 
-1. **Download the Tracker:** Grab the `AC-104-version.csv` from the `/data` folder.
+1. **Download the Tracker:** Grab the `AC-104-version.csv` from the `/data` folder or clone the raw controls directly from the `/docs` folder.
 2. **Filter for Impact:** Start by filtering for **"1-High" aggregate risk** within **Implementation Group 1**. 
 3. **Measure Progress:** Use the "Control Implemented" column to track your score (1-10) and report readiness averages to stakeholders.
 
