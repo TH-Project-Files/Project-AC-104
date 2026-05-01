@@ -11,10 +11,10 @@ This repository houses the **AI Defense-in-Depth Implementation Guide**, a highl
 ### Full-Stack Defensive Coverage
 The AC-104 framework is built to secure the **entire IT environment**, recognizing that AI risks cannot be mitigated at the application layer alone. The controls provide a holistic defense strategy across the four critical layers of the modern enterprise stack:
 
-* **🌐 Networking:** Hardening the perimeter and internal traffic against automated lateral movement and SSRF-driven data exfiltration.
-* **🆔 Identity & Access Management (IAM):** Enforcing machine-identity non-repudiation and granular permissions for autonomous agents.
-* **💻 Endpoints:** Securing the devices and execution environments where AI models and agentic sub-processes reside.
-* **📱 Applications:** Defending the logic, prompt boundaries, and data pipelines that power generative AI systems.
+- 🌐 **Networking:** Hardening the enterprise perimeter and internal traffic against AI-automated reconnaissance, high-speed lateral movement, and stealthy C2 callbacks to newly generated malicious domains.
+- 🆔 **Identity & Access Management (IAM):** Defending both human and non-human identities through phishing-resistant MFA, continuous session monitoring, out-of-band verification for deepfakes, and strict governance over autonomous service accounts.
+- 💻 **Endpoints:** Securing corporate devices using advanced behavioral telemetry (EDR/XDR) to block AI-generated polymorphic malware, while restricting unauthorized "Shadow AI" runtimes and untrusted script execution.
+- 📱 **Applications & Data:** Protecting enterprise software and messaging pipelines against AI-fuzzing and hyper-personalized phishing, while governing third-party AI integrations via CASBs, API gateways, and strict software supply chain (SLSA) tracking.
 
 ### Risk Assessment Method
 Rather than relying on vague high-level recommendations, this model is structured to assess risk across four core pillars:
@@ -41,7 +41,7 @@ To move from chaos to clarity:
 
 > [!TIP]
 
-### Application Example: Agentic Security Auditing
+### Layer 7 Application Example: Agentic Security Auditing
 You can use the AC-104 list as a technical specification for AI-assisted code reviews. Use the following prompt with your Lead Developer or Security AI (e.g., Claude Sonnet, OpenAI GPT-XX, or Cursor) to audit your agentic project:
 
 > **The AC-104 Master Audit Prompt**
