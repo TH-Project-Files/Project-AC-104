@@ -8,6 +8,15 @@ This repository houses the **AI Defense-in-Depth Implementation Guide**, a highl
 ---
 
 ## The Defense-in-Depth Framework
+### Full-Stack Defensive Coverage
+The AC-104 framework is built to secure the **entire IT environment**, recognizing that AI risks cannot be mitigated at the application layer alone. The controls provide a holistic defense strategy across the four critical layers of the modern enterprise stack:
+
+* **🌐 Networking:** Hardening the perimeter and internal traffic against automated lateral movement and SSRF-driven data exfiltration.
+* **🆔 Identity & Access Management (IAM):** Enforcing machine-identity non-repudiation and granular permissions for autonomous agents.
+* **💻 Endpoints:** Securing the devices and execution environments where AI models and agentic sub-processes reside.
+* **📱 Applications:** Defending the logic, prompt boundaries, and data pipelines that power generative AI systems.
+
+### Risk Assessment Method
 Rather than relying on vague high-level recommendations, this model is structured to assess risk across four core pillars:
 
 1. **Data Sensitivity:** How sensitive is the data involved?
