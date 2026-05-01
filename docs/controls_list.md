@@ -108,4 +108,9 @@
 | **[AI-LLM-19](./controls/AI-LLM-19.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Keep a 'nutrition label' (Bill of Materials) for your AI models and verify that no one has tampered with their code or plugins. |
 | **[AI-LLM-20](./controls/AI-LLM-20.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Track exactly where your AI training data comes from to ensure hackers haven't poisoned it with malicious information. |
 | **[AI-LLM-21](./controls/AI-LLM-21.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Install data loss prevention (DLP) tools to stop AI agents from accidentally or maliciously leaking sensitive company data. |
+| **[AI-LLM-22](./controls/AI-LLM-22.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Enforce strict environment variable and secret scoping for AI agent runtimes to prevent unconditional inheritance of the parent process environment. |
+| **[AI-LLM-23](./controls/AI-LLM-23.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Implement structural or cryptographic boundary markers to separate system prompts from untrusted external data within LLM contexts. |
+| **[AI-LLM-24](./controls/AI-LLM-24.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Enforce cryptographic integrity and freshness checks on all agent-to-agent and agent-to-tool communications. |
+| **[AI-APP-10](./controls/AI-APP-10.md)** | Layer 7: Application | IG 2 | 1-High | Implement Supply-chain Levels for Software Artifacts (SLSA) or equivalent frameworks for all agent dependencies and dynamically loaded tools. |
+| **[AI-GOV-17](./controls/AI-GOV-17.md)** | Layer 0: Governance & System Controls | IG 1 | 1-High | Integrate AI-specific threat modeling into the Secure Software Development Life Cycle (SSDLC) during the design phase using industry-standard frameworks. |
 
