@@ -3,6 +3,7 @@
 | Recommendation ID | Category | Implementation Group | Risk Level | Description |
 |---|---|---|---|---|
 | **[AI-VND-02](./controls/AI-VND-02.md)** | Layer 0: Governance & System Controls | IG 1 | 1-High | Enforce AI vendor minimum security terms, explicitly mandating "no training on customer data," strict tenancy, and guaranteed log access. |
+| **[AI-GOV-17](./controls/AI-GOV-17.md)** | Layer 0: Governance & System Controls | IG 1 | 1-High | Integrate AI-specific threat modeling into the Secure Software Development Life Cycle (SSDLC) during the design phase using industry-standard frameworks. |
 | **[AI-GOV-01](./controls/AI-GOV-01.md)** | Layer 0: Governance & System Controls | IG 1 | 2-Medium | Establish and enforce policy on the appropriate application of Large Language Models such as LLM Chatbots, Vibe Coding, and Agentic AI. |
 | **[AI-GOV-02](./controls/AI-GOV-02.md)** | Layer 0: Governance & System Controls | IG 1 | 2-Medium | Implement rigorous Data Classification Mapping and System Agnostic Coverage Policies |
 | **[AI-GOV-03](./controls/AI-GOV-03.md)** | Layer 0: Governance & System Controls | IG 1 | 2-Medium | Establish an Approved AI Service Catalog and enforce it via web proxies/CASB, explicitly limiting employee access to only vetted and sanctioned AI tools. |
@@ -76,7 +77,8 @@
 | **[AI-MSG-03](./controls/AI-MSG-03.md)** | Layer 6: Messaging/Web | IG 2 | 1-High | Enforce Universal URL Unwrapping and deep link analysis for shortened or redirected URLs to reveal hidden AI-generated malicious destinations. |
 | **[AI-APP-11](./controls/AI-APP-11.md)** | Layer 7: Application | IG 1 | 1-High | Establish a secrets management baseline for AI stacks, mandating centralized secrets managers and prohibiting hardcoded API keys in repos, notebooks, and prompt templates. |
 | **[AI-AGT-01](./controls/AI-AGT-01.md)** | Layer 7: Application | IG 2 | 1-High | Implement Agent tool-call governance through strict allowlists, schema validation, and human-in-the-loop approvals. |
-| **[AI-APP-10](./controls/AI-APP-10.md)** | Layer 7: Application | IG 2 | 2-Medium | Implement a centralized AI Gateway or Control Plane to broker, govern, and monitor all enterprise interactions with external LLMs and AI services. |
+| **[AI-APP-10](./controls/AI-APP-10.md)** | Layer 7: Application | IG 2 | 1-High | Implement Supply-chain Levels for Software Artifacts (SLSA) or equivalent frameworks for all agent dependencies and dynamically loaded tools. |
+| **[AI-APP-11](./controls/AI-APP-11.md)** | Layer 7: Application | IG 2 | 2-Medium | Implement a centralized AI Gateway or Control Plane to broker, govern, and monitor all enterprise interactions with external LLMs and AI services. |
 | **[AI-MCP-01](./controls/AI-MCP-01.md)** | Layer 7: Application | IG 2 | 2-Medium | Implement an Enterprise Model Context Protocol (MCP) Registry to govern capability exposure, track server provenance, and detect capability drift. |
 | **[AI-APP-01](./controls/AI-APP-01.md)** | Layer 7: General Usage & AppSec Defense | IG 1 | 2-Medium | Enforce Strict Input Sanitization frameworks against AI fuzzing |
 | **[AI-APP-02](./controls/AI-APP-02.md)** | Layer 7: General Usage & AppSec Defense | IG 1 | 3-Low | Monitor employee devices and networks to block the use of unsanctioned or hidden 'Shadow AI' apps. |
@@ -91,6 +93,9 @@
 | **[AI-LLM-02](./controls/AI-LLM-02.md)** | Layer 7: Internal LLMs & Agentics | IG 1 | 3-Low | Put speed limits on AI agents so they don't get stuck in endless loops or crash internal systems. |
 | **[AI-LLM-03](./controls/AI-LLM-03.md)** | Layer 7: Internal LLMs & Agentics | IG 1 | 3-Low | Give AI agents only the bare minimum permissions needed to do their jobs. |
 | **[AI-LLM-04](./controls/AI-LLM-04.md)** | Layer 7: Internal LLMs & Agentics | IG 1 | 3-Low | Keep detailed records of everything AI agents do, including the prompts they receive and actions they take. |
+| **[AI-LLM-22](./controls/AI-LLM-22.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Enforce strict environment variable and secret scoping for AI agent runtimes to prevent unconditional inheritance of the parent process environment. |
+| **[AI-LLM-23](./controls/AI-LLM-23.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Implement structural or cryptographic boundary markers to separate system prompts from untrusted external data within LLM contexts. |
+| **[AI-LLM-24](./controls/AI-LLM-24.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Enforce cryptographic integrity and freshness checks on all agent-to-agent and agent-to-tool communications. |
 | **[AI-LLM-05](./controls/AI-LLM-05.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 2-Medium | Test any fake (synthetic) or anonymized data to make sure hackers can't reverse-engineer it to find real people's identities. |
 | **[AI-LLM-07](./controls/AI-LLM-07.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 3-Low | Automatically scan and clean up the text users send to AI to stop them from sharing too much sensitive information. |
 | **[AI-LLM-08](./controls/AI-LLM-08.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 3-Low | Require a human to review and approve any important or risky actions taken by AI. |
@@ -108,9 +113,4 @@
 | **[AI-LLM-19](./controls/AI-LLM-19.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Keep a 'nutrition label' (Bill of Materials) for your AI models and verify that no one has tampered with their code or plugins. |
 | **[AI-LLM-20](./controls/AI-LLM-20.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Track exactly where your AI training data comes from to ensure hackers haven't poisoned it with malicious information. |
 | **[AI-LLM-21](./controls/AI-LLM-21.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Install data loss prevention (DLP) tools to stop AI agents from accidentally or maliciously leaking sensitive company data. |
-| **[AI-LLM-22](./controls/AI-LLM-22.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Enforce strict environment variable and secret scoping for AI agent runtimes to prevent unconditional inheritance of the parent process environment. |
-| **[AI-LLM-23](./controls/AI-LLM-23.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Implement structural or cryptographic boundary markers to separate system prompts from untrusted external data within LLM contexts. |
-| **[AI-LLM-24](./controls/AI-LLM-24.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Enforce cryptographic integrity and freshness checks on all agent-to-agent and agent-to-tool communications. |
-| **[AI-APP-10](./controls/AI-APP-10.md)** | Layer 7: Application | IG 2 | 1-High | Implement Supply-chain Levels for Software Artifacts (SLSA) or equivalent frameworks for all agent dependencies and dynamically loaded tools. |
-| **[AI-GOV-17](./controls/AI-GOV-17.md)** | Layer 0: Governance & System Controls | IG 1 | 1-High | Integrate AI-specific threat modeling into the Secure Software Development Life Cycle (SSDLC) during the design phase using industry-standard frameworks. |
 

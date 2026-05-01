@@ -1,24 +1,31 @@
-﻿# AI-APP-11: Establish a secrets management baseline for AI stacks, mandating centralized secrets managers and prohibiting hardcoded API keys in repos, notebooks, and prompt templates.
+﻿# AI-APP-11
 
-**Project:** Argus Centurion (AC-104)  
 **Category:** Layer 7: Application  
-**Implementation Group:** IG 1  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `16.2, 16.3` | NIST CSF: `PR.DS, DE.CM`
+**Implementation Group:** IG 2  
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 16.4, 16.5  
+**NIST CSF Subcategories:** PR.PT, DE.CM  
 
----
+## Recommendation Description
+Implement a centralized AI Gateway or Control Plane to broker, govern, and monitor all enterprise interactions with external LLMs and AI services.
 
-## Control Details
+## Details
 Detailed Description:
-Establish a strict secrets management baseline across all AI development stacks and agent toolchains. This requires prohibiting the hardcoding of API keys, tokens, or credentials within source code repositories, Jupyter notebooks, prompt templates, or CI/CD logs. All sensitive credentials must be dynamically retrieved from a centralized enterprise secrets manager, and automated scanning must be implemented to detect and block leaked keys.
+Deploy a centralized AI Gateway (or Control Plane) to broker, govern, and monitor all enterprise interactions with internal and external AI models. This gateway must centralize model access, enforce approved provider routing, aggregate telemetry/logging, perform inline DLP and prompt redaction, manage rate limiting, enforce content safety policies, and apply tenant restrictions.
 
 Why AI Compounds Risk:
-AI development workflows are highly experimental and fast-paced. Data scientists and engineers frequently rely on Jupyter notebooks, prompt debugging tools, and local tracing environments to rapidly test external LLM APIs or agent integrations. These environments are notorious for inadvertently leaking long-lived API keys. If an adversary or automated bot scrapes a leaked LLM API key or an agent's backend token, they can instantly incur massive cloud compute costs (Denial of Wallet) or pivot directly into backend databases, entirely bypassing the organization's front-end AI security gateways and access controls.
+The rapid proliferation of Generative AI APIs and applications leads to massive "Shadow AI" adoption. If development teams and end-users connect directly to dozens of different LLMs, security enforcement becomes hopelessly fragmented across CASB, SWG, IdP, and individual application teams. A centralized AI gateway acts as a critical, unified chokepoint. It ensures that consistent security, privacy, and compliance guardrails (like prompt filtering and data redaction) are applied uniformly to all AI traffic at machine speed, regardless of the underlying model.
 
 Examples:
-1. Integrate automated secret scanning tools (e.g., git-leaks, GitHub Advanced Security) into the CI/CD pipeline to detect and block commits containing hardcoded LLM API keys or autonomous agent tokens.
-2. Mandate that all AI development environments and agent frameworks retrieve credentials dynamically at runtime via a centralized enterprise Secrets Manager, explicitly forbidding hardcoded credentials in Jupyter notebooks or prompt templates.
-3. Configure automated redaction of sensitive credentials, API keys, and authorization headers within LLM observability platforms, tracing tools (like LangSmith/Phoenix), and prompt debugging logs.
+1. Deploy an enterprise AI Gateway to intercept and inspect all API calls to external models, enforcing inline data redaction and prompt filtering before the payload leaves the network.
+2. Configure rate limiting, quota management, and cost-control guardrails centrally at the gateway to prevent denial-of-wallet attacks or runaway autonomous agents from overwhelming API limits.
+3. Enforce strict egress allowlisting and tenant-restriction headers via the gateway, ensuring employees and AI agents can only interact with sanctioned, enterprise-provisioned AI workspaces (rather than consumer instances).
 
----
-*Part of the Argus Centurion (AC-104) Open Source Security Framework.*
+## Implementation Status
+- **Policy Defined:** 0
+- **Control Implemented:** 0
+- **Control Automated:** 0
+- **Control Reported:** 0
+
+**Assigned To:**   
+**Notes/Evidence:**   
