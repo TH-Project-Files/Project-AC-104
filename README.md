@@ -40,30 +40,32 @@ To move from chaos to clarity:
 ---
 
 > [!TIP]
-
-### Layer 7 Application Example: Agentic Security Auditing
-You can use the AC-104 list as a technical specification for AI-assisted code reviews. Use the following prompt with your Lead Developer or Security AI (e.g., Claude Sonnet, OpenAI GPT-XX, or Cursor) to audit your agentic project:
+> ### Layer 7 Application Example: Agentic Security Auditing
+> You can use the AC-104 list as a technical specification for AI-assisted code reviews. Use the following prompt with your Lead Developer or Security AI (e.g., Claude Sonnet, OpenAI GPT-XX, or Cursor) to audit your agentic project:
 
 > **The AC-104 Master Audit Prompt**
 > 
-> Read the security controls in `@AC-104-v[Specify version].csv` carefully.
+> Read the security controls in `@AC-104-v[Specify version].csv` carefully. 
+> 
 > You are acting as a **Lead AI Security Auditor and Enterprise GRC Technical Expert**. Your task is to perform a comprehensive code audit of the workspace against the AC-104 Enterprise AI Security Framework and refactor the code to strictly comply with these mandates.
+> 
+> Please review the code in this active workspace, excluding the environment variable files.
 > 
 > **Core Auditing Directive:** Do not just read the "Recommendation Description." You MUST parse the "Details" column for every relevant control—specifically analyzing the "Why AI Compounds Risk" and "Examples" sections. Extract the technical nuance from these examples and assess their direct applicability to the current code workspace.
 > 
 > **Step 1: AC-104 Security Audit**
 > Scan the provided code and generate a structured audit report citing specific Recommendation IDs. Focus specifically on these technical implementation areas:
-> * **Agent Autonomy & HITL (AI-AGT-01, AI-LLM-08):** Look for missing Human-in-the-Loop approvals for high-risk actions.
-> * **Isolation & Sandboxing (AI-LLM-17, AI-LLM-22):** Check if AI code execution is occurring in the host environment rather than a sandbox; ensure agents do not inherit `process.env`.
-> * **Data & Instruction Boundaries (AI-LLM-23, AI-APP-01):** Ensure strict input sanitization and structural boundary markers (e.g., `<external_content>` tags) are present.
-> * **Execution Safety (AI-LLM-12):** Verify LLM-generated outputs (SQL, Shell) use parameterized queries, avoiding string interpolation.
-> * **Network Boundaries (AI-LLM-09):** Check outbound network requests against strict, hardcoded allow-lists.
+> * **Automated Guardrails & Autonomy (AI-AGT-01, AI-LLM-08):** Do not rely solely on Human-in-the-Loop (HITL) approvals, which fail due to consent fatigue. Look for strict, automated Harness-layer constraints, declarative safety contracts, and real-time schema validation for all tool calls.
+> * **Data, Memory & Instruction Boundaries (AI-LLM-23, AI-APP-01, AI-LLM-15):** Ensure strict input sanitization is present and that structural boundary markers (like `<external_content>` tags) are used to separate untrusted external data AND retrieved agent memory (RAG) from system prompts to prevent indirect and persistent memory poisoning.
+> * **Agent Communications & Supply Chain (AI-LLM-24, AI-APP-10):** Verify that any agent-to-agent or agent-to-tool communications use cryptographic signatures and freshness nonces (timestamps) to prevent replay attacks. Ensure dynamic third-party plugin/tool loading relies on strict hash verification (e.g., via lockfiles).
+> * **Isolation & Sandboxing (AI-LLM-17, AI-LLM-22):** Check if AI code execution is occurring in an isolated microVM/sandbox, and ensure the agent subprocess does not inherit the parent process's global environment variables (e.g., `process.env`).
+> * **Execution Safety & Network (AI-LLM-12, AI-LLM-09, AI-DET-01):** Verify parameterized queries (no string interpolation), strict SSRF network allow-lists, and sufficient telemetry logging to detect "Authorized-but-Harmful" operational loops where the agent is acting destructively within its permissions.
 > 
 > **Step 2: Nuanced Refactor**
 > Provide the refactored code that:
-> 1. Implements fixes directly inspired by the "Examples" listed in the AC-104 controls.
-> 2. Adds inline comments citing the specific AC-104 control ID (e.g., `// Complies with AI-LLM-12`).
-> 3. Notes "Infrastructure Dependencies" for changes outside the scope of application code.
+> 1. Implements the architectural fixes directly inspired by the "Examples" listed in the AC-104 controls.
+> 2. Adds inline comments citing the specific AC-104 control ID (e.g., `// Complies with AI-LLM-12: Parameterized query execution`) explaining *why* the implementation mitigates the risk.
+> 3. Notes "Infrastructure Dependencies" for changes outside the scope of application code (e.g., deploying a behavioral WAF).
 > 
 > **Reply "AC-104 Framework loaded. Which file or module are we auditing first?" to confirm.**
 
