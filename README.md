@@ -41,7 +41,7 @@ To move from chaos to clarity:
 
 > [!TIP]
 > ### Layer 7 Application Example: Agentic Security Auditing
-> You can use the AC-104 list as a technical specification for AI-assisted code reviews. Use the following prompt with your Lead Developer or Security AI (e.g., Claude Sonnet, OpenAI GPT-XX, or Cursor) to audit your agentic project:
+> While the AC-104 guide is designed for the whole IT stack, you can use select controls as a technical specification for AI-assisted AI code reviews. Use the following prompt with your Lead Developer or Security AI (e.g., Claude Sonnet, OpenAI GPT-XX, or Cursor) to audit your agentic project:
 
 > **The AC-104 Master Audit Prompt**
 > 
