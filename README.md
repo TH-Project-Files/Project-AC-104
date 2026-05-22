@@ -77,3 +77,16 @@ To move from chaos to clarity:
 * `mkdocs.yml`: Configuration for the project's documentation site.
 
 **Remember:** AI is continuously learning how to attack. Your defenses must continuously learn how to adapt. Standing still is no longer an option. Always maintain human in the loop, you the human are ultimately responsible for your environment and actions. AC-104 is provided for educational purposes and is not a substitute for professional guidance and application. 
+
+## License
+
+© 2026 TH-Project-Files. 
+
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)** License. 
+
+**What this means:**
+* **Anyone can use it:** You are free to copy, redistribute, remix, and build upon this framework.
+* **Attribute the author:** You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+* **No commercial use:** You may not use this material, or derivatives of it, for commercial purposes or monetization.
+
+For the full legal terms, please review the [LICENSE.md](LICENSE.md) file included in this repository.
