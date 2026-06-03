@@ -92,15 +92,15 @@ Examples:
 2. Require vendors to provide model cards or system cards that document the model's capabilities, limitations, and intended use cases to ensure alignment with corporate ethical and security standards.
 3. Update the Third-Party Risk Management (TPRM) program to include specific questionnaire items regarding whether company data will be used to train the vendor's global models and if there are options for users to opt out of AI features."
 AI-GOV-11,Layer 0: Governance & System Controls,IG 2,2-Medium,Develop an AI-specific Incident Response Playbook,0,0,0,0,,,,"15.1, 17.1","GV.PO, GV.OV","Detailed Description:
-An AI-specific Incident Response Playbook is a structured guide that establishes step-by-step procedures for detecting, containing, and resolving security events unique to AI systems. Unlike traditional playbooks, it focuses on specialized threats such as prompt injection, model theft, and data poisoning, providing clear protocols for kill switch authority, evidence preservation, and regulatory notification workflows.
+An AI-specific Incident Response Playbook establishes step-by-step procedures for detecting, containing, and resolving security events unique to AI systems. Crucially, the playbook must also cover non-adversarial ""Authorized-but-Harmful"" events, where an autonomous agent makes catastrophic mistakes within its authorized permissions due to flawed instructions.
 
 Why AI Compounds Risk:
-AI exacerbates risk because it compresses attack timelines from hours to minutes, operates at a scale that exceeds human defensive capabilities, and introduces a new attack surface including autonomous agents and complex API connections that traditional security tools are not built to monitor.
+Traditional playbooks assume incidents begin with a malicious attacker. However, the most common agentic failure is an autonomous agent making a mistake within its authorized permissions. Because the agent is technically authorized, traditional SOC and IR playbooks never trigger, allowing the agent to continuously execute harmful actions (like mass deleting records) without raising an adversarial alarm.
 
 Examples:
-1. Implement specialized detection by configuring AI Gateway alerts and SIEM correlation rules to monitor for specific threat patterns like jailbreaking and goal hijacking.
+1. Define workflows for 'Authorized-but-Harmful' incidents where no malicious attacker is present, but an agent executes a destructive loop, ensuring SOC teams respond to operational AI failures with the same rigor as cyberattacks.
 2. Define clear containment protocols such as 15-minute windows for activating kill switches or switching to human-in-the-loop mode during active data exfiltration events.
-3. Integrate regulatory compliance templates into the playbook to ensure automated reporting for mandates like the EU AI Act or GDPR within required windows."
+3. Integrate regulatory compliance templates into the playbook to ensure automated reporting for mandates like the EU AI Act or GDPR."
 AI-GOV-16,Layer 0: Governance & System Controls,IG 2,2-Medium,"Establish AI-specific change management and evaluation gates requiring regression testing, approvals, and rollback plans for updates to models, prompts, agent tools, or RAG datasets.",0,0,0,0,,,,"2.1, 16.6, 16.7","PR.IP, GV.SC","Detailed Description:
 Establish specialized AI change management workflows and evaluation gates for updates to any component of an AI system. This means that modifications to model versions, prompt templates, agent tools/plugins, or the Retrieval-Augmented Generation (RAG) corpus must go through formal change control, requiring automated regression tests (checking for jailbreaks, data leakage, and tool abuse), explicit approvals, and tested rollback plans before reaching production.
 
@@ -152,32 +152,15 @@ Examples:
 2. Configure risk-based conditional access that automatically triggers multi-factor authentication (MFA) or restricts system access when a user's behavior deviates significantly from their established baseline.
 3. Implement automated monitoring for privileged accounts to detect unauthorized privilege escalation or sensitive data access by administrators and power users."
 AI-DET-01,Layer 0: Governance & System Controls (Detection & Response),IG 2,1-High,"Implement AI-specific detections and SOAR playbooks (prompt injection, agent/tool abuse, data exfil via AI, connector compromise)",0,0,0,0,,,,"13.1, 13.2","DE.AE, RS.MI","Detailed Description:
-Develop and deploy specialized detection rules within your SIEM/XDR and automated playbooks within your SOAR platform that are specifically tuned for AI-related threat vectors. This includes continuous monitoring and automated response mechanisms for LLM prompt injections, autonomous agent/tool abuse, data exfiltration through AI APIs, and the compromise of third-party AI connectors.
-
-Minimum Telemetry Sources for AI Detections:
-- LLM application gateway logs (or CASB/Proxy logs for external SaaS models)
-- OAuth app governance and consent logs
-- Identity Provider (IdP) risk and anomaly events
-- EDR and DLP telemetry
-- DNS and Secure Web Gateway (SWG) logs
-
-Containment Primitives (SOAR Playbook Actions):
-To operationalize the response, playbooks should be built around reusable containment primitives:
-- Revoke compromised tokens
-- Disable rogue or vulnerable OAuth applications
-- Block destination categories or malicious domains
-- Quarantine phishing or malicious mailbox messages
-- Disable specific non-human/agent identities
-- Rotate exposed secrets
-- Isolate affected endpoints
+Develop and deploy specialized detection rules within your SIEM/XDR and automated playbooks within your SOAR platform. Detections must not solely look for malicious attackers; they must also alert on authorized agents behaving destructively due to inadequate system prompts or logic failures (""Authorized-but-Harmful"" behavior).
 
 Why AI Compounds Risk:
-Traditional detection rules are designed for standard malware, lateral movement, or SQL injections; they fail to recognize the unique signatures of AI-centric attacks, such as semantic manipulation (prompt injection) or an autonomous agent chaining together authorized API calls in an unauthorized manner. Without AI-specific detections and machine-speed SOAR playbooks, an attacker can hijack an LLM or AI agent to extract sensitive data or pivot into internal networks long before a human analyst identifies the anomalous pattern.
+Traditional detection rules are designed for standard malware or lateral movement. They fail to recognize when an autonomous agent chains together authorized API calls in an unauthorized or logically flawed manner. Without AI-specific behavioral detections, an authorized agent can cause massive system degradation (e.g., looping queries, deleting authorized files) while remaining completely invisible to threat-based SIEM alerts.
 
 Examples:
-1. Ingest AI application gateway logs into the SIEM and write correlation rules to detect high-volume, repetitive, or anomalous prompt structures indicative of a prompt injection or jailbreak attempt.
-2. Create a SOAR playbook that automatically isolates an AI agent or revokes its API keys if it begins exhibiting ""tool-use drift"" (e.g., calling a database query tool it rarely uses or attempting an excessive number of unapproved external web connections).
-3. Monitor network egress for sudden spikes in data transfer to known public AI endpoints (e.g., OpenAI, Anthropic APIs) and trigger an automated SOAR response to block the connection and alert the security team of potential AI-driven data exfiltration."
+1. Create SIEM rules that trigger when an authorized agent engages in a destructive loop (e.g., mass file deletion) within its permitted scope, catching non-malicious but harmful operational failures.
+2. Create a SOAR playbook that automatically isolates an AI agent or revokes its API keys if it begins exhibiting ""tool-use drift"" (e.g., calling a database query tool it rarely uses).
+3. Monitor network egress for sudden spikes in data transfer to known public AI endpoints and trigger an automated SOAR response."
 AI-USR-01,Layer 0: User Facing Controls,IG 1,1-High,Enable Automated 'First Contact' Safety Tips to warn users when interacting with new or anomalous external senders often used by AI phishing bots.,0,0,0,0,,,,"9.1, 9.2",PR.IR,"Detailed Description:
 First-contact safety tips are automated visual alerts that appear in an email client when a user receives a message from a sender they do not regularly communicate with or who appears anomalous. These tips serve as a ""speed bump,"" prompting users to verify the identity of the sender and the legitimacy of the content before clicking links or downloading attachments.
 
@@ -745,24 +728,15 @@ Examples:
 2. Mandate that all AI development environments and agent frameworks retrieve credentials dynamically at runtime via a centralized enterprise Secrets Manager, explicitly forbidding hardcoded credentials in Jupyter notebooks or prompt templates.
 3. Configure automated redaction of sensitive credentials, API keys, and authorization headers within LLM observability platforms, tracing tools (like LangSmith/Phoenix), and prompt debugging logs."
 AI-AGT-01,Layer 7: Application,IG 2,1-High,"Implement Agent tool-call governance through strict allowlists, schema validation, and human-in-the-loop approvals.",0,0,0,0,,,,"16.2, 16.4","PR.AC, PR.PT","Detailed Description:
-Implement robust governance over autonomous AI agent tool-calling capabilities. This includes enforcing strict allowlists for accessible tools, real-time input/output schema validation, and explicitly defining ""Human-in-the-Loop"" (HITL) approval gates for high-risk actions.
-
-High-ROI HITL Triggers:
-To prevent silent data exfiltration or destructive actions, HITL cryptographic approvals must be triggered for:
-- External Transmission: Any agent action that sends content to an external email/domain, external Slack/Teams tenant, webhook, or public URL.
-- Export / Bulk Retrieval: Requests exceeding normal limits (e.g., retrieving >100 rows or chunks in a single session).
-- Restricted Label Access: Any retrieval/summarization that touches data explicitly labeled as Restricted, Regulated, Legal, HR, Finance, or Security.
-- Cross-Boundary Sharing: Attempting to share content across isolated departments (e.g., summarizing HR data and sending it to a non-HR channel).
-- Privilege Boundary Crossing: An agent attempting to invoke an admin-only tool, elevated API, or privileged connector (even if read-only).
-- Anomalous Tool Sequencing: A tool-call chain that hasn't been approved or seen before (e.g., ""RAG -> DB query -> File download -> Email send"").
+Implement robust governance over autonomous AI agent tool-calling capabilities. This includes enforcing strict allowlists for accessible tools, real-time input/output schema validation, and explicitly defining automated guardrails. Note: Production data shows Human-in-the-Loop (HITL) suffers from ""consent fatigue,"" with users blindly approving up to 93% of prompts. Therefore, rely primarily on Harness-Layer automated constraints and use HITL strictly for high-impact anomalies.
 
 Why AI Compounds Risk:
-AI agents can autonomously invoke APIs, query databases, and execute code based on natural language instructions. If an agent is compromised via prompt injection, an attacker can hijack these tool-calling privileges to extract data, pivot internally, or execute unauthorized transactions. Unfettered tool access effectively turns an LLM into an unauthenticated Remote Code Execution (RCE) vector. 
+AI agents can autonomously invoke APIs, query databases, and execute code based on natural language instructions. If an agent is compromised, an attacker can hijack these privileges. Relying solely on per-action human approvals fails at scale, effectively turning an LLM into an unauthenticated Remote Code Execution (RCE) vector because tired users will rubber-stamp the agent's actions.
 
 Examples:
-1. Restrict an AI agent's accessible tools to a tightly scoped allowlist (e.g., granting read-only DB access) rather than giving it broad, unfettered access to all enterprise APIs.
-2. Implement strict, server-side JSON schema validation for all tool inputs to prevent an attacker from passing malicious payloads or SQL injections via a hijacked agent.
-3. Require cryptographic ""human-in-the-loop"" MFA approvals before an agent can execute destructive actions or trigger any of the defined High-ROI events."
+1. Restrict an AI agent's accessible tools to a tightly scoped allowlist (e.g., granting read-only DB access) rather than giving it broad, unfettered access.
+2. Enforce declarative safety contracts and automated schema validation at the Harness layer that cannot be overridden by human users suffering from consent fatigue.
+3. Shift from per-action human approvals to continuous automated policy enforcement, reserving human alerts only for severe threshold breaches."
 AI-APP-10,Layer 7: Application,IG 2,2-Medium,"Implement a centralized AI Gateway or Control Plane to broker, govern, and monitor all enterprise interactions with external LLMs and AI services.",0,0,0,0,,,,"16.4, 16.5","PR.PT, DE.CM","Detailed Description:
 Deploy a centralized AI Gateway (or Control Plane) to broker, govern, and monitor all enterprise interactions with internal and external AI models. This gateway must centralize model access, enforce approved provider routing, aggregate telemetry/logging, perform inline DLP and prompt redaction, manage rate limiting, enforce content safety policies, and apply tenant restrictions.
 
@@ -926,15 +900,15 @@ Examples:
 2. Use semantic prompt detection tools to recognize the context of a query and block or flag interactions that attempt to share proprietary business logic or unreleased internal documents.
 3. Implement enterprise-sanctioned AI platforms that integrate with existing cloud security tools to provide full audit logging and real-time user guidance when a policy violation is attempted."
 AI-LLM-08,Layer 7: Internal LLMs & Agentics,IG 2,3-Low,Require a human to review and approve any important or risky actions taken by AI.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
-Explanation: This recommendation establishes a ""human-in-the-loop"" framework where automated systems cannot execute high-stakes decisions independently, ensuring accountability, ethical alignment, and error correction.
+Establish an oversight framework where automated systems cannot execute high-stakes decisions independently. Because human-in-the-loop oversight often degrades into ""human-on-the-side"" at production scale, manual review must be reserved for the absolute highest-stakes actions, while automated guardrails handle the bulk of policy enforcement.
 
 Why AI Compounds Risk:
-Risk Exacerbation: AI can process data and execute actions at a scale and speed that outpaces manual oversight, meaning a single algorithmic error or biased model can cause widespread financial or reputational damage before detection.
+AI can process data and execute actions at a scale and speed that outpaces manual oversight. However, forcing humans to review every action leads to 93% blind approval rates. If the organization relies on fatigued humans to catch subtle algorithmic errors or prompt injections, the security model will fail.
 
 Examples:
-1. Require a senior manager to electronically sign off on AI-generated financial transactions or wire transfers exceeding a specific monetary threshold.
-2. Mandate that HR professionals review and validate AI-shortlisted job candidates to ensure the selection process adheres to diversity and inclusion standards.
-3. Implement a manual review step for AI-generated cybersecurity firewall rules before they are deployed to production environments to prevent accidental service outages."
+1. Require a senior manager to electronically sign off only on anomalous AI-generated financial transactions exceeding a specific monetary threshold, rather than reviewing every transaction.
+2. Replace repetitive per-action approvals with continuous automated policy enforcement at the Harness and Environment layers.
+3. Treat human review as an exception-handling or incident response mechanism rather than a primary preventative control."
 AI-LLM-09,Layer 7: Internal LLMs & Agentics,IG 2,3-Low,Create strict 'allow-lists' so AI agents can only talk to approved websites or internal systems.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
 Explanation: This recommendation involves implementing a deny-by-default security posture where AI agents are restricted to interacting only with a pre-approved list of URLs, APIs, or internal databases. By defining these strict boundaries at the configuration or network level, organizations prevent agents from reaching unverified external sites or sensitive internal systems that are not required for their specific tasks. This ensures that even if an agent is compromised or receives a malicious command, its ability to exfiltrate data or access unauthorized resources is physically limited by the underlying infrastructure.
 
@@ -996,15 +970,15 @@ Examples:
 2. Set up threshold-based alerts for technical metrics such as a sudden spike in token consumption, high frequency of agent restarts, or a ""max iterations"" breach where an agent is stuck in a logic loop.
 3. Integrate AI-aware runtime detection that reconstructs the causal chain of events, alerting security teams when a sequence of individually benign actions—like a RAG query followed by a tool call—indicates a developing ""escape chain"" attack."
 AI-LLM-15,Layer 7: Internal LLMs & Agentics,IG 2,3-Low,Protect the specialized databases that feed knowledge to your AI (Vector Stores) with encryption and strict access rules.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
-Detailed Explanation: This recommendation focuses on securing vector databases, which store the mathematical representations (embeddings) of sensitive corporate data used by AI models. Protection involves implementing encryption at rest (using standards like AES-256) and in transit (via TLS 1.2+) to ensure data is unreadable if intercepted. Strict access rules, such as Role-Based Access Control (RBAC) and the principle of least privilege, ensure that only authorized services and personnel can query or modify these high-value data stores.
+Protect vector databases, which store the mathematical representations of sensitive corporate data, using encryption at rest and strict access rules (RBAC). Furthermore, address ""persistent memory poisoning"" by ensuring that data retrieved from an agent's memory is always treated as untrusted upon ingestion, regardless of the database's encryption status.
 
 Why AI Compounds Risk:
-Why AI Exacerbates Risk: AI transforms abstract vectors back into readable data through inversion attacks, where malicious actors use surrogate models to reconstruct the original sensitive text or images. Furthermore, the reliance on Retrieval-Augmented Generation (RAG) means that if a vector store is compromised or poisoned, the AI will confidently serve manipulated or leaked information directly to end-users, bypassing traditional document-level security.
+While encryption protects against external theft, it does not prevent ""persistent memory poisoning,"" where an agent writes corrupted data to its own memory and blindly trusts it upon retrieval days later. Because the poisoned data comes from the agent's own records (inside the trust boundary), the agent acts on it without hesitation.
 
 Examples:
-1. Deploy vector databases within a Private Virtual Cloud (VPC) and use fine-grained RBAC to restrict access so that only the specific AI application's service account can execute queries, while engineering access is limited to anonymized development environments.
-2. Use an enterprise key management service to manage and rotate encryption keys for the vector store, ensuring that even administrators with database access cannot view the underlying embeddings without the proper cryptographic keys.
-3. Enable comprehensive audit logging and automated monitoring to track every similarity search query, setting rate limits and alerts for anomalous patterns that might indicate a systematic attempt to exfiltrate or reverse-engineer the database content."
+1. Treat all data retrieved from an agent's own vector store or scratchpad as untrusted user input, enforcing strict boundary markers during prompt assembly to prevent persistent memory poisoning from executing inside the trust boundary.
+2. Deploy vector databases within a Private Virtual Cloud (VPC) and use fine-grained RBAC to restrict access so that only the specific AI application's service account can execute queries.
+3. Enable comprehensive audit logging to track every similarity search query, setting alerts for anomalous patterns that might indicate a systematic attempt to exfiltrate or poison the database content."
 AI-LLM-16,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,Regularly test internal AI systems by having security teams pretend to be hackers (Red Teaming) to find weak spots.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
 AI red teaming is a structured, adversarial testing process where security teams simulate real-world attacks to identify vulnerabilities in AI models, data pipelines, and APIs before they can be exploited. This proactive approach goes beyond traditional software testing by focusing on the unique ways AI can misbehave, such as through prompt injection, data poisoning, or model evasion, to ensure the system is resilient and trustworthy.
 
@@ -1223,3 +1197,39 @@ Examples:
 1. Require development teams to map proposed agent architectures and data flows against the OWASP Top 10 for LLMs to explicitly identify potential data leakage or excessive agency risks before approval.
 2. Utilize the MITRE ATLAS (Adversarial Threat Landscape for AI Systems) framework during tabletop exercises to simulate how an adversary might abuse an agent's intended toolset.
 3. Incorporate MITRE D3FEND countermeasures directly into the system requirements document to ensure structural defenses are built into the agent application from day one."
+AI-NHI-02,Layer 0: Governance & System Controls,IG 3,1-High,"Enforce Cryptographic and Hardware-Backed Identities (e.g., TPMs, HSMs) for production AI agents.",0,0,0,0,,,,"5.1, 5.2, 16.1","PR.AC, PR.AA","Detailed Description:
+Assign persistent, cryptographically rooted identifiers to all agent workloads. For production and high-risk agents, bind authentication material to hardware security modules (HSMs), trusted platform modules (TPMs), or confidential computing enclaves.
+
+Why AI Compounds Risk:
+Mitigations based on friction (e.g., complex passwords, IP restrictions) degrade significantly against an adversary that can grind through tedious steps at scale using AI. If an agent's host is compromised, hardware-bound credentials ensure the attacker cannot simply exfiltrate a static token from a configuration file to impersonate the agent elsewhere.
+
+Examples:
+1. Issue X.509 certificates to each agent and require mutual TLS (mTLS) with certificate pinning for all service connections.
+2. Implement remote attestation to verify an agent's execution environment integrity before granting it access to backend databases."
+AI-DEF-01,Layer 0: Governance & System Controls,IG 2,2-Medium,Deploy a dedicated AI Triage Agent to perform automated first-pass investigations on security alerts.,0,0,0,0,,,,"13.1, 13.2, 17.4","DE.AE, RS.AN","Detailed Description:
+Integrate a securely hosted, read-only AI model at the front of your SIEM alert queue. This ""triage agent"" must automatically collect evidence, enrich data, and produce a structured disposition (query, think, report) for every alert before human review.
+
+Why AI Compounds Risk:
+Frontier AI models are compressing the timeline between vulnerability and exploit from months to hours. Traditional security operations, where humans manually analyze every alert, cannot keep pace with attackers who use AI to probe defenses and exfiltrate data at machine speed.
+
+Examples:
+1. Connect an AI model with read-only access to your SIEM to automatically draft triage context for high-volume, noisy alert rules.
+2. Automate the bookkeeping and evidence collection around incidents, reserving human analysts purely for making containment and disclosure decisions."
+AI-AGT-03,Layer 7: Internal LLMs & Agentics,IG 2,2-Medium,"Implement Distributed Tracing (e.g., OpenTelemetry) across multi-agent workflows for end-to-end explainability.",0,0,0,0,,,,"8.1, 8.5, 16.1","DE.CM, AU.AU","Detailed Description:
+Instrument all agentic applications with distributed tracing standards. Generate unique request identifiers for every user prompt and propagate these IDs through all resulting sub-agent spawns, tool invocations, and memory retrievals.
+
+Why AI Compounds Risk:
+When agents delegate tasks to other agents (multi-agent coordination), standard application logging loses the thread of execution. Without distributed tracing, it is impossible to reconstruct the provenance chain from a final action back to the original user input, making root cause analysis and regulatory explainability impossible during an incident.
+
+Examples:
+1. Implement OpenTelemetry to capture timing and dependency information across agent boundaries.
+2. Record complete decision histories, including the specific chunks of retrieved RAG context and the intermediate reasoning steps the agent used to select a specific tool."
+AI-APP-13,Layer 7: Application,IG 2,3-Low,"Automate Agent Dependency Health evaluations and utilize ""AI Vendoring"" to minimize third-party library sprawl.",0,0,0,0,,,,"2.1, 2.6, 16.4","PR.IP, ID.SC","Detailed Description:
+Treat agent tool wrappers and frameworks as high-risk supply chain dependencies. Automatically evaluate dependency health (e.g., via OpenSSF Scorecard) in CI/CD pipelines. For small, unmaintained dependencies, use a frontier model to reimplement the required functionality in-house rather than importing the external package.
+
+Why AI Compounds Risk:
+Agentic ecosystems compose capabilities dynamically at runtime, loading external tools and agent personas that expand the attack surface. Because AI-assisted attackers are highly effective at finding vulnerabilities in unpatched upstream components, importing unmaintained, small open-source libraries introduces unacceptable supply-chain risk.
+
+Examples:
+1. Run automated reachability analysis on vulnerable code to remediate the smallest set of dependencies that actually impact the agent.
+2. Perform regular dependency-tree audits using an LLM to identify overlapping libraries (e.g., multiple JSON parsers) and consolidate them to reduce the attack surface."

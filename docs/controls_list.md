@@ -120,4 +120,8 @@
 | **[AI-LLM-24](./controls/AI-LLM-24.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Enforce cryptographic integrity and freshness checks on all agent-to-agent and agent-to-tool communications. |
 | **[AI-APP-10](./controls/AI-APP-10.md)** | Layer 7: Application | IG 2 | 1-High | Implement Supply-chain Levels for Software Artifacts (SLSA) or equivalent frameworks for all agent dependencies and dynamically loaded tools. |
 | **[AI-GOV-17](./controls/AI-GOV-17.md)** | Layer 0: Governance & System Controls | IG 1 | 1-High | Integrate AI-specific threat modeling into the Secure Software Development Life Cycle (SSDLC) during the design phase using industry-standard frameworks. |
+| **[AI-NHI-02](./controls/AI-NHI-02.md)** | Layer 0: Governance & System Controls | IG 3 | 1-High | Enforce Cryptographic and Hardware-Backed Identities (e.g., TPMs, HSMs) for production AI agents. |
+| **[AI-DEF-01](./controls/AI-DEF-01.md)** | Layer 0: Governance & System Controls | IG 2 | 2-Medium | Deploy a dedicated AI Triage Agent to perform automated first-pass investigations on security alerts. |
+| **[AI-AGT-03](./controls/AI-AGT-03.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 2-Medium | Implement Distributed Tracing (e.g., OpenTelemetry) across multi-agent workflows for end-to-end explainability. |
+| **[AI-APP-13](./controls/AI-APP-13.md)** | Layer 7: Application | IG 2 | 3-Low | Automate Agent Dependency Health evaluations and utilize "AI Vendoring" to minimize third-party library sprawl. |
 
