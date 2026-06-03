@@ -9,16 +9,6 @@ Examples:
 1. Require vendors to sign a Data Processing Agreement (DPA) explicitly stating that customer data (prompts, RAG context, file uploads, outputs) will absolutely not be used to train, fine-tune, or improve foundational models.
 2. Mandate that multi-tenant AI SaaS platforms provide logical separation and encrypted isolation of tenant workspaces, with Bring Your Own Key (BYOK) support where applicable.
 3. Ensure the vendor supports automated export of AI interaction logs and audit trails to the enterprise SIEM via API for continuous monitoring."
-AI-GOV-17,Layer 0: Governance & System Controls,IG 1,1-High,Integrate AI-specific threat modeling into the Secure Software Development Life Cycle (SSDLC) during the design phase using industry-standard frameworks.,0,0,0,0,,,,16.1,"ID.RA-3, ID.RA-5","Detailed Description:
-Mandate formal threat modeling for all new AI agents and autonomous workflows prior to the coding phase. Engineering and security teams must utilize specialized AI threat modeling frameworks, such as the OWASP Top 10 for LLMs, MITRE ATLAS, and MITRE D3FEND, to identify and mitigate AI-specific vulnerabilities in the architecture.
-
-Why AI Compounds Risk:
-AI systems introduce entirely novel attack vectors—such as prompt injection, training data poisoning, and model inversion—that traditional STRIDE threat models or standard application security reviews will completely miss. Without dedicated AI threat modeling in the design phase, organizations will inevitably build architecturally flawed agents that require costly, reactive retrofitting or red-teaming after deployment.
-
-Examples:
-1. Require development teams to map proposed agent architectures and data flows against the OWASP Top 10 for LLMs to explicitly identify potential data leakage or excessive agency risks before approval.
-2. Utilize the MITRE ATLAS (Adversarial Threat Landscape for AI Systems) framework during tabletop exercises to simulate how an adversary might abuse an agent's intended toolset.
-3. Incorporate MITRE D3FEND countermeasures directly into the system requirements document to ensure structural defenses are built into the agent application from day one."
 AI-GOV-01,Layer 0: Governance & System Controls,IG 1,2-Medium,"Establish and enforce policy on the appropriate application of Large Language Models such as LLM Chatbots, Vibe Coding, and Agentic AI.",0,0,0,0,,,,"15.1, 17.1","GV.PO, GV.OV","Detailed Description:
 This recommendation involves creating and enforcing a formal set of rules that define how employees can ethically and securely use generative AI tools. It establishes clear boundaries regarding permitted and prohibited use cases, data handling requirements, and the roles and responsibilities of staff to ensure AI adoption aligns with organizational values and legal obligations.
 
@@ -81,16 +71,6 @@ Examples:
 1. Deploy an NHI management platform or Cloud Infrastructure Entitlement Management (CIEM) tool to continuously auto-discover and map all service accounts, API keys, and OAuth tokens.
 2. Enforce strict lifecycle policies for AI-associated identities, prioritizing the use of short-lived/ephemeral tokens and mandatory automated credential rotation rather than static API keys.
 3. Implement behavioral monitoring specifically for non-human accounts to detect anomalies, such as an AI agent service account suddenly calling an administrative API or moving large volumes of data outside its baseline."
-AI-REC-01,Layer 0: Governance & System Controls,IG 2,1-High,"Establish AI-specific Data Recovery procedures to restore the ""behavioral fidelity"" of RAG corpora, vector databases, and agent memory states.",0,0,0,0,,,,"11.1, 11.2, 11.5","RC.RP, PR.DS","Detailed Description:
-Implement version-controlled backups and rollback procedures specifically for AI knowledge bases and prompt configurations. Recovery tests must validate semantic correctness (not just byte-level integrity) to ensure that a restored RAG index does not reintroduce poisoned data. Furthermore, ensure backup configurations explicitly exclude transient, sensitive ""scratchpad"" memory and active session tokens.
-
-Why AI Compounds Risk:
-Unlike traditional databases, corruption in a vector store or RAG index leads to silent semantic degradation or the persistent injection of adversarial content (e.g., data poisoning). Standard file-level backups may fail to capture the interdependent state of the model's memory, causing the agent to hallucinate or revert to unsafe behavior post-recovery.
-
-Examples:
-1. Maintain isolated, immutable backups of critical agent memory and configuration data to protect against ransomware.
-2. Automate snapshotting of the vector database alongside its corresponding prompt configuration so both can be rolled back to a known-good state simultaneously.
-3. Conduct quarterly restore tests to verify that a restored RAG corpus accurately maintains its behavioral fidelity and does not contain stale or poisoned documents."
 AI-GOV-09,Layer 0: Governance & System Controls,IG 2,2-Medium,Establish a Deepfake/Voice Clone Executive Protection Protocol,0,0,0,0,,,,"15.1, 17.1","GV.PO, GV.OV","Detailed Description:
 This protocol is a formal set of security procedures designed to verify the authenticity of communications from high-ranking officials to prevent fraud, such as unauthorized wire transfers or data breaches, stemming from AI-generated impersonations.
 
@@ -683,16 +663,6 @@ Examples:
 1. Implement Just-In-Time access solutions that provide temporary, time-bound elevated privileges only for specific approved tasks, automatically revoking them once the task is complete.
 2. Use Group Policy Objects or Mobile Device Management tools to centrally manage and ""flush"" local administrator groups, ensuring only authorized domain accounts have elevated access.
 3. Deploy Privileged Access Management or Endpoint Privilege Management software to allow ""policy-based elevation,"" which lets standard users run specific, pre-approved applications with administrative rights without giving the user full control over the OS."
-AI-END-11,Layer 6: Endpoint Presentation,IG 2,2-Medium,"Govern and restrict Endpoint-Hosted AI Runtimes (e.g., local LLMs) to prevent local data leakage and unauthorized API binding.",0,0,0,0,,,,"1.2, 3.6, 4.5","PR.DS, DE.CM","Detailed Description:
-Use MDM and EDR to inventory and govern locally installed AI models and frameworks. Enforce local disk encryption for all cached prompts and vector embeddings stored by these tools. Implement host-based firewalls to prevent local AI runners from binding their API services to open network ports, which could expose the local model to other devices on the network.
-
-Why AI Compounds Risk:
-As ""local LLM"" frameworks (e.g., Ollama, LM Studio) become more popular, developers are downloading unvetted model weights and running them directly on their endpoints. These local setups bypass corporate AI Gateways and DLP controls. Furthermore, they often cache highly sensitive corporate prompts in plain text on the local disk and occasionally bind insecure API servers to public network interfaces (e.g., 0.0.0.0), exposing the endpoint to exploitation.
-
-Examples:
-1. Configure host-based firewalls to restrict local AI frameworks from binding services to external network interfaces, restricting them strictly to localhost (127.0.0.1).
-2. Enforce endpoint disk encryption (e.g., BitLocker, FileVault) to protect local model artifacts, cached prompt logs, and local vector embeddings from unauthorized physical access.
-3. Use application allowlisting to prohibit the execution of unapproved local model runners and track all authorized endpoint-hosted AI deployments in the centralized asset inventory."
 AI-END-06,Layer 6: Endpoint Presentation,IG 2,3-Low,Deploy AI-Driven EDR/XDR for behavioral process termination,0,0,0,0,,,,"10.1, 10.5","DE.CM, PR.MA","Detailed Description:
 AI-driven Endpoint Detection and Response (EDR) and Extended Detection and Response (XDR) use machine learning and behavioral analysis to monitor system activities in real time. Unlike signature-based tools, these solutions identify suspicious process behaviors—such as unauthorized lateral movement or fileless malware execution—and automatically terminate those processes to contain threats before they can cause damage.
 
@@ -793,16 +763,6 @@ Examples:
 1. Restrict an AI agent's accessible tools to a tightly scoped allowlist (e.g., granting read-only DB access) rather than giving it broad, unfettered access to all enterprise APIs.
 2. Implement strict, server-side JSON schema validation for all tool inputs to prevent an attacker from passing malicious payloads or SQL injections via a hijacked agent.
 3. Require cryptographic ""human-in-the-loop"" MFA approvals before an agent can execute destructive actions or trigger any of the defined High-ROI events."
-AI-APP-10,Layer 7: Application,IG 2,1-High,Implement Supply-chain Levels for Software Artifacts (SLSA) or equivalent frameworks for all agent dependencies and dynamically loaded tools.,0,0,0,0,,,,"16.2, 2.1","ID.SC-1, PR.DS-6","Detailed Description:
-Establish and enforce a Secure Software Development Framework (SSDF) that explicitly manages third-party agentic dependencies. Organizations must verify the digital signatures, cryptographic hashes, and provenance of agent packages, tool plugins, and runtime libraries before allowing them into the production execution environment.
-
-Why AI Compounds Risk:
-AI agents rely heavily on dynamic, open-source tool libraries (e.g., Python packages or npm modules) to interact with external services. If an attacker successfully compromises a package in the supply chain, the agent will inadvertently download and execute the backdoor. Because agents have autonomous execution capabilities, a poisoned dependency essentially hands the attacker direct, machine-speed access to the agent's environment and authorized tools.
-
-Examples:
-1. Adopt the SLSA framework to ensure artifact integrity from source code to deployment, preventing the injection of unauthorized code into the agent's toolsets.
-2. Enforce strict hash-checking in package managers (e.g., package-lock.json or poetry.lock) to verify the SHA-256 signatures of all third-party AI plugins before loading them into the runtime.
-3. Maintain an internally vetted, private artifact registry (e.g., Artifactory) for agent dependencies, explicitly blocking the agent platform from dynamically fetching unverified code directly from public repositories."
 AI-APP-10,Layer 7: Application,IG 2,2-Medium,"Implement a centralized AI Gateway or Control Plane to broker, govern, and monitor all enterprise interactions with external LLMs and AI services.",0,0,0,0,,,,"16.4, 16.5","PR.PT, DE.CM","Detailed Description:
 Deploy a centralized AI Gateway (or Control Plane) to broker, govern, and monitor all enterprise interactions with internal and external AI models. This gateway must centralize model access, enforce approved provider routing, aggregate telemetry/logging, perform inline DLP and prompt redaction, manage rate limiting, enforce content safety policies, and apply tenant restrictions.
 
@@ -813,26 +773,6 @@ Examples:
 1. Deploy an enterprise AI Gateway to intercept and inspect all API calls to external models, enforcing inline data redaction and prompt filtering before the payload leaves the network.
 2. Configure rate limiting, quota management, and cost-control guardrails centrally at the gateway to prevent denial-of-wallet attacks or runaway autonomous agents from overwhelming API limits.
 3. Enforce strict egress allowlisting and tenant-restriction headers via the gateway, ensuring employees and AI agents can only interact with sanctioned, enterprise-provisioned AI workspaces (rather than consumer instances)."
-AI-MCP-01,Layer 7: Application,IG 2,2-Medium,"Implement an Enterprise Model Context Protocol (MCP) Registry to govern capability exposure, track server provenance, and detect capability drift.",0,0,0,0,,,,"1.1, 2.1, 4.1","GV.SC, PR.DS","Detailed Description:
-Mandate that all MCP integrations—whether local stdio subprocesses or remote Streamable HTTP servers—are verified against an approved Enterprise MCP Registry. Deny-by-default any dynamic updates to an MCP server’s declared tools, resources, or prompts (listChanged notifications) until the new capabilities undergo a formal security review, preventing ""rug pull"" supply chain attacks.
-
-Why AI Compounds Risk:
-The Model Context Protocol (MCP) standardizes tool access, accelerating how rapidly AI agents can connect to disparate databases, APIs, and local files. Without a centralized registry to baseline capabilities, a benign third-party MCP server can silently update to include new, high-risk tools or request broader resource access without administrative oversight.
-
-Examples:
-1. Maintain an authoritative enterprise inventory of all MCP components, tracking their deployment type, declared capabilities, and approval status.
-2. Configure the AI Gateway to intercept listChanged notifications, halting access to any newly declared MCP tools until they are reviewed and approved.
-3. Disallow direct internet-based installations of third-party MCP servers, requiring all artifacts to be mirrored, hashed, and served from a vetted internal registry."
-AI-APP-12,Layer 7: Application,IG 2,2-Medium,"Govern, sanitize, and monitor AI-specific indexing files (e.g., llms.txt and llms-full.txt) to prevent sensitive data exposure and indirect prompt injection.",0,0,0,0,,,,"3.1, 13.2, 16.1","PR.DS, PR.PT","Detailed Description:
-Establish strict governance over the creation and modification of machine-readable AI indexing files like llms.txt. Ensure these files undergo automated sensitive data scanning (DLP) before publication and utilize File Integrity Monitoring (FIM) to detect unauthorized tampering.
-
-Why AI Compounds Risk:
-The llms.txt standard allows organizations to compile their site's data into a single, AI-optimized Markdown file. If ungoverned, developers might inadvertently expose restricted data. Furthermore, because AI agents automatically parse and trust this file for context, a compromised llms.txt file is an ideal delivery mechanism for indirect prompt injection attacks targeting downstream AI workflows.
-
-Examples:
-1. Require all llms.txt and llms-full.txt files to pass through a CI/CD pipeline equipped with secret scanning and DLP before being deployed to the public-facing web root.
-2. Implement File Integrity Monitoring (FIM) on the web server to alert security teams immediately if the llms.txt file is modified outside of approved deployment windows.
-3. Establish a formal policy dictating what content categories (e.g., public tutorials, API schemas) are permitted in AI index files, explicitly forbidding the inclusion of internal architecture or beta endpoints."
 AI-APP-01,Layer 7: General Usage & AppSec Defense,IG 1,2-Medium,Enforce Strict Input Sanitization frameworks against AI fuzzing,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
 Enforce Strict Input Sanitization: This recommendation involves implementing robust frameworks to clean, filter, and validate all data entering an AI system to ensure it is free of malicious code, unexpected characters, or hidden instructions. It acts as a primary defense by neutralizing threats like prompt injection, SQL injection, and cross-site scripting (XSS) before they reach the model or underlying infrastructure.
 
@@ -965,36 +905,6 @@ Examples:
 1. Deploy a centralized log management platform that uses machine-readable formats (like JSON) to capture timestamps, user context, intent classification, and the full sequence of actions for every agent transaction.
 2. Establish graduated logging levels—such as Basic, Detailed, and Audit—to balance operational needs with storage costs, ensuring that high-risk activities are documented with full decision trees and reasoning pathways.
 3. Integrate real-time monitoring and alerting systems that scan agent logs for anomalies, such as attempts to access sensitive PII or unauthorized external data sharing, to trigger immediate remediation workflows."
-AI-LLM-22,Layer 7: Internal LLMs & Agentics,IG 2,1-High,Enforce strict environment variable and secret scoping for AI agent runtimes to prevent unconditional inheritance of the parent process environment.,0,0,0,0,,,,"16.1, 16.4",PR.PT-4,"Detailed Description:
-Restrict AI agent subprocesses from inheriting the full parent environment (e.g., Node.js `process.env`). Secrets, API keys, and connection strings must be securely scoped, injected, or retrieved via token exchange only when explicitly required by authorized tools.
-
-Why AI Compounds Risk:
-LLMs cannot be trusted with raw memory or environment access. An attacker using prompt injection can command the AI to enumerate and exfiltrate all system environment variables, instantly stealing cloud, database, and encryption keys that happen to be loaded into the host process.
-
-Examples:
-1. Refactor agent loaders to pass a localized, minimal environment object instead of the global process environment.
-2. Utilize a dedicated Secrets Manager API within specific tool logic rather than injecting secrets as static environment variables.
-3. Enforce containerized or sandboxed runtimes for the agent processes where the host environment is inherently masked."
-AI-LLM-23,Layer 7: Internal LLMs & Agentics,IG 2,1-High,Implement structural or cryptographic boundary markers to separate system prompts from untrusted external data within LLM contexts.,0,0,0,0,,,,"16.1, 16.4","PR.PT-4, DE.CM-1","Detailed Description:
-Applications must utilize robust boundary demarcations (e.g., strict XML tags, distinct message roles, or separate parsing pipelines) whenever an LLM ingests external or untrusted content. This prevents the LLM from confusing developer instructions with user-provided data.
-
-Why AI Compounds Risk:
-AI models inherently struggle to distinguish between system instructions and data payloads. Without structural boundaries, a malicious payload hidden in a summarized document or webpage can execute an indirect prompt injection attack, overriding the agent's core constraints and turning the AI into a confused deputy.
-
-Examples:
-1. Wrap all external document text within strict `<external_content>` tags before passing it to the LLM.
-2. Implement instruction-tuned models that enforce separate API channels for 'System', 'User', and 'Data' roles.
-3. Utilize an intermediate parsing LLM to strip actionable instructions from untrusted data before feeding it into the primary agentic workflow."
-AI-LLM-24,Layer 7: Internal LLMs & Agentics,IG 2,1-High,Enforce cryptographic integrity and freshness checks on all agent-to-agent and agent-to-tool communications.,0,0,0,0,,,,"16.14, 3.3","PR.DS-2, PR.DS-5","Detailed Description:
-Implement message validation by default across the agentic architecture. Message payloads passed between agents or from an agent to a tool execution engine must include cryptographic signatures (to verify origin and integrity) and timestamps or nonces (to verify freshness).
-
-Why AI Compounds Risk:
-As multi-agent systems communicate autonomously at high speeds, the blast radius of a single compromised agent increases. Without payload integrity and freshness checks, a malicious or prompt-injected agent can spoof messages, alter instruction payloads in transit, or replay previously authorized tool commands to laterally infect other agents or bypass access controls.
-
-Examples:
-1. Utilize JSON Web Tokens (JWT) or signed HTTP requests for all internal remote procedure calls (RPC) between independent AI agents to ensure cryptographic origin verification.
-2. Embed strict timestamps and cryptographic nonces within the message payload schema; the receiving agent must reject any message that falls outside a tight temporal window (e.g., older than 5 seconds) to prevent replay attacks.
-3. Enforce mutual TLS (mTLS) combined with payload hashing across the agentic service mesh to protect the confidentiality and integrity of agent communications."
 AI-LLM-05,Layer 7: Internal LLMs & Agentics,IG 2,2-Medium,Test any fake (synthetic) or anonymized data to make sure hackers can't reverse-engineer it to find real people's identities.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
 Explanation: This recommendation emphasizes that synthetic or anonymized data is not inherently anonymous and may still contain patterns that allow for re-identification. Organizations must rigorously validate these datasets using privacy metrics and adversarial testing to ensure that sensitive information from the original records cannot be reconstructed or linked back to real individuals by malicious actors.
 
@@ -1095,16 +1005,6 @@ Examples:
 1. Deploy vector databases within a Private Virtual Cloud (VPC) and use fine-grained RBAC to restrict access so that only the specific AI application's service account can execute queries, while engineering access is limited to anonymized development environments.
 2. Use an enterprise key management service to manage and rotate encryption keys for the vector store, ensuring that even administrators with database access cannot view the underlying embeddings without the proper cryptographic keys.
 3. Enable comprehensive audit logging and automated monitoring to track every similarity search query, setting rate limits and alerts for anomalous patterns that might indicate a systematic attempt to exfiltrate or reverse-engineer the database content."
-AI-AGT-02,Layer 7: Internal LLMs & Agentics,IG 3,1-High,Enforce Zero-Trust segmentation and strict Role-Based Access Control (RBAC) boundaries for agent-to-agent communications.,0,0,0,0,,,,"6.8, 12.5, 13.4","PR.AC, PR.NW","Detailed Description:
-In multi-agent architectures, implement network-layer and application-layer boundaries to prevent low-privilege agents from delegating tasks to, or improperly prompting, high-privilege peers. Agent-to-agent interactions must pass the invoking user's identity and privilege context across the entire agent chain to prevent unauthorized privilege escalation.
-
-Why AI Compounds Risk:
-Multi-agent workflows allow specialized AI agents to collaborate autonomously. However, if a public-facing, low-privilege agent (e.g., an external support bot) can freely communicate with an internal, high-privilege agent (e.g., a database administrator bot), an attacker can use indirect prompt injection on the support bot to trick the admin bot into exfiltrating or destroying data—a modern ""confused deputy"" attack.
-
-Examples:
-1. Filter traffic between AI agent network segments to strictly govern task delegation and state sharing.
-2. Map specific agent RBAC roles to authorized network boundaries, ensuring peer-to-peer communication requires explicit authorization.
-3. Require downstream high-privilege agents to re-validate the original user context (e.g., via delegated OAuth tokens) before executing tasks requested by a peer agent."
 AI-LLM-16,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,Regularly test internal AI systems by having security teams pretend to be hackers (Red Teaming) to find weak spots.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
 AI red teaming is a structured, adversarial testing process where security teams simulate real-world attacks to identify vulnerabilities in AI models, data pipelines, and APIs before they can be exploited. This proactive approach goes beyond traditional software testing by focusing on the unique ways AI can misbehave, such as through prompt injection, data poisoning, or model evasion, to ensure the system is resilient and trustworthy.
 
@@ -1169,3 +1069,157 @@ Examples:
 1. Deploy an AI Gateway, such as an enterprise API Gateway, to serve as a single point of inspection for all API-based AI traffic, allowing the organization to enforce real-time content monitoring and block sensitive data from leaving the network perimeter during LLM interactions.
 2. Use browser-native security extensions, like an enterprise browser security extension or a browser security solution, to provide last-mile visibility and granular control over AI sessions, enabling the organization to block copy-paste or file upload actions within specific generative AI tools on both managed and unmanaged devices.
 3. Implement semantic-aware DLP solutions, such as semantic-aware DLP or AI-driven data security posture management (DSPM) solutions, which use machine learning to understand the context of unstructured data; this allows the system to detect sensitive information hidden in paraphrased summaries or translated text that traditional pattern-matching tools would miss."
+AI-REC-01,Layer 0: Governance & System Controls,IG 2,1-High,"Establish AI-specific Data Recovery procedures to restore the ""behavioral fidelity"" of RAG corpora, vector databases, and agent memory states.",0,0,0,0,,,,"11.1, 11.2, 11.5","RC.RP, PR.DS","Detailed Description:
+Implement version-controlled backups and rollback procedures specifically for AI knowledge bases and prompt configurations. Recovery tests must validate semantic correctness (not just byte-level integrity) to ensure that a restored RAG index does not reintroduce poisoned data. Furthermore, ensure backup configurations explicitly exclude transient, sensitive ""scratchpad"" memory and active session tokens.
+
+Why AI Compounds Risk:
+Unlike traditional databases, corruption in a vector store or RAG index leads to silent semantic degradation or the persistent injection of adversarial content (e.g., data poisoning). Standard file-level backups may fail to capture the interdependent state of the model's memory, causing the agent to hallucinate or revert to unsafe behavior post-recovery.
+
+Examples:
+1. Maintain isolated, immutable backups of critical agent memory and configuration data to protect against ransomware.
+2. Automate snapshotting of the vector database alongside its corresponding prompt configuration so both can be rolled back to a known-good state simultaneously.
+3. Conduct quarterly restore tests to verify that a restored RAG corpus accurately maintains its behavioral fidelity and does not contain stale or poisoned documents."
+AI-MCP-01,Layer 7: Application,IG 2,2-Medium,"Implement an Enterprise Model Context Protocol (MCP) Registry to govern capability exposure, track server provenance, and detect capability drift.",0,0,0,0,,,,"1.1, 2.1, 4.1","GV.SC, PR.DS","Detailed Description:
+Mandate that all MCP integrations—whether local stdio subprocesses or remote Streamable HTTP servers—are verified against an approved Enterprise MCP Registry. Deny-by-default any dynamic updates to an MCP server’s declared tools, resources, or prompts (listChanged notifications) until the new capabilities undergo a formal security review, preventing ""rug pull"" supply chain attacks.
+
+Why AI Compounds Risk:
+The Model Context Protocol (MCP) standardizes tool access, accelerating how rapidly AI agents can connect to disparate databases, APIs, and local files. Without a centralized registry to baseline capabilities, a benign third-party MCP server can silently update to include new, high-risk tools or request broader resource access without administrative oversight.
+
+Examples:
+1. Maintain an authoritative enterprise inventory of all MCP components, tracking their deployment type, declared capabilities, and approval status.
+2. Configure the AI Gateway to intercept listChanged notifications, halting access to any newly declared MCP tools until they are reviewed and approved.
+3. Disallow direct internet-based installations of third-party MCP servers, requiring all artifacts to be mirrored, hashed, and served from a vetted internal registry."
+AI-AGT-02,Layer 7: Internal LLMs & Agentics,IG 3,1-High,Enforce Zero-Trust segmentation and strict Role-Based Access Control (RBAC) boundaries for agent-to-agent communications.,0,0,0,0,,,,"6.8, 12.5, 13.4","PR.AC, PR.NW","Detailed Description:
+In multi-agent architectures, implement network-layer and application-layer boundaries to prevent low-privilege agents from delegating tasks to, or improperly prompting, high-privilege peers. Agent-to-agent interactions must pass the invoking user's identity and privilege context across the entire agent chain to prevent unauthorized privilege escalation.
+
+Why AI Compounds Risk:
+Multi-agent workflows allow specialized AI agents to collaborate autonomously. However, if a public-facing, low-privilege agent (e.g., an external support bot) can freely communicate with an internal, high-privilege agent (e.g., a database administrator bot), an attacker can use indirect prompt injection on the support bot to trick the admin bot into exfiltrating or destroying data—a modern ""confused deputy"" attack.
+
+Examples:
+1. Filter traffic between AI agent network segments to strictly govern task delegation and state sharing.
+2. Map specific agent RBAC roles to authorized network boundaries, ensuring peer-to-peer communication requires explicit authorization.
+3. Require downstream high-privilege agents to re-validate the original user context (e.g., via delegated OAuth tokens) before executing tasks requested by a peer agent."
+AI-END-11,Layer 6: Endpoint Presentation,IG 2,2-Medium,"Govern and restrict Endpoint-Hosted AI Runtimes (e.g., local LLMs) to prevent local data leakage and unauthorized API binding.",0,0,0,0,,,,"1.2, 3.6, 4.5","PR.DS, DE.CM","Detailed Description:
+Use MDM and EDR to inventory and govern locally installed AI models and frameworks. Enforce local disk encryption for all cached prompts and vector embeddings stored by these tools. Implement host-based firewalls to prevent local AI runners from binding their API services to open network ports, which could expose the local model to other devices on the network.
+
+Why AI Compounds Risk:
+As ""local LLM"" frameworks (e.g., Ollama, LM Studio) become more popular, developers are downloading unvetted model weights and running them directly on their endpoints. These local setups bypass corporate AI Gateways and DLP controls. Furthermore, they often cache highly sensitive corporate prompts in plain text on the local disk and occasionally bind insecure API servers to public network interfaces (e.g., 0.0.0.0), exposing the endpoint to exploitation.
+
+Examples:
+1. Configure host-based firewalls to restrict local AI frameworks from binding services to external network interfaces, restricting them strictly to localhost (127.0.0.1).
+2. Enforce endpoint disk encryption (e.g., BitLocker, FileVault) to protect local model artifacts, cached prompt logs, and local vector embeddings from unauthorized physical access.
+3. Use application allowlisting to prohibit the execution of unapproved local model runners and track all authorized endpoint-hosted AI deployments in the centralized asset inventory."
+AI-APP-12,Layer 7: Application,IG 2,2-Medium,"Govern, sanitize, and monitor AI-specific indexing files (e.g., llms.txt and llms-full.txt) to prevent sensitive data exposure and indirect prompt injection.",0,0,0,0,,,,"3.1, 13.2, 16.1","PR.DS, PR.PT","Detailed Description:
+Establish strict governance over the creation and modification of machine-readable AI indexing files like llms.txt. Ensure these files undergo automated sensitive data scanning (DLP) before publication and utilize File Integrity Monitoring (FIM) to detect unauthorized tampering.
+
+Why AI Compounds Risk:
+The llms.txt standard allows organizations to compile their site's data into a single, AI-optimized Markdown file. If ungoverned, developers might inadvertently expose restricted data. Furthermore, because AI agents automatically parse and trust this file for context, a compromised llms.txt file is an ideal delivery mechanism for indirect prompt injection attacks targeting downstream AI workflows.
+
+Examples:
+1. Require all llms.txt and llms-full.txt files to pass through a CI/CD pipeline equipped with secret scanning and DLP before being deployed to the public-facing web root.
+2. Implement File Integrity Monitoring (FIM) on the web server to alert security teams immediately if the llms.txt file is modified outside of approved deployment windows.
+3. Establish a formal policy dictating what content categories (e.g., public tutorials, API schemas) are permitted in AI index files, explicitly forbidding the inclusion of internal architecture or beta endpoints."
+AI-LLM-17,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,"Force AI tools that write or run code to do so in a secure, isolated bubble (sandbox) so they can't break anything on the network.",0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Detailed Explanation: Sandboxing creates a secure, isolated runtime environment where AI-generated code can execute without direct access to the host operating system, production databases, or internal networks. This isolation ensures that even if the AI generates malicious or buggy code, the impact is contained within a temporary ""bubble,"" preventing system-wide crashes, data exfiltration, or unauthorized lateral movement across the corporate infrastructure.
+
+Why AI Compounds Risk:
+Why AI Exacerbates Risk: Unlike human-written code that goes through peer review, AI models can generate billions of lines of code instantly that may contain hallucinations, unintentional vulnerabilities, or ""jailbroken"" malicious logic. Since AI agents often require autonomy to perform tasks, allowing them to execute code directly on application servers or local machines without isolation creates a high-speed vector for spreading malware, leaking secrets, or corrupting critical data at scale.
+
+Examples:
+1. Deploy ephemeral, container-based sandboxes using tools like container orchestration platforms with sandboxed runtimes to provide microVM isolation for every AI-generated task.
+2. Integrate specialized AI execution APIs to run untrusted code in short-lived environments that automatically terminate after a task is completed.
+3. Use WebAssembly (WASM) runtimes to execute AI-generated Python or JavaScript in a lightweight, browser-based or server-side sandbox that strictly limits filesystem and network access."
+AI-LLM-18,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,Keep different users' AI chats strictly separated so one person's data doesn't accidentally leak into another person's chat.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Explanation: This recommendation ensures that every user's interaction with an AI system is isolated within a secure, private session. By treating each conversation as a distinct instance mapped to a specific authenticated identity, organizations prevent cross-contamination where one person's sensitive inputs—such as proprietary code, financial data, or personal information—might be surfaced to another user through shared chat histories, system caches, or the model’s internal memory.
+
+Why AI Compounds Risk:
+Why AI Exacerbates the Risk:
+
+Examples:
+1. Data Training Loops: Many AI models use human inputs to improve and retrain themselves, meaning sensitive data shared by one user could potentially be generated as an answer for a different user in the future.
+2. Context and Memory Features: Modern AI assistants often use persistent memory or long context windows to recall past interactions; without strict separation, these features can mistakenly retrieve and display private details from a separate user's session.
+3. LLM Scope Violations: AI agents often have the ability to call external tools or databases; poor session management can lead to the AI unintentionally retrieving and leaking internal organizational data to unauthorized employees during a prompt.
+4. Corporate Implementation Examples:
+5. Unique Session Identifiers: Implement backend logic using unique identifiers (such as UUIDs) for every chat session to ensure that data retrieval requests are strictly bound to the authenticated user's ID and cannot be accessed by other sessions.
+6. Enterprise Managed Environments: Utilize enterprise-tier AI subscriptions that offer administrative silos, ensuring that organizational data is isolated from the public model and that individual employee histories remain private within the company's tenant.
+7. Robust Backend Security Rules: Configure cloud database permissions and security rules to require mandatory authentication for every data request, preventing ""authenticated user"" vulnerabilities where any logged-in person could potentially view the entire database of stored chats."
+AI-LLM-19,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,Keep a 'nutrition label' (Bill of Materials) for your AI models and verify that no one has tampered with their code or plugins.,0,0,0,0,,,,15.1,GV.SC,"Detailed Description:
+This recommendation advises organizations to maintain an AI Bill of Materials (AIBOM), which is a machine-readable inventory of every dataset, model, and software component used in an AI system. It serves as a ""nutrition label"" to provide transparency into the system's ""ingredients,"" such as data provenance, model lineage, and third-party dependencies. This process ensures that the AI's code and plugins remain secure and uncorrupted by verifying their integrity throughout the development and deployment lifecycle.
+
+Why AI Compounds Risk:
+AI exacerbates security risks because it is not static software; it is a ""living"" system that evolves through retraining and depends on complex, often external, data pipelines. This complexity creates a larger attack surface where malicious actors can inject corrupted data (data poisoning) or manipulate model behavior through untrusted plugins and hidden dependencies, which traditional security tools may fail to detect.
+
+Examples:
+1. Use automated tools to generate and update AIBOMs within CI/CD pipelines to ensure the inventory reflects real-time changes in models and datasets.
+2. Implement standardized profiles, such as SPDX 3.0, to document model architecture, licensing, and training data sources in a consistent, interoperable format.
+3. Establish a formal governance framework that assigns clear ownership to MLOps and data science teams for monitoring ""trust ingredients,"" such as data deletion policies and human-in-the-loop oversight."
+AI-LLM-20,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,Track exactly where your AI training data comes from to ensure hackers haven't poisoned it with malicious information.,0,0,0,0,,,,15.1,GV.SC,"Detailed Description:
+Explanation: This recommendation refers to establishing data provenance, which is the ability to trace the origin, ownership, transformations, and generation of datasets used to train or fine-tune AI models. By documenting the historical record of data—including who created it, when it was created, and what changes were made—organizations can verify the authenticity and integrity of their information. This process allows developers to identify and filter out poisoned data, which is malicious or biased information intentionally injected by hackers to skew model outputs, create hidden backdoors, or degrade system performance.
+
+Why AI Compounds Risk:
+Why AI Exacerbates the Risk: AI models learn patterns and make decisions based entirely on the quality of their training data, meaning any foundational compromise is inherited and perpetuated throughout the model's operational lifetime. The complexity of AI often creates black boxes where it is difficult to see how data transformations lead to specific results, making subtle ""stealth attacks"" hard to detect through standard validation. Furthermore, the massive scale and speed of data ingestion in modern generative AI, which often involves scraping vast amounts of unverified web content, provide numerous entry points for attackers to silently plant malicious samples.
+
+Examples:
+1. Use automated tools to generate data provenance cards that summarize a dataset's creators, original sources, and license conditions to ensure all training material is reputable and legally compliant.
+2. Adopt cryptographic authentication standards, such as digital signatures, to create tamper-proof records of the history of digital content, allowing the system to verify that the data has not been altered by an unauthorized party.
+3. Establish a formal metadata management system that records column-level lineage, tracking every touchpoint and transformation a data asset undergoes from its original collection to its final use in the AI pipeline."
+AI-LLM-21,Layer 7: Internal LLMs & Agentics,IG 3,3-Low,Install data loss prevention (DLP) tools to stop AI agents from accidentally or maliciously leaking sensitive company data.,0,0,0,0,,,,16.1,PR.DS,"Detailed Description:
+Data Loss Prevention (DLP) tools are security solutions that identify, monitor, and protect sensitive information—such as intellectual property, PII, and financial records—from unauthorized access or transmission. In the context of AI agents, DLP involves deploying specialized software that inspects the data flowing into prompts (inputs) and the information generated by the models (outputs) to ensure that confidential company data is not leaked to external AI providers or unauthorized users.
+
+Why AI Compounds Risk:
+AI exacerbates data leakage risks because agents often operate with high levels of autonomy and can move data through multi-hop chains, including vector stores and downstream automations, which traditional security controls cannot see. Furthermore, techniques like Retrieval-Augmented Generation (RAG) can inadvertently strip away original document access controls, while prompt injection attacks can manipulate agents into revealing sensitive training data or internal documents that should remain private.
+
+Examples:
+1. Deploy an AI Gateway, such as an enterprise API Gateway, to serve as a single point of inspection for all API-based AI traffic, allowing the organization to enforce real-time content monitoring and block sensitive data from leaving the network perimeter during LLM interactions.
+2. Use browser-native security extensions, like an enterprise browser security extension or a browser security solution, to provide last-mile visibility and granular control over AI sessions, enabling the organization to block copy-paste or file upload actions within specific generative AI tools on both managed and unmanaged devices.
+3. Implement semantic-aware DLP solutions, such as semantic-aware DLP or AI-driven data security posture management (DSPM) solutions, which use machine learning to understand the context of unstructured data; this allows the system to detect sensitive information hidden in paraphrased summaries or translated text that traditional pattern-matching tools would miss."
+AI-LLM-22,Layer 7: Internal LLMs & Agentics,IG 2,1-High,Enforce strict environment variable and secret scoping for AI agent runtimes to prevent unconditional inheritance of the parent process environment.,0,0,0,0,,,,"16.1, 16.4",PR.PT-4,"Detailed Description:
+Restrict AI agent subprocesses from inheriting the full parent environment (e.g., Node.js `process.env`). Secrets, API keys, and connection strings must be securely scoped, injected, or retrieved via token exchange only when explicitly required by authorized tools.
+
+Why AI Compounds Risk:
+LLMs cannot be trusted with raw memory or environment access. An attacker using prompt injection can command the AI to enumerate and exfiltrate all system environment variables, instantly stealing cloud, database, and encryption keys that happen to be loaded into the host process.
+
+Examples:
+1. Refactor agent loaders to pass a localized, minimal environment object instead of the global process environment.
+2. Utilize a dedicated Secrets Manager API within specific tool logic rather than injecting secrets as static environment variables.
+3. Enforce containerized or sandboxed runtimes for the agent processes where the host environment is inherently masked."
+AI-LLM-23,Layer 7: Internal LLMs & Agentics,IG 2,1-High,Implement structural or cryptographic boundary markers to separate system prompts from untrusted external data within LLM contexts.,0,0,0,0,,,,"16.1, 16.4","PR.PT-4, DE.CM-1","Detailed Description:
+Applications must utilize robust boundary demarcations (e.g., strict XML tags, distinct message roles, or separate parsing pipelines) whenever an LLM ingests external or untrusted content. This prevents the LLM from confusing developer instructions with user-provided data.
+
+Why AI Compounds Risk:
+AI models inherently struggle to distinguish between system instructions and data payloads. Without structural boundaries, a malicious payload hidden in a summarized document or webpage can execute an indirect prompt injection attack, overriding the agent's core constraints and turning the AI into a confused deputy.
+
+Examples:
+1. Wrap all external document text within strict `<external_content>` tags before passing it to the LLM.
+2. Implement instruction-tuned models that enforce separate API channels for 'System', 'User', and 'Data' roles.
+3. Utilize an intermediate parsing LLM to strip actionable instructions from untrusted data before feeding it into the primary agentic workflow."
+AI-LLM-24,Layer 7: Internal LLMs & Agentics,IG 2,1-High,Enforce cryptographic integrity and freshness checks on all agent-to-agent and agent-to-tool communications.,0,0,0,0,,,,"16.14, 3.3","PR.DS-2, PR.DS-5","Detailed Description:
+Implement message validation by default across the agentic architecture. Message payloads passed between agents or from an agent to a tool execution engine must include cryptographic signatures (to verify origin and integrity) and timestamps or nonces (to verify freshness).
+
+Why AI Compounds Risk:
+As multi-agent systems communicate autonomously at high speeds, the blast radius of a single compromised agent increases. Without payload integrity and freshness checks, a malicious or prompt-injected agent can spoof messages, alter instruction payloads in transit, or replay previously authorized tool commands to laterally infect other agents or bypass access controls.
+
+Examples:
+1. Utilize JSON Web Tokens (JWT) or signed HTTP requests for all internal remote procedure calls (RPC) between independent AI agents to ensure cryptographic origin verification.
+2. Embed strict timestamps and cryptographic nonces within the message payload schema; the receiving agent must reject any message that falls outside a tight temporal window (e.g., older than 5 seconds) to prevent replay attacks.
+3. Enforce mutual TLS (mTLS) combined with payload hashing across the agentic service mesh to protect the confidentiality and integrity of agent communications."
+AI-APP-10,Layer 7: Application,IG 2,1-High,Implement Supply-chain Levels for Software Artifacts (SLSA) or equivalent frameworks for all agent dependencies and dynamically loaded tools.,0,0,0,0,,,,"16.2, 2.1","ID.SC-1, PR.DS-6","Detailed Description:
+Establish and enforce a Secure Software Development Framework (SSDF) that explicitly manages third-party agentic dependencies. Organizations must verify the digital signatures, cryptographic hashes, and provenance of agent packages, tool plugins, and runtime libraries before allowing them into the production execution environment.
+
+Why AI Compounds Risk:
+AI agents rely heavily on dynamic, open-source tool libraries (e.g., Python packages or npm modules) to interact with external services. If an attacker successfully compromises a package in the supply chain, the agent will inadvertently download and execute the backdoor. Because agents have autonomous execution capabilities, a poisoned dependency essentially hands the attacker direct, machine-speed access to the agent's environment and authorized tools.
+
+Examples:
+1. Adopt the SLSA framework to ensure artifact integrity from source code to deployment, preventing the injection of unauthorized code into the agent's toolsets.
+2. Enforce strict hash-checking in package managers (e.g., package-lock.json or poetry.lock) to verify the SHA-256 signatures of all third-party AI plugins before loading them into the runtime.
+3. Maintain an internally vetted, private artifact registry (e.g., Artifactory) for agent dependencies, explicitly blocking the agent platform from dynamically fetching unverified code directly from public repositories."
+AI-GOV-17,Layer 0: Governance & System Controls,IG 1,1-High,Integrate AI-specific threat modeling into the Secure Software Development Life Cycle (SSDLC) during the design phase using industry-standard frameworks.,0,0,0,0,,,,16.1,"ID.RA-3, ID.RA-5","Detailed Description:
+Mandate formal threat modeling for all new AI agents and autonomous workflows prior to the coding phase. Engineering and security teams must utilize specialized AI threat modeling frameworks, such as the OWASP Top 10 for LLMs, MITRE ATLAS, and MITRE D3FEND, to identify and mitigate AI-specific vulnerabilities in the architecture.
+
+Why AI Compounds Risk:
+AI systems introduce entirely novel attack vectors—such as prompt injection, training data poisoning, and model inversion—that traditional STRIDE threat models or standard application security reviews will completely miss. Without dedicated AI threat modeling in the design phase, organizations will inevitably build architecturally flawed agents that require costly, reactive retrofitting or red-teaming after deployment.
+
+Examples:
+1. Require development teams to map proposed agent architectures and data flows against the OWASP Top 10 for LLMs to explicitly identify potential data leakage or excessive agency risks before approval.
+2. Utilize the MITRE ATLAS (Adversarial Threat Landscape for AI Systems) framework during tabletop exercises to simulate how an adversary might abuse an agent's intended toolset.
+3. Incorporate MITRE D3FEND countermeasures directly into the system requirements document to ensure structural defenses are built into the agent application from day one."
