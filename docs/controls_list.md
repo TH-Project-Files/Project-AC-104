@@ -6,7 +6,6 @@
 | **[AI-GOV-01](./controls/AI-GOV-01.md)** | Layer 0: Governance & System Controls | IG 1 | 2-Medium | Establish and enforce policy on the appropriate application of Large Language Models such as LLM Chatbots, Vibe Coding, and Agentic AI. |
 | **[AI-GOV-02](./controls/AI-GOV-02.md)** | Layer 0: Governance & System Controls | IG 1 | 2-Medium | Implement rigorous Data Classification Mapping and System Agnostic Coverage Policies |
 | **[AI-GOV-03](./controls/AI-GOV-03.md)** | Layer 0: Governance & System Controls | IG 1 | 2-Medium | Establish an Approved AI Service Catalog and enforce it via web proxies/CASB, explicitly limiting employee access to only vetted and sanctioned AI tools. |
-| **[AI-GOV-04](./controls/AI-GOV-04.md)** | Layer 0: Governance & System Controls | IG 2 | 1-High | Implement Continuous Session Risk Monitoring (e.g., 'impossible travel') to detect and automatically revoke session tokens hijacked by AI-automated scripts. |
 | **[AI-GOV-08](./controls/AI-GOV-08.md)** | Layer 0: Governance & System Controls | IG 2 | 1-High | Establish OAuth Application Governance to restrict third-party 'AI Productivity' apps from accessing sensitive mailbox or cloud storage data. |
 | **[AI-NHI-01](./controls/AI-NHI-01.md)** | Layer 0: Governance & System Controls | IG 2 | 1-High | Establish Non-Human Identity (NHI) Inventory and Governance (service accounts, API keys, tokens, agent identities) |
 | **[AI-GOV-09](./controls/AI-GOV-09.md)** | Layer 0: Governance & System Controls | IG 2 | 2-Medium | Establish a Deepfake/Voice Clone Executive Protection Protocol |
@@ -56,7 +55,7 @@
 | **[AI-ACC-03](./controls/AI-ACC-03.md)** | Layer 5: Access Session | IG 2 | 1-High | Enforce Aggressive Token Rotation: Implement automated rotation for all privileged credentials and shorten session token lifetimes to neutralize the persistence of AI-generated infostealers. |
 | **[AI-PAM-01](./controls/AI-PAM-01.md)** | Layer 5: Access Session | IG 2 | 1-High | Implement Privileged Access Management (PAM) with Just-In-Time (JIT) elevation for privileged actions by humans and AI agents |
 | **[AI-ACC-08](./controls/AI-ACC-08.md)** | Layer 5: Access Session | IG 2 | 1-High | Enforce managed-device and continuous device posture checks as a prerequisite for accessing sensitive applications and enterprise AI tools. |
-| **[AI-ACC-05](./controls/AI-ACC-05.md)** | Layer 5: Access Session | IG 2 | 2-Medium | Configure Automated Session Invalidation upon risk detection |
+| **[AI-ACC-05](./controls/AI-ACC-05.md)** | Layer 5: Access Session | IG 2 | 1-High | Implement Continuous, Context-Aware Session Monitoring with Automated Invalidation for High-Risk Anomalies. |
 | **[AI-ACC-06](./controls/AI-ACC-06.md)** | Layer 5: Access Session | IG 2 | 2-Medium | Implement Context-Aware Authentication (e.g. typing cadence, location) |
 | **[AI-AUTH-05](./controls/AI-AUTH-05.md)** | Layer 5: Access Session | IG 2 | 2-Medium | Monitor external threat intelligence and dark web sources for compromised employee credentials, and enforce automated password resets for exposed accounts. |
 | **[AI-ACC-07](./controls/AI-ACC-07.md)** | Layer 5: Access Session | IG 3 | 1-High | Enable device-bound/session-bound token protections (where supported) to reduce replay of stolen session tokens |
@@ -124,4 +123,5 @@
 | **[AI-DEF-01](./controls/AI-DEF-01.md)** | Layer 0: Governance & System Controls | IG 2 | 2-Medium | Deploy a dedicated AI Triage Agent to perform automated first-pass investigations on security alerts. |
 | **[AI-AGT-03](./controls/AI-AGT-03.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 2-Medium | Implement Distributed Tracing (e.g., OpenTelemetry) across multi-agent workflows for end-to-end explainability. |
 | **[AI-APP-13](./controls/AI-APP-13.md)** | Layer 7: Application | IG 2 | 3-Low | Automate Agent Dependency Health evaluations and utilize "AI Vendoring" to minimize third-party library sprawl. |
+| **[AI-GOV-18](./controls/AI-GOV-18.md)** | Layer 0: Governance & System Controls | IG 2 | 2-Medium | Scale Incident Response Tabletop Exercises to simulate high-velocity, simultaneous AI-driven compromises. |
 
