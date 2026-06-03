@@ -2,24 +2,24 @@
 
 **Category:** Layer 7: Application  
 **Implementation Group:** IG 2  
-**Aggregate Risk Level:** 2-Medium  
-**CIS v8 Safeguards:** 16.4, 16.5  
-**NIST CSF Subcategories:** PR.PT, DE.CM  
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 16.2, 2.1  
+**NIST CSF Subcategories:** ID.SC-1, PR.DS-6  
 
 ## Recommendation Description
-Implement a centralized AI Gateway or Control Plane to broker, govern, and monitor all enterprise interactions with external LLMs and AI services.
+Implement Supply-chain Levels for Software Artifacts (SLSA) or equivalent frameworks for all agent dependencies and dynamically loaded tools.
 
 ## Details
 Detailed Description:
-Deploy a centralized AI Gateway (or Control Plane) to broker, govern, and monitor all enterprise interactions with internal and external AI models. This gateway must centralize model access, enforce approved provider routing, aggregate telemetry/logging, perform inline DLP and prompt redaction, manage rate limiting, enforce content safety policies, and apply tenant restrictions.
+Establish and enforce a Secure Software Development Framework (SSDF) that explicitly manages third-party agentic dependencies. Organizations must verify the digital signatures, cryptographic hashes, and provenance of agent packages, tool plugins, and runtime libraries before allowing them into the production execution environment.
 
 Why AI Compounds Risk:
-The rapid proliferation of Generative AI APIs and applications leads to massive "Shadow AI" adoption. If development teams and end-users connect directly to dozens of different LLMs, security enforcement becomes hopelessly fragmented across CASB, SWG, IdP, and individual application teams. A centralized AI gateway acts as a critical, unified chokepoint. It ensures that consistent security, privacy, and compliance guardrails (like prompt filtering and data redaction) are applied uniformly to all AI traffic at machine speed, regardless of the underlying model.
+AI agents rely heavily on dynamic, open-source tool libraries (e.g., Python packages or npm modules) to interact with external services. If an attacker successfully compromises a package in the supply chain, the agent will inadvertently download and execute the backdoor. Because agents have autonomous execution capabilities, a poisoned dependency essentially hands the attacker direct, machine-speed access to the agent's environment and authorized tools.
 
 Examples:
-1. Deploy an enterprise AI Gateway to intercept and inspect all API calls to external models, enforcing inline data redaction and prompt filtering before the payload leaves the network.
-2. Configure rate limiting, quota management, and cost-control guardrails centrally at the gateway to prevent denial-of-wallet attacks or runaway autonomous agents from overwhelming API limits.
-3. Enforce strict egress allowlisting and tenant-restriction headers via the gateway, ensuring employees and AI agents can only interact with sanctioned, enterprise-provisioned AI workspaces (rather than consumer instances).
+1. Adopt the SLSA framework to ensure artifact integrity from source code to deployment, preventing the injection of unauthorized code into the agent's toolsets.
+2. Enforce strict hash-checking in package managers (e.g., package-lock.json or poetry.lock) to verify the SHA-256 signatures of all third-party AI plugins before loading them into the runtime.
+3. Maintain an internally vetted, private artifact registry (e.g., Artifactory) for agent dependencies, explicitly blocking the agent platform from dynamically fetching unverified code directly from public repositories.
 
 ## Implementation Status
 - **Policy Defined:** 0

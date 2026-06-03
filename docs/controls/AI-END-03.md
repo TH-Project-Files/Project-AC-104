@@ -1,24 +1,31 @@
-﻿# AI-END-03: Enforce Automated Patch Management for OS and 3rd-party apps
+﻿# AI-END-03
 
-**Project:** Argus Centurion (AC-104)  
 **Category:** Layer 6: Endpoint Presentation  
-**Implementation Group:** IG 1  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `7.1` | NIST CSF: `PR.PS`
+**Implementation Group:** IG 2  
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 7.1  
+**NIST CSF Subcategories:** PR.PS  
 
----
+## Recommendation Description
+Implement Autonomous, Real-Time Patch Management and Runtime Exploit Prevention.
 
-## Control Details
+## Details
 Detailed Description:
-Automated patch management is the process of using software to automatically identify, download, test, and deploy updates for operating systems and third-party applications. This lifecycle includes scanning endpoints for missing patches, prioritizing them based on severity, and verifying successful installation to ensure systems remain secure and stable without requiring constant manual intervention from IT teams.
+Implement Autonomous, Real-Time Patch Management and Runtime Exploit Prevention. This lifecycle must identify, prioritize via AI reachability analysis, and deploy critical security updates instantly, bypassing traditional staging delays for actively exploited or AI-discovered zero-days.
 
 Why AI Compounds Risk:
-AI exacerbates cybersecurity risks by enabling attackers to rapidly discover vulnerabilities and automate the creation of sophisticated exploits in as little as an hour after a CVE is released. This drastically shrinks the window of opportunity for defenders, making traditional monthly manual patching cycles insufficient against AI-driven threats that can target multiple systems simultaneously and bypass standard defenses.
+The release of frontier vulnerability-discovery models has triggered a "patch tidal wave," uncovering decades of hidden flaws (e.g., memory safety bugs) and collapsing the exploit window from weeks to minutes. Traditional ring-based deployments that wait 24-48 hours for pilot testing leave the organization fatally exposed to AI-accelerated reverse-engineering and exploitation.
 
 Examples:
-1. Implement a ring-based deployment strategy where patches are first automatically rolled out to a small pilot group of non-critical systems for 24-48 hours of monitoring before proceeding to the broader production environment.
-2. Define granular, policy-driven workflows that automatically approve and schedule critical security updates for high-risk third-party applications like web browsers and document readers during pre-defined maintenance windows.
-3. Integrate automated reporting and compliance dashboards that provide real-time visibility into patch status across the entire enterprise, allowing IT teams to quickly identify and remediate any failed installations or unpatched endpoints.
+1. Autonomous Emergency Patching: Configure policy-driven workflows that bypass standard 48-hour pilot rings to instantly deploy critical security updates flagged by AI threat intelligence feeds.
+2. Runtime Exploit Prevention: Deploy inline memory protection and binary-level exploit mitigation to protect legacy or highly critical systems during the gap when a patch is released but cannot be instantly applied without breaking production.
+3. AI-Driven Reachability Analysis: Integrate AI to automatically assess if a newly discovered vulnerability is actually reachable within your specific codebase, allowing you to prioritize the patching of true exposures amid the flood of new CVEs.
 
----
-*Part of the Argus Centurion (AC-104) Open Source Security Framework.*
+## Implementation Status
+- **Policy Defined:** 0
+- **Control Implemented:** 0
+- **Control Automated:** 0
+- **Control Reported:** 0
+
+**Assigned To:**   
+**Notes/Evidence:**   
