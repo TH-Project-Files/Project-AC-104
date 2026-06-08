@@ -12,7 +12,7 @@ This repository houses the **AI Defense-in-Depth Implementation Guide**, a highl
 The AC-104 framework is built to secure the **entire IT environment**, recognizing that AI risks cannot be mitigated at the application layer alone. The controls provide a holistic defense strategy across the four critical layers of the modern enterprise stack:
 
 - 🌐 **Networking:** Hardening the enterprise perimeter and internal traffic against AI-automated reconnaissance, high-speed lateral movement, and stealthy C2 callbacks to newly generated malicious domains.
-- 🆔 **Identity & Access Management (IAM):** Defending both human and non-human identities through phishing-resistant MFA, continuous session monitoring, out-of-band verification for deepfakes, and strict governance over autonomous service accounts.
+- 🆔 **Identity & Access:** Defending both human and non-human identities through phishing-resistant MFA, continuous session monitoring, out-of-band verification for deepfakes, and strict governance over autonomous service accounts.
 - 💻 **Endpoints:** Securing corporate devices using advanced behavioral telemetry (EDR/XDR) to block AI-generated polymorphic malware, while restricting unauthorized "Shadow AI" runtimes and untrusted script execution.
 - 📱 **Applications & Data:** Protecting enterprise software and messaging pipelines against AI-fuzzing and hyper-personalized phishing, while governing third-party AI integrations via CASBs, API gateways, and strict software supply chain (SLSA) tracking.
 
