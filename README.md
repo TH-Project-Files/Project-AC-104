@@ -3,7 +3,7 @@
 ## Overview
 The rules of cybersecurity are changing. Threats are now supercharged with AI, moving faster than human teams can track and compressing attack timelines from days or hours down to just minutes. Adversaries are leveraging hyper-realistic deepfakes, perfectly personalized phishing emails, and agentic polymorphic malware that continuously rewrites its own code to stay invisible. 
 
-This repository houses the **AI Defense-in-Depth Implementation Guide**, a highly actionable maturity model designed specifically to counter these fast-moving threats and defend against machine-speed risks. This framework has been audited against thousands of real-world incidents and theoretical threats.
+This repository houses an **AI Defense-in-Depth Implementation Guide**, a highly actionable maturity model designed specifically to counter these fast-moving threats and defend against machine-speed risks. This framework has been audited against thousands of real-world incidents and theoretical threats.
 
 ---
 
