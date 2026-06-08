@@ -41,35 +41,42 @@ To move from chaos to clarity:
 > [!TIP]
 > ### Layer 7 Application Example: Agentic Security Auditing
 > While the AC-104 guide is designed for the whole IT stack, you can use select controls as a technical specification for AI-assisted AI code reviews. Use the following prompt with your Lead Developer or Security AI (e.g., Claude Sonnet, OpenAI GPT models, or Cursor) to dynamically audit your agentic project against the live baseline:
-
+>
 > **The AC-104 Master Agentic Audit Prompt**
 > 
-> Before beginning the audit, use your web browsing capability to fetch the absolute latest live security controls matrix from the following raw repository baseline link: https://github.com/TH-Project-Files/Project-AC-104/tree/main/docs/controls 
+> ### PHASE 1: FRAMEWORK INITIALIZATION
+> Before analyzing any code, use your web browsing/tool execution capabilities to fetch the latest AC-104 security controls from the live repository. Execute the following sequence:
 > 
-> Parse this data into memory. Read the security controls carefully. 
+> 1. **Index Directory:** Fetch `https://api.github.com/repos/TH-Project-Files/Project-AC-104/contents/docs/controls`. Parse the JSON array. For each object with "type": "file", record its "name" and "download_url".
+> 2. **Load Controls:** Fetch the raw content of each `download_url`. Parse the *Recommendation ID, Recommendation Category, Details, Why AI Compounds Risk,* and *Examples* into memory.
+> 3. **Load CSV Index:** Query the repository API (`https://api.github.com/repos/TH-Project-Files/Project-AC-104/contents/data`). Parse the JSON response to locate all `.csv` files. Evaluate the filenames and select the one with the highest semantic version number. Extract the `download_url` for that specific file and fetch the raw content to use as the authoritative index.
+> 4. **Verification:** Do not proceed until loading is complete. Note any failed URLs and fallbacks internally.
 > 
-> You are acting as a **Lead AI Security Auditor and Enterprise GRC Technical Expert**. Your task is to perform a comprehensive, context-aware code audit of this workspace against the AC-104 Enterprise AI Security Framework and refactor the code to strictly comply with these mandates.
+> ### PHASE 2: AUDIT DIRECTIVE & PERSONA
+> **Role:** Lead AI Security Auditor & Enterprise GRC Technical Expert.
+> **Task:** Perform a context-aware code audit of the current workspace (excluding environment files) against the loaded AC-104 framework, followed by a secure refactor.
 > 
-> Please review the code in this active workspace, excluding the environment variable files.
+> **Core Mandate:** Do not rely on hardcoded IDs. Programmatically match the workspace's architectural patterns (prompt assembly, tool calling, routing, data ingestion, sandboxing) against the loaded "Recommendation Category" and "Details". You MUST extract and apply the technical nuance from the "Why AI Compounds Risk" and "Examples" sections to evaluate direct applicability.
 > 
-> **Core Auditing Directive:** Do not rely on pre-mapped or hardcoded Control IDs. Instead, you must programmatically scan the attached matrix file. For every file in this workspace, you must dynamically match the code's architectural patterns (e.g., prompt assembly, tool/function calling, agent-to-agent routing, data ingestion, state management, or runtime execution environments) against the "Recommendation Category" and "Details" columns. You MUST extract the exact technical nuance from the "Why AI Compounds Risk" and "Examples" sections of the matched controls to evaluate their direct applicability to this code.
-> 
-> **Step 1: AC-104 Dynamic Security Audit**
-> Scan the provided code and generate a structured audit report organized by architectural vulnerabilities. For each finding, you must cite the corresponding Recommendation ID discovered from the matrix. Ensure you audit for, but do not limit your search to, the following core boundaries:
-> * **Autonomy & Constraint Harnesses:** Look for missing declarative safety contracts, human consent fatigue vulnerabilities, or absent real-time schema validation on tool execution payloads.
-> * **Context, Prompt, & Memory Boundaries:** Check how untrusted user text, external web data, and retrieved vector memory (RAG) are handled. Look for a lack of input sanitization or absent structural boundary markers (like XML/tag isolation) separating data from instructions.
-> * **Non-Human Identity & Pipeline Supply Chain:** Check how the system authenticates agentic interactions, handles API keys, hooks into external tools, or imports dynamic dependencies/plugins without cryptographic validation or runtime integrity checks.
-> * **Runtime Execution Isolation:** Assess where model-generated code runs. Look for inadequate environment separation, shell-escape capabilities, or parent-process global secret inheritance.
-> * **Telemetry & Logic Loop Failures:** Verify the existence of semantic logging, parameterization, strict egress/SSRF network perimeters, and specialized telemetry capable of flagging "Authorized-but-Harmful" destructive execution loops.
+> ### PHASE 3: EXECUTION
+> **Step 1: Structured Audit Report**
+> Scan the code and generate a report organized by architectural vulnerabilities. Cite the dynamically matched AC-104 Recommendation IDs. Focus on, but do not limit to, these core boundaries:
+> * **Autonomy & Constraint Harnesses:** Missing declarative safety contracts, human consent fatigue risks, or absent real-time schema validation for tool payloads.
+> * **Context, Prompt, & Memory Boundaries:** Unsanitized user/web data, or missing structural boundary markers (e.g., XML/tag isolation) separating RAG/external data from system instructions.
+> * **Non-Human Identity & Supply Chain:** Insecure agent authentication, dynamic tool/plugin loading without strict hash/lockfile validation, or missing execution nonces/timestamps to prevent replay attacks.
+> * **Runtime Execution Isolation:** Inadequate sandboxing/microVMs for model-generated code, shell-escape capabilities, or parent-process global secret inheritance.
+> * **Telemetry & Logic Loop Failures:** Missing semantic logging, unparameterized queries, lack of strict SSRF/egress perimeters, or absent detection for "Authorized-but-Harmful" destructive loops.
 > 
 > **Step 2: Nuanced Refactor**
-> Following the audit report, provide the securely refactored code. The new code must:
-> 1. Implement the exact application-layer mechanisms described in the "Examples" column of the dynamically discovered AC-104 controls.
-> 2. Include explicit inline comments citing the dynamically discovered control IDs (e.g., `// Complies with [Matched-ID]: Parameterized payload execution`) explaining *why* the fix mitigates the specific risk.
-> 3. If a control mandate requires infrastructural implementations beyond the current file scope (e.g., deploying an AI Gateway proxy, identity provider integrations, or external sandboxes), explicitly isolate it in a dedicated "Infrastructure Dependencies" section and focus the refactor strictly on the application's logical code.
+> Provide the securely refactored code adhering to these rules:
+> * **Apply Examples:** Implement the exact application-layer mechanisms described in the loaded AC-104 "Examples".
+> * **Inline Citations:** Add comments explaining the mitigation (e.g., `// AC-104 [ID]: Parameterized query prevents prompt injection breakout`).
+> * **Infrastructure Dependencies:** If a control requires external infrastructure (e.g., AI Gateway, WAF, Identity Provider), list it in a dedicated "Infrastructure Dependencies" section and focus the refactored code strictly on application logic.
 > 
-> **Reply "AC-104 Dynamic Framework loaded. Present the file or module you would like audited first." to confirm you understand these directives.**
-
+> ### PHASE 4: CONFIRMATION
+> Reply EXACTLY with the following string to confirm initialization:
+> "AC-104 Dynamic Framework loaded: [N] controls from [M] files. Present the file or module you would like audited first." 
+> *(Replace [N] and [M] with the successful fetch counts. Append a brief warning if any fetches failed).*
 ## Repository Structure
 * `/data`: Contains the primary `AC-104-version.csv` file.
 * `/docs`: Detailed documentation and implementation deep-dives.
