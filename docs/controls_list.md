@@ -27,7 +27,7 @@
 | **[AI-USR-08](./controls/AI-USR-08.md)** | Layer 0: User Facing Controls | IG 1 | 3-Low | Mandate Phishing-Resistant MFA (FIDO2/WebAuthn) to neutralize credential harvesting |
 | **[AI-USR-09](./controls/AI-USR-09.md)** | Layer 0: User Facing Controls | IG 2 | 2-Medium | Implement Out-of-Band/Verbal Verification for high-risk financial/data actions |
 | **[AI-USR-10](./controls/AI-USR-10.md)** | Layer 0: User Facing Controls | IG 2 | 3-Low | Replace annual training with Contextual Security Nudges at the point of click |
-| **[AI-USR-11](./controls/AI-USR-11.md)** | Layer 0: User Facing Controls | IG 2 | 3-Low | Develop/deploy an in-house tool to send One-Time Codes (OTCs) to pre-determined personal cellphones or personal emails to out-of-band verify high-risk requests. |
+| **[AI-USR-11](./controls/AI-USR-11.md)** | Layer 0: User Facing Controls | IG 2 | 3-Low | Require Possession-Factor Based Authentication (e.g., hardware tokens, device-bound keys) rather than Knowledge-Based ID for Service Desk verification and high-risk requests. |
 | **[AI-DLK-03](./controls/AI-DLK-03.md)** | Layer 2: Data Link | IG 3 | 3-Low | Implement Zero-Trust segmentation to prevent lateral movement |
 | **[AI-DLK-04](./controls/AI-DLK-04.md)** | Layer 2: Data Link | IG 3 | 3-Low | Utilize AI Network Baseline Monitoring to detect anomalous network traffic patterns and alert on them |
 | **[AI-NET-09](./controls/AI-NET-09.md)** | Layer 2: Network & Infrastructure Controls | IG 3 | 1-High | Mandate SSL/TLS Decryption (SSL Forward Proxy / Inspection) to enable deep packet inspection, prompt scanning, and data loss prevention (DLP). |
@@ -39,7 +39,6 @@
 | **[AI-NET-05](./controls/AI-NET-05.md)** | Layer 3: Network | IG 2 | 2-Medium | Run Continuous Attack Surface Management (ASM) scans |
 | **[AI-NET-06](./controls/AI-NET-06.md)** | Layer 3: Network | IG 2 | 2-Medium | Implement automated threat intelligence feeds from big data sources (e.g., large-scale MDR providers or crowd-sourced intelligence) to proactively block emerging AI-driven attacker infrastructure. |
 | **[AI-NET-07](./controls/AI-NET-07.md)** | Layer 3: Network | IG 3 | 2-Medium | Enable hardware-accelerated Deep Learning (DL) on Next-Generation Firewalls (NGFW) for inline threat detection |
-| **[AI-NET-08](./controls/AI-NET-08.md)** | Layer 3: Network | IG 3 | 2-Medium | Monitor BGP with Automated Route Hijacking Detection |
 | **[AI-LOG-01](./controls/AI-LOG-01.md)** | Layer 4: Data | IG 1 | 2-Medium | Establish policies and controls for AI prompt/chat retention, privacy masking, and strict access management for observability logs. |
 | **[AI-RAG-01](./controls/AI-RAG-01.md)** | Layer 4: Data | IG 2 | 1-High | Implement RAG authorization enforcement and security trimming to ensure AI only synthesizes data the user is permitted to see. |
 | **[AI-TRN-01](./controls/AI-TRN-01.md)** | Layer 4: Transport | IG 1 | 2-Medium | Enforce Default-Deny Inbound Policies at the transport layer |
@@ -109,15 +108,9 @@
 | **[AI-AGT-02](./controls/AI-AGT-02.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 1-High | Enforce Zero-Trust segmentation and strict Role-Based Access Control (RBAC) boundaries for agent-to-agent communications. |
 | **[AI-END-11](./controls/AI-END-11.md)** | Layer 6: Endpoint Presentation | IG 2 | 2-Medium | Govern and restrict Endpoint-Hosted AI Runtimes (e.g., local LLMs) to prevent local data leakage and unauthorized API binding. |
 | **[AI-APP-12](./controls/AI-APP-12.md)** | Layer 7: Application | IG 2 | 2-Medium | Govern, sanitize, and monitor AI-specific indexing files (e.g., llms.txt and llms-full.txt) to prevent sensitive data exposure and indirect prompt injection. |
-| **[AI-LLM-17](./controls/AI-LLM-17.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Force AI tools that write or run code to do so in a secure, isolated bubble (sandbox) so they can't break anything on the network. |
-| **[AI-LLM-18](./controls/AI-LLM-18.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Keep different users' AI chats strictly separated so one person's data doesn't accidentally leak into another person's chat. |
-| **[AI-LLM-19](./controls/AI-LLM-19.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Keep a 'nutrition label' (Bill of Materials) for your AI models and verify that no one has tampered with their code or plugins. |
-| **[AI-LLM-20](./controls/AI-LLM-20.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Track exactly where your AI training data comes from to ensure hackers haven't poisoned it with malicious information. |
-| **[AI-LLM-21](./controls/AI-LLM-21.md)** | Layer 7: Internal LLMs & Agentics | IG 3 | 3-Low | Install data loss prevention (DLP) tools to stop AI agents from accidentally or maliciously leaking sensitive company data. |
 | **[AI-LLM-22](./controls/AI-LLM-22.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Enforce strict environment variable and secret scoping for AI agent runtimes to prevent unconditional inheritance of the parent process environment. |
 | **[AI-LLM-23](./controls/AI-LLM-23.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Implement structural or cryptographic boundary markers to separate system prompts from untrusted external data within LLM contexts. |
 | **[AI-LLM-24](./controls/AI-LLM-24.md)** | Layer 7: Internal LLMs & Agentics | IG 2 | 1-High | Enforce cryptographic integrity and freshness checks on all agent-to-agent and agent-to-tool communications. |
-| **[AI-APP-10](./controls/AI-APP-10.md)** | Layer 7: Application | IG 2 | 1-High | Implement Supply-chain Levels for Software Artifacts (SLSA) or equivalent frameworks for all agent dependencies and dynamically loaded tools. |
 | **[AI-GOV-17](./controls/AI-GOV-17.md)** | Layer 0: Governance & System Controls | IG 1 | 1-High | Integrate AI-specific threat modeling into the Secure Software Development Life Cycle (SSDLC) during the design phase using industry-standard frameworks. |
 | **[AI-NHI-02](./controls/AI-NHI-02.md)** | Layer 0: Governance & System Controls | IG 3 | 1-High | Enforce Cryptographic and Hardware-Backed Identities (e.g., TPMs, HSMs) for production AI agents. |
 | **[AI-DEF-01](./controls/AI-DEF-01.md)** | Layer 0: Governance & System Controls | IG 2 | 2-Medium | Deploy a dedicated AI Triage Agent to perform automated first-pass investigations on security alerts. |

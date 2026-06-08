@@ -1,24 +1,31 @@
-﻿# AI-USR-11: Develop/deploy an in-house tool to send One-Time Codes (OTCs) to pre-determined personal cellphones or personal emails to out-of-band verify high-risk requests.
+﻿# AI-USR-11
 
-**Project:** Argus Centurion (AC-104)  
 **Category:** Layer 0: User Facing Controls  
 **Implementation Group:** IG 2  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `6.1` | NIST CSF: `PR.AA`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 6.1  
+**NIST CSF Subcategories:** PR.AA  
 
----
+## Recommendation Description
+Require Possession-Factor Based Authentication (e.g., hardware tokens, device-bound keys) rather than Knowledge-Based ID for Service Desk verification and high-risk requests.
 
-## Control Details
+## Details
 Detailed Description:
-This recommendation involves creating an internal system to verify high-risk actions—such as large financial transfers or sensitive data access—by sending a unique, short-lived code to a user's pre-registered personal device or email. This creates an out-of-band (OOB) authentication layer, meaning the verification occurs over a completely separate communication channel from the one used to initiate the request, effectively preventing unauthorized access even if primary credentials are stolen.
+Shift identity verification for IT Service Desk interactions (e.g., password resets, MFA device additions) and critical financial requests away from knowledge-based factors (passwords, security questions, employee IDs) toward possession-based factors (something the user *has*). This ensures that even if an attacker successfully uses AI to mimic an employee's voice or steal their knowledge factors, they cannot bypass the physical hardware requirement to authorize the action.
 
 Why AI Compounds Risk:
-AI exacerbates these risks by enabling attackers to conduct sophisticated social engineering and deepfake attacks at scale. Generative AI can mimic a target's voice or writing style to bypass traditional identity checks, making it easier for fraudsters to pose as executives or authorized personnel when submitting high-risk requests.
+AI models can instantaneously scrape the internet, cross-reference breach databases, and solve knowledge-based verification questions. AI voice cloning and deepfakes completely defeat traditional knowledge-based identity verification over the phone, making the IT Helpdesk a massive vulnerability for social engineering. A true possession factor is cryptographically or physically bound to the user, making it immune to AI simulation and deepfakes.
 
 Examples:
-1. High-Value Financial Transfers: Implement a mandatory OTC check for any wire transfer exceeding a specific threshold, where the employee must enter a code sent to their personal mobile device before the transaction is queued for final approval.
-2. Privileged Access Management: Require OOB verification for IT administrators attempting to access critical infrastructure or modify global security settings, ensuring that a compromised workstation alone cannot be used to take over the network.
-3. Sensitive Data Exports: Integrate the OTC tool with Data Loss Prevention (DLP) systems to trigger a verification code whenever a user attempts to download or email large volumes of proprietary or regulated data to an external destination.
+1. IT Service Desk Verification: When a user calls the helpdesk for a password reset or to register a new MFA device, the agent must verify their identity by sending a secure push notification or OTC to the user's pre-registered manager or an existing, trusted corporate device, rather than asking for their date of birth.
+2. High-Value Financial Transfers: Enforce an out-of-band verification tool that sends a One-Time Code (OTC) or cryptographic push notification to a pre-registered personal mobile device before allowing a wire transfer.
+3. Infrastructure Changes: Enforce FIDO2/WebAuthn hardware security keys (e.g., YubiKeys) for all privileged IT administrators and executives before allowing high-risk infrastructure changes.
 
----
-*Part of the Argus Centurion (AC-104) Open Source Security Framework.*
+## Implementation Status
+- **Policy Defined:** 0
+- **Control Implemented:** 0
+- **Control Automated:** 0
+- **Control Reported:** 0
+
+**Assigned To:**   
+**Notes/Evidence:**   
