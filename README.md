@@ -37,52 +37,93 @@ To move from chaos to clarity:
 2. **Filter for Impact:** Start by filtering for **"1-High" aggregate risk** within **Implementation Group 1**. 
 3. **Measure Progress:** Use the "Control Implemented" column to track your score (1-10) and report readiness averages to stakeholders.
 
+**Remember:** AI is continuously learning how to attack. Your defenses must continuously learn how to adapt. Standing still is no longer an option. Always maintain human in the loop, you the human are ultimately responsible for your environment and actions. AC-104 is provided for educational purposes and is not a substitute for professional guidance and application. 
+
 ---
 > [!TIP]
 > ### Layer 7 Application Example: Agentic Security Auditing
-> While the AC-104 guide is designed for the whole IT stack, you can use select controls as a technical specification for AI-assisted AI code reviews. Use the following prompt with your Lead Developer or Security AI (e.g., Claude Sonnet, OpenAI GPT models, or Cursor) to dynamically audit your agentic project against the live baseline:
+> While the AC-104 guide is designed for the whole IT stack, you can use select 
+> controls as a technical specification for AI-assisted AI code reviews. Use the 
+> following prompt with your Lead Developer or Security AI (e.g., Claude Sonnet, 
+> OpenAI GPT models, or Cursor) to dynamically audit your agentic project 
+> against the live baseline:
 >
 > **The AC-104 Master Agentic Audit Prompt**
 > 
+> ```text
 > ### PHASE 1: FRAMEWORK INITIALIZATION
-> Before analyzing any code, use your web browsing/tool execution capabilities to fetch the latest AC-104 security controls from the live repository. Execute the following sequence:
+> Before analyzing any code, use your web browsing/tool execution capabilities 
+> to fetch the latest AC-104 security controls from the live repository. 
+> Execute the following sequence:
 > 
-> 1. **Index Directory:** Fetch `https://api.github.com/repos/TH-Project-Files/Project-AC-104/contents/docs/controls`. Parse the JSON array. For each object with "type": "file", record its "name" and "download_url".
-> 2. **Load Controls:** Fetch the raw content of each `download_url`. Parse the *Recommendation ID, Recommendation Category, Details, Why AI Compounds Risk,* and *Examples* into memory.
-> 3. **Load CSV Index:** Query the repository API (`https://api.github.com/repos/TH-Project-Files/Project-AC-104/contents/data`). Parse the JSON response to locate all `.csv` files. Evaluate the filenames and select the one with the highest semantic version number. Extract the `download_url` for that specific file and fetch the raw content to use as the authoritative index.
-> 4. **Verification:** Do not proceed until loading is complete. Note any failed URLs and fallbacks internally.
+> 1. Index Directory:
+>    Fetch `https://api.github.com/repos/TH-Project-Files/Project-AC-104/contents/docs/controls`. 
+>    Parse the JSON array. For each object with "type": "file", record its 
+>    "name" and "download_url".
+> 2. Load Controls: Fetch the raw content of each `download_url`. Parse the 
+>    Recommendation ID, Recommendation Category, Details, Why AI Compounds Risk, 
+>    and Examples into memory.
+> 3. Load CSV Index: Query the repository API 
+>    (`https://api.github.com/repos/TH-Project-Files/Project-AC-104/contents/data`). 
+>    Parse the JSON response to locate all `.csv` files. Evaluate the filenames 
+>    and select the one with the highest semantic version number (e.g., v1.1.6 > 
+>    v1.1.4). Extract the `download_url` for that specific file and fetch the 
+>    raw content to use as the authoritative index.
+> 4. Verification: Do not proceed until loading is complete. Note any failed 
+>    URLs and fallbacks internally.
 > 
 > ### PHASE 2: AUDIT DIRECTIVE & PERSONA
-> **Role:** Lead AI Security Auditor & Enterprise GRC Technical Expert.
-> **Task:** Perform a context-aware code audit of the current workspace (excluding environment files) against the loaded AC-104 framework, followed by a secure refactor.
+> Role: Lead AI Security Auditor & Enterprise GRC Technical Expert.
+> Task: Perform a context-aware code audit of the current workspace (excluding 
+> environment files) against the loaded AC-104 framework, followed by a secure 
+> refactor.
 > 
-> **Core Mandate:** Do not rely on hardcoded IDs. Programmatically match the workspace's architectural patterns (prompt assembly, tool calling, routing, data ingestion, sandboxing) against the loaded "Recommendation Category" and "Details". You MUST extract and apply the technical nuance from the "Why AI Compounds Risk" and "Examples" sections to evaluate direct applicability.
+> Core Mandate: Do not rely on hardcoded IDs. Programmatically match the 
+> workspace's architectural patterns (prompt assembly, tool calling, routing, 
+> data ingestion, sandboxing) against the loaded "Recommendation Category" and 
+> "Details". You MUST extract and apply the technical nuance from the "Why AI 
+> Compounds Risk" and "Examples" sections to evaluate direct applicability.
 > 
 > ### PHASE 3: EXECUTION
-> **Step 1: Structured Audit Report**
-> Scan the code and generate a report organized by architectural vulnerabilities. Cite the dynamically matched AC-104 Recommendation IDs. Focus on, but do not limit to, these core boundaries:
-> * **Autonomy & Constraint Harnesses:** Missing declarative safety contracts, human consent fatigue risks, or absent real-time schema validation for tool payloads.
-> * **Context, Prompt, & Memory Boundaries:** Unsanitized user/web data, or missing structural boundary markers (e.g., XML/tag isolation) separating RAG/external data from system instructions.
-> * **Non-Human Identity & Supply Chain:** Insecure agent authentication, dynamic tool/plugin loading without strict hash/lockfile validation, or missing execution nonces/timestamps to prevent replay attacks.
-> * **Runtime Execution Isolation:** Inadequate sandboxing/microVMs for model-generated code, shell-escape capabilities, or parent-process global secret inheritance.
-> * **Telemetry & Logic Loop Failures:** Missing semantic logging, unparameterized queries, lack of strict SSRF/egress perimeters, or absent detection for "Authorized-but-Harmful" destructive loops.
+> Step 1: Structured Audit Report
+> Scan the code and generate a report organized by architectural vulnerabilities. 
+> Cite the dynamically matched AC-104 Recommendation IDs. Focus on, but do not 
+> limit to, these core boundaries:
 > 
-> **Step 2: Nuanced Refactor**
+> * Autonomy & Constraint Harnesses: Missing declarative safety contracts, human 
+>   consent fatigue risks, or absent real-time schema validation for payloads.
+> * Context, Prompt, & Memory Boundaries: Unsanitized user/web data, or missing 
+>   structural boundary markers (e.g., XML/tag isolation) separating RAG data 
+>   from system instructions.
+> * Non-Human Identity & Supply Chain: Insecure agent authentication, dynamic 
+>   tool/plugin loading without strict hash/lockfile validation, or missing 
+>   execution nonces/timestamps to prevent replay attacks.
+> * Runtime Execution Isolation: Inadequate sandboxing/microVMs for model-
+>   generated code, shell-escape capabilities, or global secret inheritance.
+> * Telemetry & Logic Loop Failures: Missing semantic logging, unparameterized 
+>   queries, lack of strict SSRF/egress perimeters, or absent detection for 
+>   "Authorized-but-Harmful" destructive loops.
+> 
+> Step 2: Nuanced Refactor
 > Provide the securely refactored code adhering to these rules:
-> * **Apply Examples:** Implement the exact application-layer mechanisms described in the loaded AC-104 "Examples".
-> * **Inline Citations:** Add comments explaining the mitigation (e.g., `// AC-104 [ID]: Parameterized query prevents prompt injection breakout`).
-> * **Infrastructure Dependencies:** If a control requires external infrastructure (e.g., AI Gateway, WAF, Identity Provider), list it in a dedicated "Infrastructure Dependencies" section and focus the refactored code strictly on application logic.
+> * Apply Examples: Implement the exact application-layer mechanisms described 
+>   in the loaded AC-104 "Examples".
+> * Inline Citations: Add comments explaining the mitigation (e.g., `// AC-104 
+>   [ID]: Parameterized query prevents prompt injection breakout`).
+> * Infrastructure Dependencies: If a control requires external infrastructure 
+>   (e.g., AI Gateway, Identity Provider), list it in an "Infrastructure 
+>   Dependencies" section and focus the refactored code strictly on app logic.
 > 
 > ### PHASE 4: CONFIRMATION
 > Reply EXACTLY with the following string to confirm initialization:
-> "AC-104 Dynamic Framework loaded: [N] controls from [M] files. Present the file or module you would like audited first." 
-> *(Replace [N] and [M] with the successful fetch counts. Append a brief warning if any fetches failed).*
+> "AC-104 Dynamic Framework loaded: [N] controls from [M] files. Present the 
+> file or module you would like audited first."
+> ```
+---
 ## Repository Structure
 * `/data`: Contains the primary `AC-104-version.csv` file.
 * `/docs`: Detailed documentation and implementation deep-dives.
 * `mkdocs.yml`: Configuration for the project's documentation site.
-
-**Remember:** AI is continuously learning how to attack. Your defenses must continuously learn how to adapt. Standing still is no longer an option. Always maintain human in the loop, you the human are ultimately responsible for your environment and actions. AC-104 is provided for educational purposes and is not a substitute for professional guidance and application. 
 
 ## License
 
