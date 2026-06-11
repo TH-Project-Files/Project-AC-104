@@ -1,14 +1,14 @@
 ﻿# AI-USR-10: Replace annual training with Contextual Security Nudges at the point of click
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: User Facing Controls  
+**Category:** Governance & People (Layer 0: User Facing Controls)  
 **Implementation Group:** IG 2  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `14.1, 14.2` | NIST CSF: `PR.AT`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 14.1, 14.2  
+**NIST CSF Subcategories:** PR.AT
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Explanation: This recommendation replaces static, once-a-year security presentations with automated, real-time interventions delivered at the exact moment a user performs a risky action. By utilizing nudge theory, these subtle visual cues or prompts interrupt "autopilot" behavior (System 1 thinking) and encourage deliberate, safer decision-making (System 2 thinking) without blocking the user's workflow or requiring them to recall distant training.
 

@@ -1,14 +1,14 @@
 ﻿# AI-AUTH-01: Require possession factor before password factor in sign-on to limit brute force password compromise.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 5: Access Session  
+**Category:** Identity & Access (Layer 5: Access Session)  
 **Implementation Group:** IG 1  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `6.3, 6.4` | NIST CSF: `PR.AA`
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 6.3, 6.4  
+**NIST CSF Subcategories:** PR.AA
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Enabling this feature requires users to verify their identity with a possession factor (e.g., hardware token, authenticator app) before any knowledge factor (i.e., Password, Security Question) during the sign-on process.
 

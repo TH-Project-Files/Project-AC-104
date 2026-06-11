@@ -1,14 +1,14 @@
 ﻿# AI-MSG-03: Enforce Universal URL Unwrapping and deep link analysis for shortened or redirected URLs to reveal hidden AI-generated malicious destinations.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 6: Messaging/Web  
+**Category:** Applications & Data (Layer 6: Messaging/Web)  
 **Implementation Group:** IG 2  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `9.1, 9.2` | NIST CSF: `PR.IR`
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 9.1, 9.2  
+**NIST CSF Subcategories:** PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Universal URL Unwrapping involves expanding shortened or redirected links to their final destination before a user interacts with them, allowing security tools to inspect the underlying URL for threats. Deep link analysis specifically examines links that bypass homepages to point directly to specific app content or internal pages, ensuring these direct paths do not lead to malicious AI-generated sites or unauthorized data extraction points.
 

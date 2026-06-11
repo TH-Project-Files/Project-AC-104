@@ -1,14 +1,14 @@
 ﻿# AI-TRN-02: Apply Intelligent Rate Limiting against high-speed port scans
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 4: Transport  
+**Category:** Networking (Layer 4: Transport)  
 **Implementation Group:** IG 2  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `12.2, 12.3` | NIST CSF: `PR.NW`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 12.2, 12.3  
+**NIST CSF Subcategories:** PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Intelligent Rate Limiting against high-speed port scans is a dynamic security strategy that goes beyond static blocking by using algorithms to throttle or deny connection attempts that exceed a specific frequency. It monitors inbound traffic for patterns of rapid probing—where an attacker systematically checks multiple ports on one or more systems to identify open services—and automatically restricts the source to prevent resource exhaustion and reconnaissance.
 

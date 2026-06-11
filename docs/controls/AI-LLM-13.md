@@ -1,14 +1,14 @@
-﻿# AI-LLM-13: Ensure that when AI tools talk to each other or use plugins, they prove who they are and only share the minimum necessary data.
+﻿# AI-LLM-13: Require authenticated and minimally-scoped agent-to-agent and plugin interactions.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 2  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Detailed Explanation: This recommendation emphasizes two pillars of secure interoperability for AI agents and plugins: identity verification and data minimization. First, every AI component must have a verifiable identity (authentication) to ensure that only authorized agents can initiate actions or access services. Second, once authenticated, these tools must adhere to the principle of least privilege, sharing only the specific data points required to complete a task (authorization), rather than providing broad access to underlying databases or user contexts.
 

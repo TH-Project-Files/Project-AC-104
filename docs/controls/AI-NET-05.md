@@ -1,14 +1,14 @@
 ﻿# AI-NET-05: Run Continuous Attack Surface Management (ASM) scans
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 3: Network  
+**Category:** Networking (Layer 3: Network)  
 **Implementation Group:** IG 2  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `12.1` | NIST CSF: `PR.NW`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 12.1  
+**NIST CSF Subcategories:** PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Run Continuous Attack Surface Management (ASM) scans: This recommendation involves the constant, automated discovery and monitoring of an organization’s digital footprint to identify potential entry points for attackers. Unlike periodic assessments, ASM provides real-time visibility into all internal and external assets, including cloud services, shadow IT, and third-party integrations, allowing security teams to analyze, prioritize, and remediate vulnerabilities before they are exploited.
 

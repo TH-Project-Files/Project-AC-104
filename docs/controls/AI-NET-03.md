@@ -1,14 +1,15 @@
 ﻿# AI-NET-03: Configure firewall and DNS filtering blocklists to automatically drop traffic to Newly Registered and Parked Domains
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 3: Network  
+**Category:** Networking (Layer 3: Network)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `4.4, 12.3` | NIST CSF: `PR.NW`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 4.4, 12.3  
+**NIST CSF Subcategories:** PR.IR  
+**Layered with:** Malicious-domain defense chain — AI-NET-06 supplies the threat-intelligence feeds; AI-NET-01 enforces at DNS resolution; this control is the firewall/policy layer applying domain-age heuristics (newly registered and parked domains). One outcome, three enforcement points: implement as a single pipeline, not three separate products.
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Recommendation Explanation: This security measure involves configuring network defenses to automatically block connections to domains that have been recently registered (typically within the last 30 days) or are currently "parked" (registered but not yet hosting an active website). These domains are high-risk because they lack a historical reputation and are frequently used by threat actors to launch short-lived phishing campaigns, host malware, or act as command-and-control servers before they can be identified and blacklisted by traditional security feeds.
 

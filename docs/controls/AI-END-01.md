@@ -1,14 +1,15 @@
 ﻿# AI-END-01: Harden Script Execution: Restrict script execution (PowerShell/Python/JS) to only digitally signed scripts and enforce allowlists for trusted script paths to block AI-generated droppers.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 6: Endpoint Presentation  
+**Category:** Endpoints (Layer 6: Endpoint Presentation)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `7.1` | NIST CSF: `PR.PS`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 7.1  
+**NIST CSF Subcategories:** PR.PS  
+**Layered with:** Execution-control chain — this control hardens the script engines (PowerShell/Python/JS signing and path allowlists); AI-END-02 disables macros and embedded document code; AI-END-09 allowlists applications. Intentional defense-in-depth, not duplication.
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Hardening script execution involves configuring the operating system to only run scripts that have been digitally signed by a trusted authority and limiting execution to specific, pre-approved file paths. This prevents unauthorized or malicious code from running even if it is successfully delivered to an endpoint.
 

@@ -1,14 +1,14 @@
-﻿# AI-LLM-10: Thoroughly test and review the code and instructions for AI agents before letting them run in the real world.
+﻿# AI-LLM-10: Mandate pre-deployment testing and review of AI agent code and instructions.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 2  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `16.1, 16.2` | NIST CSF: `PR.DS, GV.SC`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 16.1, 16.2  
+**NIST CSF Subcategories:** PR.DS, GV.SC
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 This recommendation emphasizes the necessity of a rigorous evaluation pipeline for AI agents, involving tracking components, applying specific metrics (like hit rate and task completion), and logging execution flows via LLM tracing to ensure agents behave consistently and fail gracefully before deployment.
 

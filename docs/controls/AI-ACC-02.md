@@ -1,14 +1,14 @@
 ﻿# AI-ACC-02: Implement Concurrent Login Restrictions
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 5: Access Session  
+**Category:** Identity & Access (Layer 5: Access Session)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `6.1, 6.8` | NIST CSF: `PR.AA`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 6.1, 6.8  
+**NIST CSF Subcategories:** PR.AA
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Implement Concurrent Login Restrictions is a security measure that limits the number of simultaneous active sessions a single user account can maintain across different devices or locations. This control prevents "shadow access," where unauthorized users masquerade as legitimate ones, and ensures that user activity can be accurately attributed to a unique individual.
 

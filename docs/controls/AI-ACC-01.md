@@ -1,14 +1,14 @@
 ﻿# AI-ACC-01: Enforce Aggressive Absolute & Idle Timeouts on sensitive apps
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 5: Access Session  
+**Category:** Identity & Access (Layer 5: Access Session)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `6.1, 6.8` | NIST CSF: `PR.AA`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 6.1, 6.8  
+**NIST CSF Subcategories:** PR.AA
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Recommendation Explanation: Enforcing aggressive absolute and idle timeouts involves setting strict time limits on how long a user session can remain active. Idle timeouts terminate a session after a brief period of inactivity to prevent unauthorized access to an unattended device, while absolute timeouts force a re-authentication after a fixed total duration, regardless of activity, to mitigate the risk of long-lived session hijacking.
 

@@ -1,13 +1,10 @@
-﻿# AI-DEF-01
+﻿# AI-DEF-01: Deploy a dedicated AI Triage Agent to perform automated first-pass investigations on security alerts.
 
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 2-Medium  
 **CIS v8 Safeguards:** 13.1, 13.2, 17.4  
 **NIST CSF Subcategories:** DE.AE, RS.AN  
-
-## Recommendation Description
-Deploy a dedicated AI Triage Agent to perform automated first-pass investigations on security alerts.
 
 ## Details
 Detailed Description:
@@ -20,11 +17,5 @@ Examples:
 1. Connect an AI model with read-only access to your SIEM to automatically draft triage context for high-volume, noisy alert rules.
 2. Automate the bookkeeping and evidence collection around incidents, reserving human analysts purely for making containment and disclosure decisions.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

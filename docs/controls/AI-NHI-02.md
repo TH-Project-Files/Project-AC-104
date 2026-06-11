@@ -1,13 +1,10 @@
-﻿# AI-NHI-02
+﻿# AI-NHI-02: Enforce Cryptographic and Hardware-Backed Identities (e.g., TPMs, HSMs) for production AI agents.
 
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Identity & Access (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 3  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 5.1, 5.2, 16.1  
-**NIST CSF Subcategories:** PR.AC, PR.AA  
-
-## Recommendation Description
-Enforce Cryptographic and Hardware-Backed Identities (e.g., TPMs, HSMs) for production AI agents.
+**NIST CSF Subcategories:** PR.AA  
 
 ## Details
 Detailed Description:
@@ -20,11 +17,5 @@ Examples:
 1. Issue X.509 certificates to each agent and require mutual TLS (mTLS) with certificate pinning for all service connections.
 2. Implement remote attestation to verify an agent's execution environment integrity before granting it access to backend databases.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

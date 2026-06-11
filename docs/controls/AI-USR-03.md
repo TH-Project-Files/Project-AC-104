@@ -1,14 +1,14 @@
 ﻿# AI-USR-03: Advanced AI Phishing Simulations: Update Security Awareness Training to include simulations specifically mimicking high-quality, multilingual LLM-generated phishing models.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: User Facing Controls  
+**Category:** Governance & People (Layer 0: User Facing Controls)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `14.1, 14.2` | NIST CSF: `PR.AT`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 14.1, 14.2  
+**NIST CSF Subcategories:** PR.AT
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 This recommendation involves updating security awareness programs to use AI-generated phishing simulations that mimic the high-quality, multilingual, and personalized attacks created by large language models (LLMs).
 

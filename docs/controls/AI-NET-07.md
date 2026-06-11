@@ -1,18 +1,19 @@
 ﻿# AI-NET-07: Enable hardware-accelerated Deep Learning (DL) on Next-Generation Firewalls (NGFW) for inline threat detection
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 3: Network  
+**Category:** Networking (Layer 3: Network)  
 **Implementation Group:** IG 3  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `4.4, 12.3` | NIST CSF: `PR.NW`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 4.4, 12.3  
+**NIST CSF Subcategories:** PR.IR  
+**Layered with:** AI-NET-04 (this control is its IG 3 hardware-acceleration maturity tier, not an independent capability — implement AI-NET-04 first)
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Enable or deploy Next-Generation Firewalls (NGFWs) that utilize hardware-accelerated Deep Learning (DL) processors to analyze network traffic inline. This allows the firewall to perform real-time analysis of zero-day threats, advanced malware, and sophisticated C2 communications without introducing unacceptable latency. 
 
-*Maturity Note:* This is considered an IG 3 ("nice-to-have") control. The cost and complexity of hardware-accelerated DL appliances can be high, and the actual security return on investment heavily depends on the organization's perimeter architecture, overall traffic volumes, and capacity for inline TLS inspection.
+*Maturity Note:* This is the hardware-acceleration maturity tier of AI-NET-04: implement AI-NET-04 first, and adopt this control only when traffic volumes and risk profile justify dedicated inline DL hardware. It is considered an IG 3 ("nice-to-have") control. The cost and complexity of hardware-accelerated DL appliances can be high, and the actual security return on investment heavily depends on the organization's perimeter architecture, overall traffic volumes, and capacity for inline TLS inspection.
 
 Why AI Compounds Risk:
 Adversaries are increasingly using AI to automatically generate heavily obfuscated malware and rapidly mutate command-and-control (C2) signatures to bypass static firewall rules and traditional cloud-based sandboxes. Cloud sandboxing introduces analysis delays, sometimes allowing the initial malicious payload through. Hardware-accelerated DL at the perimeter uses localized neural networks to analyze and block these highly evasive, AI-generated threats inline in milliseconds.

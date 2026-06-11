@@ -1,13 +1,10 @@
-﻿# AI-END-11
+﻿# AI-END-11: Govern and restrict Endpoint-Hosted AI Runtimes (e.g., local LLMs) to prevent local data leakage and unauthorized API binding.
 
-**Category:** Layer 6: Endpoint Presentation  
+**Category:** Endpoints (Layer 6: Endpoint Presentation)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 2-Medium  
 **CIS v8 Safeguards:** 1.2, 3.6, 4.5  
 **NIST CSF Subcategories:** PR.DS, DE.CM  
-
-## Recommendation Description
-Govern and restrict Endpoint-Hosted AI Runtimes (e.g., local LLMs) to prevent local data leakage and unauthorized API binding.
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Enforce endpoint disk encryption (e.g., BitLocker, FileVault) to protect local model artifacts, cached prompt logs, and local vector embeddings from unauthorized physical access.
 3. Use application allowlisting to prohibit the execution of unapproved local model runners and track all authorized endpoint-hosted AI deployments in the centralized asset inventory.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

@@ -1,14 +1,15 @@
 ﻿# AI-GOV-15: Deploy AI-Driven Behavioral Analytics (UEBA) for baseline anomaly detection
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 3  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `13.2, 13.5` | NIST CSF: `DE.AS, DE.CM`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 13.2, 13.5  
+**NIST CSF Subcategories:** DE.CM  
+**Layered with:** Behavioral-baselining family — the same ML technique applied to different telemetry: this control (user/entity behavior enterprise-wide), AI-ACC-06 (authentication context), AI-DLK-04 (network flows), AI-MSG-02 (email patterns), AI-APP-05 (web/app traffic), AI-NHI-01 (non-human identities). Evaluate shared platforms before procuring per-layer point tools.
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Deployment of AI-Driven Behavioral Analytics (UEBA) involves using machine learning algorithms to establish a baseline of normal activity for users, devices, and applications within a network. By continuously monitoring and comparing real-time actions against these established profiles, the system identifies subtle deviations—such as unusual login times, atypical data access, or spikes in file transfers—that may indicate insider threats, compromised accounts, or lateral movement.
 

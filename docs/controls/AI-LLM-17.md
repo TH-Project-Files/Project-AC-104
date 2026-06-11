@@ -1,14 +1,14 @@
-﻿# AI-LLM-17: Force AI tools that write or run code to do so in a secure, isolated bubble (sandbox) so they can't break anything on the network.
+﻿# AI-LLM-17: Sandbox all AI-generated code execution in isolated runtimes.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
-**Implementation Group:** IG 3  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
+**Implementation Group:** IG 2  
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Detailed Explanation: Sandboxing creates a secure, isolated runtime environment where AI-generated code can execute without direct access to the host operating system, production databases, or internal networks. This isolation ensures that even if the AI generates malicious or buggy code, the impact is contained within a temporary "bubble," preventing system-wide crashes, data exfiltration, or unauthorized lateral movement across the corporate infrastructure.
 

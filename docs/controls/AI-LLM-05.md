@@ -1,14 +1,14 @@
-﻿# AI-LLM-05: Test any fake (synthetic) or anonymized data to make sure hackers can't reverse-engineer it to find real people's identities.
+﻿# AI-LLM-05: Adversarially test synthetic and anonymized datasets against re-identification attacks.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 2  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Explanation: This recommendation emphasizes that synthetic or anonymized data is not inherently anonymous and may still contain patterns that allow for re-identification. Organizations must rigorously validate these datasets using privacy metrics and adversarial testing to ensure that sensitive information from the original records cannot be reconstructed or linked back to real individuals by malicious actors.
 

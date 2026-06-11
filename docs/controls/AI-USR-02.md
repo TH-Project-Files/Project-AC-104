@@ -1,14 +1,14 @@
 ﻿# AI-USR-02: Enforce Targeted Impersonation Protection for High-Value Targets (VIPs) to detect subtle visual or character-based spoofing of key personnel names.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: User Facing Controls  
+**Category:** Governance & People (Layer 0: User Facing Controls)  
 **Implementation Group:** IG 1  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `9.1, 9.2` | NIST CSF: `PR.IR`
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 9.1, 9.2  
+**NIST CSF Subcategories:** PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Targeted Impersonation Protection for High-Value Targets (VIPs) is a specialized security layer designed to protect executives and key personnel from sophisticated phishing attacks. It uses advanced detection algorithms to identify subtle visual or character-based spoofing, such as "lookalike" domains or "homoglyphs" where characters from different alphabets are used to mimic legitimate names and email addresses.
 

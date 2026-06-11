@@ -1,14 +1,15 @@
 ﻿# AI-NET-01: Mandate enterprise Secure Recursive DNS with encrypted lookups (DoH/DoT) backed by real-time “big data” threat intelligence to block malicious domains and resist DNS spoofing/hijacking
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 3: Network  
+**Category:** Networking (Layer 3: Network)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `9.2` | NIST CSF: `PR.NW`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 9.2  
+**NIST CSF Subcategories:** PR.IR  
+**Layered with:** Malicious-domain defense chain — AI-NET-06 supplies the threat-intelligence feeds; this control is the DNS-resolution enforcement layer; AI-NET-03 applies domain-age policy (NRD/parked) at the firewall and DNS filter. One outcome, three enforcement points: implement as a single pipeline, not three separate products.
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Implement enterprise-grade Secure Recursive DNS services that support encrypted lookups via DNS over HTTPS (DoH) or DNS over TLS (DoT). These services must be backed by real-time, large-scale ("big data") threat intelligence to automatically block connections to newly registered malicious domains, botnet command-and-control servers, and phishing sites, while also protecting the integrity and privacy of DNS queries.
 

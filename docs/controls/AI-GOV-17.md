@@ -1,13 +1,10 @@
-﻿# AI-GOV-17
+﻿# AI-GOV-17: Integrate AI-specific threat modeling into the Secure Software Development Life Cycle (SSDLC) during the design phase using industry-standard frameworks.
 
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 1  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 16.1  
-**NIST CSF Subcategories:** ID.RA-3, ID.RA-5  
-
-## Recommendation Description
-Integrate AI-specific threat modeling into the Secure Software Development Life Cycle (SSDLC) during the design phase using industry-standard frameworks.
+**NIST CSF Subcategories:** ID.RA  
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Utilize the MITRE ATLAS (Adversarial Threat Landscape for AI Systems) framework during tabletop exercises to simulate how an adversary might abuse an agent's intended toolset.
 3. Incorporate MITRE D3FEND countermeasures directly into the system requirements document to ensure structural defenses are built into the agent application from day one.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

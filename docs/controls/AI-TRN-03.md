@@ -1,14 +1,14 @@
 ﻿# AI-TRN-03: Use Deep Packet Inspection (DPI) to identify mis-ported traffic
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 4: Transport  
+**Category:** Networking (Layer 4: Transport)  
 **Implementation Group:** IG 3  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `12.2, 12.3` | NIST CSF: `PR.NW`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 12.2, 12.3  
+**NIST CSF Subcategories:** PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Deep Packet Inspection (DPI) analyzes both the header and the payload of data packets at the application layer to identify the specific service or application generating traffic, allowing it to detect "mis-ported" traffic where an application uses a non-standard port to evade traditional firewalls.
 

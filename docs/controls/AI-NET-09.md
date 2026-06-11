@@ -1,13 +1,10 @@
-﻿# AI-NET-09
+﻿# AI-NET-09: Mandate SSL/TLS Decryption (SSL Forward Proxy / Inspection) to enable deep packet inspection, prompt scanning, and data loss prevention (DLP).
 
-**Category:** Layer 2: Network & Infrastructure Controls  
-**Implementation Group:** IG 1  
+**Category:** Networking (Layer 2: Network & Infrastructure Controls)  
+**Implementation Group:** IG 2  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 9.3, 13.3, 13.6  
-**NIST CSF Subcategories:** PR.PT-4, DE.CM-1  
-
-## Recommendation Description
-Mandate SSL/TLS Decryption (SSL Forward Proxy / Inspection) to enable deep packet inspection, prompt scanning, and data loss prevention (DLP).
+**NIST CSF Subcategories:** PR.PS, DE.CM  
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Integration with Enterprise DLP: Route the decrypted traffic through your semantic-aware DLP engines to inspect user prompts for proprietary source code or financial data before re-encrypting the payload and sending it to the authorized AI vendor.
 3. Privacy Exclusions: Establish a strict bypass policy that excludes traffic to known financial (e.g., banking) and healthcare (HIPAA-related) domains from decryption.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

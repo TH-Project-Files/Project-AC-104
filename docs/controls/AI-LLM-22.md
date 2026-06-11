@@ -1,13 +1,10 @@
-﻿# AI-LLM-22
+﻿# AI-LLM-22: Enforce strict environment variable and secret scoping for AI agent runtimes to prevent unconditional inheritance of the parent process environment.
 
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 16.1, 16.4  
-**NIST CSF Subcategories:** PR.PT-4  
-
-## Recommendation Description
-Enforce strict environment variable and secret scoping for AI agent runtimes to prevent unconditional inheritance of the parent process environment.
+**NIST CSF Subcategories:** PR.PS  
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Utilize a dedicated Secrets Manager API within specific tool logic rather than injecting secrets as static environment variables.
 3. Enforce containerized or sandboxed runtimes for the agent processes where the host environment is inherently masked.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

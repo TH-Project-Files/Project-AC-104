@@ -1,14 +1,14 @@
 ﻿# AI-NET-02: Implement Strict Egress Filtering to stop C2 callbacks
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 3: Network  
+**Category:** Networking (Layer 3: Network)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `4.4, 12.3` | NIST CSF: `PR.NW`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 4.4, 12.3  
+**NIST CSF Subcategories:** PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Egress filtering is a security practice that monitors and controls outbound network traffic by examining data packets at network boundaries like firewalls or routers. Implementing strict filtering involves a default-deny stance where all outbound traffic is blocked unless it matches specific, authorized business rules, such as allowing only necessary ports like 80 (HTTP), 443 (HTTPS), or 53 (DNS) to known destinations. This stops command-and-control (C2) callbacks by preventing compromised internal systems from establishing communication channels with an attacker's external infrastructure, effectively neutralizing the attacker's ability to issue commands or exfiltrate data.
 

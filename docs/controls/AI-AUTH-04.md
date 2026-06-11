@@ -1,14 +1,14 @@
 ﻿# AI-AUTH-04: Enable user enumeration prevention for authentication and account recovery workflows to obscure account existence.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 5: Access Session  
+**Category:** Identity & Access (Layer 5: Access Session)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `6.2, 16.1` | NIST CSF: `PR.AA`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 6.2, 16.1  
+**NIST CSF Subcategories:** PR.AA
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Enabling user enumeration prevention ensures that authentication and recovery endpoints return generic, indistinguishable error messages regardless of whether an account actually exists. If a user doesn't exist or cannot sign in, the system provides a standard authenticator verification error rather than confirming the account's status.
 

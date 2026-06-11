@@ -1,14 +1,14 @@
 ﻿# AI-MSG-01: Deploy Anomalous Attachment & Rare File Type Filtering to block unusual containers (e.g., ISO, IMG) used by AI-automated malware delivery.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 6: Messaging/Web  
+**Category:** Applications & Data (Layer 6: Messaging/Web)  
 **Implementation Group:** IG 2  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `9.1, 9.2` | NIST CSF: `PR.IR`
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 9.1, 9.2  
+**NIST CSF Subcategories:** PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Deploying anomalous attachment and rare file type filtering involves configuring email gateways and security agents to identify and block file extensions that are not typical for daily business operations, such as ISO, IMG, or VHD, which are frequently used to wrap and deliver malicious payloads while evading standard scanners.
 

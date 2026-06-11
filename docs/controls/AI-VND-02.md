@@ -1,14 +1,14 @@
 ﻿# AI-VND-02: Enforce AI vendor minimum security terms, explicitly mandating "no training on customer data," strict tenancy, and guaranteed log access.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 1  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `15.1, 15.2` | NIST CSF: `GV.SC`
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 15.1, 15.2  
+**NIST CSF Subcategories:** GV.SC
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Enforce standardized, non-negotiable minimum security terms in all contracts with AI vendors and SaaS providers introducing AI features. This must explicitly mandate "zero data retention for model training," strict data tenancy isolation, guaranteed log exports, and data residency compliance.
 

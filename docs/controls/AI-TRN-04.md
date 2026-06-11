@@ -1,14 +1,14 @@
 ﻿# AI-TRN-04: Deploy Stateful Protocol Anomaly Detection (IPS)
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 4: Transport  
+**Category:** Networking (Layer 4: Transport)  
 **Implementation Group:** IG 3  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `12.2, 12.3` | NIST CSF: `PR.NW`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 12.2, 12.3  
+**NIST CSF Subcategories:** PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Explanation: Stateful Protocol Anomaly Detection (IPS) is an intrusion prevention technology that combines stateful protocol analysis with anomaly detection. It uses vendor-developed universal profiles to track the state of network, transport, and application protocols, comparing observed events against accepted definitions of benign activity. This allows the system to identify deviations, such as unexpected command sequences or malformed requests, and take active measures like dropping malicious packets or terminating connections to prevent attacks.
 

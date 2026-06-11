@@ -1,14 +1,14 @@
 ﻿# AI-RAG-01: Implement RAG authorization enforcement and security trimming to ensure AI only synthesizes data the user is permitted to see.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 4: Data  
+**Category:** Applications & Data (Layer 4: Data)  
 **Implementation Group:** IG 2  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `3.3, 5.1` | NIST CSF: `PR.AC, PR.DS`
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 3.3, 5.1  
+**NIST CSF Subcategories:** PR.AA, PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Implement strict access control mapping and "security trimming" within Retrieval-Augmented Generation (RAG) pipelines so the AI can only retrieve and synthesize information that the querying user is explicitly authorized to access. 
 

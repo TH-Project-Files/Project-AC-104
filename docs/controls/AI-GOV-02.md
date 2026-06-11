@@ -1,14 +1,14 @@
 ﻿# AI-GOV-02: Implement rigorous Data Classification Mapping and System Agnostic Coverage Policies
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `15.1, 17.1` | NIST CSF: `GV.PO, GV.OV`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 3.2, 3.7  
+**NIST CSF Subcategories:** GV.PO, GV.OV
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 This recommendation involves creating a comprehensive framework that identifies, categorizes, and labels data based on its sensitivity (mapping) and applies security controls consistently across all platforms, whether on-premises, in the cloud, or within third-party applications (system-agnostic).
 

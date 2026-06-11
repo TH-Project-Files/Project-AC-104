@@ -1,14 +1,14 @@
-﻿# AI-LLM-02: Put speed limits on AI agents so they don't get stuck in endless loops or crash internal systems.
+﻿# AI-LLM-02: Enforce rate limiting and execution constraints on AI agents to prevent runaway loops and resource exhaustion.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 1  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Putting speed limits on AI agents involves implementing rate limiting and behavioral throttling to constrain the frequency and volume of requests an agent can make within a specific timeframe. This prevents agents from entering recursive loops, where they repeatedly execute the same faulty logic, or overwhelming infrastructure with high-velocity requests that can lead to system crashes or resource exhaustion.
 

@@ -1,13 +1,10 @@
-﻿# AI-AGT-02
+﻿# AI-AGT-02: Enforce Zero-Trust segmentation and strict Role-Based Access Control (RBAC) boundaries for agent-to-agent communications.
 
-**Category:** Layer 7: Internal LLMs & Agentics  
-**Implementation Group:** IG 3  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
+**Implementation Group:** IG 2  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 6.8, 12.5, 13.4  
-**NIST CSF Subcategories:** PR.AC, PR.NW  
-
-## Recommendation Description
-Enforce Zero-Trust segmentation and strict Role-Based Access Control (RBAC) boundaries for agent-to-agent communications.
+**NIST CSF Subcategories:** PR.AA, PR.IR  
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Map specific agent RBAC roles to authorized network boundaries, ensuring peer-to-peer communication requires explicit authorization.
 3. Require downstream high-privilege agents to re-validate the original user context (e.g., via delegated OAuth tokens) before executing tasks requested by a peer agent.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

@@ -1,14 +1,14 @@
 ﻿# AI-USR-08: Mandate Phishing-Resistant MFA (FIDO2/WebAuthn) to neutralize credential harvesting
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: User Facing Controls  
+**Category:** Governance & People (Layer 0: User Facing Controls)  
 **Implementation Group:** IG 1  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `6.3, 6.4, 6.5` | NIST CSF: `PR.AA, PR.IR`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 6.3, 6.4, 6.5  
+**NIST CSF Subcategories:** PR.AA, PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Phishing-resistant MFA (FIDO2/WebAuthn) uses public-key cryptography to ensure that authentication is tied to a specific, legitimate domain, making it immune to credential harvesting and man-in-the-middle attacks. Unlike traditional MFA that relies on shared secrets like OTPs or push notifications, the private key never leaves the user's device, and the protocol verifies the origin of the login request to prevent interception.
 

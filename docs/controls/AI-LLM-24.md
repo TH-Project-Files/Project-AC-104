@@ -1,13 +1,10 @@
-﻿# AI-LLM-24
+﻿# AI-LLM-24: Enforce cryptographic integrity and freshness checks on all agent-to-agent and agent-to-tool communications.
 
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 16.14, 3.3  
-**NIST CSF Subcategories:** PR.DS-2, PR.DS-5  
-
-## Recommendation Description
-Enforce cryptographic integrity and freshness checks on all agent-to-agent and agent-to-tool communications.
+**NIST CSF Subcategories:** PR.DS  
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Embed strict timestamps and cryptographic nonces within the message payload schema; the receiving agent must reject any message that falls outside a tight temporal window (e.g., older than 5 seconds) to prevent replay attacks.
 3. Enforce mutual TLS (mTLS) combined with payload hashing across the agentic service mesh to protect the confidentiality and integrity of agent communications.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

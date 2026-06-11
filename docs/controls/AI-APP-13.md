@@ -1,13 +1,10 @@
-﻿# AI-APP-13
+﻿# AI-APP-13: Automate Agent Dependency Health evaluations and utilize "AI Vendoring" to minimize third-party library sprawl.
 
-**Category:** Layer 7: Application  
+**Category:** Applications & Data (Layer 7: Application)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 3-Low  
 **CIS v8 Safeguards:** 2.1, 2.6, 16.4  
-**NIST CSF Subcategories:** PR.IP, ID.SC  
-
-## Recommendation Description
-Automate Agent Dependency Health evaluations and utilize "AI Vendoring" to minimize third-party library sprawl.
+**NIST CSF Subcategories:** PR.PS, GV.SC  
 
 ## Details
 Detailed Description:
@@ -20,11 +17,5 @@ Examples:
 1. Run automated reachability analysis on vulnerable code to remediate the smallest set of dependencies that actually impact the agent.
 2. Perform regular dependency-tree audits using an LLM to identify overlapping libraries (e.g., multiple JSON parsers) and consolidate them to reduce the attack surface.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

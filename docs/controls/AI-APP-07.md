@@ -1,14 +1,14 @@
 ﻿# AI-APP-07: Integrate Dynamic Application Security Testing (DAST) into CI/CD
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: General Usage & AppSec Defense  
+**Category:** Applications & Data (Layer 7: General Usage & AppSec Defense)  
 **Implementation Group:** IG 3  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Integrate Dynamic Application Security Testing (DAST) into CI/CD involves automating black-box security scans that test running applications from the outside-in. Unlike static analysis, DAST simulates real-world attacks (like SQL injection or XSS) on a deployed staging or ephemeral environment to identify runtime vulnerabilities, misconfigurations, and business logic flaws. By embedding these scans directly into the CI/CD pipeline, organizations can catch exploitable issues before code reaches production, creating a continuous security feedback loop.
 

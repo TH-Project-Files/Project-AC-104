@@ -1,14 +1,14 @@
 ﻿# AI-AUTH-05: Monitor external threat intelligence and dark web sources for compromised employee credentials, and enforce automated password resets for exposed accounts.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 5: Access Session  
-**Implementation Group:** IG 2  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `5.2, 7.1` | NIST CSF: `ID.RA, DE.CM`
+**Category:** Identity & Access (Layer 5: Access Session)  
+**Implementation Group:** IG 1  
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 5.2, 7.1  
+**NIST CSF Subcategories:** ID.RA, DE.CM
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Implement continuous monitoring of third-party data breaches, dark web marketplaces, and public paste sites for exposed corporate email addresses and passwords. When a compromised credential belonging to an employee is detected, the system should automatically invalidate the current session, force a mandatory password reset, and require re-enrollment or reverification of MFA.
 

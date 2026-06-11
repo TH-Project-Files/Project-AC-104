@@ -1,14 +1,14 @@
 ﻿# AI-PAM-01: Implement Privileged Access Management (PAM) with Just-In-Time (JIT) elevation for privileged actions by humans and AI agents
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 5: Access Session  
+**Category:** Identity & Access (Layer 5: Access Session)  
 **Implementation Group:** IG 2  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `5.4` | NIST CSF: `PR.AC, PR.AA`
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 5.4  
+**NIST CSF Subcategories:** PR.AA
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Implement a Privileged Access Management (PAM) solution that enforces Just-In-Time (JIT) access and zero standing privileges (ZSP). When a human administrator or an autonomous AI agent requires elevated permissions to perform a sensitive action, they must dynamically request temporary access that automatically expires after the specific task is completed.
 

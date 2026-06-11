@@ -1,14 +1,14 @@
 ﻿# AI-APP-08: Monitor 3rd-party connections via Cloud Application Security Broker (CASB)
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: General Usage & AppSec Defense  
+**Category:** Applications & Data (Layer 7: General Usage & AppSec Defense)  
 **Implementation Group:** IG 3  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Detailed Explanation: This recommendation involves using a Cloud Application Security Broker (CASB) as an intermediary security enforcement point between an organization's users and cloud service providers. It works by discovering all third-party cloud applications in use (including shadow IT), classifying them based on risk and data sensitivity, and enforcing security policies like data loss prevention (DLP), encryption, and access control in real-time to protect corporate data and monitor user behavior.
 

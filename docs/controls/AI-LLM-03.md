@@ -1,14 +1,14 @@
-﻿# AI-LLM-03: Give AI agents only the bare minimum permissions needed to do their jobs.
+﻿# AI-LLM-03: Enforce least-privilege permissions for AI agents.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 1  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `6.1, 6.2` | NIST CSF: `PR.AA`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 6.1, 6.2  
+**NIST CSF Subcategories:** PR.AA
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Detailed Explanation: This recommendation refers to the Principle of Least Privilege (PoLP), a security model where AI agents are granted only the absolute minimum permissions necessary to perform a specific, legitimate task. Instead of providing broad "administrative" or "superuser" access, permissions are restricted by scope, time, and function to ensure that if an agent is compromised or malfunctions, the potential damage to the system is strictly limited.
 

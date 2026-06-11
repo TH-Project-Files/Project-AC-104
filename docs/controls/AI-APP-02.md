@@ -1,14 +1,14 @@
 ﻿# AI-APP-02: Monitor employee devices and networks to block the use of unsanctioned or hidden 'Shadow AI' apps.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: General Usage & AppSec Defense  
+**Category:** Applications & Data (Layer 7: General Usage & AppSec Defense)  
 **Implementation Group:** IG 1  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Detailed Explanation: This recommendation focuses on gaining visibility and control over the unauthorized use of artificial intelligence tools, often called Shadow AI, by monitoring corporate endpoints and network traffic. It involves identifying unapproved standalone applications, browser extensions, and hidden AI features within sanctioned software that employees use without IT oversight. By monitoring these access points, organizations can enforce security policies, prevent the input of sensitive data into external models, and mitigate risks related to data residency and compliance.
 

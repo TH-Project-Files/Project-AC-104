@@ -1,14 +1,14 @@
 ﻿# AI-GOV-13: Conduct Continuous Red Teaming against AI defenses
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 3  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `15.1, 17.1` | NIST CSF: `GV.PO, GV.OV`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 15.1, 17.1  
+**NIST CSF Subcategories:** GV.PO, GV.OV
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Continuous red teaming against AI involves an ongoing, automated process of simulating real-world adversarial attacks to identify vulnerabilities in AI models, applications, and their surrounding infrastructure. Unlike traditional time-bound assessments, this approach provides real-time validation of security controls and adapts to the evolving tactics of attackers, such as prompt injection, data poisoning, and model evasion.
 

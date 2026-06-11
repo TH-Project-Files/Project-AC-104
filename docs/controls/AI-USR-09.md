@@ -1,14 +1,14 @@
 ﻿# AI-USR-09: Implement Out-of-Band/Verbal Verification for high-risk financial/data actions
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: User Facing Controls  
+**Category:** Governance & People (Layer 0: User Facing Controls)  
 **Implementation Group:** IG 2  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `6.3, 6.4, 6.5` | NIST CSF: `PR.AA, PR.IR`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 6.3, 6.4, 6.5  
+**NIST CSF Subcategories:** PR.AA, PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Out-of-band verification is a security process that requires two separate and independent communication channels to validate a user's identity or a specific high-risk request. By moving the verification away from the primary channel (like an email or web portal) to a secondary one (like a known phone number or a dedicated app), organizations ensure that an attacker must compromise two unconnected systems simultaneously to succeed.
 

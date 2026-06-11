@@ -1,14 +1,14 @@
 ﻿# AI-END-08: Deploy Data Loss Prevention (DLP) to monitor formatted file exfiltration
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 6: Endpoint Presentation  
-**Implementation Group:** IG 3  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `4.1` | NIST CSF: `PR.PS`
+**Category:** Endpoints (Layer 6: Endpoint Presentation)  
+**Implementation Group:** IG 2  
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 4.1  
+**NIST CSF Subcategories:** PR.PS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Deploying Data Loss Prevention (DLP) to monitor formatted file exfiltration involves using security tools to identify, track, and block the unauthorized transfer of structured and unstructured files (such as PDF, DOCX, or XLSX) across endpoints, networks, and cloud environments.
 

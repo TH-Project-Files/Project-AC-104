@@ -1,14 +1,14 @@
 ﻿# AI-GOV-10: Require AI Vendor Risk Assessments for all new software purchases
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 2  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `15.1, 17.1` | NIST CSF: `GV.PO, GV.OV`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 15.1, 17.1  
+**NIST CSF Subcategories:** GV.PO, GV.OV
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 This recommendation mandates that any new software procurement must undergo a specialized risk assessment to evaluate the artificial intelligence components, focusing on model-specific risks like training data provenance, algorithmic bias, and output reliability that standard security reviews might overlook.
 

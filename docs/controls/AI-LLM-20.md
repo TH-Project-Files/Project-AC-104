@@ -1,14 +1,14 @@
-﻿# AI-LLM-20: Track exactly where your AI training data comes from to ensure hackers haven't poisoned it with malicious information.
+﻿# AI-LLM-20: Enforce training-data provenance tracking to detect and prevent data poisoning.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 3  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `15.1` | NIST CSF: `GV.SC`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 15.1  
+**NIST CSF Subcategories:** GV.SC
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Explanation: This recommendation refers to establishing data provenance, which is the ability to trace the origin, ownership, transformations, and generation of datasets used to train or fine-tune AI models. By documenting the historical record of data—including who created it, when it was created, and what changes were made—organizations can verify the authenticity and integrity of their information. This process allows developers to identify and filter out poisoned data, which is malicious or biased information intentionally injected by hackers to skew model outputs, create hidden backdoors, or degrade system performance.
 

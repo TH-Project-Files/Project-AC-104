@@ -1,14 +1,14 @@
 ﻿# AI-USR-01: Enable Automated 'First Contact' Safety Tips to warn users when interacting with new or anomalous external senders often used by AI phishing bots.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: User Facing Controls  
+**Category:** Governance & People (Layer 0: User Facing Controls)  
 **Implementation Group:** IG 1  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `9.1, 9.2` | NIST CSF: `PR.IR`
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 9.1, 9.2  
+**NIST CSF Subcategories:** PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 First-contact safety tips are automated visual alerts that appear in an email client when a user receives a message from a sender they do not regularly communicate with or who appears anomalous. These tips serve as a "speed bump," prompting users to verify the identity of the sender and the legitimacy of the content before clicking links or downloading attachments.
 

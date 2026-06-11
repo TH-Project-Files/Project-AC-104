@@ -1,14 +1,14 @@
 ﻿# AI-END-06: Deploy AI-Driven EDR/XDR for behavioral process termination
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 6: Endpoint Presentation  
+**Category:** Endpoints (Layer 6: Endpoint Presentation)  
 **Implementation Group:** IG 2  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `10.1, 10.5` | NIST CSF: `DE.CM, PR.MA`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 10.1, 10.5  
+**NIST CSF Subcategories:** DE.CM, PR.PS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 AI-driven Endpoint Detection and Response (EDR) and Extended Detection and Response (XDR) use machine learning and behavioral analysis to monitor system activities in real time. Unlike signature-based tools, these solutions identify suspicious process behaviors—such as unauthorized lateral movement or fileless malware execution—and automatically terminate those processes to contain threats before they can cause damage.
 

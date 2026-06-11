@@ -1,14 +1,15 @@
 ﻿# AI-NET-06: Implement automated threat intelligence feeds from big data sources (e.g., large-scale MDR providers or crowd-sourced intelligence) to proactively block emerging AI-driven attacker infrastructure.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 3: Network  
+**Category:** Networking (Layer 3: Network)  
 **Implementation Group:** IG 2  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `7.2` | NIST CSF: `ID.RA, DE.CT`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 7.2  
+**NIST CSF Subcategories:** ID.RA, DE.CM  
+**Layered with:** Malicious-domain defense chain — this control is the intelligence-feed layer; AI-NET-01 consumes it at DNS resolution; AI-NET-03 consumes it for domain-age policy at the firewall and DNS filter. One outcome, three enforcement points: implement as a single pipeline, not three separate products.
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 This recommendation involves integrating real-time, structured data streams from large-scale providers and community networks into a company's security stack. These feeds provide automated updates on malicious IP addresses, domains, and file hashes, allowing security tools to identify and block attacker infrastructure as soon as it is discovered. By leveraging "big data" sources like Managed Detection and Response (MDR) providers, organizations gain access to a broader, global view of the threat landscape that a single internal network cannot capture alone.
 

@@ -1,14 +1,14 @@
 ﻿# AI-DLK-03: Implement Zero-Trust segmentation to prevent lateral movement
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 2: Data Link  
-**Implementation Group:** IG 3  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `12.1, 13.4` | NIST CSF: `PR.NW, DE.CM`
+**Category:** Networking (Layer 2: Data Link)  
+**Implementation Group:** IG 2  
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 12.1, 13.4  
+**NIST CSF Subcategories:** PR.IR, DE.CM
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Zero-Trust segmentation, or microsegmentation, divides a network into small, isolated zones to stop threats from spreading laterally by requiring strict identity verification and authorization for every access request, regardless of whether the user is inside or outside the network perimeter.
 

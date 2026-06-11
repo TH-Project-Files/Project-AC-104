@@ -1,14 +1,14 @@
-﻿# AI-LLM-19: Keep a 'nutrition label' (Bill of Materials) for your AI models and verify that no one has tampered with their code or plugins.
+﻿# AI-LLM-19: Maintain an AI Bill of Materials (AIBOM) and verify model and plugin integrity.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 3  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `15.1` | NIST CSF: `GV.SC`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 15.1  
+**NIST CSF Subcategories:** GV.SC
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 This recommendation advises organizations to maintain an AI Bill of Materials (AIBOM), which is a machine-readable inventory of every dataset, model, and software component used in an AI system. It serves as a "nutrition label" to provide transparency into the system's "ingredients," such as data provenance, model lineage, and third-party dependencies. This process ensures that the AI's code and plugins remain secure and uncorrupted by verifying their integrity throughout the development and deployment lifecycle.
 

@@ -1,13 +1,10 @@
-﻿# AI-GOV-18
+﻿# AI-GOV-18: Scale Incident Response Tabletop Exercises to simulate high-velocity, simultaneous AI-driven compromises.
 
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 2-Medium  
 **CIS v8 Safeguards:** 17.7  
 **NIST CSF Subcategories:** RS.CO, RS.IM  
-
-## Recommendation Description
-Scale Incident Response Tabletop Exercises to simulate high-velocity, simultaneous AI-driven compromises.
 
 ## Details
 Detailed Description:
@@ -20,11 +17,5 @@ Examples:
 1. Run a tabletop where five distinct critical vulnerabilities are actively exploited across the agent infrastructure simultaneously to test triage and containment scalability.
 2. Establish and rehearse emergency change procedures (e.g., taking an agent offline, rotating a hardware-bound credential) in advance so they do not require improvisation during an active attack.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

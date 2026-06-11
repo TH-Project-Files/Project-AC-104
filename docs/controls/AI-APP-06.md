@@ -1,14 +1,14 @@
 ﻿# AI-APP-06: Implement API Security Gateways with strict rate limiting
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: General Usage & AppSec Defense  
+**Category:** Applications & Data (Layer 7: General Usage & AppSec Defense)  
 **Implementation Group:** IG 3  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 API security gateways act as a centralized proxy that intercepts all incoming traffic to backend services to enforce security policies, while strict rate limiting controls the number of requests a client can make within a specific timeframe (e.g., 100 requests per minute) to prevent system overload and abuse.
 

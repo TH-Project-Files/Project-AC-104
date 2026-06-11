@@ -1,13 +1,10 @@
-﻿# AI-REC-01
+﻿# AI-REC-01: Establish AI-specific Data Recovery procedures to restore the "behavioral fidelity" of RAG corpora, vector databases, and agent memory states.
 
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 11.1, 11.2, 11.5  
 **NIST CSF Subcategories:** RC.RP, PR.DS  
-
-## Recommendation Description
-Establish AI-specific Data Recovery procedures to restore the "behavioral fidelity" of RAG corpora, vector databases, and agent memory states.
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Automate snapshotting of the vector database alongside its corresponding prompt configuration so both can be rolled back to a known-good state simultaneously.
 3. Conduct quarterly restore tests to verify that a restored RAG corpus accurately maintains its behavioral fidelity and does not contain stale or poisoned documents.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

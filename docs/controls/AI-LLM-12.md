@@ -1,14 +1,14 @@
-﻿# AI-LLM-12: Put strict safety checks in place when letting AI talk directly to your company databases (like translating plain text into SQL queries).
+﻿# AI-LLM-12: Enforce parameterized queries and least-privilege database access for natural-language-to-SQL workflows.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 2  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Implementing strict safety checks involves creating a layered defense to ensure that natural language prompts converted into SQL queries do not execute malicious commands, unauthorized data access, or destructive operations like dropping tables.
 

@@ -1,14 +1,14 @@
-﻿# AI-LLM-07: Automatically scan and clean up the text users send to AI to stop them from sharing too much sensitive information.
+﻿# AI-LLM-07: Implement automated prompt scanning and sensitive-data redaction on AI inputs.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 2  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 This recommendation involves implementing automated tools to scan user prompts in real-time for sensitive data such as PII, financial details, or intellectual property, and then sanitizing that text through redaction, anonymization, or blocking before it reaches the AI model.
 

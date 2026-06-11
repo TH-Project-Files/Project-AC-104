@@ -1,13 +1,10 @@
-﻿# AI-GOV-01
+﻿# AI-GOV-01: Establish and enforce policy on the appropriate application of Large Language Models such as LLM Chatbots, Vibe Coding, and Agentic AI.
 
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 1  
 **Aggregate Risk Level:** 2-Medium  
 **CIS v8 Safeguards:** 15.1, 17.1  
 **NIST CSF Subcategories:** GV.PO, GV.OV  
-
-## Recommendation Description
-Establish and enforce policy on the appropriate application of Large Language Models such as LLM Chatbots, Vibe Coding, and Agentic AI.
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Explicitly prohibit the input of sensitive information—such as personally identifiable information (PII), intellectual property, or trade secrets—into public or non-corporate-managed AI systems.
 3. Implement a mandatory human-in-the-loop (HITL) review process where employees must fact-check and verify all AI-generated outputs for accuracy and bias before they are used in business decisions or external communications.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

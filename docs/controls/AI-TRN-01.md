@@ -1,14 +1,14 @@
 ﻿# AI-TRN-01: Enforce Default-Deny Inbound Policies at the transport layer
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 4: Transport  
+**Category:** Networking (Layer 4: Transport)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `12.2, 12.3` | NIST CSF: `PR.NW`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 12.2, 12.3  
+**NIST CSF Subcategories:** PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Default-deny at the transport layer is a security framework where all inbound network traffic is blocked by default unless it matches a specific, predefined rule that explicitly allows it. Operating on a positive security model or whitelist approach, it ensures that only approved ports, protocols, and source IP addresses can interact with the network, thereby minimizing the attack surface and preventing unauthorized access from unknown threats.
 

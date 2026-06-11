@@ -1,31 +1,23 @@
-﻿# AI-NET-08
+﻿# AI-NET-08: Enforce gateway-only egress for AI model providers by blocking direct API access from general subnets at the firewall and SWG.
 
-**Category:** Layer 3: Network  
-**Implementation Group:** IG 3  
-**Aggregate Risk Level:** 2-Medium  
-**CIS v8 Safeguards:** 12.1  
-**NIST CSF Subcategories:** PR.NW  
-
-## Recommendation Description
-Monitor BGP with Automated Route Hijacking Detection
+**Category:** Networking (Layer 3: Network)  
+**Implementation Group:** IG 2  
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 13.1, 13.2  
+**NIST CSF Subcategories:** PR.AA, PR.PS  
+**Layered with:** AI-APP-10 (the centralized AI Gateway this control makes unbypassable), AI-NET-02 (general default-deny egress filtering), AI-GOV-03 (the approved AI service catalog these routing rules enforce)  
 
 ## Details
 Detailed Description:
-Monitoring BGP with automated route hijacking detection involves using specialized software to continuously observe Border Gateway Protocol announcements for unauthorized or suspicious changes. These tools detect prefix hijacks, where an attacker falsely claims ownership of IP addresses, and path hijacks, where the routing path is manipulated to intercept traffic. Automated systems provide real-time alerts, event severity assessment, and visualization tools to help network operators quickly identify and mitigate incidents that could lead to data interception, man-in-the-middle attacks, or service outages.
+Ensure that all outbound network traffic to external AI model providers (e.g., api.openai.com, anthropic.com) is strictly forced through the centralized AI Gateway. This requires configuring egress firewalls, Secure Web Gateways (SWG), and DNS policies to explicitly deny direct API access from general corporate subnets, developer endpoints, and unapproved servers.
 
 Why AI Compounds Risk:
-AI exacerbates BGP hijacking risks by enabling attackers to automate the discovery of vulnerable or unused IP prefixes and generate sophisticated, stealthy routing advertisements that mimic legitimate network behavior. Machine learning can be used to optimize the timing and scale of hijacks to evade traditional threshold-based detection, while AI-driven tools can more efficiently analyze intercepted traffic at scale to extract sensitive information or credentials.
+An AI Gateway (AI-APP-10) is only an effective chokepoint if traffic cannot bypass it. In real-world environments, developers and rogue applications frequently attempt to call external AI APIs directly using keys stored on their local laptops or in CI pipelines. If the network permits these direct outbound connections, it creates "Shadow AI" integrations that completely bypass the organization's prompt redaction, DLP layers, and centralized logging, leading to invisible data exfiltration and compliance violations.
 
 Examples:
-1. Deploy a dedicated BGP monitoring platform to receive near real-time alerts on unexpected origin AS changes or RPKI validation failures.
-2. Implement Resource Public Key Infrastructure (RPKI) and Route Origin Validation (ROV) to cryptographically verify the legitimacy of BGP announcements and automatically drop invalid routes.
-3. Integrate BGP stream data into a corporate Security Information and Event Management (SIEM) system to correlate routing anomalies with other internal network performance data and traffic patterns.
+1. Configure the egress firewall or SWG to explicitly deny direct access to known AI model provider API domains/IPs from all general subnets, allowing egress only from the dedicated AI Gateway IP addresses.
+2. Utilize CASB/SWG category controls to separate browser-based AI tool usage from programmatic API usage, applying strict routing rules to the latter.
+3. Combine network restrictions with identity controls by refusing to distribute long-lived provider keys to individuals; instead, require workloads to authenticate via short-lived tokens minted by the gateway or federation.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

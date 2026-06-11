@@ -1,14 +1,14 @@
 ﻿# AI-GOV-08: Establish OAuth Application Governance to restrict third-party 'AI Productivity' apps from accessing sensitive mailbox or cloud storage data.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 2  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `9.1, 9.2` | NIST CSF: `PR.IR`
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 9.1, 9.2  
+**NIST CSF Subcategories:** PR.IR
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Implement a centralized management framework to monitor and control third-party applications that use OAuth tokens to access corporate data environments like enterprise productivity suites.
 

@@ -1,14 +1,14 @@
 ﻿# AI-END-07: Utilize File Integrity Monitoring (FIM) for critical OS files
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 6: Endpoint Presentation  
+**Category:** Endpoints (Layer 6: Endpoint Presentation)  
 **Implementation Group:** IG 2  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `4.1` | NIST CSF: `PR.PS`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 4.1  
+**NIST CSF Subcategories:** PR.PS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 File Integrity Monitoring (FIM) is a security process that validates the integrity of critical operating system and application files by comparing their current state against a known, trusted baseline. It uses cryptographic hashes to detect unauthorized creations, deletions, or modifications to file content, permissions, and attributes, triggering alerts for security teams to investigate potential tampering or corruption.
 

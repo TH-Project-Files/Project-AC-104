@@ -1,14 +1,14 @@
-﻿# AI-LLM-01: Put strict network filters around your internal AI models so hackers can't steal or copy the AI's core logic.
+﻿# AI-LLM-01: Enforce network isolation and strict API access controls around internal model infrastructure to prevent model theft and extraction.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Strict network filtering for internal AI models involves creating a secure perimeter around the model's infrastructure to control access and prevent unauthorized extraction of its architecture, parameters, or weights. This includes using firewalls, API gateways, and air-gapped or isolated network segments to ensure that only authenticated and authorized users or systems can interact with the model, thereby protecting intellectual property from competitors or malicious actors.
 

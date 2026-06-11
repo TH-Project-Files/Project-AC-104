@@ -1,14 +1,14 @@
 ﻿# AI-END-04: Deploy Advanced Behavioral Telemetry: Implement high-fidelity logging (e.g. Sysmon-style) to capture process creation and network connections used by AI-assisted malware that evades signature-based AV.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 6: Endpoint Presentation  
+**Category:** Endpoints (Layer 6: Endpoint Presentation)  
 **Implementation Group:** IG 2  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `10.1, 10.5` | NIST CSF: `DE.CM, PR.MA`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 10.1, 10.5  
+**NIST CSF Subcategories:** DE.CM, PR.PS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Recommendation Explanation: This strategy involves deploying high-resolution monitoring tools like advanced system monitors to record granular system activities that standard logs often miss. By capturing detailed telemetry on process creations (including command-line arguments and file hashes) and network connections (source/destination IPs and ports), security teams can gain the deep visibility necessary to identify malicious behavior that does not match known attack signatures.
 

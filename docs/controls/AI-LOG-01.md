@@ -1,14 +1,14 @@
 ﻿# AI-LOG-01: Establish policies and controls for AI prompt/chat retention, privacy masking, and strict access management for observability logs.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 4: Data  
+**Category:** Governance & People (Layer 4: Data)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `3.2, 8.12` | NIST CSF: `PR.DS, DE.CM`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 3.2, 8.12  
+**NIST CSF Subcategories:** PR.DS, DE.CM
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Establish formal policies and technical controls for the retention, privacy masking, and access management of AI prompt logs, chat histories, and LLM tracing data.
 

@@ -1,13 +1,10 @@
-﻿# AI-GOV-11
+﻿# AI-GOV-11: Develop an AI-specific Incident Response Playbook
 
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 2-Medium  
 **CIS v8 Safeguards:** 15.1, 17.1  
 **NIST CSF Subcategories:** GV.PO, GV.OV  
-
-## Recommendation Description
-Develop an AI-specific Incident Response Playbook
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Define clear containment protocols such as 15-minute windows for activating kill switches or switching to human-in-the-loop mode during active data exfiltration events.
 3. Integrate regulatory compliance templates into the playbook to ensure automated reporting for mandates like the EU AI Act or GDPR within required windows.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

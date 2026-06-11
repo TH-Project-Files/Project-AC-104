@@ -1,13 +1,10 @@
-﻿# AI-DET-01
+﻿# AI-DET-01: Implement AI-specific detections and SOAR playbooks (prompt injection, agent/tool abuse, data exfil via AI, connector compromise)
 
-**Category:** Layer 0: Governance & System Controls (Detection & Response)  
+**Category:** Governance & People (Layer 0: Governance & System Controls (Detection & Response))  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 13.1, 13.2  
 **NIST CSF Subcategories:** DE.AE, RS.MI  
-
-## Recommendation Description
-Implement AI-specific detections and SOAR playbooks (prompt injection, agent/tool abuse, data exfil via AI, connector compromise)
 
 ## Details
 Detailed Description:
@@ -38,11 +35,5 @@ Examples:
 2. Create a SOAR playbook that automatically isolates an AI agent or revokes its API keys if it begins exhibiting "tool-use drift" (e.g., calling a database query tool it rarely uses or attempting an excessive number of unapproved external web connections).
 3. Monitor network egress for sudden spikes in data transfer to known public AI endpoints (e.g., OpenAI, Anthropic APIs) and trigger an automated SOAR response to block the connection and alert the security team of potential AI-driven data exfiltration.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

@@ -1,14 +1,15 @@
 ﻿# AI-NHI-01: Establish Non-Human Identity (NHI) Inventory and Governance (service accounts, API keys, tokens, agent identities)
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Identity & Access (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 2  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `5.1, 5.2, 6.8` | NIST CSF: `ID.AM, PR.AA, PR.AC`
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 5.1, 5.2, 6.8  
+**NIST CSF Subcategories:** ID.AM, PR.AA  
+**Layered with:** AI-NHI-02 (hardware-backed agent identities), AI-PAM-01 (just-in-time elevation), AI-ACC-03 (token rotation). The behavioral monitoring in Example 3 belongs to the behavioral-baselining family (AI-GOV-15, AI-DLK-04, AI-MSG-02, AI-APP-05, AI-ACC-06) — evaluate shared platforms before procuring per-layer point tools.
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Implement a comprehensive centralized inventory and lifecycle governance program for all non-human identities (NHIs). This includes service accounts, API keys, OAuth tokens, machine identities, and autonomous AI agent identities. The program must track ownership, enforce least privilege (RBAC), and mandate regular rotation and auditing of these credentials.
 

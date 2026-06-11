@@ -1,13 +1,10 @@
-﻿# AI-APP-12
+﻿# AI-APP-12: Govern, sanitize, and monitor AI-specific indexing files (e.g., llms.txt and llms-full.txt) to prevent sensitive data exposure and indirect prompt injection.
 
-**Category:** Layer 7: Application  
+**Category:** Applications & Data (Layer 7: Application)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 2-Medium  
 **CIS v8 Safeguards:** 3.1, 13.2, 16.1  
-**NIST CSF Subcategories:** PR.DS, PR.PT  
-
-## Recommendation Description
-Govern, sanitize, and monitor AI-specific indexing files (e.g., llms.txt and llms-full.txt) to prevent sensitive data exposure and indirect prompt injection.
+**NIST CSF Subcategories:** PR.DS, PR.PS  
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Implement File Integrity Monitoring (FIM) on the web server to alert security teams immediately if the llms.txt file is modified outside of approved deployment windows.
 3. Establish a formal policy dictating what content categories (e.g., public tutorials, API schemas) are permitted in AI index files, explicitly forbidding the inclusion of internal architecture or beta endpoints.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

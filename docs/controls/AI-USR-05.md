@@ -1,16 +1,17 @@
 ﻿# AI-USR-05: Conduct Deepfake-Specific Awareness Training focusing on 'liveness' checks (e.g., asking callers to turn their head) and audio/visual artifact detection.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: User Facing Controls  
+**Category:** Governance & People (Layer 0: User Facing Controls)  
 **Implementation Group:** IG 1  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `14.1, 17.1` | NIST CSF: `PR.AT, RS.MA`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 14.1, 17.1  
+**NIST CSF Subcategories:** PR.AT, RS.MA  
+**Layered with:** Deepfake defense chain — AI-GOV-09 owns the governing protocol; AI-USR-04 owns the challenge-response and liveness mechanics; this control owns the training that builds recognition skills and rehearses those procedures.
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
-This training educates employees to identify synthetic media by looking for technical inconsistencies known as artifacts, such as mismatched lip movements, unusual lighting, or monotone voices. It also emphasizes active verification through liveness checks, which require the suspected caller to perform real-time physical actions like turning their head to break the AI's rendering of their digital likeness.
+This training educates employees to identify synthetic media by looking for technical inconsistencies known as artifacts, such as mismatched lip movements, unusual lighting, or monotone voices. It also rehearses the active verification procedures defined in AI-USR-04 (challenge-response and liveness checks), keeping this control focused on building recognition skills and verification habits rather than redefining those mechanics.
 
 Why AI Compounds Risk:
 AI exacerbates this risk by enabling the mass production of hyper-realistic, low-cost voice and video clones that exploit human trust and psychological pressure, making it difficult for employees to distinguish between genuine and fabricated requests during routine business operations.

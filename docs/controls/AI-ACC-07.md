@@ -1,14 +1,14 @@
 ﻿# AI-ACC-07: Enable device-bound/session-bound token protections (where supported) to reduce replay of stolen session tokens
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 5: Access Session  
+**Category:** Identity & Access (Layer 5: Access Session)  
 **Implementation Group:** IG 3  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `6.1, 6.8` | NIST CSF: `PR.AA`
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 6.1, 6.8  
+**NIST CSF Subcategories:** PR.AA
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Implement modern device-bound or session-bound token protections, where access tokens or session cookies are tightly bound to the specific trusted hardware device or endpoint that performed the initial authentication. This ensures that even if a session cookie is stolen, it cannot be easily replayed or used from a different, untrusted machine. 
 

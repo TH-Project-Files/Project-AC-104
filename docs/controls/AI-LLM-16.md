@@ -1,14 +1,14 @@
-﻿# AI-LLM-16: Regularly test internal AI systems by having security teams pretend to be hackers (Red Teaming) to find weak spots.
+﻿# AI-LLM-16: Conduct recurring red-team exercises against internal AI systems.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 3  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 AI red teaming is a structured, adversarial testing process where security teams simulate real-world attacks to identify vulnerabilities in AI models, data pipelines, and APIs before they can be exploited. This proactive approach goes beyond traditional software testing by focusing on the unique ways AI can misbehave, such as through prompt injection, data poisoning, or model evasion, to ensure the system is resilient and trustworthy.
 

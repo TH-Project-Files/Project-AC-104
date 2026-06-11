@@ -1,14 +1,15 @@
 ﻿# AI-END-09: Configure Application Allow-listing to block untrusted executables
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 6: Endpoint Presentation  
-**Implementation Group:** IG 3  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `2.1, 10.7` | NIST CSF: `PR.PS`
+**Category:** Endpoints (Layer 6: Endpoint Presentation)  
+**Implementation Group:** IG 2  
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 2.1, 10.7  
+**NIST CSF Subcategories:** PR.PS  
+**Layered with:** Execution-control chain — AI-END-01 hardens the script engines (PowerShell/Python/JS); AI-END-02 disables macros and embedded document code; this control is the broadest layer, allowlisting which applications may run at all. Intentional defense-in-depth, not duplication.
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Application allowlisting is a proactive security strategy that involves creating an index of approved software applications and files authorized to execute on a system. It operates on a "default deny" principle, meaning any application or process not explicitly included on the list is automatically blocked, effectively preventing the execution of malware, ransomware, and unauthorized scripts.
 

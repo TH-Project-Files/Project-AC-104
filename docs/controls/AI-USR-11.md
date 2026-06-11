@@ -1,13 +1,10 @@
-﻿# AI-USR-11
+﻿# AI-USR-11: Require Possession-Factor Based Authentication (e.g., hardware tokens, device-bound keys) rather than Knowledge-Based ID for Service Desk verification and high-risk requests.
 
-**Category:** Layer 0: User Facing Controls  
+**Category:** Governance & People (Layer 0: User Facing Controls)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 3-Low  
 **CIS v8 Safeguards:** 6.1  
 **NIST CSF Subcategories:** PR.AA  
-
-## Recommendation Description
-Require Possession-Factor Based Authentication (e.g., hardware tokens, device-bound keys) rather than Knowledge-Based ID for Service Desk verification and high-risk requests.
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. High-Value Financial Transfers: Enforce an out-of-band verification tool that sends a One-Time Code (OTC) or cryptographic push notification to a pre-registered personal mobile device before allowing a wire transfer.
 3. Infrastructure Changes: Enforce FIDO2/WebAuthn hardware security keys (e.g., YubiKeys) for all privileged IT administrators and executives before allowing high-risk infrastructure changes.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

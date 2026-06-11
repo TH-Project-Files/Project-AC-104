@@ -1,14 +1,14 @@
 ﻿# AI-ACC-08: Enforce managed-device and continuous device posture checks as a prerequisite for accessing sensitive applications and enterprise AI tools.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 5: Access Session  
+**Category:** Identity & Access (Layer 5: Access Session)  
 **Implementation Group:** IG 2  
-**Risk Level:** 1-High  
-**Framework Mappings:** CIS v8: `1.2, 11.4` | NIST CSF: `PR.AC, DE.CM`
+**Aggregate Risk Level:** 1-High  
+**CIS v8 Safeguards:** 1.2, 11.4  
+**NIST CSF Subcategories:** PR.AA, DE.CM
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Mandate that access to sensitive enterprise applications, AI Gateways, and corporate AI instances (e.g., enterprise LLM workspaces) is restricted exclusively to managed devices that pass continuous health and posture checks.
 

@@ -1,14 +1,14 @@
 ﻿# AI-GOV-16: Establish AI-specific change management and evaluation gates requiring regression testing, approvals, and rollback plans for updates to models, prompts, agent tools, or RAG datasets.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 2  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `2.1, 16.6, 16.7` | NIST CSF: `PR.IP, GV.SC`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 2.1, 16.6, 16.7  
+**NIST CSF Subcategories:** PR.PS, GV.SC
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Establish specialized AI change management workflows and evaluation gates for updates to any component of an AI system. This means that modifications to model versions, prompt templates, agent tools/plugins, or the Retrieval-Augmented Generation (RAG) corpus must go through formal change control, requiring automated regression tests (checking for jailbreaks, data leakage, and tool abuse), explicit approvals, and tested rollback plans before reaching production.
 

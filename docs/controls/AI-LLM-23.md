@@ -1,13 +1,10 @@
-﻿# AI-LLM-23
+﻿# AI-LLM-23: Implement structural or cryptographic boundary markers to separate system prompts from untrusted external data within LLM contexts.
 
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 16.1, 16.4  
-**NIST CSF Subcategories:** PR.PT-4, DE.CM-1  
-
-## Recommendation Description
-Implement structural or cryptographic boundary markers to separate system prompts from untrusted external data within LLM contexts.
+**NIST CSF Subcategories:** PR.PS, DE.CM  
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Implement instruction-tuned models that enforce separate API channels for 'System', 'User', and 'Data' roles.
 3. Utilize an intermediate parsing LLM to strip actionable instructions from untrusted data before feeding it into the primary agentic workflow.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

@@ -1,14 +1,14 @@
 ﻿# AI-AUTH-02: Require advanced CAPTCHA on password reset requests to prevent automated abuse.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 5: Access Session  
+**Category:** Identity & Access (Layer 5: Access Session)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `6.5` | NIST CSF: `PR.AA`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 6.5  
+**NIST CSF Subcategories:** PR.AA
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Implementing an advanced CAPTCHA (Completely Automated Public Turing test to tell Computers and Humans Apart) on password reset and account recovery forms prevents malicious actors from using automated scripts to trigger mass password reset emails, brute-force reset tokens, or perform account enumeration.
 

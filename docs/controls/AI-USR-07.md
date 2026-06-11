@@ -1,14 +1,14 @@
 ﻿# AI-USR-07: Deploy an Automated Incident Reporting Button to instantly quarantine suspected AI phishing
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: User Facing Controls  
+**Category:** Governance & People (Layer 0: User Facing Controls)  
 **Implementation Group:** IG 1  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `6.1` | NIST CSF: `PR.AA`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 6.1  
+**NIST CSF Subcategories:** PR.AA
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 This recommendation involves deploying a one-click reporting tool within email clients that allows employees to instantly flag suspicious messages, triggering an automated workflow to quarantine the email and prevent further interaction. By integrating with Security Orchestration, Automation, and Response (SOAR) platforms, the system can automatically extract indicators of compromise (IOCs), analyze URLs and attachments in sandboxes, and retract the malicious email from all other company inboxes within minutes.
 

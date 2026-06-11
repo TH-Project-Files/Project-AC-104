@@ -1,14 +1,14 @@
 ﻿# AI-APP-03: Deploy Advanced Bot Management (invisible or behavioral CAPTCHAs)
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: General Usage & AppSec Defense  
+**Category:** Applications & Data (Layer 7: General Usage & AppSec Defense)  
 **Implementation Group:** IG 2  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `16.11` | NIST CSF: `PR.NW, PR.DS`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 16.11  
+**NIST CSF Subcategories:** PR.IR, PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Deploying advanced bot management involves using machine learning and behavioral analysis to distinguish between legitimate human users, benign bots, and malicious automated threats. This approach utilizes invisible, frictionless challenges and telemetry (like mouse movements or typing patterns) to block sophisticated attacks such as account takeovers, scraping, and DDoS without interrupting the user experience.
 

@@ -1,13 +1,10 @@
-﻿# AI-END-03
+﻿# AI-END-03: Implement Autonomous, Real-Time Patch Management and Runtime Exploit Prevention.
 
-**Category:** Layer 6: Endpoint Presentation  
+**Category:** Endpoints (Layer 6: Endpoint Presentation)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 7.1  
 **NIST CSF Subcategories:** PR.PS  
-
-## Recommendation Description
-Implement Autonomous, Real-Time Patch Management and Runtime Exploit Prevention.
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Runtime Exploit Prevention: Deploy inline memory protection and binary-level exploit mitigation to protect legacy or highly critical systems during the gap when a patch is released but cannot be instantly applied without breaking production.
 3. AI-Driven Reachability Analysis: Integrate AI to automatically assess if a newly discovered vulnerability is actually reachable within your specific codebase, allowing you to prioritize the patching of true exposures amid the flood of new CVEs.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

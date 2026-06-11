@@ -1,14 +1,14 @@
-﻿# AI-LLM-04: Keep detailed records of everything AI agents do, including the prompts they receive and actions they take.
+﻿# AI-LLM-04: Implement comprehensive audit logging of AI agent prompts and actions.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 1  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `8.1` | NIST CSF: `DE.CM`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 8.1  
+**NIST CSF Subcategories:** DE.CM
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Detailed Explanation: This recommendation involves maintaining comprehensive audit trails of all AI agent activities, including the specific prompts received, the internal reasoning or decision-making steps taken, the tools invoked, and the final outputs or actions executed. These logs serve as a critical observability mechanism for monitoring performance, ensuring regulatory compliance, and facilitating rapid debugging when autonomous systems behave unexpectedly.
 

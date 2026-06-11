@@ -1,14 +1,15 @@
 ﻿# AI-USR-04: Implement Executive Challenge-Response Protocols (e.g., pre-established safe words) for urgent voice/video requests.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: User Facing Controls  
+**Category:** Governance & People (Layer 0: User Facing Controls)  
 **Implementation Group:** IG 1  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `14.1, 17.1` | NIST CSF: `PR.AT, RS.MA`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 14.1, 17.1  
+**NIST CSF Subcategories:** PR.AT, RS.MA  
+**Layered with:** Deepfake defense chain — AI-GOV-09 owns the governing protocol; this control owns the challenge-response, safe-word, and liveness mechanics referenced by the chain; AI-USR-05 trains staff to apply them.
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Executive challenge-response protocols are manual authentication methods where an individual verifies the identity of a caller or video participant by issuing a specific challenge that requires a pre-agreed, secret response, such as a safe word or a unique piece of personal information known only to the involved parties.
 

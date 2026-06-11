@@ -1,14 +1,14 @@
 ﻿# AI-END-05: Remove or highly manage local admin and installation rights
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 6: Endpoint Presentation  
+**Category:** Endpoints (Layer 6: Endpoint Presentation)  
 **Implementation Group:** IG 2  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `10.1, 10.5` | NIST CSF: `DE.CM, PR.MA`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 10.1, 10.5  
+**NIST CSF Subcategories:** DE.CM, PR.PS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Removing local admin rights involves transitioning users from administrative accounts to standard user accounts to enforce the principle of least privilege. This prevents users from performing high-risk actions like installing unauthorized software, disabling security controls, or modifying critical system files, which significantly reduces the organization's attack surface.
 

@@ -1,14 +1,14 @@
-﻿# AI-LLM-14: Set up alerts to notify security teams if an AI agent starts behaving unexpectedly or out-of-bounds.
+﻿# AI-LLM-14: Implement behavioral anomaly alerting for out-of-bounds AI agent activity.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 2  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `16.1` | NIST CSF: `PR.DS`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 16.1  
+**NIST CSF Subcategories:** PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 This recommendation involves implementing real-time monitoring and automated notification systems that trigger when an AI agent's actions deviate from established baselines or predefined safety boundaries. It focuses on detecting anomalies in tool usage, data access patterns, and reasoning steps to identify potential compromises, such as prompt injection or autonomous drift, before they result in significant data exfiltration or system damage.
 

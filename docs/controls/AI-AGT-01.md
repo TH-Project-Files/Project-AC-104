@@ -1,13 +1,11 @@
-﻿# AI-AGT-01
+﻿# AI-AGT-01: Implement Agent tool-call governance through strict allowlists, schema validation, and human-in-the-loop approvals.
 
-**Category:** Layer 7: Application  
+**Category:** Applications & Data (Layer 7: Application)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 16.2, 16.4  
-**NIST CSF Subcategories:** PR.AC, PR.PT  
-
-## Recommendation Description
-Implement Agent tool-call governance through strict allowlists, schema validation, and human-in-the-loop approvals.
+**NIST CSF Subcategories:** PR.AA, PR.PS  
+**Layered with:** AI-LLM-09 (IG 1 starter allowlisting that this control extends), AI-LLM-08 (the human-in-the-loop mandate this control operationalizes for agent tool-calls), AI-LLM-03 (least privilege)  
 
 ## Details
 Detailed Description:
@@ -30,11 +28,5 @@ Examples:
 2. Implement strict, server-side JSON schema validation for all tool inputs to prevent an attacker from passing malicious payloads or SQL injections via a hijacked agent.
 3. Require cryptographic "human-in-the-loop" MFA approvals before an agent can execute destructive actions or trigger any of the defined High-ROI events.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

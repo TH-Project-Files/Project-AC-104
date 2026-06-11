@@ -1,14 +1,14 @@
-﻿# AI-LLM-11: Continuously scan and classify sensitive company data so you know exactly what information AI tools might access.
+﻿# AI-LLM-11: Continuously discover and classify sensitive data accessible to AI systems.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 2  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `3.1, 3.12` | NIST CSF: `ID.AM, PR.DS`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 3.1, 3.12  
+**NIST CSF Subcategories:** ID.AM, PR.DS
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Explanation: This recommendation involves using automated tools to proactively identify, inventory, and label sensitive information—such as PII, financial records, and intellectual property—across all corporate storage environments. By maintaining a continuous scanning pipeline, organizations can ensure that data is categorized by sensitivity levels (e.g., Public, Internal, Confidential, Restricted) in real-time, allowing for the application of appropriate security controls and access boundaries before data is ingested or processed by AI systems.
 

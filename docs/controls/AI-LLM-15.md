@@ -1,13 +1,10 @@
-﻿# AI-LLM-15
+﻿# AI-LLM-15: Encrypt and enforce strict access controls on vector stores and embedding databases.
 
-**Category:** Layer 7: Internal LLMs & Agentics  
+**Category:** Applications & Data (Layer 7: Internal LLMs & Agentics)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 3-Low  
 **CIS v8 Safeguards:** 16.1  
 **NIST CSF Subcategories:** PR.DS  
-
-## Recommendation Description
-Protect the specialized databases that feed knowledge to your AI (Vector Stores) with encryption and strict access rules.
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Use an enterprise key management service to manage and rotate encryption keys for the vector store, ensuring that even administrators with database access cannot view the underlying embeddings without the proper cryptographic keys.
 3. Enable comprehensive audit logging and automated monitoring to track every similarity search query, setting rate limits and alerts for anomalous patterns that might indicate a systematic attempt to exfiltrate or reverse-engineer the database content.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

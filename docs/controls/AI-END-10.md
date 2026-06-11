@@ -1,13 +1,10 @@
-﻿# AI-END-10
+﻿# AI-END-10: Implement Continuous Authenticated/Agent-Based Vulnerability Scanning across all endpoints and AI infrastructure.
 
-**Category:** Layer 5: Endpoint & Device Controls  
+**Category:** Endpoints (Layer 5: Endpoint & Device Controls)  
 **Implementation Group:** IG 1  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 7.1, 7.5  
-**NIST CSF Subcategories:** ID.RA-1, DE.CM-8  
-
-## Recommendation Description
-Implement Continuous Authenticated/Agent-Based Vulnerability Scanning across all endpoints and AI infrastructure.
+**NIST CSF Subcategories:** ID.RA, DE.CM  
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Container & Image Scanning: For AI infrastructure running in the cloud, ensure authenticated vulnerability scanners are deeply integrated into the container registries and local Kubernetes nodes to monitor the specific Python libraries and dependencies used by AI models.
 3. Automated Ticketing Integration: Pipe the findings from the authenticated vulnerability scanner directly into your IT Service Management (ITSM) tool to automatically trigger the aggressive patch cycles managed under AI-END-03 based on severity and AI-threat intelligence.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

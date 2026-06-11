@@ -1,14 +1,15 @@
 ﻿# AI-APP-05: Utilize a Behavioral Web Application Firewall (WAF)
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 7: General Usage & AppSec Defense  
+**Category:** Applications & Data (Layer 7: General Usage & AppSec Defense)  
 **Implementation Group:** IG 2  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `16.11` | NIST CSF: `PR.NW, PR.DS`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 16.11  
+**NIST CSF Subcategories:** PR.IR, PR.DS  
+**Layered with:** Behavioral-baselining family — the same ML technique applied to different telemetry: this control (web application traffic), AI-DLK-04 (network flows), AI-MSG-02 (email patterns), AI-GOV-15 (user/entity behavior), AI-ACC-06 (authentication context), AI-NHI-01 (non-human identities). Also layered with AI-APP-03 (bot management) at the web edge. Evaluate shared platforms before procuring per-layer point tools.
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Behavioral Web Application Firewalls (WAFs) use machine learning and artificial intelligence to establish a baseline of normal user behavior and application traffic patterns. Unlike traditional WAFs that rely on static, signature-based rules to block known threats, a behavioral WAF identifies anomalies—such as unusual request rates, suspicious parameter combinations, or abnormal call sequences—to detect and block zero-day exploits and polymorphic attacks that do not match documented signatures.
 

@@ -1,14 +1,15 @@
 ﻿# AI-DLK-04: Utilize AI Network Baseline Monitoring to detect anomalous network traffic patterns and alert on them
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 2: Data Link  
+**Category:** Networking (Layer 2: Data Link)  
 **Implementation Group:** IG 3  
-**Risk Level:** 3-Low  
-**Framework Mappings:** CIS v8: `12.1, 13.4, 13.5` | NIST CSF: `DE.CM, DE.AE`
+**Aggregate Risk Level:** 3-Low  
+**CIS v8 Safeguards:** 12.1, 13.4, 13.5  
+**NIST CSF Subcategories:** DE.CM, DE.AE  
+**Layered with:** Behavioral-baselining family — the same ML technique applied to different telemetry: this control (network flows via NDR), AI-MSG-02 (email patterns), AI-APP-05 (web/app traffic), AI-GOV-15 (user/entity behavior), AI-ACC-06 (authentication context), AI-NHI-01 (non-human identities). Evaluate shared platforms before procuring per-layer point tools.
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Implement Artificial Intelligence and Machine Learning (AI/ML) based network baseline monitoring tools to establish a profile of normal network traffic behavior. These tools continuously analyze data flows, protocol usage, and communication patterns, instantly alerting on deviations that signify unauthorized or malicious activity.
 

@@ -1,14 +1,14 @@
 ﻿# AI-GOV-12: Deploy targeted deepfake and synthetic media detection tooling for high-risk workflows (rather than an org-wide mandate)
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 3  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `14.1, 17.1` | NIST CSF: `PR.AT, RS.MA`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 14.1, 17.1  
+**NIST CSF Subcategories:** PR.AT, RS.MA
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 Implement deepfake and synthetic media detection tooling for targeted, high-risk workflows (e.g., executive communications, high-value financial transfers, and high-privilege helpdesk requests). *Maturity Note:* This is designed as a targeted, localized control rather than an organization-wide mandate; a mature organization focuses this tooling specifically where synthetic media poses the highest fraud or reputational risk.
 

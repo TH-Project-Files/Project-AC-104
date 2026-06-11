@@ -1,13 +1,10 @@
-﻿# AI-MCP-01
+﻿# AI-MCP-01: Implement an Enterprise Model Context Protocol (MCP) Registry to govern capability exposure, track server provenance, and detect capability drift.
 
-**Category:** Layer 7: Application  
+**Category:** Applications & Data (Layer 7: Application)  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 2-Medium  
 **CIS v8 Safeguards:** 1.1, 2.1, 4.1  
 **NIST CSF Subcategories:** GV.SC, PR.DS  
-
-## Recommendation Description
-Implement an Enterprise Model Context Protocol (MCP) Registry to govern capability exposure, track server provenance, and detect capability drift.
 
 ## Details
 Detailed Description:
@@ -21,11 +18,5 @@ Examples:
 2. Configure the AI Gateway to intercept listChanged notifications, halting access to any newly declared MCP tools until they are reviewed and approved.
 3. Disallow direct internet-based installations of third-party MCP servers, requiring all artifacts to be mirrored, hashed, and served from a vetted internal registry.
 
-## Implementation Status
-- **Policy Defined:** 0
-- **Control Implemented:** 0
-- **Control Automated:** 0
-- **Control Reported:** 0
-
-**Assigned To:**   
-**Notes/Evidence:**   
+---
+*Part of the Argus Centurion (AC-104) Open Source Security Framework.*

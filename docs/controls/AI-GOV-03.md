@@ -1,14 +1,14 @@
 ﻿# AI-GOV-03: Establish an Approved AI Service Catalog and enforce it via web proxies/CASB, explicitly limiting employee access to only vetted and sanctioned AI tools.
 
-**Project:** Argus Centurion (AC-104)  
-**Category:** Layer 0: Governance & System Controls  
+**Category:** Governance & People (Layer 0: Governance & System Controls)  
 **Implementation Group:** IG 1  
-**Risk Level:** 2-Medium  
-**Framework Mappings:** CIS v8: `15.1, 17.1` | NIST CSF: `GV.PO, GV.OV`
+**Aggregate Risk Level:** 2-Medium  
+**CIS v8 Safeguards:** 15.1, 17.1  
+**NIST CSF Subcategories:** GV.PO, GV.OV
 
 ---
 
-## Control Details
+## Details
 Detailed Description:
 This recommendation involves creating a centralized, vetted list of approved AI services and using technical controls like Cloud Access Security Brokers (CASB) or web proxies to block access to unmanaged "Shadow AI" while allowing only sanctioned tools.
 
