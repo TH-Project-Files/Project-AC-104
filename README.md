@@ -23,7 +23,9 @@ Rather than relying on vague high-level recommendations, this model is structure
 1. **Data Sensitivity:** How sensitive is the data involved?
 2. **Network Exposure:** Is the system connected to the internet?
 3. **Recovery Time Objective (RTO):** How fast must the system be brought back online?
-4. **Audience:** Who uses the system and how widely?
+4. **Audience:** How many users would be unable to perform critical business functions if the system were impacted?
+
+Full pillar definitions, Implementation Group profiles, applicability triggers, and the phased launch plan are documented in the [Scoring & Adoption Methodology](docs/methodology.md).
 
 ### The "Crawl, Walk, Run" Approach
 The framework is broken down into three **Implementation Groups (IGs)** to prevent project fatigue:
@@ -34,9 +36,9 @@ The framework is broken down into three **Implementation Groups (IGs)** to preve
 ## Getting Started
 To move from chaos to clarity:
 
-1. **Download the Tracker:** Grab the `AC-104-version.csv` from the `/data` folder or clone the raw controls directly from the `/docs` folder.
+1. **Download the Tracker:** Grab the highest-versioned `AC-104-vX.Y.Z.csv` from the `/data` folder or clone the raw controls directly from the `/docs` folder.
 2. **Filter for Impact:** Start by filtering for **"1-High" aggregate risk** within **Implementation Group 1**. 
-3. **Measure Progress:** Use the "Control Implemented" column to track your score (1-10) and report readiness averages to stakeholders.
+3. **Measure Progress:** Score each control across the four maturity columns (Policy Defined, Control Implemented, Control Automated, Control Reported — each 0 = not started, 1 = partial, 2 = full) and report readiness averages to stakeholders.
 
 **Remember:** AI is continuously learning how to attack. Your defenses must continuously learn how to adapt. Standing still is no longer an option. Always maintain human in the loop, you the human are ultimately responsible for your environment and actions. AC-104 is provided for educational purposes and is not a substitute for professional guidance and application. 
 

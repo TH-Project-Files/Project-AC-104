@@ -1,6 +1,6 @@
 ﻿# Master Controls List
 
-| Recommendation ID | Category | Implementation Group | Risk Level | Description |
+| Recommendation ID | Category | Implementation Group | Aggregate Risk Level | Description |
 |---|---|---|---|---|
 | **[AI-VND-02](./controls/AI-VND-02.md)** | Governance & People (Layer 0: Governance & System Controls) | IG 1 | 1-High | Enforce AI vendor minimum security terms, explicitly mandating "no training on customer data," strict tenancy, and guaranteed log access. |
 | **[AI-GOV-01](./controls/AI-GOV-01.md)** | Governance & People (Layer 0: Governance & System Controls) | IG 1 | 2-Medium | Establish and enforce policy on the appropriate application of Large Language Models such as LLM Chatbots, Vibe Coding, and Agentic AI. |

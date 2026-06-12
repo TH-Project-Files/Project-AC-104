@@ -1,4 +1,4 @@
-"""Regenerate data/AC-104-v1.2.0.csv and docs/controls_list.md from docs/controls/*.md.
+"""Regenerate data/AC-104-v1.2.1.csv and docs/controls_list.md from docs/controls/*.md.
 
 The markdown control files are the source of truth for: title, category, IG,
 aggregate risk, CIS/NIST mappings, layered-with, and the long-form Details text.
@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTROLS = ROOT / "docs" / "controls"
-CSV_PATH = ROOT / "data" / "AC-104-v1.2.0.csv"
+CSV_PATH = ROOT / "data" / "AC-104-v1.2.1.csv"
 LIST_PATH = ROOT / "docs" / "controls_list.md"
 
 # new IDs inserted after these family siblings
@@ -66,7 +66,7 @@ def main() -> None:
     CSV_PATH.write_text(out.getvalue(), encoding="utf-8", newline="\n")
 
     lines = ["﻿# Master Controls List", "",
-             "| Recommendation ID | Category | Implementation Group | Risk Level | Description |",
+             "| Recommendation ID | Category | Implementation Group | Aggregate Risk Level | Description |",
              "|---|---|---|---|---|"]
     old_list = LIST_PATH.read_text(encoding="utf-8-sig")
     list_order = re.findall(r"\[(AI-[A-Z]+-\d+)\]", old_list)

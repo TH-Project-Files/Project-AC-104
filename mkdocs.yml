@@ -18,6 +18,7 @@ theme:
 
 nav:
   - Home: index.md
+  - Scoring & Adoption Methodology: methodology.md
   - Master Control List: controls_list.md
   - Security Layers:
     - Layer 0 (Governance): 'controls/AI-GOV-01.md'
