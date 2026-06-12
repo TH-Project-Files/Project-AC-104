@@ -155,3 +155,11 @@ This project is licensed under the **Creative Commons Attribution-NonCommercial 
 The software is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
 
 For the full legal terms, please review the [LICENSE.md](LICENSE.md) file included in this repository.
+
+---
+
+## Why "Argus Centurion"?
+
+In Greek myth, **Argus Panoptes** — "the all-seeing" — was the giant with a hundred eyes, the watchman from whom nothing escaped because some of his eyes always remained open. In the Roman legions, a **Centurion** commanded a century of one hundred soldiers — the officer who turned discipline, drill, and clear orders into a formation that held the line.
+
+AC-104 merges the two: the *visibility* of Argus (a hundred eyes across every layer of the stack, because AI-accelerated threats move at machine speed and never sleep) and the *command discipline* of a Centurion (controls organized, prioritized, and drilled into a phased line of defense). A hundred eyes, a hundred soldiers, and four pillars of risk to weigh them by — **104 Points of Visibility and Command** for the AI era.
