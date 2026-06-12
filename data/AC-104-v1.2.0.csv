@@ -39,18 +39,20 @@ Examples:
 1. Configure a CASB to automatically discover all AI applications in use, assign risk scores to them, and enforce real-time block policies on high-risk or unsanctioned AI websites.
 2. Implement a service catalog within an ITSM platform where employees can view and request access to pre-vetted AI tools that meet company security and compliance standards.
 3. Use a Secure Web Gateway to apply granular controls, such as allowing ""view only"" access to certain AI sites while blocking the ability to ""upload"" or ""post"" content to prevent data exfiltration."
-AI-GOV-08,Governance & People (Layer 0: Governance & System Controls),IG 2,1-High,Establish OAuth Application Governance to restrict third-party 'AI Productivity' apps from accessing sensitive mailbox or cloud storage data.,0,0,0,0,,,,"9.1, 9.2",PR.IR,"Detailed Description:
-Implement a centralized management framework to monitor and control third-party applications that use OAuth tokens to access corporate data environments like enterprise productivity suites.
+AI-GOV-08,Governance & People (Layer 0: Governance & System Controls),IG 2,1-High,Establish OAuth Application and Consent-Grant Governance to restrict third-party 'AI Productivity' apps and defend against consent phishing and rogue app registrations.,0,0,0,0,,,,"9.1, 9.2",PR.IR,"Detailed Description:
+Implement a centralized management framework to monitor and control third-party applications that use OAuth tokens to access corporate data environments like enterprise productivity suites. This governance must cover the full consent-grant attack lifecycle, not just app inventory: consent phishing (tricking a user into authorizing a malicious app, giving the attacker durable token access without ever touching a password), rogue application registrations used for post-breach persistence, and stale or over-scoped grants that outlive their original purpose.
 
 Why AI Compounds Risk:
-Mitigate risks associated with overprivileged permissions by identifying apps with excessive access to sensitive mailboxes and cloud storage that do not align with their stated functional purpose
+AI productivity tools operate autonomously, consuming, summarizing, and moving vast amounts of data across integrated SaaS platforms without constant human oversight — a persistent AI integration with overprivileged permissions can quietly exfiltrate thousands of records daily through legitimate but unmonitored API connections. The consent-grant path compounds this: attackers now use AI to mass-produce convincing fake ""AI assistant"" apps and consent-phishing lures, and a single granted token bypasses MFA, password resets, and most account-takeover defenses because the access is technically authorized.
 
 Examples:
-1. Address the unique threat of AI productivity tools which operate autonomously to consume, summarize, and move vast amounts of data across integrated SaaS platforms without constant human oversight
-2. Prevent structural data exposure caused by persistent AI integrations that can quietly exfiltrate thousands of records daily through legitimate but unmonitored API connections
-3. Enable the App Governance feature within the enterprise endpoint protection platform for Cloud Apps to gain deep visibility into OAuth-enabled app behaviors and automated response capabilities
-4. Establish custom governance policies that automatically revoke access for stale applications or those showing anomalous data transfer patterns and unauthorized permission changes
-5. Restrict self-service user consent to ensure only qualified administrators can authorize new AI integrations after a thorough security review of the requested scopes and publisher reputation"
+1. Enable the App Governance feature within the enterprise endpoint protection platform for Cloud Apps to gain deep visibility into OAuth-enabled app behaviors and automated response capabilities
+2. Establish custom governance policies that automatically revoke access for stale applications or those showing anomalous data transfer patterns and unauthorized permission changes
+3. Restrict self-service user consent to ensure only qualified administrators can authorize new AI integrations after a thorough security review of the requested scopes and publisher reputation
+4. Alert on and auto-quarantine new app registrations and consent grants matching high-risk patterns — unverified publishers, lookalike ""AI assistant"" names, or broad scopes such as full mailbox read, files read/write, and offline access — and feed these events into the AI-DET-01 detection pipeline
+5. Run a recurring (e.g., quarterly) recertification of all active OAuth grants, requiring business owners to re-justify each AI integration's scopes and automatically revoking grants that go unattested
+
+Layered with: AI-NHI-01 (OAuth tokens and app identities belong in the non-human identity inventory), AI-DET-01 (consent logs are a required telemetry source, and ""disable rogue OAuth applications"" is one of its containment primitives), AI-GOV-03 (the approved AI service catalog consent policies enforce)"
 AI-NHI-01,Identity & Access (Layer 0: Governance & System Controls),IG 2,1-High,"Establish Non-Human Identity (NHI) Inventory and Governance (service accounts, API keys, tokens, agent identities)",0,0,0,0,,,,"5.1, 5.2, 6.8","ID.AM, PR.AA","Detailed Description:
 Implement a comprehensive centralized inventory and lifecycle governance program for all non-human identities (NHIs). This includes service accounts, API keys, OAuth tokens, machine identities, and autonomous AI agent identities. The program must track ownership, enforce least privilege (RBAC), and mandate regular rotation and auditing of these credentials.
 
@@ -447,16 +449,21 @@ Examples:
 3. Utilize inline DL to analyze encrypted traffic metadata (such as packet size and timing) to identify anomalous C2 beacons without always requiring full, resource-intensive TLS decryption.
 
 Layered with: AI-NET-04 (this control is its IG 3 hardware-acceleration maturity tier, not an independent capability — implement AI-NET-04 first)"
-AI-LOG-01,Governance & People (Layer 4: Data),IG 1,2-Medium,"Establish policies and controls for AI prompt/chat retention, privacy masking, and strict access management for observability logs.",0,0,0,0,,,,"3.2, 8.12","PR.DS, DE.CM","Detailed Description:
+AI-LOG-01,Governance & People (Layer 4: Data),IG 1,2-Medium,"Establish policies and controls for AI prompt/chat retention, privacy masking, legal hold, and strict access management for observability logs.",0,0,0,0,,,,"3.2, 8.12","PR.DS, DE.CM","Detailed Description:
 Establish formal policies and technical controls for the retention, privacy masking, and access management of AI prompt logs, chat histories, and LLM tracing data.
+
+Retention must be reconciled with legal and records-management obligations, not just minimized: define legal-hold triggers (reasonably anticipated litigation, regulatory investigation, internal misconduct inquiries, or public-records requests) that suspend automated purging for the affected custodians, agents, and systems, and document how AI log retention schedules align with the records laws applicable to the organization (e.g., FERPA and state public-records rules in education; HIPAA, SEC, or sector rules elsewhere). Aggressive purging without a hold mechanism converts a privacy control into a spoliation risk.
 
 Why AI Compounds Risk:
 Users frequently overshare highly sensitive data—such as PII, PHI, proprietary source code, and corporate strategy—with AI chatbots and development tools. If prompts and chat histories are logged in plain text without strict retention limits or Role-Based Access Control (RBAC), the logging infrastructure (e.g., observability platforms, SIEMs) inadvertently becomes a massive, highly concentrated repository of the organization's most sensitive data, creating a prime target for exfiltration.
 
 Examples:
 1. Deploy data loss prevention (DLP) or masking tools to dynamically redact PII, credentials, and sensitive terms from prompts before they are written to observability logs or telemetry platforms.
-2. Enforce aggressive data retention limits (e.g., 30 days maximum) on AI chat histories and prompt logs unless explicitly required for a specific compliance investigation.
-3. Restrict access to raw LLM traces and prompt logs strictly to authorized security and debugging personnel, requiring Just-In-Time (JIT) access for any investigations."
+2. Enforce aggressive data retention limits (e.g., 30 days maximum) on AI chat histories and prompt logs unless the records are subject to an active legal hold or explicitly required for a specific compliance investigation.
+3. Restrict access to raw LLM traces and prompt logs strictly to authorized security and debugging personnel, requiring Just-In-Time (JIT) access for any investigations.
+4. Implement a documented legal-hold workflow with legal counsel and records management: when a hold is declared, automated purging is suspended for the identified users, agents, and systems, and the held logs are preserved in an access-controlled archive until counsel releases the hold.
+
+Layered with: AI-LLM-04 (the agent audit logs this policy governs), AI-GOV-11 (the AI incident response playbook whose investigations trigger holds), AI-GOV-02 (data classification driving what gets masked)"
 AI-RAG-01,Applications & Data (Layer 4: Data),IG 2,1-High,Implement RAG authorization enforcement and security trimming to ensure AI only synthesizes data the user is permitted to see.,0,0,0,0,,,,"3.3, 5.1","PR.AA, PR.DS","Detailed Description:
 Implement strict access control mapping and ""security trimming"" within Retrieval-Augmented Generation (RAG) pipelines so the AI can only retrieve and synthesize information that the querying user is explicitly authorized to access. 
 
