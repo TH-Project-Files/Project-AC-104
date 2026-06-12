@@ -10,10 +10,10 @@
 
 ## Details
 Detailed Description:
-Explanation: This recommendation involves using automated tools to proactively identify, inventory, and label sensitive information—such as PII, financial records, and intellectual property—across all corporate storage environments. By maintaining a continuous scanning pipeline, organizations can ensure that data is categorized by sensitivity levels (e.g., Public, Internal, Confidential, Restricted) in real-time, allowing for the application of appropriate security controls and access boundaries before data is ingested or processed by AI systems.
+This recommendation involves using automated tools to proactively identify, inventory, and label sensitive information—such as PII, financial records, and intellectual property—across all corporate storage environments. By maintaining a continuous scanning pipeline, organizations can ensure that data is categorized by sensitivity levels (e.g., Public, Internal, Confidential, Restricted) in real-time, allowing for the application of appropriate security controls and access boundaries before data is ingested or processed by AI systems.
 
 Why AI Compounds Risk:
-Why AI Exacerbates Risk: AI models, particularly Large Language Models, can inadvertently memorize and leak sensitive training data through their outputs, a phenomenon known as privacy leakage. Furthermore, AI systems often require vast amounts of data to function, which increases the likelihood of "shadow data" or "dark data" being ingested without proper oversight, potentially exposing trade secrets or regulated information to unauthorized users via simple natural language queries.
+AI models, particularly Large Language Models, can inadvertently memorize and leak sensitive training data through their outputs, a phenomenon known as privacy leakage. Furthermore, AI systems often require vast amounts of data to function, which increases the likelihood of "shadow data" or "dark data" being ingested without proper oversight, potentially exposing trade secrets or regulated information to unauthorized users via simple natural language queries.
 
 Examples:
 1. Deploy automated data classification pipelines, such as a cloud provider DLP or a native data compliance solution, to scan cloud storage buckets and SharePoint sites on a recurring schedule to tag files containing sensitive information types like Social Security numbers or credit card data.

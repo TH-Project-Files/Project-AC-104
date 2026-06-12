@@ -8,12 +8,12 @@ Welcome to **Argus Centurion**, an open-source, vendor-agnostic AI security read
 As organizations shift from AI experimentation to agentic production, security enforcement often becomes fragmented. Argus Centurion provides a structured, layered approach to securing LLMs, RAG pipelines, and autonomous agents.
 
 ## Framework Statistics
-- **Total Controls:** 103
-- **Implementation Group 1 (Essential):** 33
-- **Implementation Group 2 (Foundational):** 47
-- **Implementation Group 3 (Advanced):** 23
+- **Total Controls:** 118
+- **Implementation Group 1 (Essential):** 37
+- **Implementation Group 2 (Foundational):** 62
+- **Implementation Group 3 (Advanced):** 19
 
 ## How to Get Started
 1. **Browse the Baseline:** Explore the [Master Control List](controls_list.md).
-2. **Audit Your Stack:** Download the [Source CSV](https://github.com/argus-centurion-104/blob/main/data/AC-104-V1.csv) to begin an internal assessment.
+2. **Audit Your Stack:** Download the highest-versioned CSV from the [data folder](https://github.com/TH-Project-Files/Project-AC-104/tree/main/data) to begin an internal assessment.
 3. **Operationalize:** Implement the **AI Gateway (AI-APP-10)** and **Agent Governance (AI-AGT-01)** as priority chokepoints.

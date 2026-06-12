@@ -9,12 +9,12 @@
 
 ## Details
 Detailed Description:
-Explanation: This recommendation establishes a "human-in-the-loop" framework where automated systems cannot execute high-stakes decisions independently, ensuring accountability, ethical alignment, and error correction.
+This recommendation establishes a "human-in-the-loop" framework where automated systems cannot execute high-stakes decisions independently, ensuring accountability, ethical alignment, and error correction.
 
 Positioning: This control is the framework's high-level human-in-the-loop mandate. For autonomous agent tool-calls specifically, the operational approval triggers and mechanics are defined in AI-AGT-01.
 
 Why AI Compounds Risk:
-Risk Exacerbation: AI can process data and execute actions at a scale and speed that outpaces manual oversight, meaning a single algorithmic error or biased model can cause widespread financial or reputational damage before detection.
+AI can process data and execute actions at a scale and speed that outpaces manual oversight, meaning a single algorithmic error or biased model can cause widespread financial or reputational damage before detection.
 
 Examples:
 1. Require a senior manager to electronically sign off on AI-generated financial transactions or wire transfers exceeding a specific monetary threshold.

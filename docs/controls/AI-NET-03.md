@@ -11,10 +11,10 @@
 
 ## Details
 Detailed Description:
-Recommendation Explanation: This security measure involves configuring network defenses to automatically block connections to domains that have been recently registered (typically within the last 30 days) or are currently "parked" (registered but not yet hosting an active website). These domains are high-risk because they lack a historical reputation and are frequently used by threat actors to launch short-lived phishing campaigns, host malware, or act as command-and-control servers before they can be identified and blacklisted by traditional security feeds.
+This security measure involves configuring network defenses to automatically block connections to domains that have been recently registered (typically within the last 30 days) or are currently "parked" (registered but not yet hosting an active website). These domains are high-risk because they lack a historical reputation and are frequently used by threat actors to launch short-lived phishing campaigns, host malware, or act as command-and-control servers before they can be identified and blacklisted by traditional security feeds.
 
 Why AI Compounds Risk:
-AI Risk Exacerbation: Generative AI allows attackers to programmatically register and set up thousands of brand-adjacent domains at a scale and speed that overwhelms manual monitoring. AI can also instantly generate realistic, localized website content and phishing lures for these new domains, making them appear legitimate to users and traditional detectors while maintaining a clean reputation long enough to execute a breach.
+Generative AI allows attackers to programmatically register and set up thousands of brand-adjacent domains at a scale and speed that overwhelms manual monitoring. AI can also instantly generate realistic, localized website content and phishing lures for these new domains, making them appear legitimate to users and traditional detectors while maintaining a clean reputation long enough to execute a breach.
 
 Examples:
 1. Point corporate DNS settings to a cloud-based DNS filtering provider that utilizes AI-driven threat intelligence to categorize and block the Newly Registered Domains (NRD) category by default.

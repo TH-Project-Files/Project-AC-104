@@ -12,7 +12,7 @@
 Detailed Description:
 Implement modern device-bound or session-bound token protections, where access tokens or session cookies are tightly bound to the specific trusted hardware device or endpoint that performed the initial authentication. This ensures that even if a session cookie is stolen, it cannot be easily replayed or used from a different, untrusted machine. 
 
-*Defense-in-Depth Context:* While other controls in this framework (such as AI-GOV-04, AI-ACC-04, and AI-ACC-05) focus on detect-and-respond capabilities—monitoring for session risk and actively revoking access upon anomaly detection—this control acts as a strict preventative measure. It validates the cryptographic or hardware binding before a compromised token can ever be successfully replayed.
+*Defense-in-Depth Context:* While other controls in this framework (such as AI-ACC-05 and AI-GOV-15) focus on detect-and-respond capabilities—monitoring for session risk and actively revoking access upon anomaly detection—this control acts as a strict preventative measure. It validates the cryptographic or hardware binding before a compromised token can ever be successfully replayed.
 
 Why AI Compounds Risk:
 AI accelerates the deployment and scale of Adversary-in-the-Middle (AiTM) phishing campaigns. These automated toolkits intercept and steal session tokens immediately after a user successfully completes an MFA prompt. Once the session cookie is stolen, automated AI bots can rapidly replay it from their own infrastructure to completely bypass MFA. Device-bound tokens neutralize this threat by ensuring the stolen token is rejected outside the victim's validated physical device.

@@ -10,10 +10,10 @@
 
 ## Details
 Detailed Description:
-Explanation: This recommendation replaces static, once-a-year security presentations with automated, real-time interventions delivered at the exact moment a user performs a risky action. By utilizing nudge theory, these subtle visual cues or prompts interrupt "autopilot" behavior (System 1 thinking) and encourage deliberate, safer decision-making (System 2 thinking) without blocking the user's workflow or requiring them to recall distant training.
+This recommendation replaces static, once-a-year security presentations with automated, real-time interventions delivered at the exact moment a user performs a risky action. By utilizing nudge theory, these subtle visual cues or prompts interrupt "autopilot" behavior (System 1 thinking) and encourage deliberate, safer decision-making (System 2 thinking) without blocking the user's workflow or requiring them to recall distant training.
 
 Why AI Compounds Risk:
-AI Risk Exacerbation: Generative AI increases the frequency and sophistication of cyber threats by automating the creation of highly personalized, convincing phishing messages and deepfakes at scale. Because these AI-driven attacks are harder for humans to detect through traditional means, the real-time, contextual guidance provided by nudges is necessary to intercept social engineering attempts that bypass standard security filters.
+Generative AI increases the frequency and sophistication of cyber threats by automating the creation of highly personalized, convincing phishing messages and deepfakes at scale. Because these AI-driven attacks are harder for humans to detect through traditional means, the real-time, contextual guidance provided by nudges is necessary to intercept social engineering attempts that bypass standard security filters.
 
 Examples:
 1. Deploy just-in-time phishing banners that appear within an email client when a user clicks a link from an external sender with a mismatched domain or urgent language.

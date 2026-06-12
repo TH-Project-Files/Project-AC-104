@@ -10,10 +10,10 @@
 
 ## Details
 Detailed Description:
-Detailed Explanation: This recommendation involves maintaining comprehensive audit trails of all AI agent activities, including the specific prompts received, the internal reasoning or decision-making steps taken, the tools invoked, and the final outputs or actions executed. These logs serve as a critical observability mechanism for monitoring performance, ensuring regulatory compliance, and facilitating rapid debugging when autonomous systems behave unexpectedly.
+This recommendation involves maintaining comprehensive audit trails of all AI agent activities, including the specific prompts received, the internal reasoning or decision-making steps taken, the tools invoked, and the final outputs or actions executed. These logs serve as a critical observability mechanism for monitoring performance, ensuring regulatory compliance, and facilitating rapid debugging when autonomous systems behave unexpectedly.
 
 Why AI Compounds Risk:
-Why AI Exacerbates Risk: Unlike traditional software that follows static, predictable code, AI agents are non-deterministic and can make autonomous, on-the-fly decisions in dynamic environments. This complexity creates "invisible blind spots" where a single user request can trigger dozens of interconnected tool calls and LLM prompts, making it nearly impossible to diagnose failures, detect bias, or identify security breaches without structured, granular records.
+Unlike traditional software that follows static, predictable code, AI agents are non-deterministic and can make autonomous, on-the-fly decisions in dynamic environments. This complexity creates "invisible blind spots" where a single user request can trigger dozens of interconnected tool calls and LLM prompts, making it nearly impossible to diagnose failures, detect bias, or identify security breaches without structured, granular records.
 
 Examples:
 1. Deploy a centralized log management platform that uses machine-readable formats (like JSON) to capture timestamps, user context, intent classification, and the full sequence of actions for every agent transaction.

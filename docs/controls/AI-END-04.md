@@ -10,10 +10,10 @@
 
 ## Details
 Detailed Description:
-Recommendation Explanation: This strategy involves deploying high-resolution monitoring tools like advanced system monitors to record granular system activities that standard logs often miss. By capturing detailed telemetry on process creations (including command-line arguments and file hashes) and network connections (source/destination IPs and ports), security teams can gain the deep visibility necessary to identify malicious behavior that does not match known attack signatures.
+This strategy involves deploying high-resolution monitoring tools like advanced system monitors to record granular system activities that standard logs often miss. By capturing detailed telemetry on process creations (including command-line arguments and file hashes) and network connections (source/destination IPs and ports), security teams can gain the deep visibility necessary to identify malicious behavior that does not match known attack signatures.
 
 Why AI Compounds Risk:
-Why AI Exacerbates Risk: AI allows malware to become polymorphic and adaptive, enabling it to dynamically rewrite its own source code, obfuscate payloads, and mimic legitimate software behavior in real-time. Because these AI-assisted threats can continuously evolve to bypass static, signature-based antivirus detections, organizations must rely on behavioral telemetry to spot the subtle, underlying anomalies in system execution and network traffic that signal an active intrusion.
+AI allows malware to become polymorphic and adaptive, enabling it to dynamically rewrite its own source code, obfuscate payloads, and mimic legitimate software behavior in real-time. Because these AI-assisted threats can continuously evolve to bypass static, signature-based antivirus detections, organizations must rely on behavioral telemetry to spot the subtle, underlying anomalies in system execution and network traffic that signal an active intrusion.
 
 Examples:
 1. Standardize advanced system monitoring deployment across all Windows endpoints using Group Policy or automated scripting, utilizing a community-vetted configuration to balance high-signal visibility with manageable log volume.

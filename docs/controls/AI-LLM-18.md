@@ -10,7 +10,7 @@
 
 ## Details
 Detailed Description:
-Explanation: This recommendation ensures that every user's interaction with an AI system is isolated within a secure, private session. By treating each conversation as a distinct instance mapped to a specific authenticated identity, organizations prevent cross-contamination where one person's sensitive inputs—such as proprietary code, financial data, or personal information—might be surfaced to another user through shared chat histories, system caches, or the model’s internal memory.
+This recommendation ensures that every user's interaction with an AI system is isolated within a secure, private session. By treating each conversation as a distinct instance mapped to a specific authenticated identity, organizations prevent cross-contamination where one person's sensitive inputs—such as proprietary code, financial data, or personal information—might be surfaced to another user through shared chat histories, system caches, or the model’s internal memory.
 
 Why AI Compounds Risk:
 Session-isolation failures are amplified by three AI-specific mechanisms. Data training loops: models that learn from user inputs can surface one user's sensitive data in another user's answers. Context and memory features: persistent memory and long context windows can mistakenly retrieve private details from a separate user's session. Scope violations: agents that call external tools or databases under poor session management can retrieve and leak internal data to unauthorized employees during a prompt.

@@ -10,10 +10,10 @@
 
 ## Details
 Detailed Description:
-Recommendation Explanation: This practice involves using automated tools to identify and analyze code snippets produced by AI assistants (like AI assistants or generative AI chatbots) within a company's version control systems. The goal is to ensure that AI-generated contributions undergo rigorous security vetting, architectural alignment, and quality checks equivalent to or stricter than human-written code.
+This practice involves using automated tools to identify and analyze code snippets produced by AI assistants (like AI assistants or generative AI chatbots) within a company's version control systems. The goal is to ensure that AI-generated contributions undergo rigorous security vetting, architectural alignment, and quality checks equivalent to or stricter than human-written code.
 
 Why AI Compounds Risk:
-Why AI Exacerbates Risk: AI can rapidly generate large volumes of code that often appears syntactically correct but may contain "hallucinated" non-existent dependencies, insecure legacy patterns, or subtle logic errors that bypass traditional scanners. Furthermore, developers may suffer from overconfidence, accepting AI suggestions without full manual review, which can lead to a 10x increase in vulnerabilities shipped to production.
+AI can rapidly generate large volumes of code that often appears syntactically correct but may contain "hallucinated" non-existent dependencies, insecure legacy patterns, or subtle logic errors that bypass traditional scanners. Furthermore, developers may suffer from overconfidence, accepting AI suggestions without full manual review, which can lead to a 10x increase in vulnerabilities shipped to production.
 
 Examples:
 1. Integrate AI-specific code review platforms into enterprise code repository workflows to automatically flag pull requests containing AI-generated logic and provide an independent layer of security analysis before merging.

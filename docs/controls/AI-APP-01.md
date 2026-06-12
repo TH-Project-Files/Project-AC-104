@@ -13,7 +13,7 @@ Detailed Description:
 Enforce Strict Input Sanitization: This recommendation involves implementing robust frameworks to clean, filter, and validate all data entering an AI system to ensure it is free of malicious code, unexpected characters, or hidden instructions. It acts as a primary defense by neutralizing threats like prompt injection, SQL injection, and cross-site scripting (XSS) before they reach the model or underlying infrastructure.
 
 Why AI Compounds Risk:
-AI Risk Exacerbation: Generative AI increases the complexity of input threats because attackers can use AI-powered fuzzing to automatically generate thousands of "innocent-looking" but structurally plausible inputs that exploit a model's probabilistic logic. These automated attacks can identify subtle triggers—such as specific formatting symbols or context-shifting phrases—at a scale and speed that manual security testing cannot match, making traditional static defenses insufficient.
+Generative AI increases the complexity of input threats because attackers can use AI-powered fuzzing to automatically generate thousands of "innocent-looking" but structurally plausible inputs that exploit a model's probabilistic logic. These automated attacks can identify subtle triggers—such as specific formatting symbols or context-shifting phrases—at a scale and speed that manual security testing cannot match, making traditional static defenses insufficient.
 
 Examples:
 1. Implement Action-Selector Patterns: Force AI agents to output strictly typed JSON schemas with predefined action IDs rather than open-ended natural language. This treats the model's output as data rather than executable instructions, effectively freezing control flow and preventing semantic manipulation of downstream functions.

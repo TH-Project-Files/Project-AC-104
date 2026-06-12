@@ -10,10 +10,10 @@
 
 ## Details
 Detailed Description:
-Detailed Explanation: This recommendation emphasizes two pillars of secure interoperability for AI agents and plugins: identity verification and data minimization. First, every AI component must have a verifiable identity (authentication) to ensure that only authorized agents can initiate actions or access services. Second, once authenticated, these tools must adhere to the principle of least privilege, sharing only the specific data points required to complete a task (authorization), rather than providing broad access to underlying databases or user contexts.
+This recommendation emphasizes two pillars of secure interoperability for AI agents and plugins: identity verification and data minimization. First, every AI component must have a verifiable identity (authentication) to ensure that only authorized agents can initiate actions or access services. Second, once authenticated, these tools must adhere to the principle of least privilege, sharing only the specific data points required to complete a task (authorization), rather than providing broad access to underlying databases or user contexts.
 
 Why AI Compounds Risk:
-Why AI Exacerbates Risk: AI agents often operate autonomously and at high velocity, performing thousands of operations per minute which makes manual human oversight impossible. Unlike traditional software, AI is probabilistic and can be manipulated via prompt injection to perform "excessive agency," where it might overshare sensitive data or call unauthorized APIs if strict, deterministic security boundaries and identity-linked scopes are not enforced.
+AI agents often operate autonomously and at high velocity, performing thousands of operations per minute which makes manual human oversight impossible. Unlike traditional software, AI is probabilistic and can be manipulated via prompt injection to perform "excessive agency," where it might overshare sensitive data or call unauthorized APIs if strict, deterministic security boundaries and identity-linked scopes are not enforced.
 
 Examples:
 1. Deploy an OAuth 2.0 or 2.1 framework where every AI agent is registered as a unique non-human entity with short-lived, scoped access tokens. This ensures that if an agent needs to "write to a calendar," its token is restricted to that specific action and cannot be used to "delete files" or "read emails."
