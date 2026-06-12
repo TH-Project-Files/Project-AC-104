@@ -98,13 +98,22 @@ Examples:
 AI-GOV-16,Governance & People (Layer 0: Governance & System Controls),IG 2,2-Medium,"Establish AI-specific change management and evaluation gates requiring regression testing, approvals, and rollback plans for updates to models, prompts, agent tools, or RAG datasets.",0,0,0,0,,,,"2.1, 16.6, 16.7","PR.PS, GV.SC","Detailed Description:
 Establish specialized AI change management workflows and evaluation gates for updates to any component of an AI system. This means that modifications to model versions, prompt templates, agent tools/plugins, or the Retrieval-Augmented Generation (RAG) corpus must go through formal change control, requiring automated regression tests (checking for jailbreaks, data leakage, and tool abuse), explicit approvals, and tested rollback plans before reaching production.
 
+Minimum Evaluation Gate Requirements:
+To make the regression-testing mandate auditable, the CI/CD gate must enforce:
+- Versioned golden datasets: curated prompt/response test sets stored and versioned alongside the prompts, model configurations, and RAG manifests they validate, and updated whenever red teaming (AI-GOV-13, AI-LLM-16) or runtime detections (AI-DET-01) surface a new attack pattern.
+- Adversarial benchmark coverage: every gate run must execute jailbreak, prompt-injection, and restricted-data-leakage suites against the candidate change, not just functional accuracy checks.
+- Defined pass/fail thresholds with block-on-fail: e.g., the safety layer must catch a defined percentage of the known-jailbreak corpus and show zero regressions on restricted-data probes; threshold failures block promotion rather than merely warn.
+- Behavioral baseline comparison: diff tool-call patterns and output distributions between the current and candidate versions to surface silent drift that individual test cases miss.
+
 Why AI Compounds Risk:
 Unlike traditional software where behavior is strictly governed by static code, AI systems are non-deterministic. Their behavior can drastically change simply by altering a system prompt, adding a new document to the RAG knowledge base, or pointing the application to an updated LLM version. Standard CI/CD change management often misses these non-code updates. Without AI-specific evaluation gates, a seemingly harmless prompt tweak or data upload can silently introduce massive vulnerabilities, such as bypassing safety filters or exposing restricted data to autonomous agents.
 
 Examples:
-1. Integrate AI-specific regression testing tools (e.g., prompt vulnerability scanners, LLM evaluation frameworks) into the CI/CD pipeline to automatically test for jailbreak regressions and prompt injection susceptibility before any prompt template change is deployed.
+1. Integrate an LLM evaluation framework into the CI/CD pipeline as a blocking gate: every prompt-template or model-version change runs the versioned jailbreak and data-leakage suites, and promotion is denied automatically if detection falls below the defined threshold or any restricted-data probe regresses.
 2. Require formal Change Advisory Board (CAB) or security team approval for the introduction of new agentic tools/plugins, treating them with the same rigor as deploying a new firewall rule or external API integration.
-3. Establish a version control and rollback strategy for RAG knowledge bases, ensuring that if a newly ingested document causes an AI chatbot to leak sensitive information or hallucinate, the system can instantly revert to the previous verified state."
+3. Establish a version control and rollback strategy for RAG knowledge bases, ensuring that if a newly ingested document causes an AI chatbot to leak sensitive information or hallucinate, the system can instantly revert to the previous verified state.
+
+Layered with: AI-LLM-10 (pre-deployment agent testing these gates automate), AI-GOV-13 and AI-LLM-16 (red-team findings feed new gate test cases), AI-DET-01 (runtime detection of what gates miss — confirmed detections become regression tests), AI-REC-01 (the rollback capability these gates invoke)"
 AI-GOV-12,Governance & People (Layer 0: Governance & System Controls),IG 3,2-Medium,Deploy targeted deepfake and synthetic media detection tooling for high-risk workflows (rather than an org-wide mandate),0,0,0,0,,,,"14.1, 17.1","PR.AT, RS.MA","Detailed Description:
 Implement deepfake and synthetic media detection tooling for targeted, high-risk workflows (e.g., executive communications, high-value financial transfers, and high-privilege helpdesk requests). *Maturity Note:* This is designed as a targeted, localized control rather than an organization-wide mandate; a mature organization focuses this tooling specifically where synthetic media poses the highest fraud or reputational risk.
 
@@ -147,10 +156,11 @@ Examples:
 3. Implement automated monitoring for privileged accounts to detect unauthorized privilege escalation or sensitive data access by administrators and power users.
 
 Layered with: Behavioral-baselining family — the same ML technique applied to different telemetry: this control (user/entity behavior enterprise-wide), AI-ACC-06 (authentication context), AI-DLK-04 (network flows), AI-MSG-02 (email patterns), AI-APP-05 (web/app traffic), AI-NHI-01 (non-human identities). Evaluate shared platforms before procuring per-layer point tools."
-AI-DET-01,Governance & People (Layer 0: Governance & System Controls (Detection & Response)),IG 2,1-High,"Implement AI-specific detections and SOAR playbooks (prompt injection, agent/tool abuse, data exfil via AI, connector compromise)",0,0,0,0,,,,"13.1, 13.2","DE.AE, RS.MI","Detailed Description:
-Develop and deploy specialized detection rules within your SIEM/XDR and automated playbooks within your SOAR platform that are specifically tuned for AI-related threat vectors. This includes continuous monitoring and automated response mechanisms for LLM prompt injections, autonomous agent/tool abuse, data exfiltration through AI APIs, and the compromise of third-party AI connectors.
+AI-DET-01,Governance & People (Layer 0: Governance & System Controls (Detection & Response)),IG 2,1-High,"Implement AI-specific detections and SOAR playbooks (prompt injection, runtime jailbreak/content-safety violations, agent/tool abuse, data exfil via AI, connector compromise)",0,0,0,0,,,,"13.1, 13.2","DE.AE, RS.MI","Detailed Description:
+Develop and deploy specialized detection rules within your SIEM/XDR and automated playbooks within your SOAR platform that are specifically tuned for AI-related threat vectors. This includes continuous monitoring and automated response mechanisms for LLM prompt injections, autonomous agent/tool abuse, data exfiltration through AI APIs, and the compromise of third-party AI connectors. This control also owns runtime jailbreak and content-safety detection: deploy inline classifiers (at the AI Gateway or in-application) that score live prompts and model outputs for jailbreak attempts, policy-violating content, and restricted-data disclosure — distinguishing attempted attacks from legitimate edge cases — and route verdicts into the SIEM/SOAR pipelines below. Periodic red teaming (AI-GOV-13, AI-LLM-16) and pre-deployment gates (AI-GOV-16) cannot catch live attacks; this runtime layer is what does.
 
 Minimum Telemetry Sources for AI Detections:
+- Runtime jailbreak/content-safety classifier verdicts (inline at the AI Gateway or in-application)
 - LLM application gateway logs (or CASB/Proxy logs for external SaaS models)
 - OAuth app governance and consent logs
 - Identity Provider (IdP) risk and anomaly events
@@ -171,9 +181,11 @@ Why AI Compounds Risk:
 Traditional detection rules are designed for standard malware, lateral movement, or SQL injections; they fail to recognize the unique signatures of AI-centric attacks, such as semantic manipulation (prompt injection) or an autonomous agent chaining together authorized API calls in an unauthorized manner. Without AI-specific detections and machine-speed SOAR playbooks, an attacker can hijack an LLM or AI agent to extract sensitive data or pivot into internal networks long before a human analyst identifies the anomalous pattern.
 
 Examples:
-1. Ingest AI application gateway logs into the SIEM and write correlation rules to detect high-volume, repetitive, or anomalous prompt structures indicative of a prompt injection or jailbreak attempt.
+1. Deploy a runtime jailbreak/content-safety classifier at the AI Gateway that scores every prompt and response inline; block or flag above-threshold interactions, stream verdicts to the SIEM, and feed confirmed attack patterns back into AI-GOV-16's regression test suites.
 2. Create a SOAR playbook that automatically isolates an AI agent or revokes its API keys if it begins exhibiting ""tool-use drift"" (e.g., calling a database query tool it rarely uses or attempting an excessive number of unapproved external web connections).
-3. Monitor network egress for sudden spikes in data transfer to known public AI endpoints (e.g., OpenAI, Anthropic APIs) and trigger an automated SOAR response to block the connection and alert the security team of potential AI-driven data exfiltration."
+3. Monitor network egress for sudden spikes in data transfer to known public AI endpoints (e.g., OpenAI, Anthropic APIs) and trigger an automated SOAR response to block the connection and alert the security team of potential AI-driven data exfiltration.
+
+Layered with: AI-GOV-16 (evaluation gates prevent what this control catches at runtime — confirmed detections become new gate test cases), AI-APP-10 (the AI Gateway is the natural inline enforcement point for runtime classifiers), AI-DEF-01 (AI triage agent consuming these alerts)"
 AI-USR-01,Governance & People (Layer 0: User Facing Controls),IG 1,1-High,Enable Automated 'First Contact' Safety Tips to warn users when interacting with new or anomalous external senders often used by AI phishing bots.,0,0,0,0,,,,"9.1, 9.2",PR.IR,"Detailed Description:
 First-contact safety tips are automated visual alerts that appear in an email client when a user receives a message from a sender they do not regularly communicate with or who appears anomalous. These tips serve as a ""speed bump,"" prompting users to verify the identity of the sender and the legitimacy of the content before clicking links or downloading attachments.
 
@@ -787,7 +799,7 @@ Examples:
 
 Layered with: AI-LLM-22 (environment-variable and secret scoping inside agent runtimes), AI-ACC-03 (aggressive token rotation limiting the lifetime of any leaked key), AI-NHI-01 (non-human identity inventory), AI-USR-12 (secure AI-coding training for the citizen developers most likely to hardcode keys)"
 AI-AGT-01,Applications & Data (Layer 7: Application),IG 2,1-High,"Implement Agent tool-call governance through strict allowlists, schema validation, and human-in-the-loop approvals.",0,0,0,0,,,,"16.2, 16.4","PR.AA, PR.PS","Detailed Description:
-Implement robust governance over autonomous AI agent tool-calling capabilities. This includes enforcing strict allowlists for accessible tools, real-time input/output schema validation, and explicitly defining ""Human-in-the-Loop"" (HITL) approval gates for high-risk actions.
+Implement robust governance over autonomous AI agent tool-calling capabilities. This includes enforcing strict allowlists for accessible tools, real-time input/output schema validation, and explicitly defining ""Human-in-the-Loop"" (HITL) approval gates for high-risk actions. This governance applies equally to computer-use and browser-driving agents, where the ""tool"" is a live browser or desktop session: such agents must run in isolated browser profiles with no ambient credentials, saved sessions, or autofill data, navigate only within a domain allowlist, and treat all rendered page content as untrusted input subject to the boundary controls in AI-LLM-23.
 
 High-ROI HITL Triggers:
 To prevent silent data exfiltration or destructive actions, HITL cryptographic approvals must be triggered for:
@@ -797,6 +809,7 @@ To prevent silent data exfiltration or destructive actions, HITL cryptographic a
 - Cross-Boundary Sharing: Attempting to share content across isolated departments (e.g., summarizing HR data and sending it to a non-HR channel).
 - Privilege Boundary Crossing: An agent attempting to invoke an admin-only tool, elevated API, or privileged connector (even if read-only).
 - Anomalous Tool Sequencing: A tool-call chain that hasn't been approved or seen before (e.g., ""RAG -> DB query -> File download -> Email send"").
+- Credentialed Web Actions: A computer-use or browser-driving agent attempting to enter credentials, submit forms on authenticated sites, or complete payment, approval, or state-changing flows on behalf of a user.
 
 Why AI Compounds Risk:
 AI agents can autonomously invoke APIs, query databases, and execute code based on natural language instructions. If an agent is compromised via prompt injection, an attacker can hijack these tool-calling privileges to extract data, pivot internally, or execute unauthorized transactions. Unfettered tool access effectively turns an LLM into an unauthenticated Remote Code Execution (RCE) vector. 
@@ -805,8 +818,9 @@ Examples:
 1. Restrict an AI agent's accessible tools to a tightly scoped allowlist (e.g., granting read-only DB access) rather than giving it broad, unfettered access to all enterprise APIs.
 2. Implement strict, server-side JSON schema validation for all tool inputs to prevent an attacker from passing malicious payloads or SQL injections via a hijacked agent.
 3. Require cryptographic ""human-in-the-loop"" MFA approvals before an agent can execute destructive actions or trigger any of the defined High-ROI events.
+4. Run browser/computer-use agents in dedicated, ephemeral browser profiles containing no saved passwords, cookies, or sessions; scope navigation to an explicit domain allowlist; and require HITL approval before the agent enters credentials or submits any state-changing form, preventing page-embedded prompt injection from escalating into agent-executed account takeover or CSRF.
 
-Layered with: AI-LLM-09 (IG 1 starter allowlisting that this control extends), AI-LLM-08 (the human-in-the-loop mandate this control operationalizes for agent tool-calls), AI-LLM-03 (least privilege)"
+Layered with: AI-LLM-09 (IG 1 starter allowlisting that this control extends), AI-LLM-08 (the human-in-the-loop mandate this control operationalizes for agent tool-calls), AI-LLM-03 (least privilege), AI-LLM-23 (untrusted-content boundaries for page-embedded injection), AI-END-11 (governance of the browser extension/runtime surface these agents execute on)"
 AI-APP-10,Applications & Data (Layer 7: Application),IG 2,2-Medium,"Implement a centralized AI Gateway or Control Plane to broker, govern, and monitor all enterprise interactions with external LLMs and AI services.",0,0,0,0,,,,"16.4, 16.5","PR.PS, DE.CM","Detailed Description:
 Deploy a centralized AI Gateway (or Control Plane) to broker, govern, and monitor all enterprise interactions with internal and external AI models. This gateway must centralize model access, enforce approved provider routing, aggregate telemetry/logging, perform inline DLP and prompt redaction, manage rate limiting, enforce content safety policies, and apply tenant restrictions.
 
@@ -1149,16 +1163,21 @@ Examples:
 1. Filter traffic between AI agent network segments to strictly govern task delegation and state sharing.
 2. Map specific agent RBAC roles to authorized network boundaries, ensuring peer-to-peer communication requires explicit authorization.
 3. Require downstream high-privilege agents to re-validate the original user context (e.g., via delegated OAuth tokens) before executing tasks requested by a peer agent."
-AI-END-11,Endpoints (Layer 6: Endpoint Presentation),IG 2,2-Medium,"Govern and restrict Endpoint-Hosted AI Runtimes (e.g., local LLMs) to prevent local data leakage and unauthorized API binding.",0,0,0,0,,,,"1.2, 3.6, 4.5","PR.DS, DE.CM","Detailed Description:
+AI-END-11,Endpoints (Layer 6: Endpoint Presentation),IG 2,2-Medium,"Govern and restrict Endpoint-Hosted AI Runtimes and Browser AI Extensions (e.g., local LLMs, AI assistant plugins) to prevent local data leakage and unauthorized API binding.",0,0,0,0,,,,"1.2, 3.6, 4.5","PR.DS, DE.CM","Detailed Description:
 Use MDM and EDR to inventory and govern locally installed AI models and frameworks. Enforce local disk encryption for all cached prompts and vector embeddings stored by these tools. Implement host-based firewalls to prevent local AI runners from binding their API services to open network ports, which could expose the local model to other devices on the network.
 
+This governance must extend to browser-based AI extensions: inventory all installed extensions via enterprise browser management, allowlist approved AI extensions and block the rest by default, review the permissions each approved extension requests (clipboard, DOM, cookies, tabs), and apply extension-aware DLP to prevent page content, clipboard data, or session material from being exfiltrated to third-party AI services.
+
 Why AI Compounds Risk:
-As ""local LLM"" frameworks (e.g., Ollama, LM Studio) become more popular, developers are downloading unvetted model weights and running them directly on their endpoints. These local setups bypass corporate AI Gateways and DLP controls. Furthermore, they often cache highly sensitive corporate prompts in plain text on the local disk and occasionally bind insecure API servers to public network interfaces (e.g., 0.0.0.0), exposing the endpoint to exploitation.
+As ""local LLM"" frameworks (e.g., Ollama, LM Studio) become more popular, developers are downloading unvetted model weights and running them directly on their endpoints. These local setups bypass corporate AI Gateways and DLP controls. Furthermore, they often cache highly sensitive corporate prompts in plain text on the local disk and occasionally bind insecure API servers to public network interfaces (e.g., 0.0.0.0), exposing the endpoint to exploitation. Browser AI extensions compound the same risk from inside the browser session: a free ""AI assistant"" extension with broad permissions can silently read every rendered page, harvest clipboard contents and session cookies, and stream them to an unvetted third-party AI service — bypassing the AI Gateway, DLP, and network controls entirely because the exfiltration originates within the user's authenticated browser context.
 
 Examples:
 1. Configure host-based firewalls to restrict local AI frameworks from binding services to external network interfaces, restricting them strictly to localhost (127.0.0.1).
 2. Enforce endpoint disk encryption (e.g., BitLocker, FileVault) to protect local model artifacts, cached prompt logs, and local vector embeddings from unauthorized physical access.
-3. Use application allowlisting to prohibit the execution of unapproved local model runners and track all authorized endpoint-hosted AI deployments in the centralized asset inventory."
+3. Use application allowlisting to prohibit the execution of unapproved local model runners and track all authorized endpoint-hosted AI deployments in the centralized asset inventory.
+4. Use enterprise browser management (e.g., Chrome Browser Cloud Management, Edge administrative policies) to allowlist approved AI extensions, block all others by default, and audit approved extensions' permission grants for clipboard, DOM, cookie, or tab access on a recurring schedule.
+
+Layered with: AI-APP-02 (shadow AI discovery on devices and networks), AI-GOV-03 (the approved AI service catalog the allowlists enforce), AI-END-09 (application allowlisting for the runtimes themselves), AI-AGT-01 (governance of browser-driving agents — this control governs the extension/runtime attack surface they execute on)"
 AI-APP-12,Applications & Data (Layer 7: Application),IG 2,2-Medium,"Govern, sanitize, and monitor AI-specific indexing files (e.g., llms.txt and llms-full.txt) to prevent sensitive data exposure and indirect prompt injection.",0,0,0,0,,,,"3.1, 13.2, 16.1","PR.DS, PR.PS","Detailed Description:
 Establish strict governance over the creation and modification of machine-readable AI indexing files like llms.txt. Ensure these files undergo automated sensitive data scanning (DLP) before publication and utilize File Integrity Monitoring (FIM) to detect unauthorized tampering.
 

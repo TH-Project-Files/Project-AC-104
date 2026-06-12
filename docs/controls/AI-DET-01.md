@@ -1,16 +1,18 @@
-﻿# AI-DET-01: Implement AI-specific detections and SOAR playbooks (prompt injection, agent/tool abuse, data exfil via AI, connector compromise)
+﻿# AI-DET-01: Implement AI-specific detections and SOAR playbooks (prompt injection, runtime jailbreak/content-safety violations, agent/tool abuse, data exfil via AI, connector compromise)
 
 **Category:** Governance & People (Layer 0: Governance & System Controls (Detection & Response))  
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 13.1, 13.2  
 **NIST CSF Subcategories:** DE.AE, RS.MI  
+**Layered with:** AI-GOV-16 (evaluation gates prevent what this control catches at runtime — confirmed detections become new gate test cases), AI-APP-10 (the AI Gateway is the natural inline enforcement point for runtime classifiers), AI-DEF-01 (AI triage agent consuming these alerts)  
 
 ## Details
 Detailed Description:
-Develop and deploy specialized detection rules within your SIEM/XDR and automated playbooks within your SOAR platform that are specifically tuned for AI-related threat vectors. This includes continuous monitoring and automated response mechanisms for LLM prompt injections, autonomous agent/tool abuse, data exfiltration through AI APIs, and the compromise of third-party AI connectors.
+Develop and deploy specialized detection rules within your SIEM/XDR and automated playbooks within your SOAR platform that are specifically tuned for AI-related threat vectors. This includes continuous monitoring and automated response mechanisms for LLM prompt injections, autonomous agent/tool abuse, data exfiltration through AI APIs, and the compromise of third-party AI connectors. This control also owns runtime jailbreak and content-safety detection: deploy inline classifiers (at the AI Gateway or in-application) that score live prompts and model outputs for jailbreak attempts, policy-violating content, and restricted-data disclosure — distinguishing attempted attacks from legitimate edge cases — and route verdicts into the SIEM/SOAR pipelines below. Periodic red teaming (AI-GOV-13, AI-LLM-16) and pre-deployment gates (AI-GOV-16) cannot catch live attacks; this runtime layer is what does.
 
 Minimum Telemetry Sources for AI Detections:
+- Runtime jailbreak/content-safety classifier verdicts (inline at the AI Gateway or in-application)
 - LLM application gateway logs (or CASB/Proxy logs for external SaaS models)
 - OAuth app governance and consent logs
 - Identity Provider (IdP) risk and anomaly events
@@ -31,7 +33,7 @@ Why AI Compounds Risk:
 Traditional detection rules are designed for standard malware, lateral movement, or SQL injections; they fail to recognize the unique signatures of AI-centric attacks, such as semantic manipulation (prompt injection) or an autonomous agent chaining together authorized API calls in an unauthorized manner. Without AI-specific detections and machine-speed SOAR playbooks, an attacker can hijack an LLM or AI agent to extract sensitive data or pivot into internal networks long before a human analyst identifies the anomalous pattern.
 
 Examples:
-1. Ingest AI application gateway logs into the SIEM and write correlation rules to detect high-volume, repetitive, or anomalous prompt structures indicative of a prompt injection or jailbreak attempt.
+1. Deploy a runtime jailbreak/content-safety classifier at the AI Gateway that scores every prompt and response inline; block or flag above-threshold interactions, stream verdicts to the SIEM, and feed confirmed attack patterns back into AI-GOV-16's regression test suites.
 2. Create a SOAR playbook that automatically isolates an AI agent or revokes its API keys if it begins exhibiting "tool-use drift" (e.g., calling a database query tool it rarely uses or attempting an excessive number of unapproved external web connections).
 3. Monitor network egress for sudden spikes in data transfer to known public AI endpoints (e.g., OpenAI, Anthropic APIs) and trigger an automated SOAR response to block the connection and alert the security team of potential AI-driven data exfiltration.
 
