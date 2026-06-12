@@ -40,7 +40,7 @@ To move from chaos to clarity:
 2. **Filter for Impact:** Start by filtering for **"1-High" aggregate risk** within **Implementation Group 1**. 
 3. **Measure Progress:** Score each control across the four maturity columns (Policy Defined, Control Implemented, Control Automated, Control Reported — each 0 = not started, 1 = partial, 2 = full) and report readiness averages to stakeholders.
 
-**Remember:** AI is continuously learning how to attack. Your defenses must continuously learn how to adapt. Standing still is no longer an option. Always maintain human in the loop, you the human are ultimately responsible for your environment and actions. AC-104 is provided for educational purposes and is not a substitute for professional guidance and application. 
+**Remember:** AI is continuously changing threat actor capabilities. Your defenses must continuously learn how to adapt. Standing still is no longer an option. Always maintain human in the loop, you the human are ultimately responsible for your environment and actions. AC-104 is provided for educational purposes and is not a substitute for professional guidance and application. 
 
 ---
 > [!TIP]
