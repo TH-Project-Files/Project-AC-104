@@ -45,8 +45,8 @@ To move from chaos to clarity:
 ---
 > [!TIP]
 > ### Application Example: Auditing Agentic & AI-Generated Code
-> While the AC-104 guide is **designed for the whole IT stack**, you can use select 
-> controls as a technical specification for AI-assisted AI code reviews. Use the 
+> While the AC-104 guide is **designed for the whole IT stack**, you can use *select 
+> controls* as a technical specification for AI-assisted AI code reviews. Use the 
 > following prompt with your Lead Developer or Security AI (e.g., Claude Sonnet, 
 > OpenAI GPT models, or Cursor) to dynamically audit any AI-built code — full 
 > agentic systems, or vibe-coded scripts, automations, and web apps — against 
