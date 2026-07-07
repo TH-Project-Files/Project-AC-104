@@ -20,6 +20,8 @@ nav:
   - Home: index.md
   - Scoring & Adoption Methodology: methodology.md
   - Master Control List: controls_list.md
+  - Companion Guides:
+    - Smarter Agents: 'guides/smarter-agents.md'
   - Security Layers:
     - Layer 0 (Governance): 'controls/AI-GOV-01.md'
     - Layer 3 (Network): 'controls/AI-NET-01.md'

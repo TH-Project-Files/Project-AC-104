@@ -2,6 +2,12 @@
 
 All notable changes to the AC-104 (Argus Centurion) framework. Control IDs are never renumbered; see the [Scoring & Adoption Methodology](docs/methodology.md#control-id-stability) for the ID-stability policy.
 
+## [Unreleased]
+
+### Added
+- **Companion Guides** — a new documentation tier for engineering standards that ship alongside, but deliberately outside, the scored control set (no control ID, IG, or risk score; excluded from the CSV, the master list, and the audit prompt's control loading).
+- `docs/guides/smarter-agents.md` — **Smarter Agents: A Balanced Epistemic Framework for Building Useful, Trustworthy AI Agents.** Evidence tiers (Type 0–3, Tier A–D), an objective three-part confidence model, mandatory claim labels, disciplined-curiosity rules with stop conditions, contradiction handling, reasoning modes, action thresholds, and a standard output contract. Cross-referenced with AI-AGT-01, AI-LLM-08, AI-LLM-10, AI-GOV-16, AI-LLM-04, and AI-DEF-01. Linked from the README ("Beyond the Controls"), the docs-site landing page, and the mkdocs navigation.
+
 ## [1.2.1] — 2026-06-12
 
 Closes the remaining Tier-1 coverage gaps from the v1.2.0 CISO review by amending existing controls (no new IDs — count remains 118), adds the methodology page, and patches post-release documentation defects.

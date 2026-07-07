@@ -136,9 +136,14 @@ To move from chaos to clarity:
 > file or module you would like audited first."
 > ```
 ---
+## Beyond the Controls: Companion Guides
+Alongside the scored control set, the repository ships companion guides — engineering standards you can hand directly to the people (and AI assistants) building the systems the controls govern. Companion guides carry **no control ID, no Implementation Group, and no risk score**; they are design-time guidance, not assessment items.
+
+* **[Smarter Agents](docs/guides/smarter-agents.md)** — a balanced epistemic framework for building useful, trustworthy AI agents: strict facts, controlled inference, productive curiosity. Where the AC-104 controls govern an agent from the outside (identity, tool-call gates, logging, egress), Smarter Agents disciplines it from the inside — evidence tiers, an objective confidence model, claim labels (Observed / Inferred / Hypothesis / Unknown / Contradicted), curiosity stop rules, and a standard output contract. Drop it into an agent's system prompt as its epistemic contract, and use its Output Contract as an acceptance criterion in pre-deployment testing (AI-LLM-10) and change gates (AI-GOV-16).
+
 ## Repository Structure
-* `/data`: Contains the primary `AC-104-version.csv` file.
-* `/docs`: Detailed documentation and implementation deep-dives.
+* `/data`: Contains the versioned `AC-104-vX.Y.Z.csv` tracker files.
+* `/docs`: Detailed documentation, the control set, and companion guides.
 * `mkdocs.yml`: Configuration for the project's documentation site.
 
 ## License

@@ -18,3 +18,4 @@ AI risk cannot be mitigated at the application layer alone. AC-104 layers defens
 1. **[Scoring & Adoption Methodology](methodology.md)** — how controls are scored and prioritized, and the phased launch plan.
 2. **[Master Control List](controls_list.md)** — all controls with domain, Implementation Group, and risk level.
 3. **Assess:** download the highest-versioned `AC-104-vX.Y.Z.csv` from the [data folder](https://github.com/TH-Project-Files/Project-AC-104/tree/main/data) and track maturity against the four scoring columns.
+4. **Build better agents:** the [Smarter Agents](guides/smarter-agents.md) companion guide — an epistemic engineering standard for the agents these controls govern (design guidance, not a scored control).
