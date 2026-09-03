@@ -65,7 +65,7 @@ CIS IGs assume the safeguard applies to everyone and only resources differ. AC-1
 
 | If your organization... | These controls become baseline immediately |
 |---|---|
-| Deploys autonomous agents (any scale, any vendor) | AI-AGT-01, AI-PAM-01, AI-LLM-22, AI-LLM-23, AI-LLM-24 |
+| Deploys autonomous agents (any scale, any vendor) | AI-AGT-01, AI-PAM-01, AI-LLM-22, AI-LLM-23, AI-LLM-24, AI-APP-15 |
 | Runs agents that write or execute code | AI-LLM-17 |
 | Uses MCP servers or dynamically loaded agent tools | AI-MCP-01, AI-APP-14 |
 | Operates a multi-tenant AI application (multiple users, one system) | AI-LLM-18 |
