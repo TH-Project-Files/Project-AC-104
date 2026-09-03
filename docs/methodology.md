@@ -50,11 +50,11 @@ Implementation Groups are **cumulative**, exactly as in CIS Controls v8: an IG 2
 - **IG 2 — Operational AI.** For organizations deploying AI integrations at scale, running agents in production, or carrying regulatory obligations. This is where the bulk of the LLM/agentic technical controls live.
 - **IG 3 — Specialized Defense.** High-end controls for mature, well-resourced, or high-risk environments — typically dedicated hardware (inline deep-learning inspection, HSM-backed identities), advanced provenance, and forensic-grade capabilities.
 
-Current distribution across the 118 controls (CIS v8 shown for comparison):
+Current distribution across the 119 controls (CIS v8 shown for comparison):
 
 | | IG 1 | IG 2 | IG 3 |
 |---|---|---|---|
-| **AC-104** (118 controls) | 37 (31%) | 62 (53%) | 19 (16%) |
+| **AC-104** (119 controls) | 37 (31%) | 63 (53%) | 19 (16%) |
 | **CIS v8** (153 safeguards) | 56 (37%) | 74 (48%) | 23 (15%) |
 
 The IG 2 weight is concentrated in the Applications & Data domain — the LLM/agentic core — because those controls presuppose that the organization is actually deploying AI. Which leads to the most important rule on this page:
@@ -127,6 +127,7 @@ Control IDs are **never renumbered**. Gaps in the sequence are retired controls,
 - **Redefined in v1.2.0** (resolving a content fork between the CSV and documentation): AI-APP-10 (now the centralized AI Gateway), AI-APP-11 (now the AI-stack secrets management baseline), AI-NET-08 (now gateway-only egress enforcement)
 - **Re-homed in v1.2.0:** the prior AI-APP-10 (SLSA supply chain) → **AI-APP-14**; the prior AI-NET-08 (BGP route-hijack monitoring) → **AI-NET-10**
 - **Added in v1.2.0:** AI-USR-12 (secure AI prompting and vibe-coding training)
+- **Added post-v1.2.1:** AI-APP-15 (external secret and credential exposure monitoring)
 
 If you tracked an assessment against v1.1.x, re-map those three redefined IDs before comparing scores across versions.
 

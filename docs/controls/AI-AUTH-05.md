@@ -4,7 +4,8 @@
 **Implementation Group:** IG 1  
 **Aggregate Risk Level:** 2-Medium  
 **CIS v8 Safeguards:** 5.2, 7.1  
-**NIST CSF Subcategories:** ID.RA, DE.CM
+**NIST CSF Subcategories:** ID.RA, DE.CM  
+**Layered with:** AI-APP-15 (the equivalent external monitoring for non-human identity secrets — API keys, tokens, and service credentials — rather than human passwords)  
 
 ---
 

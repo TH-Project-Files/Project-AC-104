@@ -18,7 +18,8 @@ LIST_PATH = ROOT / "docs" / "controls_list.md"
 INDEX_PATH = ROOT / "docs" / "index.md"
 
 # new IDs inserted after these family siblings
-INSERT_AFTER = {"AI-APP-14": "AI-APP-13", "AI-NET-10": "AI-NET-09", "AI-USR-12": "AI-USR-11"}
+INSERT_AFTER = {"AI-APP-14": "AI-APP-13", "AI-NET-10": "AI-NET-09", "AI-USR-12": "AI-USR-11",
+                "AI-APP-15": "AI-APP-14"}
 
 FIELD = re.compile(r"^\*\*(.+?):\*\*\s*(.*?)\s*$", re.M)
 

@@ -5,7 +5,7 @@
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 16.2, 16.3  
 **NIST CSF Subcategories:** PR.DS, DE.CM  
-**Layered with:** AI-LLM-22 (environment-variable and secret scoping inside agent runtimes), AI-ACC-03 (aggressive token rotation limiting the lifetime of any leaked key), AI-NHI-01 (non-human identity inventory), AI-USR-12 (secure AI-coding training for the citizen developers most likely to hardcode keys)  
+**Layered with:** AI-LLM-22 (environment-variable and secret scoping inside agent runtimes), AI-ACC-03 (aggressive token rotation limiting the lifetime of any leaked key), AI-NHI-01 (non-human identity inventory), AI-USR-12 (secure AI-coding training for the citizen developers most likely to hardcode keys), AI-APP-15 (external scanning for keys that escaped this baseline onto public surfaces)  
 
 ## Details
 Detailed Description:
