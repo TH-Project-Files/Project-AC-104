@@ -1,4 +1,4 @@
-"""Regenerate data/AC-104-v1.3.0.csv and docs/controls_list.md from docs/controls/*.md.
+"""Regenerate data/AC-104-v1.2.2.csv and docs/controls_list.md from docs/controls/*.md.
 
 The markdown control files are the source of truth for: title, category, IG,
 aggregate risk, CIS/NIST mappings, layered-with, and the long-form Details text.
@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTROLS = ROOT / "docs" / "controls"
-CSV_PATH = ROOT / "data" / "AC-104-v1.3.0.csv"
+CSV_PATH = ROOT / "data" / "AC-104-v1.2.2.csv"
 LIST_PATH = ROOT / "docs" / "controls_list.md"
 INDEX_PATH = ROOT / "docs" / "index.md"
 
