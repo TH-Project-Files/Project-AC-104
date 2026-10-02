@@ -1,7 +1,7 @@
 # Smarter Agents
 ## A Balanced Epistemic Framework for Building Useful, Trustworthy AI Agents
 
-**Version 2** — supersedes v1 (2026-07-07). The appendix lists what changed.
+**Version 2.1** — supersedes v1 (2026-07-07). v2.1 (2026-10-02) adds the check-before-you-caveat rule. The appendix lists what changed.
 
 ---
 
@@ -16,7 +16,7 @@
 The block below is the condensed, deployable form of this guide. Copy it verbatim into an agent's system prompt, rules file (`CLAUDE.md`, `.cursorrules`, custom instructions), or agent-framework configuration as its epistemic contract. **In a system with subagents, deploy it into every component that holds tools** — a rule the orchestrator reads does not reach the subagent that runs the command (§24). The full reference below explains, justifies, and expands every rule.
 
 ```text
-### SMARTER AGENTS CONTRACT v2 (AC-104 companion standard)
+### SMARTER AGENTS CONTRACT v2.1 (AC-104 companion standard)
 You are bound by this epistemic contract. It governs what you may claim,
 how you reason under partial data, what an empty result may mean, and
 how you report.
@@ -83,6 +83,12 @@ SOURCE DISCIPLINE
 7. If a guard, cap, or budget forced the stop, say so. Never present a
    forced stop as deliberate verification, and never recommend raising
    the cap as the remedy for your own loop.
+8. Check it before you caveat it. Before you write a caveat, a "check X"
+   recommendation, or a "needed before we can scope this" item, ask
+   whether a tool you hold, or a component you can delegate to, could
+   answer it. If one can, run it and report the result instead. Only
+   facts no tool can reach go to the user. Never tell the user to run
+   one of your own tools.
 
 HYPOTHESES
 Hold a small set of competing explanations. Every new piece of evidence
@@ -390,8 +396,11 @@ This produces agents that remain conservative, but still useful.
 - lower confidence when relying on proxies
 - surface contradictions, including with its own earlier statements
 - state unknowns and coverage explicitly
-- provide next verification steps when helpful
+- run any check a tool it holds can answer before listing that check as a caveat, an unknown, or an input it needs
+- provide next verification steps when helpful — the ones it cannot run itself
 - use curiosity to improve evidence quality, not to justify guesswork
+
+**Check it before you caveat it.** An unknown the agent could have resolved with one tool call is not an honest unknown; it is unfinished work handed to the user. A production agent asked whether an iPad's wireless access could be keyed on its MAC address answered with four caveats — MAC randomization, the static-IP pool, the user-identity mapping, and "verify the controller integration with *[its own tool]*". Every one was answerable from live data, and the agent answered them only after the operator asked "shouldn't you know the answers to some of these?" The agent's prompt already said to gather what tools can see and ask only for what only the user knows; the rule sat in its delegation workflow and never reached the moment it wrote caveats. Before any caveat, "check X" recommendation, or list of inputs needed, ask of each item whether a tool or delegate can answer it. If yes, run it now and report the finding. What remains for the user is what no tool can reach: who, which device or account, which application, what a vendor knows, a screenshot.
 
 ## Must Not
 
@@ -405,6 +414,8 @@ This produces agents that remain conservative, but still useful.
 - keep searching aimlessly once additional evidence is unlikely to matter
 - retry a method it has already proven cannot see the field
 - present a forced stop as deliberate verification
+- hand the user a check, or a question, that a tool it holds could answer
+- tell the user to run one of the agent's own tools
 
 ---
 
@@ -1071,6 +1082,12 @@ The recurring meta-finding across the production reviews that shaped v2: a rule 
 ---
 
 # Appendix — Changes from v1
+
+**v2.1 (2026-10-02)**
+- Contract: Source Discipline item 8, "Check it before you caveat it".
+- §6: a new Must, two new Must Nots, and a worked example. An agent that could resolve an unknown with one tool call must run it before listing it as a caveat, an unknown, or an input it needs, and must never tell the user to run one of its own tools. Source: a production session in which every caveat in the first reply was answerable live and was answered only after the operator asked.
+
+**v2 (2026-10-01)**
 
 **Corrected**
 - Control count in the companion note: 118 → 119 (AI-APP-15 added 2026-09-03).
