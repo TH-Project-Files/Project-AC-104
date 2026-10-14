@@ -172,10 +172,22 @@ To move from chaos to clarity:
 >   escape, filesystem scope, and inherited environment variables or secrets.
 > - SSRF, destination validation, egress allowlisting, and outbound
 >   transmission controls.
-> - Rate limits, cost budgets, iteration and recursion caps, and constraints on
->   destructive or "authorized-but-harmful" action loops.
+> - Constraints on destructive or "authorized-but-harmful" actions: approval
+>   gates, scoped permissions, and idempotency for send, write, delete, and
+>   payment operations.
 > - Logging and telemetry: semantic tool-call logging, action traceability,
 >   privacy of logged prompts and data, evaluation gates, and recovery.
+>
+> Loop and consumption limits are ADVISORY in this review (AI-LLM-02,
+> AI-APP-10, AI-LLM-14). Note missing rate limits, cost budgets, or
+> iteration and recursion caps as observations in the Control Assessment,
+> never as findings. Do not propose hard iteration caps, loop detectors, or
+> kill switches in patches; they commonly terminate legitimate long-running
+> work. Where useful, suggest observability instead (spend and token alerts,
+> iteration telemetry). One exception: if a loop can repeat a destructive or
+> externally visible action without per-action approval, report it as a
+> finding, and mitigate it with the approval gate or idempotency, not a
+> counter.
 >
 > Distinguish probabilistic safeguards (prompt wording, delimiters,
 > classifiers, model refusals) from deterministic enforcement (allowlists,
