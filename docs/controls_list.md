@@ -37,6 +37,7 @@
 | **[AI-NET-02](./controls/AI-NET-02.md)** | Networking (Layer 3: Network) | IG 1 | 2-Medium | Implement Strict Egress Filtering to stop C2 callbacks |
 | **[AI-NET-03](./controls/AI-NET-03.md)** | Networking (Layer 3: Network) | IG 1 | 2-Medium | Configure firewall and DNS filtering blocklists to automatically drop traffic to Newly Registered and Parked Domains |
 | **[AI-NET-08](./controls/AI-NET-08.md)** | Networking (Layer 3: Network) | IG 2 | 1-High | Enforce gateway-only egress for AI model providers by blocking direct API access from general subnets at the firewall and SWG. |
+| **[AI-NET-11](./controls/AI-NET-11.md)** | Networking (Layer 3: Network) | IG 2 | 1-High | Enforce front-door-only ingress: publish internet-facing services solely through consolidated, hardened front doors, require pre-authentication for every non-public application, and lock origins against direct access. |
 | **[AI-NET-04](./controls/AI-NET-04.md)** | Networking (Layer 3: Network) | IG 2 | 2-Medium | Upgrade to AI-Enhanced Next-Gen Firewalls (NGFW) for behavioral and realtime threat blocking |
 | **[AI-NET-05](./controls/AI-NET-05.md)** | Networking (Layer 3: Network) | IG 2 | 2-Medium | Run Continuous Attack Surface Management (ASM) scans |
 | **[AI-NET-06](./controls/AI-NET-06.md)** | Networking (Layer 3: Network) | IG 2 | 2-Medium | Implement automated threat intelligence feeds from big data sources (e.g., large-scale MDR providers or crowd-sourced intelligence) to proactively block emerging AI-driven attacker infrastructure. |

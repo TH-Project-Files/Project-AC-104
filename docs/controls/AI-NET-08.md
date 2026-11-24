@@ -5,7 +5,7 @@
 **Aggregate Risk Level:** 1-High  
 **CIS v8 Safeguards:** 13.1, 13.2  
 **NIST CSF Subcategories:** PR.AA, PR.PS  
-**Layered with:** AI-APP-10 (the centralized AI Gateway this control makes unbypassable), AI-NET-02 (general default-deny egress filtering), AI-GOV-03 (the approved AI service catalog these routing rules enforce)  
+**Layered with:** AI-APP-10 (the centralized AI Gateway this control makes unbypassable), AI-NET-02 (general default-deny egress filtering), AI-GOV-03 (the approved AI service catalog these routing rules enforce), AI-NET-11 (the inbound mirror of this control — front-door-only ingress and origin lockdown)  
 
 ## Details
 Detailed Description:

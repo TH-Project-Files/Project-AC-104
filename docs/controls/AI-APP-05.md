@@ -5,7 +5,7 @@
 **Aggregate Risk Level:** 2-Medium  
 **CIS v8 Safeguards:** 16.11  
 **NIST CSF Subcategories:** PR.IR, PR.DS  
-**Layered with:** Behavioral-baselining family — the same ML technique applied to different telemetry: this control (web application traffic), AI-DLK-04 (network flows), AI-MSG-02 (email patterns), AI-GOV-15 (user/entity behavior), AI-ACC-06 (authentication context), AI-NHI-01 (non-human identities). Also layered with AI-APP-03 (bot management) at the web edge. Evaluate shared platforms before procuring per-layer point tools.
+**Layered with:** Behavioral-baselining family — the same ML technique applied to different telemetry: this control (web application traffic), AI-DLK-04 (network flows), AI-MSG-02 (email patterns), AI-GOV-15 (user/entity behavior), AI-ACC-06 (authentication context), AI-NHI-01 (non-human identities). Also layered with AI-APP-03 (bot management) at the web edge and AI-NET-11 (front-door-only ingress — a WAF only protects origins that cannot be reached around it). Evaluate shared platforms before procuring per-layer point tools.
 
 ---
 

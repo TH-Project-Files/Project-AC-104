@@ -50,11 +50,11 @@ Implementation Groups are **cumulative**, exactly as in CIS Controls v8: an IG 2
 - **IG 2 — Operational AI.** For organizations deploying AI integrations at scale, running agents in production, or carrying regulatory obligations. This is where the bulk of the LLM/agentic technical controls live.
 - **IG 3 — Specialized Defense.** High-end controls for mature, well-resourced, or high-risk environments — typically dedicated hardware (inline deep-learning inspection, HSM-backed identities), advanced provenance, and forensic-grade capabilities.
 
-Current distribution across the 119 controls (CIS v8 shown for comparison):
+Current distribution across the 120 controls (CIS v8 shown for comparison):
 
 | | IG 1 | IG 2 | IG 3 |
 |---|---|---|---|
-| **AC-104** (119 controls) | 37 (31%) | 63 (53%) | 19 (16%) |
+| **AC-104** (120 controls) | 37 (31%) | 64 (53%) | 19 (16%) |
 | **CIS v8** (153 safeguards) | 56 (37%) | 74 (48%) | 23 (15%) |
 
 The IG 2 weight is concentrated in the Applications & Data domain — the LLM/agentic core — because those controls presuppose that the organization is actually deploying AI. Which leads to the most important rule on this page:
@@ -70,6 +70,7 @@ CIS IGs assume the safeguard applies to everyone and only resources differ. AC-1
 | Uses MCP servers or dynamically loaded agent tools | AI-MCP-01, AI-APP-14 |
 | Operates a multi-tenant AI application (multiple users, one system) | AI-LLM-18 |
 | Allows browser-driving / computer-use agents | AI-AGT-01 (Credentialed Web Actions trigger), AI-END-11 |
+| Publishes an AI application, agent endpoint, or MCP server reachable from the internet | AI-NET-11 |
 
 A small organization at IG 1 resources that stands up its first production agent implements the first row *that week* — "IG 2" on those controls describes the general population's timeline, not yours.
 
@@ -83,7 +84,7 @@ The recommended rollout, in the spirit of CIS v8's IG-based phasing. Begin every
 |---|---|---|---|
 | **1 — First 30 days** | IG 1 controls with 1-High aggregate risk | 7 | AI-VND-02, AI-GOV-17, AI-APP-11, AI-AUTH-01, AI-END-10, AI-USR-01, AI-USR-02 — contract terms, threat modeling, secrets hygiene, possession-first auth, continuous scanning, and two awareness toggles |
 | **2 — First quarter** | Remaining IG 1 | 30 | Complete the essential baseline: policy, catalog, training program, identity fundamentals |
-| **3 — Walk, priority slice** | IG 2 controls with 1-High aggregate risk | 21 | The highest-stakes operational controls: agent governance, gateway + egress enforcement, NHI inventory, behavioral mailbox intelligence |
+| **3 — Walk, priority slice** | IG 2 controls with 1-High aggregate risk | 23 | The highest-stakes operational controls: agent governance, gateway + egress enforcement, front-door-only ingress, NHI inventory, behavioral mailbox intelligence |
 | **4 — Walk, complete** | Remaining IG 2 | 41 | Full operational coverage |
 | **5 — Run** | IG 3 | 19 | Adopt as risk profile and resources justify |
 
@@ -127,7 +128,7 @@ Control IDs are **never renumbered**. Gaps in the sequence are retired controls,
 - **Redefined in v1.2.0** (resolving a content fork between the CSV and documentation): AI-APP-10 (now the centralized AI Gateway), AI-APP-11 (now the AI-stack secrets management baseline), AI-NET-08 (now gateway-only egress enforcement)
 - **Re-homed in v1.2.0:** the prior AI-APP-10 (SLSA supply chain) → **AI-APP-14**; the prior AI-NET-08 (BGP route-hijack monitoring) → **AI-NET-10**
 - **Added in v1.2.0:** AI-USR-12 (secure AI prompting and vibe-coding training)
-- **Added post-v1.2.1:** AI-APP-15 (external secret and credential exposure monitoring)
+- **Added post-v1.2.1:** AI-APP-15 (external secret and credential exposure monitoring), AI-NET-11 (front-door-only ingress, pre-authentication, and origin lockdown)
 
 If you tracked an assessment against v1.1.x, re-map those three redefined IDs before comparing scores across versions.
 

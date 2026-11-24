@@ -4,7 +4,8 @@
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 2-Medium  
 **CIS v8 Safeguards:** 18.1  
-**NIST CSF Subcategories:** ID.RA
+**NIST CSF Subcategories:** ID.RA  
+**Layered with:** AI-NET-11 (the standing posture this discovery feeds — pre-authentication by default and front-door-only ingress, so a portal found here is a failure of that control rather than a routine finding)
 
 ---
 
