@@ -128,7 +128,8 @@ Control IDs are **never renumbered**. Gaps in the sequence are retired controls,
 - **Redefined in v1.2.0** (resolving a content fork between the CSV and documentation): AI-APP-10 (now the centralized AI Gateway), AI-APP-11 (now the AI-stack secrets management baseline), AI-NET-08 (now gateway-only egress enforcement)
 - **Re-homed in v1.2.0:** the prior AI-APP-10 (SLSA supply chain) → **AI-APP-14**; the prior AI-NET-08 (BGP route-hijack monitoring) → **AI-NET-10**
 - **Added in v1.2.0:** AI-USR-12 (secure AI prompting and vibe-coding training)
-- **Added post-v1.2.1:** AI-APP-15 (external secret and credential exposure monitoring), AI-NET-11 (front-door-only ingress, pre-authentication, and origin lockdown)
+- **Added in v1.2.2:** AI-APP-15 (external secret and credential exposure monitoring)
+- **Added in v1.2.3:** AI-NET-11 (front-door-only ingress, pre-authentication, and origin lockdown)
 
 If you tracked an assessment against v1.1.x, re-map those three redefined IDs before comparing scores across versions.
 
