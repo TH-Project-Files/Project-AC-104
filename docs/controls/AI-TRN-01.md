@@ -4,7 +4,8 @@
 **Implementation Group:** IG 1  
 **Aggregate Risk Level:** 2-Medium  
 **CIS v8 Safeguards:** 12.2, 12.3  
-**NIST CSF Subcategories:** PR.IR
+**NIST CSF Subcategories:** PR.IR  
+**Layered with:** AI-NET-11 (extends default-deny inbound from ports and protocols to published services: consolidated front doors, pre-authentication, and origin lockdown)
 
 ---
 

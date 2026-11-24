@@ -4,7 +4,8 @@
 **Implementation Group:** IG 2  
 **Aggregate Risk Level:** 2-Medium  
 **CIS v8 Safeguards:** 12.1  
-**NIST CSF Subcategories:** PR.IR
+**NIST CSF Subcategories:** PR.IR  
+**Layered with:** AI-NET-11 (front-door-only ingress — the preventive control whose failures these scans surface)
 
 ---
 
